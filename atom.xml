@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
+  <title><![CDATA[house9]]></title>
   <link href="http://house9.github.io/atom.xml" rel="self"/>
   <link href="http://house9.github.io/"/>
-  <updated>2013-09-24T13:58:34-07:00</updated>
+  <updated>2013-09-24T14:08:09-07:00</updated>
   <id>http://house9.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Jesse House]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress Test]]></title>
+    <link href="http://house9.github.io/blog/2013/09/24/octopress-test/"/>
+    <updated>2013-09-24T14:06:00-07:00</updated>
+    <id>http://house9.github.io/blog/2013/09/24/octopress-test</id>
+    <content type="html"><![CDATA[<p>My first post using Octopress!</p>
+]]></content>
+  </entry>
   
 </feed>
