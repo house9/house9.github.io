@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Git Log Formatting  - house9</title>
+  <meta name="author" content="Jesse House">
+
+  
+  <meta name="description" content="The git log command is great and has tons of good information, but the output doesn&#8217;t give you that nice &#8216;overview&#8217; of the commit &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://house9.github.io/blog/2012/11/03/git-log-formatting">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="house9" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">house9</a></h1>
+  
+    <h2>random code and what not</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:house9.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Git Log Formatting</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-03T00:00:00-07:00" pubdate data-updated="true">Nov 3<span>rd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class='post'>
+The git log command is great and has tons of good information, but the output doesn&#8217;t give you that nice &#8216;overview&#8217; of the commit history, too much detail on too many lines<br /><br />I&#8217;ve been using the following in my .gitconfig file<br /><blockquote class="tr_bq"><span style="background-color: #cccccc;">l = log -20 &#8211;format=&#8217;%h %ad %d %an: %s&#8217; &#8211;date=short</span></blockquote>typing &#8217;<i style="background-color: #cccccc;">git l</i>&#8217; renders the following output:<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-0GRyv-72haA/UJVYQ96clhI/AAAAAAAAC58/Lptn1WKW9dA/s1600/git-l-01.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="297" src="http://2.bp.blogspot.com/-0GRyv-72haA/UJVYQ96clhI/AAAAAAAAC58/Lptn1WKW9dA/s640/git-l-01.png" width="640" /></a></div><br /><br />Last night I watched the <a href="https://www.destroyallsoftware.com/">Destroy All Software</a> &#8221;<a href="https://www.destroyallsoftware.com/screencasts/catalog/pretty-git-logs">PRETTY GIT LOGS</a>&#8221; screencast which takes &#8217;<i style="background-color: #cccccc;">git l</i>&#8217; to the next level<br /><br /><ul><li><a href="https://www.destroyallsoftware.com/screencasts/catalog/pretty-git-logs">https://www.destroyallsoftware.com/screencasts/catalog/pretty-git-logs</a></li><li><a href="https://github.com/garybernhardt/dotfiles/blob/master/.gitconfig">https://github.com/garybernhardt/dotfiles/blob/master/.gitconfig</a></li><li><a href="https://github.com/garybernhardt/dotfiles/blob/master/.githelpers">https://github.com/garybernhardt/dotfiles/blob/master/.githelpers</a></li></ul><div><div>now &#8217;<i style="background-color: #cccccc;">git l</i>&#8217; renders</div><div><br /></div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-Rgt39G9fGfg/UJVYWh9U0lI/AAAAAAAAC6E/3nxcaZO7Keo/s1600/git-l-02.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="242" src="http://1.bp.blogspot.com/-Rgt39G9fGfg/UJVYWh9U0lI/AAAAAAAAC6E/3nxcaZO7Keo/s640/git-l-02.png" width="640" /></a></div><div><br /></div><div>&nbsp; &nbsp;</div></div></div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jesse House</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-03T00:00:00-07:00" pubdate data-updated="true">Nov 3<span>rd</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/git/'>git</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://house9.github.io/blog/2012/11/03/git-log-formatting/" data-via="" data-counturl="http://house9.github.io/blog/2012/11/03/git-log-formatting/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/10/31/helper-script-to-delete-git-tags/" title="Previous Post: Helper script to delete git tags locally and remote">&laquo; Helper script to delete git tags locally and remote</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/11/03/setting-up-ci-build-continuous/" title="Next Post: Setting up a C.I. build (Continuous Integration) for a Ruby on Rails application">Setting up a C.I. build (Continuous Integration) for a Ruby on Rails application &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: Supply_drop)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e Chef Cookbook</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and Puppet Postgres 9.2 on Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/01/vagrantfile-for-setting-up-multiple/">Vagrantfile for Setting Up Multiple Machines With Chef Configuration</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/house9">@house9</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'house9',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jesse House -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

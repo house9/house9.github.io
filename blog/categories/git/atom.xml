@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: git | house9]]></title>
+  <link href="http://house9.github.io/blog/categories/git/atom.xml" rel="self"/>
+  <link href="http://house9.github.io/"/>
+  <updated>2013-09-24T15:53:19-07:00</updated>
+  <id>http://house9.github.io/</id>
+  <author>
+    <name><![CDATA[Jesse House]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Git Log Formatting ]]></title>
+    <link href="http://house9.github.io/blog/2012/11/03/git-log-formatting/"/>
+    <updated>2012-11-03T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2012/11/03/git-log-formatting</id>
+    <content type="html"><![CDATA[<div class='post'>
+The git log command is great and has tons of good information, but the output doesn't give you that nice 'overview' of the commit history, too much detail on too many lines<br /><br />I've been using the following in my .gitconfig file<br /><blockquote class="tr_bq"><span style="background-color: #cccccc;">l = log -20 --format='%h %ad %d %an: %s' --date=short</span></blockquote>typing '<i style="background-color: #cccccc;">git l</i>' renders the following output:<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-0GRyv-72haA/UJVYQ96clhI/AAAAAAAAC58/Lptn1WKW9dA/s1600/git-l-01.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="297" src="http://2.bp.blogspot.com/-0GRyv-72haA/UJVYQ96clhI/AAAAAAAAC58/Lptn1WKW9dA/s640/git-l-01.png" width="640" /></a></div><br /><br />Last night I watched the <a href="https://www.destroyallsoftware.com/">Destroy All Software</a> "<a href="https://www.destroyallsoftware.com/screencasts/catalog/pretty-git-logs">PRETTY GIT LOGS</a>" screencast which takes '<i style="background-color: #cccccc;">git l</i>' to the next level<br /><br /><ul><li><a href="https://www.destroyallsoftware.com/screencasts/catalog/pretty-git-logs">https://www.destroyallsoftware.com/screencasts/catalog/pretty-git-logs</a></li><li><a href="https://github.com/garybernhardt/dotfiles/blob/master/.gitconfig">https://github.com/garybernhardt/dotfiles/blob/master/.gitconfig</a></li><li><a href="https://github.com/garybernhardt/dotfiles/blob/master/.githelpers">https://github.com/garybernhardt/dotfiles/blob/master/.githelpers</a></li></ul><div><div>now '<i style="background-color: #cccccc;">git l</i>' renders</div><div><br /></div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-Rgt39G9fGfg/UJVYWh9U0lI/AAAAAAAAC6E/3nxcaZO7Keo/s1600/git-l-02.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="242" src="http://1.bp.blogspot.com/-Rgt39G9fGfg/UJVYWh9U0lI/AAAAAAAAC6E/3nxcaZO7Keo/s640/git-l-02.png" width="640" /></a></div><div><br /></div><div>&nbsp; &nbsp;</div></div></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Helper script to delete git tags locally and remote]]></title>
+    <link href="http://house9.github.io/blog/2012/10/31/helper-script-to-delete-git-tags/"/>
+    <updated>2012-10-31T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2012/10/31/helper-script-to-delete-git-tags</id>
+    <content type="html"><![CDATA[<div class='post'>
+Might be useful to others, delete a bunch of git tags - remote and locally<br /><br /><br /><script src="https://gist.github.com/3989586.js?file=build-and-execute-multiple-git-commands.sh"></script><noscript>Your reader does not render gists; view code here -  <a href="https://gist.github.com/3989586.js?file=build-and-execute-multiple-git-commands.sh">https://gist.github.com/3989586.js?file=build-and-execute-multiple-git-commands.sh</a></noscript><br /><b>Resources</b><br /><br /><ul><li><a href="http://nathanhoad.net/how-to-delete-a-remote-git-tag">http://nathanhoad.net/how-to-delete-a-remote-git-tag</a>&nbsp;</li><li><a href="http://www.linuxquestions.org/questions/programming-9/bash-read-every-line-in-the-files-and-use-the-line-as-parameters-as-another-program-246291/">http://www.linuxquestions.org/questions/programming-9/bash-read-every-line-in-the-files-and-use-the-line-as-parameters-as-another-program-246291/</a></li><li><a href="http://stackoverflow.com/questions/1605232/use-bash-to-read-a-file-and-then-execute-a-command-from-the-words-extracted">http://stackoverflow.com/questions/1605232/use-bash-to-read-a-file-and-then-execute-a-command-from-the-words-extracted</a></li></ul></div>
+
+
+<h2>Comments</h2>
+
+
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Arnaud Frugier</div>
+<div class='content'>
+git tag -l | grep &quot;^\d&quot; | sed &#39;s/^/git push origin :/&#39; | sh<br />git tag -l | grep &quot;^\d&quot; | sed &#39;s/^/git tag -d /&#39; | sh</div>
+</div>
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Git Workflow]]></title>
+    <link href="http://house9.github.io/blog/2012/02/03/git-workflow/"/>
+    <updated>2012-02-03T00:00:00-08:00</updated>
+    <id>http://house9.github.io/blog/2012/02/03/git-workflow</id>
+    <content type="html"><![CDATA[<div class='post'>
+This is the current git workflow we are using at work, your mileage may vary:<br /><br /><script src="https://gist.github.com/1734394.js?file=git-workflow.rb"></script><br /><noscript>Your reader does not support javascript - see https://gist.github.com/1734394.js?file=git-workflow.rb</noscript><br /><br /><b>Resources</b><br /><ul><li><a href="http://cheat.errtheblog.com/s/git">http://cheat.errtheblog.com/s/git</a>&nbsp;</li><li><a href="http://yanpritzker.com/gitbook.html#Keeping+a+topic+branch+in+sync+with+its+parent">http://yanpritzker.com/gitbook.html#Keeping+a+topic+branch+in+sync+with+its+parent</a>&nbsp;</li><li><a href="http://yanpritzker.com/gitbook.html#One+branch+per+bug">http://yanpritzker.com/gitbook.html#One+branch+per+bug</a>&nbsp;</li><li><a href="http://gitready.com/beginner/2009/02/02/push-and-delete-branches.html">http://gitready.com/beginner/2009/02/02/push-and-delete-branches.html</a>&nbsp;</li><li><a href="http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html">http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html</a>&nbsp;</li><li><a href="http://sleeplessgeek.blogspot.com/2011/03/using-git-cherry-pick.html">http://sleeplessgeek.blogspot.com/2011/03/using-git-cherry-pick.html</a>&nbsp;</li></ul></div>
+
+]]></content>
+  </entry>
+  
+</feed>

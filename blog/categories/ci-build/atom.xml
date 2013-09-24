@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: CI Build | house9]]></title>
+  <link href="http://house9.github.io/blog/categories/ci-build/atom.xml" rel="self"/>
+  <link href="http://house9.github.io/"/>
+  <updated>2013-09-24T15:53:19-07:00</updated>
+  <id>http://house9.github.io/</id>
+  <author>
+    <name><![CDATA[Jesse House]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby on Rails continuous integration (CI) with Jenkins the easy way with Chef and Knife]]></title>
+    <link href="http://house9.github.io/blog/2013/02/23/ruby-on-rails-continuous-integration-ci/"/>
+    <updated>2013-02-23T00:00:00-08:00</updated>
+    <id>http://house9.github.io/blog/2013/02/23/ruby-on-rails-continuous-integration-ci</id>
+    <content type="html"><![CDATA[<div class='post'>
+Do you need a CI build setup for your Ruby on Rails app?<br /><br />Here are some <a href="http://www.opscode.com/chef/">chef</a> / <a href="http://matschaffer.github.com/knife-solo/">knife solo</a> scripts that will deploy a <a href="http://jenkins-ci.org/">Jenkins</a> server to run your <a href="http://www.martinfowler.com/articles/continuousIntegration.html">CI build</a> - you could be up and running in less than 1/2 an hour<br /><br /><a href="https://github.com/house9/ci_chef_jenkins_rails"><b>https://github.com/house9/ci_chef_jenkins_rails</b></a><br /><br />Check out the README for details<br /><br /><br /></div>
+
+
+<h2>Comments</h2>
+
+
+<div class='comments'>
+<div class='comment'>
+<div class='author'>patcon</div>
+<div class='content'>
+You might want to look into Pivotal Labs&#39; ciborg project -- sounds like it&#39;s just what you&#39;re looking for :)<br /><br />https://github.com/pivotal/ciborg</div>
+</div>
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Setting up a C.I. build (Continuous Integration) for a Ruby on Rails application]]></title>
+    <link href="http://house9.github.io/blog/2012/11/03/setting-up-ci-build-continuous/"/>
+    <updated>2012-11-03T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2012/11/03/setting-up-ci-build-continuous</id>
+    <content type="html"><![CDATA[<div class='post'>
+<br />It has never been easier than with Semaphore - Hosted Continuous Integration<br /><br /><ul><li><a href="https://semaphoreapp.com/">https://semaphoreapp.com/</a></li></ul><br />How easy is it<br /><br /><ul><li>add semaphore ssh key to your github repo</li><li>then semaphore automatically determines your ruby version, database, etc...</li><li>you can tweak the build steps later, the defaults are pretty good</li></ul><br />It will automatically detect new branches!!! That means zero setup when the new branch is added<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-HqVYteyXvQk/UJVdSqJnYOI/AAAAAAAAC6U/AU4oP3tZ2D8/s1600/semaphoreapp-01.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="348" src="http://4.bp.blogspot.com/-HqVYteyXvQk/UJVdSqJnYOI/AAAAAAAAC6U/AU4oP3tZ2D8/s640/semaphoreapp-01.png" width="640" /></a></div><br /><br />It is not <a href="https://semaphoreapp.com/pricing">cheap</a>, for personal side projects it might not make sense?<br />But well worth the money if you are doing paid development<br /></div>
+
+]]></content>
+  </entry>
+  
+</feed>

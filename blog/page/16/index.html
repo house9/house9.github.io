@@ -1,0 +1,597 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>house9</title>
+  <meta name="author" content="Jesse House">
+
+  
+  <meta name="description" content="Just started using the SyntaxHighlighter on my code samples blog - here is some quick notes on what I had to do Download the SyntaxHighlighter &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://house9.github.io/blog/page/16">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="house9" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">house9</a></h1>
+  
+    <h2>random code and what not</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:house9.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/02/16/syntaxhighlighter-and-google-blogger/">SyntaxHighlighter and Google Blogger</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-02-16T00:00:00-08:00" pubdate data-updated="true">Feb 16<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Just started using the SyntaxHighlighter on my code samples blog - here is some quick notes on what I had to do <ul><br /><li>Download the SyntaxHighlighter javascript and css files from <a href="http://code.google.com/p/syntaxhighlighter/">http://code.google.com/p/syntaxhighlighter/</a><br /></li><li>Upload those to my googlepage website, if you don&#8217;t have one go to <a href="https://www.google.com/accounts/ManageAccount">https://www.google.com/accounts/ManageAccount</a> and click on the &#8216;Page Creator&#8217; link<br /></li><li>Edit the blog template -> Layout -> Edit Html</li><li>Add the references to the css and javascript files in the <em>head</em> section <li>Add the initialization javascript calls right before the <em>/body</em> tag at the end of the html template</li><li>see <a href="http://morten.lyhr.dk/2007/12/how-to-get-syntax-highlighting-in.html">http://morten.lyhr.dk/2007/12/how-to-get-syntax-highlighting-in.html</a></li><li>then use pre tags like this around your code <em>pre class=&#8221;c-sharp&#8221; name=&#8221;code&#8221;</em> <li>see <a href="http://code.google.com/p/syntaxhighlighter/wiki/Usage">http://code.google.com/p/syntaxhighlighter/wiki/Usage</a> </li></ul><p>One issue I ran into was that the google blogger automatically adds br tags where newlines appear in any content - makes the code pretty much unreadable, but the fix is well documented and easy to implement - <a href="http://code.google.com/p/syntaxhighlighter/wiki/BloggerMode">http://code.google.com/p/syntaxhighlighter/wiki/BloggerMode</a></p><p></p></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/02/16/rhinomocks-basics_16/">Rhino.Mocks - the Basics</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-02-16T00:00:00-08:00" pubdate data-updated="true">Feb 16<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Started using Rhino.Mocks recently (Awesome!!!) - just wanted to list a few of the basics; the official Rhino Mocks Documentation is very good and available <a href="http://www.ayende.com/Wiki/(S(0asrslmlg1jh5355jtljowre))/Rhino+Mocks+Documentation.ashx">here</a>. These examples are a bit rough, they have not been compiled; there may be typos.<br /><br /><b>using</b><br /><pre>using Rhino.Mocks;</pre><br /><b>The mock repository</b><br /><pre>// use the mock repository to create the mocked objects<br />MockRepository mocks = new Rhino.Mocks.MockRepository();<br />// example<br />System.Object someObject = mocks.CreateMock<System.Object>();<br />// set up the behaviour you want from calls to your mocked object <br />Rhino.Mocks.Expect.Call(someObject.Equals(someParameter)).Return(false);<br />// then don't forget<br />mocks.ReplayAll();<br />// now do stuff that calls your mocked object Equals method<br />...<br /></pre><br /><b>Mock a call to the db</b><br /><pre>// create our mocked repository object - IProductRepository, the real one calls the db<br />IProductRepository repository = mocks.CreateMock<iproductrepository>();<br />// tell rhino.mocks when we call the method GetProduct with the argument 33 to return null<br />Rhino.Mocks.Expect.Call(repository.GetProduct(33)).Return(null);<br />// get the mocking ready<br />mocks.ReplayAll();<br />// pass our mock to our product service layer<br />ProductService service = new ProductService(repository);<br />// service.GetProduct makes a call to the mocked repository.GetProduct which will return null<br />IProduct product = service.GetProduct(33);<br />// should be null<br />Assert.IsNull(product);<br /></pre><br /><b>Ignore any arguments</b><br /><pre>// any call to GetProduct will return null no matter the value of the arg<br />Rhino.Mocks.Expect.Call(repository.GetProduct(null)).Return(null).IgnoreArguments();<br /></pre><br /><b>mock a method that returns void</b><br /><pre>IProduct product = new Product("003092", "Sierra Nevada", 6.49);<br />// this void call will handle our product 003092<br />Rhino.Mocks.Expect.Call(delegate { repository.Save(product); });<br />// this void call will handle any argument<br />Rhino.Mocks.Expect.Call(delegate { repository.Save(null); }).IgnoreArguments();<br /></pre><br /><b>Handle multiple calls to the same method</b><br /><pre>IProduct product = new Product("003092", "Sierra Nevada", 6.49);<br />// note the .Repeat.Any()<br />Rhino.Mocks.Expect.Call(repository.GetProduct("003092")).Return(product).Repeat.Any();<br />// send the mock to our product service object<br />ProductService service = new ProductService(repository);<br />// find by sku calls GetProduct on the mocked Product repository<br />IProduct beer = service.FindBySku("003092");<br />// find decent beer calls GetProduct on the mocked Product repository also<br />IProduct decentBeer = service.FindDecentBeer();<br /></pre><br /><b>Partial Mock</b><br /><pre>// create a partial mock with constructor args (our product repository again)<br />IProductService service = mocks.PartialMock<iproductservice>(repository);<br />// our test case data<br />IUser loggedOnUser = new User("John", "Doe", CustomerType.Gold);<br />// mock product service calls to GetLoggedOnUser<br />Rhino.Mocks.Expect.Call(service.GetLoggedOnUser()).Return(loggedOnUser);<br />// get the mocking ready<br />mocks.ReplayAll();<br />// now GetDiscount is not a mocked method but it does call the mocked GetLoggedOnUser method<br />decimal discount = service.GetDiscount();<br />// assert the result<br />Assert.AreSame(44.4M, discount, "Gold customer discount not correct?");<br />// NOTE: this will not work (compile) unless the mocked method GetLoggedOnUser is public<br /></pre></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+Had an issue with comment moderation<br>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-<br><br>New Day posted this about a month ago<br><br>For the Equals method I get the same error as ben.biddington. I am using .NET 2.0<br>The error occurs on the line with Expect.Call so it does not proceed any further down the test.<br><br>Error <br>&quot;Invalid call, the last call has been used or no call has been made (make sure that you are calling a virtual (C#) / Overridable (VB) method).&quot;</div>
+</div>
+<div class='comment'>
+<div class='author'>Anonymous</div>
+<div class='content'>
+IProduct product = new Product(&quot;003092&quot;, &quot;Sierra Nevada&quot;, 6.49);<br>  <br>Lär ju gå bra att instansiera ett interface, nötter&#8230;</div>
+</div>
+<div class='comment'>
+<div class='author'>Anonymous</div>
+<div class='content'>
+In 3.5 CreateMock is deprecated and should be changed to StrictMock.  Might want to try that,</div>
+</div>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+I have not tried it on 3.5 of .net but I believe it should work. Is it possible you are making multiple calls to the same mocked method? you might need a .Repeat.Any();</div>
+</div>
+<div class='comment'>
+<div class='author'>ben.biddington</div>
+<div class='content'>
+Hi, <br><br>Does you first example (The mock repository) work with v.3.5?<br><br>I get the error:<br><br>Invalid call, the last call has been used or no call has been made (make sure that you are calling a virtual (C#) / Overridable (VB) method).</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/02/16/rhinomocks-basics/">Rhino.Mocks Basics</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-02-16T00:00:00-08:00" pubdate data-updated="true">Feb 16<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Rhino.Mocks basics - I just threw this together real quick; personal reference material<br /><a href="http://house9-code-samples.blogspot.com/2008/02/rhinomocks-basics.html">http://house9-code-samples.blogspot.com/2008/02/rhinomocks-basics.html</a><br /><br />The official Rhino Mocks Documentation is very good and available here<br /><a href="http://www.ayende.com/Wiki/(S(33lpuuuz4itdtnjwlncidy55))/Default.aspx?Page=Rhino+Mocks+Documentation">http://www.ayende.com/Wiki/(S(33lpuuuz4itdtnjwlncidy55))/Default.aspx?Page=Rhino+Mocks+Documentation</a></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Lee</div>
+<div class='content'>
+Excellent little reference. BOOKMARK! thanks</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/02/16/rails-like-migrations-in-net-world/">Rails Like Migrations in the .NET World</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-02-16T00:00:00-08:00" pubdate data-updated="true">Feb 16<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I have done a few very small projects with rails; one of the really nice features with rails is <a href="http://wiki.rubyonrails.org/rails/pages/UnderstandingMigrations">database migrations</a><br /><br />There are a few ports of rails migrations to the .NET world (that&#8217;s where I spend alot of my time). I have not used any of these for &#8216;real&#8217; but I have &#8216;sampled&#8217; them. They all look promising but it seems like there is not very much activity on these projects.<br /><br /><strong>Migratordotnet</strong><br /><a href="http://code.google.com/p/migratordotnet/">http://code.google.com/p/migratordotnet/</a><br /><br /><strong>RikMigrations</strong><br /><a href="http://www.rikware.com/RikMigrations.html">http://www.rikware.com/RikMigrations.html</a><br /><br /><strong>SubSonic Migrations</strong><br />I don&#8217;t know if they ever did incorporate this into the official release of sub sonic? maybe it will come in a future release<br /><a href="http://blog.wekeroad.com/2007/10/03/subsonic-migrate-me/">http://blog.wekeroad.com/2007/10/03/subsonic-migrate-me/</a><br /><br />I recently stumbled across vincent-vega and have begun using it on a small project and am planning to incorporate it into some of our larger applications. It is an Nant task that handles database versioning. It is not a migration in the same way as the other solutions as it uses actual sql scripts for all schema changes instead of c# code, which makes sense to me!<br /><br /><strong>Vincent-Vega</strong><br />[update 2008/10/14]<br />vincent-vega is now part of the tarantino project. <br /><a href="http://code.google.com/p/tarantino/">http://code.google.com/p/tarantino/</a><br /> Thanks for the heads up Dan!<br />[/update]<br /><br /><p>&nbsp;</p></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Dan Nuttall</div>
+<div class='content'>
+vincent-vega is now part of the tarantino project. I know you mentions it in a later post, but it took me forever to find it!<BR/><BR/>http://code.google.com/p/tarantino/</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/01/06/mssql-reporting-services-logs/">Mssql Reporting Services - Logs</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-01-06T00:00:00-08:00" pubdate data-updated="true">Jan 6<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+a while back I had to set up reporting services; <em>most</em> of the errors do not get logged to the event log, instead they are logged to a file:<br /><br /><span style="font-size:85%;"><strong>{drive}\Program Files\Microsoft SQL Server\{instance}\Reporting Services\LogFiles</strong></span></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/12/15/random-coding-links-1/">Random Coding Links - #1</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-12-15T00:00:00-08:00" pubdate data-updated="true">Dec 15<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Random Coding Links - #1<br />wanted to keep track of these somewhere<br /><br /><ul><li><a href="http://dotnet.org.za/cjlotz/archive/2007/12/03/continuous-integration-from-theory-to-practice.aspx">Continuous Integration: From Theory to Practice</a></li><li><a class="NoUnderline" id="ctl00_ctl00_WideContent_ProjectTitleControl1_ProjectTitleLink" href="http://www.codeplex.com/MVCContrib">MVC Contrib</a> </li><li><a href="http://code.google.com/apis/chart/">Google Chart API</a></li><li><a href="http://forums.asp.net/1146.aspx">ASP.NET MVC Forum</a></li><li><a href="http://blog.wekeroad.com/category/mvc/">Rob Conery on MVC</a></li></ul></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/12/15/personal-web-page-revisited/">Personal Web Page Revisited</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-12-15T00:00:00-08:00" pubdate data-updated="true">Dec 15<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Ok, it has been 5 years since I have updated my personal webpage, once again it is just a 1 page web site; lean and mean ~:P<br /><br />It might load a bit slow; I am using some of the libraries from <a href="http://www.extjs.com/">Ext JS</a> - a few hundred K in css, images and js to load in, should cache in the browser after the first hit, their UI widgets are just too cool.<br /><br />anyhow here it is - <a href="http://www.jessehouse.com/">http://www.jessehouse.com/</a></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>cbetancourt</div>
+<div class='content'>
+Move your &lt;script&gt; tags to the bottom of the page, right before &lt;/html&gt; and you will see a speed improvement.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/12/08/mysql-migration-toolkit/">Mysql Migration Toolkit</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-12-08T00:00:00-08:00" pubdate data-updated="true">Dec 8<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I am using the <a href="http://www.mysql.com/products/tools/migration-toolkit/">mysql migration toolkit</a> to transfer a database from MSSQL 2005 over to MySQL database. Ran into an issue with the port, by default the tool wants to use 1433 (MSSQL 2000 default), but it looks like 2005 uses a default port of 1434 (well it is more complicated then that <a href="http://technet.microsoft.com/en-us/library/ms165724.aspx">http://technet.microsoft.com/en-us/library/ms165724.aspx</a>) - you can use the stored procedure xp_readerrorlog to verify the port your database is listening on - one of the rows in the text column of the result should be something like &#8217;<em><span style="color:#006600;">Server is listening on [ 127.0.0.1 <ipv4>1434].</span></em>&#8217;<br /><br />anyhow after changing the port number everything else was smooth sailing, yeah right&#8230;<br />once I got to the reverse engineer stage then this java stack came up, looks like it still doesn&#8217;t like the connection string, even though I have already authenticated with it?<br /><blockquote><br /><span style="font-size:78%;">Initializing JDBC driver &#8230;<br />Driver class MS SQL JDBC Driver<br />Opening connection &#8230;<br />Connection jdbc:jtds:sqlserver://127.0.0.1:1434/databasename;user=sa;password=;charset=utf-8;<br />Initializing JDBC driver &#8230;<br />Driver class MS SQL JDBC Driver<br />Opening connection &#8230;<br />Connection jdbc:jtds:sqlserver://127.0.0.1:1434/databasename;user=sa;password=;charset=utf-8;<br />The schema could not be reverse engineered (error: 0).<br />ReverseEngineeringMssql.reverseEngineer :I/O Error: Connection reset<br />Details:<br />net.sourceforge.jtds.jdbc.TdsCore.nextToken(TdsCore.java:2277)<br />net.sourceforge.jtds.jdbc.TdsCore.login(TdsCore.java:599)<br />net.sourceforge.jtds.jdbc.ConnectionJDBC2.<init>(ConnectionJDBC2.java:331)net.sourceforge.jtds.jdbc.ConnectionJDBC3.<init>(ConnectionJDBC3.java:50)<br />net.sourceforge.jtds.jdbc.Driver.connect(Driver.java:178)<br />java.sql.DriverManager.getConnection(Unknown Source)<br />java.sql.DriverManager.getConnection(Unknown Source)com.mysql.grt.modules.ReverseEngineeringGeneric.establishConnection(ReverseEngineeringGeneric.java:141)com.mysql.grt.modules.ReverseEngineeringGeneric.getVersion(ReverseEngineeringGeneric.java:161)com.mysql.grt.modules.ReverseEngineeringMssql.reverseEngineer(ReverseEngineeringMssql.java:164)sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br />sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)<br />sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)<br />java.lang.reflect.Method.invoke(Unknown Source)<br />com.mysql.grt.Grt.callModuleFunction(Unknown Source)</span></blockquote><br /><p>ok, so close the migration tool reopen and go through the same process, exact same behaviour, clicking the back button brings me to the original screen where the MSSQL connection information was entered, everything is as it was, try to connect again and this time another java stack trace, the important part was this line - &#8217;<em><span style="color:#006600;">I/O Error: DB server closed connection.</span>&#8217; - </em>Weird</p><p>a google search led me here - <a href="http://bugs.mysql.com/bug.php?id=20674">http://bugs.mysql.com/bug.php?id=20674</a><br />Using the &#8216;SQL Server Configuration Manager&#8217; I had to set the &#8216;SQL Server 2005 Network Configuration&#8217; -> &#8216;Protocols for MSSQLSERVER&#8217; -> TCP/IP to Enabled</p><p>doing this set my default port back to 1433 (actually that is the one I used, xp_readerrorlog shows the database listening on both 1433 and 1434), so re-connecting with the migration tool and using the 1433 default port worked and I was on my way&#8230;</p><p>so every table fails to migrate except 2? well I guess the migration tool could be better, lucky for me I only had 12 tables going here, I had to update the migration code for all of these tables</p><blockquote><p><em>`is_active` TINYINT NOT NULL DEFAULT (1),</em><br />had to be changed to<br /><em>`is_active` TINYINT NOT NULL DEFAULT 1,<br /></em></p></blockquote><br /><p>yes removing the () from the default value - now that sure is a pain. It was only occuring on types of tinyint - these were coming from MSSQL bit datatypes, could be an issue only in that one case?</p></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/12/02/tesla-motors-electric-cars/">Tesla Motors - Electric Cars</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-12-02T00:00:00-08:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I am sure most people have heard of these cars by now?<br /><br /><p align="center"><a href="http://www.teslamotors.com/"><img height="111" src="http://www.teslamotors.com/images/banners/Tesla_banner3.jpg" width="171" border="0" /></a><br /><a href="http://www.teslamotors.com/"><span style="font-size:85%;color:#006600;">http://www.teslamotors.com/</span></a></p><br /><blockquote><p><em><span style="font-size:85%;"><strong>Changing Perceptions </strong><br />We needed to change perceptions of electric vehicles in a big way. To make electric cars a viable alternative, we set out to build one that was gorgeous and thrilling to drive.<br /><br />Our first car, the Tesla Roadster, isn‘t a plan, pipedream or prototype; this car exists and is for sale now. It‘s a no-compromise driver‘s car that can accelerate faster than a Porsche 911 and hit a top speed of nearly twice what the law permits. With a range of more than 200 miles on a single charge, you can use it all day long and not worry you‘ll run out of juice. Just plug it in at night the same way you drop your cell phone into its charger, and sleep well, without guilt.<br /><br /></span><span style="font-size:85%;"><strong>Just the Beginning<br /></strong>While the Tesla Roadster‘s sticker price is in a league with other<br />high-performance sports cars with similar specs, we recognize it‘s out of reach<br />for a lot of people. We consciously chose to develop a high-end sports car as<br />our first car in order to develop the “performance DNA” from which we could<br />create other electric vehicles. Our next model will leverage the Tesla<br />Roadster‘s technology, resulting in a less expensive sports sedan that we can<br />sell at higher volume. </span></em></p><p><em></em></p></blockquote><br /><p>I don&#8217;t want a sports car and definitely won&#8217;t be spending $90,000 on a car of any sort, but I hope they can get a lower cost sedan or wagon on the road in the next few years.</p><br /><p></p></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/12/01/9-golden-eagles/">9 Golden Eagles</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-12-01T00:00:00-08:00" pubdate data-updated="true">Dec 1<span>st</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Crazy day of birding<br /><br />The first real cold days have hit - crispy and clear, so I headed out towards Valley Ford with Larry.<br /><br />We saw the usual - Red tails, Red Shoulder, Norther Harrier, Kestrel, (where was the white-tailed kite?) and then the good stuff 1 Ferrug, 4 Rough-legged and 9 <a href="http://en.wikipedia.org/wiki/Golden_Eagle">Golden Eagles</a>!!!<br /><br />Most of the eagles were hanging out in pairs, but at one point we had 4 in our sight at once (that was a first for me), 2 pairs I believe. They were all in the vicinity of a dead lamb, the first one we spotted was actually perched on the lamb getting ready to eat.<br /><br />last week was good to - first week we saw any rough-leg; Next week can only be better but don&#8217;t think I&#8217;ll see that many Goldens in one day for a long time.</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/17/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/15/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: Supply_drop)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e Chef Cookbook</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and Puppet Postgres 9.2 on Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/01/vagrantfile-for-setting-up-multiple/">Vagrantfile for Setting Up Multiple Machines With Chef Configuration</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/house9">@house9</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'house9',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jesse House -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

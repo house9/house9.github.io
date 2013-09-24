@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: powershell | house9]]></title>
+  <link href="http://house9.github.io/blog/categories/powershell/atom.xml" rel="self"/>
+  <link href="http://house9.github.io/"/>
+  <updated>2013-09-24T15:53:19-07:00</updated>
+  <id>http://house9.github.io/</id>
+  <author>
+    <name><![CDATA[Jesse House]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Add tf.exe and other .net command line tools to your powershell path]]></title>
+    <link href="http://house9.github.io/blog/2011/03/29/add-tfexe-and-other-net-command-line/"/>
+    <updated>2011-03-29T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2011/03/29/add-tfexe-and-other-net-command-line</id>
+    <content type="html"><![CDATA[<div class='post'>
+I really don't like cmd.exe, it is difficult to work with. PowerShell ISE is much nicer and the bonus is you can run non powershell programs from this environment as well.<br /><br />I needed to run some TFS commands, adding the ide directory to the path is easy<br /><blockquote><span class="Apple-style-span" style="background-color: yellow;">$env:path += ";C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE"</span></blockquote>another directory you might want to add if you are messing about with IIS7<br /><br /><blockquote><span class="Apple-style-span" style="background-color: yellow;">$env:path += ";C:\Windows\System32\inetsrv"&nbsp;</span></blockquote>now you can do things like recycle all of the AppPools on your machine<br /><br /><blockquote>appcmd list apppool /xml | appcmd recycle apppool /in</blockquote></div>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: css | house9]]></title>
+  <link href="http://house9.github.io/blog/categories/css/atom.xml" rel="self"/>
+  <link href="http://house9.github.io/"/>
+  <updated>2013-09-24T15:53:19-07:00</updated>
+  <id>http://house9.github.io/</id>
+  <author>
+    <name><![CDATA[Jesse House]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rows and Columns with CSS]]></title>
+    <link href="http://house9.github.io/blog/2011/03/29/rows-and-columns-with-css/"/>
+    <updated>2011-03-29T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2011/03/29/rows-and-columns-with-css</id>
+    <content type="html"><![CDATA[<div class='post'>
+here is a code snippet for creating rows and columns with css - I guess you could say this is a table?<br /><br /><script src="https://gist.github.com/892551.js?file=css-rows-and-columns.html"></script><br /><noscript><br />your reader does not support script includes, please <br /><a href="https://gist.github.com/raw/892551/38b499f9f5ee783a85cbd82966ee9b2fd5a56e90/css-rows-and-columns.html">View the Gist</a>.<br /></noscript><br /><br />Resources<br /><br /><ul><li><a href="http://www.webmasterworld.com/css/3896320.htm">webmaster world css forum</a></li></ul></div>
+
+
+<h2>Comments</h2>
+
+
+<div class='comments'>
+<div class='comment'>
+<div class='author'>W.RAZI.EU</div>
+<div class='content'>
+Hi, is it possible to have the left column width fixed, 300px for example and right to stretch across the page?</div>
+</div>
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[CSS position:relative + position:absolute]]></title>
+    <link href="http://house9.github.io/blog/2009/02/16/i-do-alright-with-css-positioning-but/"/>
+    <updated>2009-02-16T00:00:00-08:00</updated>
+    <id>http://house9.github.io/blog/2009/02/16/i-do-alright-with-css-positioning-but</id>
+    <content type="html"><![CDATA[<div class='post'>
+<div>I do alright with css positioning but I just don't do enough css to have it mastered; anyhow I needed to float an image over into the right upper corner of a form, no problem put a div at the bottom of the form with position relative and top at -xyz. this worked but was not ideal, depending on the amount of fields in the form I would have to adjust the top setting for each, also the alignment was not consistent enough across browsers, so a <a href="http://www.google.com/search?q=css+postion+image+in+right+corner+of+div">google search</a> was on once again...<br /></div><div><br /></div><div>Came across <a href="http://www.barelyfitz.com/screencast/html-training/css/positioning/">this great post</a>, see tab 4 "position:relative + position:absolute", using a relative div with a nested absolute div, I did not even know this was possible but it appears to work great!</div><div><br /></div></div>
+
+]]></content>
+  </entry>
+  
+</feed>

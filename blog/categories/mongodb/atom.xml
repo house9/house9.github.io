@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: mongoDB | house9]]></title>
+  <link href="http://house9.github.io/blog/categories/mongodb/atom.xml" rel="self"/>
+  <link href="http://house9.github.io/"/>
+  <updated>2013-09-24T15:53:19-07:00</updated>
+  <id>http://house9.github.io/</id>
+  <author>
+    <name><![CDATA[Jesse House]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Simple.Data and MongoDB]]></title>
+    <link href="http://house9.github.io/blog/2011/05/03/simpledata-and-mongodb/"/>
+    <updated>2011-05-03T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2011/05/03/simpledata-and-mongodb</id>
+    <content type="html"><![CDATA[<div class='post'>
+Get really dynamic with Simple.Data and MongoDB<br /><br />took me awhile to figure out the proper way to establish a connection with Simple.Data.MongoDB<br /><br /><script src="https://gist.github.com/954461.js?file=Simple.Data.MongoDB.openMongo.cs"></script><br /><noscript><br />GIST: https://gist.github.com/954461<br />using Simple.Data;<br />using Simple.Data.MongoDB;<br /><br />// connect<br />dynamic db = Database.Opener.OpenMongo("mongodb://localhost:27017/myDB");<br /><br />// insert<br />dynamic user = new ExpandoObject();<br />user.FirstName = "Joe";<br />user.LastName = "Smith";<br />user.Email = "jsmith@test.com";<br /><br />db.Users.Insert(user);<br /><br />// find<br />dynamic existingUser = db.Users.FindByEmail("jsmith@test.com");<br /></noscript><br /><br />Resources<br /><br /><ul><li>MongoDB <a href="http://www.mongodb.org/downloads">download</a></li><li><a href="https://github.com/markrendle/Simple.Data/wiki">Simple.Data</a></li><li><a href="https://github.com/craiggwilson/Simple.Data.MongoDB">Simple.Data.MongoDB</a></li><li><a href="http://www.mongodb.org/display/DOCS/CSharp+Language+Center">Mongo and C#</a></li></ul><div>You can install all of the dlls using <a href="http://www.nuget.org">Nuget</a>, search for Simple.Data.MongoDB and install that package it will bring in the rest<br /></div><br /><div>Some of the errors I received on my journey</div><div><br /></div><div>From Simple.Data</div><blockquote><span class="Apple-style-span" style="background-color: yellow;">Message=No valid exports were found that match the constraint '((exportDefinition.ContractName == "Ado") AndAlso (exportDefinition.Metadata.ContainsKey("ExportTypeIdentity") AndAlso "Simple.Data.Adapter".Equals(exportDefinition.Metadata.get_Item("ExportTypeIdentity"))))', invalid exports may have been rejected.</span></blockquote>And from mongo driver when my connection string was not in the correct format, I was using the wrong port<br /><blockquote><span class="Apple-style-span" style="background-color: yellow;">Message=No connection could be made because the target machine actively refused it 127.0.0.1:</span></blockquote></div>
+
+
+<h2>Comments</h2>
+
+
+<div class='comments'>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+honestly - I can&#39;t remember :(<br /><br />it might have been use of var vs dynamic<br /><br />// works<br />dynamic db = Database.Opener.OpenMongo(...<br /><br />// errors ???<br />var db = Database.Opener.OpenMongo(...<br /><br />I haven&#39;t done any c# in a few months and only spent a few days with simple.data at the time I posted this<br /><br />I would contact the authors on github if this doesn&#39;t help</div>
+</div>
+<div class='comment'>
+<div class='author'>David</div>
+<div class='content'>
+So what caused that &#39;No exports&#39; exception and what fixed it? Having the same thing but cannot figure out what to do to resolve it.</div>
+</div>
+</div>
+
+]]></content>
+  </entry>
+  
+</feed>

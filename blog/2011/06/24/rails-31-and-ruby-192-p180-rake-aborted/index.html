@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>rails 3.1 and ruby-1.9.2-p180 - rake aborted! stack level too deep - house9</title>
+  <meta name="author" content="Jesse House">
+
+  
+  <meta name="description" content="Ran into the following error when running rake with a rails 3.1 (rc4) app on&nbsp;ruby-1.9.2-p180 (RVM)rake aborted! stack level too deepFull error &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://house9.github.io/blog/2011/06/24/rails-31-and-ruby-192-p180-rake-aborted">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="house9" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">house9</a></h1>
+  
+    <h2>random code and what not</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:house9.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Rails 3.1 and ruby-1.9.2-p180 - Rake Aborted! Stack Level Too Deep</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-24T00:00:00-07:00" pubdate data-updated="true">Jun 24<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class='post'>
+Ran into the following error when running rake with a rails 3.1 (rc4) app on&nbsp;ruby-1.9.2-p180 (RVM)<br /><br /><blockquote><span class="Apple-style-span" style="background-color: yellow;">rake aborted! stack level too deep</span></blockquote>Full error stack<br /><br /><pre style="background-color: #ebebeb;"><span class="Apple-style-span" style="font-size: 10px;">$&gt; rake --tasks<br /><br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/version.rb:4: warning: already initialized constant MAJOR<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/version.rb:5: warning: already initialized constant MINOR<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/version.rb:6: warning: already initialized constant BUILD<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/version.rb:3: warning: already initialized constant NUMBERS<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/version.rb:9: warning: already initialized constant VERSION<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake.rb:26: warning: already initialized constant RAKEVERSION<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/early_time.rb:17: warning: already initialized constant EARLY<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/alt_system.rb:32: warning: already initialized constant WINDOWS<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/application.rb:28: warning: already initialized constant DEFAULT_RAKEFILES<br />WARNING: Possible conflict with Rake extension: String#ext already exists<br />WARNING: Possible conflict with Rake extension: String#pathmap already exists<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/task_arguments.rb:73: warning: already initialized constant EMPTY_TASK_ARGS<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/invocation_chain.rb:49: warning: already initialized constant EMPTY<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_utils.rb:10: warning: already initialized constant RUBY<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_utils.rb:84: warning: already initialized constant LN_SUPPORTED<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/dsl_definition.rb:143: warning: already initialized constant Commands<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_list.rb:44: warning: already initialized constant ARRAY_METHODS<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_list.rb:47: warning: already initialized constant MUST_DEFINE<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_list.rb:51: warning: already initialized constant MUST_NOT_DEFINE<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_list.rb:55: warning: already initialized constant SPECIAL_RETURN<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_list.rb:61: warning: already initialized constant DELEGATING_METHODS<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_list.rb:364: warning: already initialized constant DEFAULT_IGNORE_PATTERNS<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_list.rb:370: warning: already initialized constant DEFAULT_IGNORE_PROCS<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake.rb:64: warning: already initialized constant FileList<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake.rb:65: warning: already initialized constant RakeFileUtils<br />rake aborted!<br />stack level too deep<br /><br />(See full trace by running task with --trace)</span><br /></pre><br />Steps to replicate, from the command line<br /><ul><li>rails new sample_app</li><li>cd sample_app</li><li>rake &#8211;tasks</li></ul><div>The solution, prefix calls to rake with bundle exec</div><blockquote><span class="Apple-style-span" style="background-color: yellow;">bundle exec rake &#8211;tasks</span></blockquote>Resources<br /><br /><ul><li><a href="http://yehudakatz.com/2011/05/30/gem-versioning-and-bundler-doing-it-right/">http://yehudakatz.com/2011/05/30/gem-versioning-and-bundler-doing-it-right/</a></li><li><a href="https://github.com/RailsApps/railsapps.github.com/wiki/installing-rails-3-1">https://github.com/RailsApps/railsapps.github.com/wiki/installing-rails-3-1</a> &nbsp;</li></ul></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+doesn&#39;t look like you have rails installed at all? <br />no Gemfile for bundler to check either?<br /><br />I recommend you read up on bundler <br />http://gembundler.com/<br /><br />also - you&#39;ll probably get better help over at stackoverflow - http://stackoverflow.com/ </div>
+</div>
+<div class='comment'>
+<div class='author'>codeMonkey</div>
+<div class='content'>
+almost but not quite. PLEASE HELP:<br /><br />&gt;gem install bundler<br />Successfully installed bundler-1.1.5<br />1 gem installed<br />Installing ri documentation for bundler-1.1.5&#8230;<br />Installing RDoc documentation for bundler-1.1.5&#8230;<br /><br />&gt;bundle exec rake &#8211;tasks<br />Could not locate Gemfile<br /><br />&gt;gem list<br /><br />*** LOCAL GEMS ***<br /><br />activesupport (3.2.8, 2.3.14)<br />bigdecimal (1.1.0)<br />bundler (1.1.5)<br />diff-lcs (1.1.3)<br />extlib (0.9.15)<br />highline (1.6.14, 1.6.13)<br />i18n (0.6.0)<br />io-console (0.3)<br />json (1.7.5, 1.5.4)<br />macaddr (1.6.1)<br />minitest (3.3.0, 2.5.1)<br />multi_json (1.3.6)<br />rake (0.9.2.2)<br />rdiscount (1.6.8)<br />rdoc (3.12, 3.9.4)<br />rdoc-data (3.12)<br />rhodes (3.3.4)<br />rubygems-update (1.8.24)<br />systemu (2.5.2)<br />templater (1.0.0)<br />uuid (2.3.5)</div>
+</div>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+try<br /><br />gem install bundler<br /><br /></div>
+</div>
+<div class='comment'>
+<div class='author'>codeMonkey</div>
+<div class='content'>
+&#39;bundle&#39; is not recognized as an internal or external command,<br />operable program or batch file.<br /><br />on windows.</div>
+</div>
+<div class='comment'>
+<div class='author'>junaidpv</div>
+<div class='content'>
+Thanks. It helped me</div>
+</div>
+<div class='comment'>
+<div class='author'>ZequeZ</div>
+<div class='content'>
+Also you can call alias rake=&#39;bundle exec rake&#39;, or add it to your .bash_profile file, so you don&#39;t have to call it each time ^^</div>
+</div>
+<div class='comment'>
+<div class='author'>ZequeZ</div>
+<div class='content'>
+Thanks! That solved it ^^<br />Also, I&#39;m using Ruby 1.9.2p290, Rails 3.1.0.rc6 and Rake 0.9.2</div>
+</div>
+</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jesse House</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-24T00:00:00-07:00" pubdate data-updated="true">Jun 24<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/rails/'>rails</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://house9.github.io/blog/2011/06/24/rails-31-and-ruby-192-p180-rake-aborted/" data-via="" data-counturl="http://house9.github.io/blog/2011/06/24/rails-31-and-ruby-192-p180-rake-aborted/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/06/16/rails-31-asset-gem/" title="Previous Post: rails 3.1 asset gem">&laquo; rails 3.1 asset gem</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/07/08/grow-vegetables-go-to-jail/" title="Next Post: Grow vegetables go to jail?">Grow vegetables go to jail? &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: Supply_drop)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e Chef Cookbook</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and Puppet Postgres 9.2 on Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/01/vagrantfile-for-setting-up-multiple/">Vagrantfile for Setting Up Multiple Machines With Chef Configuration</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/house9">@house9</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'house9',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jesse House -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

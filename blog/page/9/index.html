@@ -1,0 +1,599 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>house9</title>
+  <meta name="author" content="Jesse House">
+
+  
+  <meta name="description" content="Came across a nasty issue using rails send_data with IE. Everything worked fine until the pages were running under SSL / HTTPS. Turns out the issue &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://house9.github.io/blog/page/9">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="house9" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">house9</a></h1>
+  
+    <h2>random code and what not</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:house9.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/02/17/rails-senddata-fails-on-ie-when-ssl/">Rails Send_data Fails on IE When SSL Enabled</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-17T00:00:00-08:00" pubdate data-updated="true">Feb 17<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Came across a nasty issue using rails <a href="http://api.rubyonrails.org/classes/ActionController/Streaming.html#M000422">send_data</a> with IE. Everything worked fine until the pages were running under SSL / HTTPS. Turns out the issue is with file download over SSL when the <a href="http://www.metatags.info/meta_http_equiv_cache_control">Cache-Control</a> and <a href="http://www.metatags.info/meta_http_equiv_pragma">Pragma</a> html headers are set to no-cache.<div><br /></div><div>The error message from IE</div><div><blockquote>Internet Explorer was unable to open this site. The requested site is either unavailable or cannot be found. Please try again later.</blockquote><div>The fix&#8230;</div><div><blockquote># before calling send_data<br />response.headers.delete(&#8220;Pragma&#8221;)<br />response.headers.delete(&#8216;Cache-Control&#8217;)</blockquote></div><div>This issue is not restricted to rails, any server side code that sets no-cache is subject to the same issue. Glad I was able to find this <a href="http://groups.google.com/group/rubyonrails-talk/browse_thread/thread/ef85d2af990f6c31/c500d6bce04dcc5f?lnk=gst&amp;q=815313#c500d6bce04dcc5f">post</a>.</div><div><br /></div><div>see also <a href="http://support.microsoft.com/kb/316431/">kb-316431</a></div></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Puneet Pandey</div>
+<div class='content'>
+Thanks Rafael, your post was really helpful, as we are giving IE-8 support to our Client&#39;s customers.<br /><br />- Puneet</div>
+</div>
+<div class='comment'>
+<div class='author'>Rafael Revi</div>
+<div class='content'>
+Thanks for posting this!!!!<br /><br />This is issue is gone in IE9. I replicated issue in IE7 and IE8.<br /><br />Thanks again</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/02/16/google-webmaster-tools-sitemapxml/">Google Webmaster Tools Sitemap.xml Issues</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-16T00:00:00-08:00" pubdate data-updated="true">Feb 16<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<div>After uploading my <a href="http://www.sitemaps.org/">sitemap.xml</a> file to <a href="https://www.google.com/webmasters/tools/home">Google Webmaster Tools</a> I received the following error message and no additional error details were included:</div><div><br /></div><blockquote>Error: The last attempt at downloading the Sitemap failed. The details below are representative of the last successful download.</blockquote><div><br /></div><div>I searched around a bit and found a forum post where someone said they get this error &#8217;<i>sometimes</i>&#8217;, but after switching to use a gzip formatted sitemap.xml file the error went away</div><div><br /></div><div>on ubuntu</div><div><br /></div><div><blockquote>gzip ./sitemap.xml</blockquote></div><div><br /></div><div>compresses the file to ./sitemap.xml.gz and deletes the sitemap.xml file by default</div><div><br /></div><div>after uploading Google was able to process without issue</div><div><br /></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+Compared to having relevant content and good structure (i.e. h1, h2, proper use of title tag, etc&#8230;) it probably is not that important.<br /><br />But it can&#39;t hurt to include one and submit it to Google, Yahoo, Bing and Ask; it definitely won&#39;t hurt your page ranking.</div>
+</div>
+<div class='comment'>
+<div class='author'>robert</div>
+<div class='content'>
+But is sitemap.xml that important?<br />I do not think so.. Moreover this blog mentioned below will lay more light to what I want to say..<br />http://www.redalkemi.com/blog/sitemapxml-the-most-overrated-search-engine-indexing-factor/</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/01/26/install-older-version-of-rails-and/">Install Older Version of Rails and Without the Docs</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-26T00:00:00-08:00" pubdate data-updated="true">Jan 26<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I always forget these<div><br /></div><div><blockquote>sudo gem install &#8211;no-rdoc &#8211;no-ri &#8211;version 2.3.4 rails </blockquote></div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/01/18/neat-site-to-generate-graphics/">Neat Site to Generate Graphics</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-18T00:00:00-08:00" pubdate data-updated="true">Jan 18<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I needed to generate a sign up button - this site is so much easier than opening photoshop<div><br /></div><div><a href="http://cooltext.com/">http://cooltext.com/</a></div><div><br /></div><div>Thanks cooltext!</div><div><br /></div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/01/06/ruby-regex-to-remove-script-tags/">Ruby Regex to Remove Script Tags</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-06T00:00:00-08:00" pubdate data-updated="true">Jan 6<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<script src="http://gist.github.com/270463.js"></script><br />Resources<br /><ul><li><a href="http://rubular.com/">Rubular</a></li><li><a href="http://jamesmckay.net/2008/05/how-to-match-any-character-including-newlines-in-a-javascript-regular-expression/">Match any character in RegEx</a></li><li><a href="http://ruby-doc.org/core/classes/String.html#M000817">Ruby String gsub</a></li></ul></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/01/06/ruby-http-get-with-nethttp/">Ruby Http Get With Net::HTTP</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-06T00:00:00-08:00" pubdate data-updated="true">Jan 6<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<script src="http://gist.github.com/270459.js"></script><br />Resources<br /><ul><li><a href="http://ruby-doc.org/stdlib/libdoc/net/http/rdoc/classes/Net/HTTP.html">Net::HTTP ruby docs</a></li><li><a href="http://stackoverflow.com/questions/1252210/parametrized-get-request-in-ruby">Stackoverflow post</a></li></ul><br /><br /><div style="display:none"><br />require &#8216;net/http&#8217;<br />require &#8216;uri&#8217;<br /><br />def get_html_content(requested_url)<br />url = URI.parse(requested_url)<br />full_path = (url.query.blank?) ? url.path : &#8220;#{url.path}?#{url.query}&#8221;<br />the_request = Net::HTTP::Get.new(full_path)<br /><br />the_response = Net::HTTP.start(url.host, url.port) { |http|<br />http.request(the_request)<br />}<br /><br />raise &#8220;Response was not 200, response was #{the_response.code}&#8221; if the_response.code != &#8220;200&#8221;<br />return the_response.body       <br />end   <br /><br /># this will fail with ArgumentError: HTTP request path is empty<br />s = get_html_content(&#8220;http://www.google.com&#8221;)<br /># these should be fine<br />s = get_html_content(&#8220;http://www.google.com/&#8221;) <br />s = get_html_content(&#8220;http://github.com/search?q=http&#8221;)<br /># above code does not handle redirects but raises exception for non-200 <br />s = get_html_content(&#8220;http://www.yahoo.com/&#8221;) # http 302<br /></div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/12/09/imeem-acquired-by-myspace-bummer/">Imeem Acquired by Myspace - Bummer</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-09T00:00:00-08:00" pubdate data-updated="true">Dec 9<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+nothing else to say really, imeem was a great service<div><br /></div><div>I&#8217;ve never liked myspace</div><div><br /></div><div><br /></div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/11/12/heroku-sending-email-with-gmail/">Heroku - Sending Email With Gmail</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-12T00:00:00-08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<p>I have been working on deploying a <a href="http://guides.rubyonrails.org/">Rails</a> application to <a href="http://heroku.com/">Heroku</a>. A couple of gotchas I ran into when following this post &#8221;<a href="http://blog.heroku.com/archives/2009/11/9/tech_sending_email_with_gmail/">Sending email with Gmail</a>&#8221;</p><ul><li>Don&#8217;t use a dollar sign ($) in your password </li><li>this can work locally if you put single quotes around the value, but on the heroku server it saved the entire string but at runtime would truncate it at the dollar sign</li><li>for example using the password &#8217;<em>left-side$right-side</em>&#8217; </li><li>heroku config:add GMAIL_SMTP_PASSWORD=left-side$right-side</li><li>heroku config returns > GMAIL_SMTP_PASSWORD=left-side$right-side</li><li>heroku console </li><li>type ENV[&#8216;GMAIL_SMTP_PASSWORD&#8217;] returns > left-side</li></ul><p>Heroku is running Ruby 1.8.6, locally I am running Ruby 1.8.7, I made a small hack to the plugin to avoid errors in development mode</p><p>./vendor/plugins/gmail_smtp/init.rb<br />changed the first line to<br />require &#8216;smtp_tls&#8217; if RUBY_VERSION < "1.8.7" </p><p>tls is already handled in 1.8.7 and this code must have been creating some type of conflict</p></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/11/12/heroku-http-502-error/">Heroku - HTTP 502 Error</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-12T00:00:00-08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<p>This might be helpful to someone? </p><p>I was receiving &#8216;App Failed To Respond (HTTP 502) Bad Gateway&#8217; errors when deploying my application on <a href="http://heroku.com/">Heroku</a>. Reading the <a href="http://docs.heroku.com/errors">error codes</a> page did not help me solve the problem, it took awhile but I was finally able to track it down.</p><p>The error was being generated in the browser but checking the rails logs, the requests were returning HTTP 200 success codes, so the problem was being generated at the web server level on the <a href="http://heroku.com/">Heroku</a> stack.</p><p>Turns out the problem was caused by setting response.header for no browser caching. I was using code similar to this <a href="http://arjunghosh.wordpress.com/2008/04/29/how-to-force-the-browser-to-not-cache-in-rails/">post</a>. Everything worked fine after I removed this line</p><ul><li>response.headers[&#8220;Expires&#8221;] = 0</li></ul></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/10/25/imeem-on-64-bit-ubuntu/">Imeem on 64-bit Ubuntu</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-25T00:00:00-07:00" pubdate data-updated="true">Oct 25<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<p>Getting flash to work correctly on 64-bit <a href="http://www.ubuntu.com/">Ubuntu</a> can be challenging. By following various blog and forum posts I was able to get it to work, but never the flash player for <a href="http://www.imeem.com/">imeem</a>. Every now and again I would try to re-install flash and see if it would work for imeem but until last night I was never successful. </p><p>It turns out that imeem will only work with the 32-bit flash player. After so much work to get the 64-bit player working in Firefox 3.0 and 3.5 I did not want to remove it so I downloaded Opera and installed the 32-bit player under its plugin directory and <a href="http://www.imeem.com/">imeem</a> works great!</p><ul><li>Download and install <a href="http://www.opera.com/browser/download/">Opera</a></li><li>verify that you cannot play music in <a href="http://www.imeem.com/">imeem</a></li><li>Close Opera</li><li>download the <a href="http://get.adobe.com/flashplayer/">32-bit flash player</a> in &#8216;.tar.gz&#8217; format</li><li>extract the libflashplayer.so file from the archive</li><li>then you will need to put this in the directory /usr/lib/opera/plugins/</li><li>you won&#8217;t have permissions to write to that directory unless you are in sudo mode</li><li>open a terminal and type &#8217;<em>sudo nautilus</em>&#8217;</li><li>copy the file into the directory (you could do this from the terminal window also probably &#8217;<em>sudo mv libflashplayer.so /usr/lib/opera/plugins/libflashplayer.so</em>&#8217;</li><li>Open Opera</li><li>check the plugins - type opera:plugins in the address bar</li><li>you should see Shockwave Flash and it should be pointing to the libflashplayer.so file under opera plugins, by default my opera installation was pointing to /usr/lib/mozilla/plugins/ for the flash plugin, my guess is opera looks for plugins in its own directory and if not found then looks in mozilla directory</li><li>you should now be able to play music with imeem!</li></ul><p>I am running Ubuntu 9.04 Jaunty Jackalope by the way. Here are some links that might work to get the 64-bit player working for Firefox</p><ul><li><a href="http://art.ubuntuforums.org/showthread.php?t=1297385">http://art.ubuntuforums.org/showthread.php?t=1297385</a></li><li><a href="http://www.ubuntugeek.com/how-to-install-adobe-flash-player-10-in-ubuntu-804-hardy-heron.html">http://www.ubuntugeek.com/how-to-install-adobe-flash-player-10-in-ubuntu-804-hardy-heron.html</a></li><li><a href="http://art.ubuntuforums.org/showthread.php?t=1292438">http://art.ubuntuforums.org/showthread.php?t=1292438</a></li><li><a href="http://www.cyberciti.biz/tips/install-flash-10-ubuntu-linux-64bit.html">http://www.cyberciti.biz/tips/install-flash-10-ubuntu-linux-64bit.html</a></li><li>this last one is probably the best bet, check the comments there</li></ul><p><br /></p></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+FUCK YOU SPAMMING BITCHES!</div>
+</div>
+<div class='comment'>
+<div class='author'>Anonymous</div>
+<div class='content'>
+Wonderful post &#8211; why don&#39;t you have a &quot;print this&quot; button?<br /><br /><a href="http://www.zimbio.com/Mapleeclean/articles/QX_NtC9FOp6/Non+Toxic+Homes+Organics+Baby" rel="nofollow">Non Toxic Homes</a><br /><br /><a href="http://mapleaclean.blogspot.com/2010/01/non-toxic-houses-non-toxic-cleaners-for.html" rel="nofollow">Non toxic home cleaning</a></div>
+</div>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+This blog runs on Google Blogger software - https://www.blogger.com/<br /><br />as far as I know they don&#39;t offer that feature?<br />you can just use your normal browser print function.</div>
+</div>
+<div class='comment'>
+<div class='author'>Anonymous</div>
+<div class='content'>
+Wonderful post &#8211; why don&#39;t you have a &quot;print this&quot; button?</div>
+</div>
+<div class='comment'>
+<div class='author'>Anonymous</div>
+<div class='content'>
+Thanks a lot. It worked great. I appreciate your time and effort in sharing this great deal of info with the rest.<br /><br />Mustaq</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/10/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/8/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: Supply_drop)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e Chef Cookbook</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and Puppet Postgres 9.2 on Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/01/vagrantfile-for-setting-up-multiple/">Vagrantfile for Setting Up Multiple Machines With Chef Configuration</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/house9">@house9</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'house9',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jesse House -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

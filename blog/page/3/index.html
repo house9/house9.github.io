@@ -1,0 +1,606 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>house9</title>
+  <meta name="author" content="Jesse House">
+
+  
+  <meta name="description" content="Use the information_schema catalog - http://www.postgresql.org/docs/9.1/static/information-schema.htmlGet table and columns from the public &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://house9.github.io/blog/page/3">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="house9" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">house9</a></h1>
+  
+    <h2>random code and what not</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:house9.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/12/02/get-table-and-column-information-in/">Get Table and Column Information in Postgres</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-02T00:00:00-08:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Use the information_schema catalog - <a href="http://www.postgresql.org/docs/9.1/static/information-schema.html">http://www.postgresql.org/docs/9.1/static/information-schema.html</a><br /><br />Get table and columns from the public schema<br /><br /><script src="https://gist.github.com/1423507.js?file=select_table_and_columns_from_postgres.sql"></script><br /><noscript><br />select <br />  tables.table_name, <br />  columns.column_name<br /><br />from information_schema.tables<br />inner join information_schema.columns <br />on information_schema.columns.table_name = information_schema.tables.table_name<br /><br />where tables.table_schema = &#8216;public&#8217;<br />and tables.table_type = &#8216;BASE TABLE&#8217;<br /><br />order by tables.table_name, columns.column_name;<br /></noscript><br /><br />This can be useful, maybe you want to auto generate some text that creates foreign keys based on a naming convention - for instance let&#8217;s say we have a ruby/rails method called make_fk_unless_exists<br /><br /><script src="https://gist.github.com/1423533.js?file=create_fk_script_postgres.sql"></script><br /><noscript><br />select <br />  tables.table_name, <br />  columns.column_name,<br />  (&#8216;make_fk_unless_exists :&#8217; || tables.table_name || &#8216;, :&#8217; || columns.column_name || &#8216;, :&#8217; || REPLACE(columns.column_name, &#8216;_id&#8217;, &#8216;s&#8217;)) as code<br /> <br />from information_schema.tables<br />inner join information_schema.columns <br />on information_schema.columns.table_name = information_schema.tables.table_name<br /><br />where tables.table_schema = &#8216;public&#8217;<br />and columns.column_name LIKE &#8216;%id&#8217;<br />and columns.column_name <> &#8216;id&#8217;<br />and tables.table_type = &#8216;BASE TABLE&#8217;<br /><br />order by tables.table_name, columns.column_name;<br /></noscript><br /><br />The &#8216;code&#8217; column would render something like<br /><br /><blockquote class="tr_bq"><i>make_fk_unless_exists :projects, :milestone_id, :milestones</i><br /><i>make_fk_unless_exists :tasks, :project_id, :projects</i><br /><i>&#8230;</i><br /></blockquote><br /><br /></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/11/12/sample-routes-and-links-with-rails-3-in/">Sample Routes and Links With Rails 3 in the Console</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-12T00:00:00-08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+The content for this post is all from a gist, hopefully someone finds it useful<br /><br /><script src="https://gist.github.com/1361290.js?file=routes_link_to_in_rails_console.rb"></script><br /><noscript><br />Your reader does not support script, view the gist here<br />https://gist.github.com/1361290<br /></noscript><br /><br /><b>Resources</b><br /><br /><br /><ul><li><a href="http://stackoverflow.com/questions/2778074/recognize-routes-in-rails-console-session">http://stackoverflow.com/questions/2778074/recognize-routes-in-rails-console-session</a></li></ul></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/11/09/postgres-get-number-of-days-in-interval/">Postgres: Get the Number of Days in an Interval</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-09T00:00:00-08:00" pubdate data-updated="true">Nov 9<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<blockquote><span class="Apple-style-span" style="color: #38761d;">&#8211; seconds / 60 = minutes / 60 = hours / 24 = days </span><br /><span class="Apple-style-span" style="color: blue;">select</span> (((EXTRACT(EPOCH <span class="Apple-style-span" style="color: blue;">FROM</span> INTERVAL &#8217;<span class="Apple-style-span" style="color: #38761d;">2 years</span>&#8217;) / 60) / 60) / 24)::integer <span class="Apple-style-span" style="color: blue;">as</span> number_of_days&nbsp;</blockquote><br />good resource -&nbsp;<a href="http://stackoverflow.com/questions/952493/how-do-i-convert-an-interval-into-a-number-of-hours-with-postgres">http://stackoverflow.com/questions/952493/how-do-i-convert-an-interval-into-a-number-of-hours-with-postgres</a></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/10/15/generating-barcodes-with-ruby-and-rails/">Generating Barcodes With Ruby and Rails</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-15T00:00:00-07:00" pubdate data-updated="true">Oct 15<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Recently I had to convert some functionality from an old MS Access system to a Ruby on Rails application.&nbsp;The Access system generated a report that included a barcode; they were using a barcode font installed on the&nbsp;machine running access. I figured generating the barcode server side in the web app was going to be much nicer than installing barcode fonts on the client browsers. And since this is Ruby, I figured&#8230;<br /><blockquote><i><span class="Apple-style-span" style="font-size: large;">There must be a gem for that&nbsp;</span></i></blockquote>Sure enough, the barby gem. It allows you to output your barcode as png, gif, svg, pdf, etc&#8230;<br /><br />In my case I generated png barcodes and included image references to those in my view files.<br /><br />Sample code<br /><br /><script src="https://gist.github.com/1289751.js?file=using_barby_to_generate_barcodes_with_ruby.rb"></script><br /><noscript><br /># Gemfile, run bundle install after adding<br />gem &#8216;barby&#8217;<br />gem &#8216;chunky_png&#8217;<br /><br /># some code to generate the png file using 3 of 9 barcode style<br />require &#8216;barby&#8217;<br />require &#8216;barby/barcode/code_39&#8217;<br />require &#8216;barby/outputter/png_outputter&#8217;<br /><br />barcode_value = &#8220;099999333&#8221;<br />full_path = &#8220;/somewhere/barcode_#{barcode_value}.png&#8221;<br />barcode = Barby::Code39.new(barcode_value)<br />File.open(full_path, &#8216;w&#8217;) { |f| f.write barcode.to_png(:margin => 3, :xdim => 2, :height => 55) }<br /></noscript><br /><br />There is no pixel setting, it uses some other type of unit to determine size; using the xdim, margin and height options&nbsp;you can tweak the size, but I found that it was not very precise - <i>for my use case it was good enough.</i><br /><br />The generated barcode does not include the value, it is just the image which can be scanned using a&nbsp;barcode scanner, but it would be nice if there was an option to include the value below that. This is somewhat trivial to add in your view using html.<br /><br />Overall I was really pleased with this gem!<br /><br />Resources<br /><ul><li><a href="http://toretore.eu/barby/">http://toretore.eu/barby/</a></li><li><a href="https://github.com/toretore/barby">https://github.com/toretore/barby</a></li><li><a href="http://barby.rubyforge.org/rdoc/">http://barby.rubyforge.org/rdoc/</a></li><li><a href="http://groups.google.com/group/ruby-barby">http://groups.google.com/group/ruby-barby</a></li></ul></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+As far as i know the gem does not support that feature. You need to add that text to your pdf, html, etc&#8230; Might want to check the google groups link above for additional help</div>
+</div>
+<div class='comment'>
+<div class='author'>Icaro</div>
+<div class='content'>
+Perfect, thanks. How can i display the value at the bottom of the same image?</div>
+</div>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+Try setting your path to &quot;#{Rails.root}/public/barcodes&quot;</div>
+</div>
+<div class='comment'>
+<div class='author'>Icaro</div>
+<div class='content'>
+Im getting <br />No such file or directory - /public/barcodes/barcode_BARBY.png<br /><br />Is there anyway to not to create the png and then display it from public resources? like streaming each time i call a coupon for instance?.<br /><br />Thanks</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/09/18/nfl-2011-sunday-night-hd-stream-for/">NFL 2011 Sunday Night HD Stream for Free From NBC</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-18T00:00:00-07:00" pubdate data-updated="true">Sep 18<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Check it out here -&nbsp;<a href="http://snfallaccess.nbcsports.com/">http://snfallaccess.nbcsports.com/</a><br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-TqEhNoXwih0/TnaGtHl7WTI/AAAAAAAAC3g/sHR8BW5_QwM/s1600/sunday-night-nfl.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="505" src="http://2.bp.blogspot.com/-TqEhNoXwih0/TnaGtHl7WTI/AAAAAAAAC3g/sHR8BW5_QwM/s640/sunday-night-nfl.png" width="640" /></a></div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/08/22/coffeescript-with-rails-23-and-rails-30/">CoffeeScript With Rails 2.3 and Rails 3.0</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-22T00:00:00-07:00" pubdate data-updated="true">Aug 22<span>nd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I just uploaded a sample application that uses guard, coffee-script and a rake task to enable use of coffee-script with a rails 2.3 or 3.0 application. Check out the README file on github for details.<br /><br /><a href="https://github.com/house9/with_coffee">https://github.com/house9/with_coffee</a><br /><br /><br /></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/07/08/grow-vegetables-go-to-jail/">Grow Vegetables Go to Jail?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-08T00:00:00-07:00" pubdate data-updated="true">Jul 8<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Oak Park resident Julie Bass now faces serious charges for setting up a vegetable garden in her front yard.<br /><br />Help her out sign the petition here: <a href="http://www.thepetitionsite.com/1/oak-park-hates-veggies/">http://www.thepetitionsite.com/1/oak-park-hates-veggies/</a><br /><br /><br />We are requesting that the City of Oak Park, MI cease its prosecution against its resident Julie Bass for the supposed crime of growing vegetables in her front yard. The bylaw they are pursuing criminal charges under is poorly written and does not explicitly state that you cannot grow vegetables. The prosecutor representing the city wants to take this case to trial, and the associated charge carries a maximum sentence of 93 days in jail. It would be a travesty for this mother of six to be sentenced to 93 days in jail for the simple act of growing tomatoes in her front yard.<br /><br />Details about the case can be found at <a href="http://oakparkhatesveggies.wordpress.com/">http://oakparkhatesveggies.wordpress.com/</a><br /><div><br /></div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/06/24/rails-31-and-ruby-192-p180-rake-aborted/">Rails 3.1 and ruby-1.9.2-p180 - Rake Aborted! Stack Level Too Deep</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-24T00:00:00-07:00" pubdate data-updated="true">Jun 24<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Ran into the following error when running rake with a rails 3.1 (rc4) app on&nbsp;ruby-1.9.2-p180 (RVM)<br /><br /><blockquote><span class="Apple-style-span" style="background-color: yellow;">rake aborted! stack level too deep</span></blockquote>Full error stack<br /><br /><pre style="background-color: #ebebeb;"><span class="Apple-style-span" style="font-size: 10px;">$&gt; rake --tasks<br /><br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/version.rb:4: warning: already initialized constant MAJOR<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/version.rb:5: warning: already initialized constant MINOR<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/version.rb:6: warning: already initialized constant BUILD<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/version.rb:3: warning: already initialized constant NUMBERS<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/version.rb:9: warning: already initialized constant VERSION<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake.rb:26: warning: already initialized constant RAKEVERSION<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/early_time.rb:17: warning: already initialized constant EARLY<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/alt_system.rb:32: warning: already initialized constant WINDOWS<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/application.rb:28: warning: already initialized constant DEFAULT_RAKEFILES<br />WARNING: Possible conflict with Rake extension: String#ext already exists<br />WARNING: Possible conflict with Rake extension: String#pathmap already exists<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/task_arguments.rb:73: warning: already initialized constant EMPTY_TASK_ARGS<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/invocation_chain.rb:49: warning: already initialized constant EMPTY<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_utils.rb:10: warning: already initialized constant RUBY<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_utils.rb:84: warning: already initialized constant LN_SUPPORTED<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/dsl_definition.rb:143: warning: already initialized constant Commands<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_list.rb:44: warning: already initialized constant ARRAY_METHODS<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_list.rb:47: warning: already initialized constant MUST_DEFINE<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_list.rb:51: warning: already initialized constant MUST_NOT_DEFINE<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_list.rb:55: warning: already initialized constant SPECIAL_RETURN<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_list.rb:61: warning: already initialized constant DELEGATING_METHODS<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_list.rb:364: warning: already initialized constant DEFAULT_IGNORE_PATTERNS<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_list.rb:370: warning: already initialized constant DEFAULT_IGNORE_PROCS<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake.rb:64: warning: already initialized constant FileList<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake.rb:65: warning: already initialized constant RakeFileUtils<br />rake aborted!<br />stack level too deep<br /><br />(See full trace by running task with --trace)</span><br /></pre><br />Steps to replicate, from the command line<br /><ul><li>rails new sample_app</li><li>cd sample_app</li><li>rake &#8211;tasks</li></ul><div>The solution, prefix calls to rake with bundle exec</div><blockquote><span class="Apple-style-span" style="background-color: yellow;">bundle exec rake &#8211;tasks</span></blockquote>Resources<br /><br /><ul><li><a href="http://yehudakatz.com/2011/05/30/gem-versioning-and-bundler-doing-it-right/">http://yehudakatz.com/2011/05/30/gem-versioning-and-bundler-doing-it-right/</a></li><li><a href="https://github.com/RailsApps/railsapps.github.com/wiki/installing-rails-3-1">https://github.com/RailsApps/railsapps.github.com/wiki/installing-rails-3-1</a> &nbsp;</li></ul></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+doesn&#39;t look like you have rails installed at all? <br />no Gemfile for bundler to check either?<br /><br />I recommend you read up on bundler <br />http://gembundler.com/<br /><br />also - you&#39;ll probably get better help over at stackoverflow - http://stackoverflow.com/ </div>
+</div>
+<div class='comment'>
+<div class='author'>codeMonkey</div>
+<div class='content'>
+almost but not quite. PLEASE HELP:<br /><br />&gt;gem install bundler<br />Successfully installed bundler-1.1.5<br />1 gem installed<br />Installing ri documentation for bundler-1.1.5&#8230;<br />Installing RDoc documentation for bundler-1.1.5&#8230;<br /><br />&gt;bundle exec rake &#8211;tasks<br />Could not locate Gemfile<br /><br />&gt;gem list<br /><br />*** LOCAL GEMS ***<br /><br />activesupport (3.2.8, 2.3.14)<br />bigdecimal (1.1.0)<br />bundler (1.1.5)<br />diff-lcs (1.1.3)<br />extlib (0.9.15)<br />highline (1.6.14, 1.6.13)<br />i18n (0.6.0)<br />io-console (0.3)<br />json (1.7.5, 1.5.4)<br />macaddr (1.6.1)<br />minitest (3.3.0, 2.5.1)<br />multi_json (1.3.6)<br />rake (0.9.2.2)<br />rdiscount (1.6.8)<br />rdoc (3.12, 3.9.4)<br />rdoc-data (3.12)<br />rhodes (3.3.4)<br />rubygems-update (1.8.24)<br />systemu (2.5.2)<br />templater (1.0.0)<br />uuid (2.3.5)</div>
+</div>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+try<br /><br />gem install bundler<br /><br /></div>
+</div>
+<div class='comment'>
+<div class='author'>codeMonkey</div>
+<div class='content'>
+&#39;bundle&#39; is not recognized as an internal or external command,<br />operable program or batch file.<br /><br />on windows.</div>
+</div>
+<div class='comment'>
+<div class='author'>junaidpv</div>
+<div class='content'>
+Thanks. It helped me</div>
+</div>
+<div class='comment'>
+<div class='author'>ZequeZ</div>
+<div class='content'>
+Also you can call alias rake=&#39;bundle exec rake&#39;, or add it to your .bash_profile file, so you don&#39;t have to call it each time ^^</div>
+</div>
+<div class='comment'>
+<div class='author'>ZequeZ</div>
+<div class='content'>
+Thanks! That solved it ^^<br />Also, I&#39;m using Ruby 1.9.2p290, Rails 3.1.0.rc6 and Rake 0.9.2</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/06/16/rails-31-asset-gem/">Rails 3.1 Asset Gem</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-16T00:00:00-07:00" pubdate data-updated="true">Jun 16<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Package up assets into a gem for use in rails 3.1 applications. Example uses javascript files, but the same should work for images and css.<br /><br /><div>I recommend you click the HD link on the player and view it on <a href="http://vimeo.com/25206879">Vimeo</a> in full screen mode, this embed version is not so crisp.</div><br /><div align="center"><iframe frameborder="0" height="450" src="http://player.vimeo.com/video/25206879?byline=0&amp;portrait=0" width="800"></iframe></div><br /><div><b>Resources</b></div><div><ul><li><a href="http://railscasts.com/episodes/245-new-gem-with-bundler">http://railscasts.com/episodes/245-new-gem-with-bundler</a></li><li><a href="http://edgeapi.rubyonrails.org/classes/Rails/Engine.html">http://edgeapi.rubyonrails.org/classes/Rails/Engine.html</a></li><li><a href="http://ryanbigg.com/2011/06/a-potential-use-for-asset-pipelining/">http://ryanbigg.com/2011/06/a-potential-use-for-asset-pipelining/</a></li></ul></div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/06/01/robocopy-fix-for-exit-code-of-2/">Robocopy Fix for Exit Code of 2</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-01T00:00:00-07:00" pubdate data-updated="true">Jun 1<span>st</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Sometimes you want to use robocopy from nant, a sql job or another build tool, robocopy will return 2 during a successful run, this gets&nbsp;interpreted&nbsp;as an error, a google search on the issue returned this article&nbsp;<a href="http://weblogs.sqlteam.com/robv/archive/2010/02/17/61106.aspx">Fixing Robocopy for SQL Server Jobs</a>.<br /><br />Robocopy is now installed by default on Windows7 and Windows Server 2008<br /><a href="http://technet.microsoft.com/en-us/library/cc733145(WS.10).aspx">http://technet.microsoft.com/en-us/library/cc733145(WS.10).aspx</a><br /><br />here is robocopy_fix.bat based on the code in the &#8220;Fixing Robocopy for SQL Server Jobs&#8221; article<br /><br /><script src="https://gist.github.com/1003646.js?file=robocopy_fix.bat"></script><br /><noscript><br />rem http://weblogs.sqlteam.com/robv/archive/2010/02/17/61106.aspx<br />robocopy %*<br />rem suppress successful robocopy exit statuses, only report genuine errors (bitmask 16 and 8 settings)<br />set/A errlev=&#8221;%ERRORLEVEL% & 24&#8221;<br />rem exit batch file with errorlevel so SQL job can succeed or fail appropriately<br />exit/B %errlev%<br /><br /><br /><br />rem USAGE: just like regular robocopy<br /><br />robocopy_fix.bat C:\temp\s C:\temp\d /MIR<br /></noscript></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/4/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/2/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: Supply_drop)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e Chef Cookbook</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and Puppet Postgres 9.2 on Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/01/vagrantfile-for-setting-up-multiple/">Vagrantfile for Setting Up Multiple Machines With Chef Configuration</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/house9">@house9</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'house9',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jesse House -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

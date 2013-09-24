@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Rhino.Mocks - the basics - house9</title>
+  <meta name="author" content="Jesse House">
+
+  
+  <meta name="description" content="Started using Rhino.Mocks recently (Awesome!!!) - just wanted to list a few of the basics; the official Rhino Mocks Documentation is very good and &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://house9.github.io/blog/2008/02/16/rhinomocks-basics_16">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="house9" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">house9</a></h1>
+  
+    <h2>random code and what not</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:house9.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Rhino.Mocks - the Basics</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-02-16T00:00:00-08:00" pubdate data-updated="true">Feb 16<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class='post'>
+Started using Rhino.Mocks recently (Awesome!!!) - just wanted to list a few of the basics; the official Rhino Mocks Documentation is very good and available <a href="http://www.ayende.com/Wiki/(S(0asrslmlg1jh5355jtljowre))/Rhino+Mocks+Documentation.ashx">here</a>. These examples are a bit rough, they have not been compiled; there may be typos.<br /><br /><b>using</b><br /><pre>using Rhino.Mocks;</pre><br /><b>The mock repository</b><br /><pre>// use the mock repository to create the mocked objects<br />MockRepository mocks = new Rhino.Mocks.MockRepository();<br />// example<br />System.Object someObject = mocks.CreateMock<System.Object>();<br />// set up the behaviour you want from calls to your mocked object <br />Rhino.Mocks.Expect.Call(someObject.Equals(someParameter)).Return(false);<br />// then don't forget<br />mocks.ReplayAll();<br />// now do stuff that calls your mocked object Equals method<br />...<br /></pre><br /><b>Mock a call to the db</b><br /><pre>// create our mocked repository object - IProductRepository, the real one calls the db<br />IProductRepository repository = mocks.CreateMock<iproductrepository>();<br />// tell rhino.mocks when we call the method GetProduct with the argument 33 to return null<br />Rhino.Mocks.Expect.Call(repository.GetProduct(33)).Return(null);<br />// get the mocking ready<br />mocks.ReplayAll();<br />// pass our mock to our product service layer<br />ProductService service = new ProductService(repository);<br />// service.GetProduct makes a call to the mocked repository.GetProduct which will return null<br />IProduct product = service.GetProduct(33);<br />// should be null<br />Assert.IsNull(product);<br /></pre><br /><b>Ignore any arguments</b><br /><pre>// any call to GetProduct will return null no matter the value of the arg<br />Rhino.Mocks.Expect.Call(repository.GetProduct(null)).Return(null).IgnoreArguments();<br /></pre><br /><b>mock a method that returns void</b><br /><pre>IProduct product = new Product("003092", "Sierra Nevada", 6.49);<br />// this void call will handle our product 003092<br />Rhino.Mocks.Expect.Call(delegate { repository.Save(product); });<br />// this void call will handle any argument<br />Rhino.Mocks.Expect.Call(delegate { repository.Save(null); }).IgnoreArguments();<br /></pre><br /><b>Handle multiple calls to the same method</b><br /><pre>IProduct product = new Product("003092", "Sierra Nevada", 6.49);<br />// note the .Repeat.Any()<br />Rhino.Mocks.Expect.Call(repository.GetProduct("003092")).Return(product).Repeat.Any();<br />// send the mock to our product service object<br />ProductService service = new ProductService(repository);<br />// find by sku calls GetProduct on the mocked Product repository<br />IProduct beer = service.FindBySku("003092");<br />// find decent beer calls GetProduct on the mocked Product repository also<br />IProduct decentBeer = service.FindDecentBeer();<br /></pre><br /><b>Partial Mock</b><br /><pre>// create a partial mock with constructor args (our product repository again)<br />IProductService service = mocks.PartialMock<iproductservice>(repository);<br />// our test case data<br />IUser loggedOnUser = new User("John", "Doe", CustomerType.Gold);<br />// mock product service calls to GetLoggedOnUser<br />Rhino.Mocks.Expect.Call(service.GetLoggedOnUser()).Return(loggedOnUser);<br />// get the mocking ready<br />mocks.ReplayAll();<br />// now GetDiscount is not a mocked method but it does call the mocked GetLoggedOnUser method<br />decimal discount = service.GetDiscount();<br />// assert the result<br />Assert.AreSame(44.4M, discount, "Gold customer discount not correct?");<br />// NOTE: this will not work (compile) unless the mocked method GetLoggedOnUser is public<br /></pre></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+Had an issue with comment moderation<br>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-<br><br>New Day posted this about a month ago<br><br>For the Equals method I get the same error as ben.biddington. I am using .NET 2.0<br>The error occurs on the line with Expect.Call so it does not proceed any further down the test.<br><br>Error <br>&quot;Invalid call, the last call has been used or no call has been made (make sure that you are calling a virtual (C#) / Overridable (VB) method).&quot;</div>
+</div>
+<div class='comment'>
+<div class='author'>Anonymous</div>
+<div class='content'>
+IProduct product = new Product(&quot;003092&quot;, &quot;Sierra Nevada&quot;, 6.49);<br>  <br>Lär ju gå bra att instansiera ett interface, nötter&#8230;</div>
+</div>
+<div class='comment'>
+<div class='author'>Anonymous</div>
+<div class='content'>
+In 3.5 CreateMock is deprecated and should be changed to StrictMock.  Might want to try that,</div>
+</div>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+I have not tried it on 3.5 of .net but I believe it should work. Is it possible you are making multiple calls to the same mocked method? you might need a .Repeat.Any();</div>
+</div>
+<div class='comment'>
+<div class='author'>ben.biddington</div>
+<div class='content'>
+Hi, <br><br>Does you first example (The mock repository) work with v.3.5?<br><br>I get the error:<br><br>Invalid call, the last call has been used or no call has been made (make sure that you are calling a virtual (C#) / Overridable (VB) method).</div>
+</div>
+</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jesse House</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-02-16T00:00:00-08:00" pubdate data-updated="true">Feb 16<span>th</span>, 2008</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/code/'>code</a>, <a class='category' href='/blog/categories/csharp/'>csharp</a>, <a class='category' href='/blog/categories/rhino-dot-mocks/'>rhino.mocks</a>, <a class='category' href='/blog/categories/unit-test/'>unit test</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://house9.github.io/blog/2008/02/16/rhinomocks-basics_16/" data-via="" data-counturl="http://house9.github.io/blog/2008/02/16/rhinomocks-basics_16/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/02/16/rhinomocks-basics/" title="Previous Post: Rhino.Mocks basics">&laquo; Rhino.Mocks basics</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2008/02/16/syntaxhighlighter-and-google-blogger/" title="Next Post: SyntaxHighlighter and Google Blogger">SyntaxHighlighter and Google Blogger &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: Supply_drop)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e Chef Cookbook</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and Puppet Postgres 9.2 on Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/01/vagrantfile-for-setting-up-multiple/">Vagrantfile for Setting Up Multiple Machines With Chef Configuration</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/house9">@house9</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'house9',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jesse House -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

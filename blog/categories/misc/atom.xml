@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: misc | house9]]></title>
+  <link href="http://house9.github.io/blog/categories/misc/atom.xml" rel="self"/>
+  <link href="http://house9.github.io/"/>
+  <updated>2013-09-24T15:53:19-07:00</updated>
+  <id>http://house9.github.io/</id>
+  <author>
+    <name><![CDATA[Jesse House]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Personal Web Page Revisited]]></title>
+    <link href="http://house9.github.io/blog/2007/12/15/personal-web-page-revisited/"/>
+    <updated>2007-12-15T00:00:00-08:00</updated>
+    <id>http://house9.github.io/blog/2007/12/15/personal-web-page-revisited</id>
+    <content type="html"><![CDATA[<div class='post'>
+Ok, it has been 5 years since I have updated my personal webpage, once again it is just a 1 page web site; lean and mean ~:P<br /><br />It might load a bit slow; I am using some of the libraries from <a href="http://www.extjs.com/">Ext JS</a> - a few hundred K in css, images and js to load in, should cache in the browser after the first hit, their UI widgets are just too cool.<br /><br />anyhow here it is - <a href="http://www.jessehouse.com/">http://www.jessehouse.com/</a></div>
+
+
+<h2>Comments</h2>
+
+
+<div class='comments'>
+<div class='comment'>
+<div class='author'>cbetancourt</div>
+<div class='content'>
+Move your &lt;script&gt; tags to the bottom of the page, right before &lt;/html&gt; and you will see a speed improvement.</div>
+</div>
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[What would Kwai Chang Caine do?]]></title>
+    <link href="http://house9.github.io/blog/2007/04/15/what-would-kwai-chang-caine-do/"/>
+    <updated>2007-04-15T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2007/04/15/what-would-kwai-chang-caine-do</id>
+    <content type="html"><![CDATA[<div class='post'>
+<strong>What would Kwai Chang Caine do?</strong><br /><br />we've all heard of "<em><a href="http://en.wikipedia.org/wiki/What_would_Jesus_do%3F">What would Jesus do?</a></em>", but at this point I am more interested in what Kwai Chang Caine would do; <p>here are just a few great quotes from the Kung Fu series, I don't want to list too many as each should really be cherished on it's own...</p><br /><blockquote><em><span style="font-size:180%;">"If one's words are not better than silence, one should keep silent."</span></em></blockquote><br /><blockquote><em><span style="font-size:180%;">"In every loss there is gain. As in every gain there is loss."</span></em></blockquote><br /><blockquote><em><span style="font-size:180%;">"Our soul does not keep time, it merely records growth."</span></em></blockquote><br />And my favorite... <blockquote><em><span style="font-size:180%;">"I seek not to know all the answers but to understand the questions."</span></em></blockquote></div>
+
+
+<h2>Comments</h2>
+
+
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Anonymous</div>
+<div class='content'>
+&quot;We own nothing. Even our bodies are loaned to us. Empty shells. Concentrate on the infinite and ignore the temporal.&quot; - Kwai Chang Caine</div>
+</div>
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Kung Fu revisited]]></title>
+    <link href="http://house9.github.io/blog/2007/04/15/kung-fu-revisited/"/>
+    <updated>2007-04-15T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2007/04/15/kung-fu-revisited</id>
+    <content type="html"><![CDATA[<div class='post'>
+<a href="http://www.kungfu-guide.com/images-kf/posterphoto_lg.jpg"><img id="BLOGGER_PHOTO_ID_5053803564750889506" style="FLOAT: right; MARGIN: 0px 0px 10px 10px; CURSOR: hand" alt="" src="http://1.bp.blogspot.com/_vmq8pP42BnQ/RiK3kOGUYiI/AAAAAAAAACM/LQDUk0LFTl8/s400/kungfu_posterphoto.jpg" border="0" /></a><strong> Kung Fu revisited</strong><br /><br />I recently got a chance to watch the first season of 'Kung Fu' (starring David Carradine) on DVD; I had not seen this show since I was a kid. I really did enjoy it then, but I really appreciate it alot more now and for different reasons; then it was all about the kung fu action, the wild west and Shaolin priests;<br /><br />It is amazing how this show doesn't really feel very dated, well maybe just a little but in that cool 1970's kinda way. I highly recommend that you watch this show - especially if you have never seen it.<br /><br />Check out <a href="http://www.kungfu-guide.com/">http://www.kungfu-guide.com/</a> for indepth information on the show or just go to Amazon and order the first season - you will not be disappointed!<br /><br /><a href="http://www.amazon.com/exec/obidos/ASIN/B00013F38K/continguidetothe">http://www.amazon.com/exec/obidos/ASIN/B00013F38K/continguidetothe</a></div>
+
+]]></content>
+  </entry>
+  
+</feed>

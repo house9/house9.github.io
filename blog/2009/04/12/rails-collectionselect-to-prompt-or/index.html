@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>rails collection_select to prompt or include_blank? - house9</title>
+  <meta name="author" content="Jesse House">
+
+  
+  <meta name="description" content="Well I just wasted a bit of time but learned something in the end. When working with the rails form helper collection_select you might be interested &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://house9.github.io/blog/2009/04/12/rails-collectionselect-to-prompt-or">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="house9" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">house9</a></h1>
+  
+    <h2>random code and what not</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:house9.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Rails Collection_select to Prompt or Include_blank?</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-12T00:00:00-07:00" pubdate data-updated="true">Apr 12<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class='post'>
+Well I just wasted a bit of time but learned something in the end. When working with the rails form helper <a href="http://api.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html#M001593">collection_select</a> you might be interested in the difference between the prompt option and include_blank? option<div><br /></div><div>include_blank will always create an option tag, prompt will only create an option tag when creating a new record - in most cases I prefer include_blank</div><div><br /></div><div>both take either a boolean or a string, if true is passed then include_blank will create an option with no display text and prompt defaults to the display text of &#8216;Please Select&#8217;</div><div><pre style="font-size:large">collection_select(:product,<br />  :category_id,<br />  Category.all,    <br />  :id,    <br />  :title,    <br />  {:prompt => true}<br />)<br /><br />collection_select(:product,    <br />  :category_id,    <br />  Category.all,    <br />  :id,    <br />  :title,    <br />  {:include_blank => 'Please Select'}<br />)</pre></div><div>both of these result in the same html, but the first one will not include the &#8216;Please Select&#8217; option when you return to edit the previously created Product</div><div><br /></div><div>See also</div><div><ul><li><a href="http://api.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html">http://api.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html</a><a href="http://shiningthrough.co.uk/Select+helper+methods+in+Ruby+on+Rails"></a></li><li><a href="http://shiningthrough.co.uk/Select+helper+methods+in+Ruby+on+Rails">Select helper methods in Ruby on Rails</a></li></ul><div><br /></div></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Tarnschaf</div>
+<div class='content'>
+Thank you!</div>
+</div>
+<div class='comment'>
+<div class='author'>Eric Jones</div>
+<div class='content'>
+Thank you!  I was trying to figure out why I couldn&#39;t get the prompt to show up, now I know why.  I was editing an existing record.</div>
+</div>
+<div class='comment'>
+<div class='author'>Julien</div>
+<div class='content'>
+Thank you!! I was scratching my head to find how i could force &quot;prompt&quot; message in collection_select!</div>
+</div>
+<div class='comment'>
+<div class='author'>danieltsadok</div>
+<div class='content'>
+Thanks - I was wondering what the difference was&#8230;</div>
+</div>
+</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jesse House</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-12T00:00:00-07:00" pubdate data-updated="true">Apr 12<span>th</span>, 2009</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/rails/'>rails</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://house9.github.io/blog/2009/04/12/rails-collectionselect-to-prompt-or/" data-via="" data-counturl="http://house9.github.io/blog/2009/04/12/rails-collectionselect-to-prompt-or/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2009/04/11/accesskey-attribute-on-select-tag-is/" title="Previous Post: accesskey attribute on the select tag is not valid?">&laquo; accesskey attribute on the select tag is not valid?</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2009/04/25/strange-behavior-with-rails/" title="Next Post: Strange behavior with Rails find_or_initialize_by_id and Postgresql">Strange behavior with Rails find_or_initialize_by_id and Postgresql &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: Supply_drop)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e Chef Cookbook</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and Puppet Postgres 9.2 on Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/01/vagrantfile-for-setting-up-multiple/">Vagrantfile for Setting Up Multiple Machines With Chef Configuration</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/house9">@house9</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'house9',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jesse House -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

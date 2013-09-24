@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Get table and column information in postgres - house9</title>
+  <meta name="author" content="Jesse House">
+
+  
+  <meta name="description" content="Use the information_schema catalog - http://www.postgresql.org/docs/9.1/static/information-schema.htmlGet table and columns from the public &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://house9.github.io/blog/2011/12/02/get-table-and-column-information-in">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="house9" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">house9</a></h1>
+  
+    <h2>random code and what not</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:house9.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Get Table and Column Information in Postgres</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-02T00:00:00-08:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class='post'>
+Use the information_schema catalog - <a href="http://www.postgresql.org/docs/9.1/static/information-schema.html">http://www.postgresql.org/docs/9.1/static/information-schema.html</a><br /><br />Get table and columns from the public schema<br /><br /><script src="https://gist.github.com/1423507.js?file=select_table_and_columns_from_postgres.sql"></script><br /><noscript><br />select <br />  tables.table_name, <br />  columns.column_name<br /><br />from information_schema.tables<br />inner join information_schema.columns <br />on information_schema.columns.table_name = information_schema.tables.table_name<br /><br />where tables.table_schema = &#8216;public&#8217;<br />and tables.table_type = &#8216;BASE TABLE&#8217;<br /><br />order by tables.table_name, columns.column_name;<br /></noscript><br /><br />This can be useful, maybe you want to auto generate some text that creates foreign keys based on a naming convention - for instance let&#8217;s say we have a ruby/rails method called make_fk_unless_exists<br /><br /><script src="https://gist.github.com/1423533.js?file=create_fk_script_postgres.sql"></script><br /><noscript><br />select <br />  tables.table_name, <br />  columns.column_name,<br />  (&#8216;make_fk_unless_exists :&#8217; || tables.table_name || &#8216;, :&#8217; || columns.column_name || &#8216;, :&#8217; || REPLACE(columns.column_name, &#8216;_id&#8217;, &#8216;s&#8217;)) as code<br /> <br />from information_schema.tables<br />inner join information_schema.columns <br />on information_schema.columns.table_name = information_schema.tables.table_name<br /><br />where tables.table_schema = &#8216;public&#8217;<br />and columns.column_name LIKE &#8216;%id&#8217;<br />and columns.column_name <> &#8216;id&#8217;<br />and tables.table_type = &#8216;BASE TABLE&#8217;<br /><br />order by tables.table_name, columns.column_name;<br /></noscript><br /><br />The &#8216;code&#8217; column would render something like<br /><br /><blockquote class="tr_bq"><i>make_fk_unless_exists :projects, :milestone_id, :milestones</i><br /><i>make_fk_unless_exists :tasks, :project_id, :projects</i><br /><i>&#8230;</i><br /></blockquote><br /><br /></div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jesse House</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-02T00:00:00-08:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/postgresql/'>postgresql</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://house9.github.io/blog/2011/12/02/get-table-and-column-information-in/" data-via="" data-counturl="http://house9.github.io/blog/2011/12/02/get-table-and-column-information-in/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/11/12/sample-routes-and-links-with-rails-3-in/" title="Previous Post: Sample Routes and Links with Rails 3 in the console">&laquo; Sample Routes and Links with Rails 3 in the console</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/12/30/inspect-all-jquery-events-on-element/" title="Next Post: Inspect all jQuery events on an element">Inspect all jQuery events on an element &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: Supply_drop)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e Chef Cookbook</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and Puppet Postgres 9.2 on Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/01/vagrantfile-for-setting-up-multiple/">Vagrantfile for Setting Up Multiple Machines With Chef Configuration</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/house9">@house9</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'house9',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jesse House -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

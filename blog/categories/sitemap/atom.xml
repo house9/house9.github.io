@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: sitemap | house9]]></title>
+  <link href="http://house9.github.io/blog/categories/sitemap/atom.xml" rel="self"/>
+  <link href="http://house9.github.io/"/>
+  <updated>2013-09-24T15:53:19-07:00</updated>
+  <id>http://house9.github.io/</id>
+  <author>
+    <name><![CDATA[Jesse House]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Google Webmaster Tools Sitemap.xml issues]]></title>
+    <link href="http://house9.github.io/blog/2010/02/16/google-webmaster-tools-sitemapxml/"/>
+    <updated>2010-02-16T00:00:00-08:00</updated>
+    <id>http://house9.github.io/blog/2010/02/16/google-webmaster-tools-sitemapxml</id>
+    <content type="html"><![CDATA[<div class='post'>
+<div>After uploading my <a href="http://www.sitemaps.org/">sitemap.xml</a> file to <a href="https://www.google.com/webmasters/tools/home">Google Webmaster Tools</a> I received the following error message and no additional error details were included:</div><div><br /></div><blockquote>Error: The last attempt at downloading the Sitemap failed. The details below are representative of the last successful download.</blockquote><div><br /></div><div>I searched around a bit and found a forum post where someone said they get this error '<i>sometimes</i>', but after switching to use a gzip formatted sitemap.xml file the error went away</div><div><br /></div><div>on ubuntu</div><div><br /></div><div><blockquote>gzip ./sitemap.xml</blockquote></div><div><br /></div><div>compresses the file to ./sitemap.xml.gz and deletes the sitemap.xml file by default</div><div><br /></div><div>after uploading Google was able to process without issue</div><div><br /></div></div>
+
+
+<h2>Comments</h2>
+
+
+<div class='comments'>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+Compared to having relevant content and good structure (i.e. h1, h2, proper use of title tag, etc...) it probably is not that important.<br /><br />But it can&#39;t hurt to include one and submit it to Google, Yahoo, Bing and Ask; it definitely won&#39;t hurt your page ranking.</div>
+</div>
+<div class='comment'>
+<div class='author'>robert</div>
+<div class='content'>
+But is sitemap.xml that important?<br />I do not think so.. Moreover this blog mentioned below will lay more light to what I want to say..<br />http://www.redalkemi.com/blog/sitemapxml-the-most-overrated-search-engine-indexing-factor/</div>
+</div>
+</div>
+
+]]></content>
+  </entry>
+  
+</feed>

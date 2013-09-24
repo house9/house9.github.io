@@ -1,0 +1,579 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>house9</title>
+  <meta name="author" content="Jesse House">
+
+  
+  <meta name="description" content="I am running a host Windows 7 machine with a Guest Windows Server 2008 RC2. The guest machine is hosted inside of VirtualBox. It appears that this &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://house9.github.io/blog/page/5">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="house9" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">house9</a></h1>
+  
+    <h2>random code and what not</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:house9.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/07/ping-guest-os-from-host-os-with/">Ping Guest OS From Host OS With VirtualBox</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-07T00:00:00-07:00" pubdate data-updated="true">Apr 7<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I am running a host Windows 7 machine with a Guest Windows Server 2008 RC2. The guest machine is hosted inside of <a href="http://www.virtualbox.org/">VirtualBox</a>. It appears that this issue can occur with any number of OS host or guest machines.<br /><br />From the guest machine I could access the internet and access the host machine, but I could not ping or access the guest machine from the host. Turns out there is a network setting that needs to be changed.<br /><br />On the guests &#8216;container&#8217; go to Devices &gt; Network Adapters<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-3wcZuLntxu0/TZ3UqMsu66I/AAAAAAAAC0Q/7rAucnEe0ts/s1600/virtualbox-host-ping-guest-01.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="388" src="http://4.bp.blogspot.com/-3wcZuLntxu0/TZ3UqMsu66I/AAAAAAAAC0Q/7rAucnEe0ts/s640/virtualbox-host-ping-guest-01.png" width="640" /></a></div><br />Then change &#8216;Attached to&#8217; from &#8216;NAT&#8217; to &#8216;Bridged Adapter&#8217;<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-9l70Yl2d02s/TZ3U2_-I1vI/AAAAAAAAC0U/0SrzQDCS9J8/s1600/virtualbox-host-ping-guest-02.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="368" src="http://1.bp.blogspot.com/-9l70Yl2d02s/TZ3U2_-I1vI/AAAAAAAAC0U/0SrzQDCS9J8/s640/virtualbox-host-ping-guest-02.png" width="640" /></a></div><br />at that point you should be good to go<br /><br />Resources<br /><br /><ul><li>virtualbox forums: <a href="http://forums.virtualbox.org/viewtopic.php?f=6&amp;t=15792&amp;sid=96a654bdcb88ff0b628c108663f681ce&amp;start=15">Host can&#8217;t ping guest in Different OS ??</a></li></ul></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Diego Rafael Flores Gonzales</div>
+<div class='content'>
+I did that, they are in the same network but I can&#39;t ping from either side, What do I have to do?  the other comments says to change the setting from public to private HOW?</div>
+</div>
+<div class='comment'>
+<div class='author'>Darren Helsby</div>
+<div class='content'>
+Thanks for your post.  I was having the same problem between a Win 7 Pro host and a Win 8 Customer Preview guest and solved it using your method.<br /><br />The only extra thing I had to do was change the guest network setting from a public network to private and now I can ping both ways.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/03/29/rows-and-columns-with-css/">Rows and Columns With CSS</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-29T00:00:00-07:00" pubdate data-updated="true">Mar 29<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+here is a code snippet for creating rows and columns with css - I guess you could say this is a table?<br /><br /><script src="https://gist.github.com/892551.js?file=css-rows-and-columns.html"></script><br /><noscript><br />your reader does not support script includes, please <br /><a href="https://gist.github.com/raw/892551/38b499f9f5ee783a85cbd82966ee9b2fd5a56e90/css-rows-and-columns.html">View the Gist</a>.<br /></noscript><br /><br />Resources<br /><br /><ul><li><a href="http://www.webmasterworld.com/css/3896320.htm">webmaster world css forum</a></li></ul></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>W.RAZI.EU</div>
+<div class='content'>
+Hi, is it possible to have the left column width fixed, 300px for example and right to stretch across the page?</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/03/29/add-tfexe-and-other-net-command-line/">Add tf.exe and Other .net Command Line Tools to Your Powershell Path</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-29T00:00:00-07:00" pubdate data-updated="true">Mar 29<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I really don&#8217;t like cmd.exe, it is difficult to work with. PowerShell ISE is much nicer and the bonus is you can run non powershell programs from this environment as well.<br /><br />I needed to run some TFS commands, adding the ide directory to the path is easy<br /><blockquote><span class="Apple-style-span" style="background-color: yellow;">$env:path += &#8220;;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE&#8221;</span></blockquote>another directory you might want to add if you are messing about with IIS7<br /><br /><blockquote><span class="Apple-style-span" style="background-color: yellow;">$env:path += &#8220;;C:\Windows\System32\inetsrv&#8221;&nbsp;</span></blockquote>now you can do things like recycle all of the AppPools on your machine<br /><br /><blockquote>appcmd list apppool /xml | appcmd recycle apppool /in</blockquote></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/03/15/asp-mvc-jquery-from-cdn-with-fallback/">Asp Mvc Jquery From Cdn With Fallback to Localhost</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-15T00:00:00-07:00" pubdate data-updated="true">Mar 15<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Paul Irish has some nice code for loading jquery from cdn but then falling back to localhost if it cannot be loaded from cdn. Check it out <a href="http://paulirish.com/2010/the-protocol-relative-url/">here</a>.<br /><br />For asp mvc you usually also want jquery.valdiater and possibly unobtrusive validation as well. Here is an html helper to generate html mark up that handles loading these via cdn with fallback<br /><br />The helper<br /><script src="https://gist.github.com/871851.js?file=cdn-with-fallback.cs"></script><br /><noscript><br />using System;<br />using System.Web.Mvc;<br />using System.Web.Mvc.Html;<br />using System.Web.Routing;<br /><br />public static class HtmlHelperExtensions<br />{<br />    /// <summary><br />    /// render script tag to include javascript file from cdn, but fallback to local if cannot be loaded<br />    /// </summary><br />    /// <param name="helper"></param>    /// <param name="cdnPath">start with // to handle either http or https</param>    /// <param name="localPath">start with ~/</param>    /// <param name="javascriptCondition">javascript condition, if true then your browser will load the local file</param>    /// <returns><br />    ///    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script><br />    ///    <script>!window.jQuery && document.write(unescape('%3Cscript src="/Scripts/jquery-1.4.4.min.js"%3E%3C/script%3E'))</script><br />    /// </returns><br />    /// <seealso cref="http://paulirish.com/2010/the-protocol-relative-url/"/><br />    public static MvcHtmlString JavascriptIncludeFromCdnWithFallback(this HtmlHelper helper, string cdnPath, string localPath, string javascriptCondition)<br />    {<br />        var urlHelper = new UrlHelper(helper.ViewContext.RequestContext);<br />        var cdnBuilder = new TagBuilder(&#8220;script&#8221;);<br />        var localBuilder = new TagBuilder(&#8220;script&#8221;);<br /><br />        // src for cdn resource<br />        cdnBuilder.Attributes.Add(&#8220;src&#8221;, cdnPath);<br />        // js to build a local script tag if needed<br />        localBuilder.InnerHtml = String.Format<br />        (<br />            &#8220;{0} && document.write(unescape(&#8216;%3Cscript src=&#34;{1}&#34;%3E%3C/script%3E&#8217;))&#8221;,<br />            javascriptCondition,<br />            urlHelper.Content(localPath)<br />        );<br />        // return markup<br />        var built = String.Format(&#8220;{0}\n\t{1}&#8221;, cdnBuilder.ToString(TagRenderMode.Normal), localBuilder.ToString(TagRenderMode.Normal));<br />        return MvcHtmlString.Create(built);<br />    }<br />}<br /></noscript><br /><br />Usage, most likely from your layout file<br /><script src="https://gist.github.com/871856.js?file=cdn-with-fallback.cshtml"></script><br /><noscript><br />@Html.JavascriptIncludeFromCdnWithFallback(<br />    &#8220;//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js&#8221;,<br />    &#8220;~/Scripts/lib/jquery/jquery-1.4.4.min.js&#8221;, <br />    &#8220;!window.jQuery&#8221;<br />)<br /><br />@Html.JavascriptIncludeFromCdnWithFallback(<br />    &#8220;//ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js&#8221;,<br />    &#8220;~/Scripts/lib/jquery/jquery.validate.min.js&#8221;, <br />    &#8220;!window.jQuery.validator&#8221;<br />)<br /><br />@Html.JavascriptIncludeFromCdnWithFallback(<br />    &#8220;//ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.validate.unobtrusive.min.js&#8221;,<br />    &#8220;~/Scripts/lib/jquery/jquery.validate.unobtrusive.min.js&#8221;, <br />    &#8220;!window.jQuery.validator.unobtrusive&#8221;<br />)<br /></noscript><br /><br />And the rendered html<br /><script src="https://gist.github.com/871857.js?file=cdn-with-fallback-rendered.html"></script><br /><noscript><br /><script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script><br /><script>!window.jQuery && document.write(unescape('%3Cscript src="/Scripts/lib/jquery/jquery-1.4.4.min.js"%3E%3C/script%3E'))</script><br /><br /><script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script><br /><script>!window.jQuery.validator && document.write(unescape('%3Cscript src="/Scripts/lib/jquery/jquery.validate.min.js"%3E%3C/script%3E'))</script><br /><br /><script src="//ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.validate.unobtrusive.min.js"></script><br /><script>!window.jQuery.validator.unobtrusive && document.write(unescape('%3Cscript src="/Scripts/lib/jquery/jquery.validate.unobtrusive.min.js"%3E%3C/script%3E'))</script><br /></noscript></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/03/14/powershell-script-to-generate-todo/">Powershell Script to Generate a TODO Report</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-14T00:00:00-07:00" pubdate data-updated="true">Mar 14<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+You can use this from your CI build process, help keep the code base clean. I am a big fan of the TODO: comment, but you don&#8217;t want too many building up in the code base at some point you either need &#8216;TO DO IT&#8217; or else forget about it.<br /><br /><script src="https://gist.github.com/869367.js?file=TODO-Report.ps1"></script><br /><noscript><br />$fileName = &#8220;_2-DO_log.txt&#8221;<br />$max = 20<br />$encoding = &#8220;ASCII&#8221;<br /><br /># remove previous file if exists<br />if(Test-Path $fileName) { Remove-Item $fileName }<br /><br /># dump 2-do report to the file system<br />Get-ChildItem –rec –include *.config,*.cs,*.js,*.cshtml,*.css,*.aspx | <br />where { $_ -notmatch &#8216;lib&#8217; } | <br />where { $_ -notmatch &#8216;Test&#8217; } | <br />select-string TODO | <br />out-string -width 4096 | <br />out-file $fileName -encoding $encoding<br /><br /># get the line count of the report<br />$content = Get-Content .\$fileName<br />$count = $content.Count.ToString()<br /># Write-Host &#8220;Total count is $count&#8221;<br /><br /># verify we don&#8217;t have too many entries<br />if($content.Count -gt $max) <br />{ <br />$message = &#8220;TO DO comment count has been exceeded. Max Allowed is $max but found $count for the entire solution, excluding lib files and Test projects&#8221;<br /># prepend the message before the data<br />$message | out-file $fileName -encoding $encoding <br />$content | add-content $fileName<br />Throw [system.Exception]($message) <br />}<br /></noscript><br /><br />the above script is excluding all files found under lib or Test directories, and selecting only a subset of file types. Modify to your needs</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/03/11/mstest-output-result-to-html/">MSTest Output Result to HTML</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-11T00:00:00-08:00" pubdate data-updated="true">Mar 11<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<a href="http://msdn.microsoft.com/en-us/library/ms182489(v=vs.80).aspx">MSTest</a> generates trx (xml) files which can be viewed in Visual Studio. But often you will be executing MSTest from the command line via your Continuous Integration (CI) server and you will want to view them in an html format outside Visual Studio.<br /><br /><a href="http://trx2html.codeplex.com/">trx2html</a> to the rescue!<br /><br /><ul><li>download the zip file here -&nbsp;<a href="http://trx2html.codeplex.com/">http://trx2html.codeplex.com/</a></li><li>unzip and put the files somewhere</li><ul><li>I choose C:\Program Files (x86)\trx2html</li></ul><li>execute it from the command line&nbsp;</li></ul><div><br /></div><div><pre><span class="Apple-style-span" style="color: #38761d;"># in YourTestProject\bin\Release</span><br /><span class="Apple-style-span" style="color: #444444;">"C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\mstest.exe"</span> <span class="Apple-style-span" style="color: #0b5394;">/testcontainer:</span>YourTestProject.dll <span class="Apple-style-span" style="color: #0b5394;">/resultsfile:</span>TestResult.trx<br /><br /><span class="Apple-style-span" style="color: #444444;">"C:\Program Files (x86)\trx2html\0.6\trx2html.exe"</span> TestResult.trx<br /><span class="Apple-style-span" style="color: #38761d;"># outputs TestResult.trx.htm</span><br /></pre></div><div><br /></div><div><br /></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+Try running it from the directory that your trx file is in<br /><br />&gt; cd DIRECTORY_WIHT_TRX_FILE<br /><br />&gt; &quot;D:\share\TRX2HTML_A\0.6\trx2html.exe&quot; TRX_FILE_NAME</div>
+</div>
+<div class='comment'>
+<div class='author'>Atul Mhetre</div>
+<div class='content'>
+Hi,<br /><br />I am having problem in converting trx file into HTML file.<br /><br />I navigate to trx2htm.exe in command prompt and used command as - D:\share\TRX2HTML_A\0.6&gt;cd D:\share\TRX2HTML_A\0.6<br /><br />D:\share\TRX2HTML_A\0.6&gt;trx2html atul.mhetre_NTPC01395 2013-01-22 15_05_51.trx<br />trx2html.exe<br />  Create HTML reports of VSTS TestRuns. (c)rido&#39;08<br />version:0.6.0.2798<br /><br />Usage: trx2html .trx<br /><br />D:\share\TRX2HTML_A\0.6&gt;<br /><br />So I am getting output as -<br /><br />trx2html.exe<br />  Create HTML reports of VSTS TestRuns. (c)rido&#39;08<br />version:0.6.0.2798<br /><br />Usage: trx2html .trx<br /><br />And no html file is generating. Please help.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/03/09/visual-studio-solution-items-in-sub/">Visual Studio Solution Items in a Sub Directory</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-09T00:00:00-08:00" pubdate data-updated="true">Mar 9<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Visual Studio Solutions have the &#8220;Add New Solution Folder&#8221; option.<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="https://lh3.googleusercontent.com/-_wY7D-Q3qOY/TXeybhp1O2I/AAAAAAAACzs/YK4O6ZztTOI/s1600/new_solution_folder.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="350" src="https://lh3.googleusercontent.com/-_wY7D-Q3qOY/TXeybhp1O2I/AAAAAAAACzs/YK4O6ZztTOI/s400/new_solution_folder.png" width="400" /></a></div><br /><br />I don&#8217;t know about you but this makes me think it is going to create a physical directory on the hard drive to emulate what is in the solution, but this is not the case.<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="https://lh5.googleusercontent.com/-NANZTAZHPXU/TXeyi47KryI/AAAAAAAACzw/i3UY97vK3ag/s1600/solution_vs_explorer.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="308" src="https://lh5.googleusercontent.com/-NANZTAZHPXU/TXeyi47KryI/AAAAAAAACzw/i3UY97vK3ag/s640/solution_vs_explorer.png" width="640" /></a></div><div class="separator" style="clear: both; text-align: center;"><br /></div><div class="separator" style="clear: both; text-align: center;"><br /></div>The thing that really drives me crazy is if you try to add Test1.txt to the SubFolder it will throw an error because it is really trying to write to the root directory. I think solution folders are only really supposed to be used to organize Visual Studio projects.<br /><br />In my case I want to have a set of files that are not really part of a Visual Studio project but I want them available in the solution. It turns out there is a Project type called &#8220;Empty Project&#8221;.<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="https://lh6.googleusercontent.com/-mVfvqv9P95o/TXezY_s3vZI/AAAAAAAACz0/qxReJ-c9lWo/s1600/empty_project.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="362" src="https://lh6.googleusercontent.com/-mVfvqv9P95o/TXezY_s3vZI/AAAAAAAACz0/qxReJ-c9lWo/s640/empty_project.png" width="640" /></a></div><br />This is exactly what the doctor ordered!<br /><br />You will probably want to do one additional step. Set this &#8220;Empty Project&#8221; to not build, otherwise you will get a compile time error. Right click on the Solution &gt; Properties &gt; Configuration Properties &gt; Configuration, then un-check the &#8220;Build&#8221; for this project.<br /><br />Found out about this from <a href="http://stackoverflow.com/questions/233900/visual-studio-solution-that-just-points-to-a-folder-and-shows-all-sub-folders-and">this stackoverflow post</a>.<br /><br />Here is a good link <a href="http://www.peter-urda.com/2010/09/solution-folders-in-visual-studio-2010-explained">explaining what you would use a solution folder for</a>, besides a ReadMe.txt</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/03/06/ergonomic-keyboard-for-mac/">Ergonomic Keyboard for the Mac</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-06T00:00:00-08:00" pubdate data-updated="true">Mar 6<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+The keyboards that come with Macs look really nice, the quality seems pretty good, but I just cannot use a flat keyboard, after a few days my wrists and hands started complaining big time.<br /><br />After some searching I came across the Kinesis Freestyle keyboard, they make one with Windows layout and another with Mac layout. They are not cheap, however I use a keyboard all day, every day so for me it is worth the money.<br /><br />If you get the Freestyle you also need to get the Freestyle VIP - Keyboard accessories kit, otherwise you basically just have a flat keyboard again<br /><ul><li><a href="http://www.amazon.com/gp/product/B001EPIJ4Y">Kinesis Freestyle Solo™ Mac USB Keyboard</a></li><li><a href="http://www.amazon.com/gp/product/B000RBBMNG">Kinesis Freestyle VIP - Keyboard accessories kit</a></li></ul><div>The VIP accessory kit will give you 10 and 15 degree angles, they also have some other&nbsp;accessory&nbsp;kits that will give you up to 90 degree angle, I believe that kit is very expensive, the 15&nbsp;degree&nbsp;works fine for me, but the Ascent kit looks interesting.</div><div><ul><li><a href="http://www.kinesis-ergo.com/keyboards.htm">Kinesis keyboards</a></li><li><a href="http://www.kinesis-ergo.com/images/solo-ascent-90_512x390.jpg">Ascent kit - up to 90 degree</a>&nbsp;</li></ul><div>Some pics</div><div><br /></div><div class="separator" style="clear: both; text-align: center;"><a href="https://lh3.googleusercontent.com/-dTFXxTpFTeg/TXPvM0Mkh6I/AAAAAAAACzA/g4nK9MH-0Lo/s1600/IMG_1919.JPG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="480" src="https://lh3.googleusercontent.com/-dTFXxTpFTeg/TXPvM0Mkh6I/AAAAAAAACzA/g4nK9MH-0Lo/s640/IMG_1919.JPG" width="640" /></a></div><div><br /></div><div><br /></div></div><div class="separator" style="clear: both; text-align: center;"><a href="https://lh5.googleusercontent.com/-jLjwVhCxaC0/TXPvVpEzv1I/AAAAAAAACzE/TxTDx8X6vg8/s1600/IMG_1920.JPG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="480" src="https://lh5.googleusercontent.com/-jLjwVhCxaC0/TXPvVpEzv1I/AAAAAAAACzE/TxTDx8X6vg8/s640/IMG_1920.JPG" width="640" /></a></div><div><br /></div><div>Eight inches of cable between each side of the keyboard, put them where you want</div><div class="separator" style="clear: both; text-align: center;"><a href="https://lh5.googleusercontent.com/-Qvqr1dY8gOg/TXPvfU8cT5I/AAAAAAAACzI/GNaUNKTIH90/s1600/IMG_1922.JPG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="480" src="https://lh5.googleusercontent.com/-Qvqr1dY8gOg/TXPvfU8cT5I/AAAAAAAACzI/GNaUNKTIH90/s640/IMG_1922.JPG" width="640" /></a></div><div><br /></div><div>pivot point if you want them close and asymmetrical</div><div class="separator" style="clear: both; text-align: center;"><a href="https://lh3.googleusercontent.com/-LF5AXcmeW1Q/TXPvlOIP96I/AAAAAAAACzM/0mgR8odWtKY/s1600/IMG_1923.JPG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="480" src="https://lh3.googleusercontent.com/-LF5AXcmeW1Q/TXPvlOIP96I/AAAAAAAACzM/0mgR8odWtKY/s640/IMG_1923.JPG" width="640" /></a></div><div><br /></div><div>10 degree</div><div class="separator" style="clear: both; text-align: center;"><a href="https://lh6.googleusercontent.com/-ZpxKHd7hT5Y/TXPvsap1rMI/AAAAAAAACzQ/hYBcUOKGm6E/s1600/IMG_1924.JPG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="480" src="https://lh6.googleusercontent.com/-ZpxKHd7hT5Y/TXPvsap1rMI/AAAAAAAACzQ/hYBcUOKGm6E/s640/IMG_1924.JPG" width="640" /></a></div><div><br /></div><div>15 degree</div><div class="separator" style="clear: both; text-align: center;"><a href="https://lh6.googleusercontent.com/-QgE-qDKoiOM/TXPv1M52KHI/AAAAAAAACzU/6WYZLl3j85s/s1600/IMG_1925.JPG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="480" src="https://lh6.googleusercontent.com/-QgE-qDKoiOM/TXPv1M52KHI/AAAAAAAACzU/6WYZLl3j85s/s640/IMG_1925.JPG" width="640" /></a></div><div><br /></div><div><br /></div><div class="separator" style="clear: both; text-align: center;"><a href="https://lh5.googleusercontent.com/-pPrBNElS7ic/TXPv_MoxAmI/AAAAAAAACzY/MEqUI4kT20w/s1600/IMG_1927.JPG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="480" src="https://lh5.googleusercontent.com/-pPrBNElS7ic/TXPv_MoxAmI/AAAAAAAACzY/MEqUI4kT20w/s640/IMG_1927.JPG" width="640" /></a></div><div><br /></div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/03/03/varchar-max-sqlparameter-length/">Varchar (MAX) SqlParameter Length</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-03T00:00:00-08:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I am using <a href="http://logging.apache.org/log4net/">log4net</a> and the&nbsp;<a href="http://logging.apache.org/log4net/release/config-examples.html">AdoNetAppender</a> to log all entries to MSSQL server. The exception column by default is 2000, sometimes the stack traces get large. Not wanting to lose any information I changed the DDL to use varchar (MAX) but I also had to update the appender configuration. Using a size of -1 for the @exception parameter seemed to do the trick.<br /><br /><br /><br />Resources<br /><br /><ul><li><a href="http://msdn2.microsoft.com/en-us/library/bb399384.aspx">http://msdn2.microsoft.com/en-us/library/bb399384.aspx</a>&nbsp;</li></ul></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/02/25/cqrs-with-net-and-c/">CQRS With .NET and C#</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-25T00:00:00-08:00" pubdate data-updated="true">Feb 25<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I&#8217;ve been intrigued with the idea of CQRS for some time; ever since I watched an <a href="http://www.infoq.com/">infoQ</a> presentation by <a href="http://codebetter.com/gregyoung/author/gregyoung/">Greg Young</a> on the subject. What is CQRS?<br /><blockquote><span class="Apple-style-span" style="color: #333333;"><i>Command-Query Responsibility Segregation</i></span></blockquote>See the links below to for more information from the experts.<br /><br />Over the last month I&#8217;ve actually had the&nbsp;opportunity&nbsp;to work with CQRS, so far I am really enjoying it.&nbsp;Separating&nbsp;your reads from your writes is truly liberating! Listed below are a bunch of resources related to CQRS:<br /><br />Informational:<br /><ul><li><a href="http://cqrsinfo.com/">http://cqrsinfo.com/</a>&nbsp;</li><li><a href="http://www.udidahan.com/2009/12/09/clarified-cqrs/">Clarified&nbsp;CQRS</a> by Udi Dahan</li><li><a href="http://groups.google.com/group/dddcqrs">DDD/CQRS google group</a></li></ul><div><div style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">Presentations:</div><div style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;"></div><ul><li>Greg Young on infoQ - <a href="http://www.infoq.com/presentations/greg-young-unshackle-qcon08">Unshackle Your Domain</a></li><li><a href="http://vimeo.com/8944337">Command Query Responsibility Segregation</a> - Udi Dahan</li></ul><div><div style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">CQRS examples:</div><div style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;"></div><ul><li><a href="https://github.com/MarkNijhof/Fohjin/tree/master/Fohjin.DDD.Example">https://github.com/MarkNijhof/Fohjin/tree/master/Fohjin.DDD.Example</a></li></ul><div><div style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">Some CQRS Frameworks:</div><div style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;"></div><ul><li><a href="https://github.com/tyronegroves/SimpleCQRS">SimpleCQRS</a></li><li><a href="http://ncqrs.org/">Ncqrs</a></li><li><a href="http://code.google.com/p/lokad-cqrs/">Lokad CQRS</a></li></ul></div></div><div><br /></div></div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/6/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/4/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: Supply_drop)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e Chef Cookbook</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and Puppet Postgres 9.2 on Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/01/vagrantfile-for-setting-up-multiple/">Vagrantfile for Setting Up Multiple Machines With Chef Configuration</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/house9">@house9</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'house9',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jesse House -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

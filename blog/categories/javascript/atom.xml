@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: javascript | house9]]></title>
+  <link href="http://house9.github.io/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://house9.github.io/"/>
+  <updated>2013-09-24T15:53:19-07:00</updated>
+  <id>http://house9.github.io/</id>
+  <author>
+    <name><![CDATA[Jesse House]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Inspect all jQuery events on an element]]></title>
+    <link href="http://house9.github.io/blog/2011/12/30/inspect-all-jquery-events-on-element/"/>
+    <updated>2011-12-30T00:00:00-08:00</updated>
+    <id>http://house9.github.io/blog/2011/12/30/inspect-all-jquery-events-on-element</id>
+    <content type="html"><![CDATA[<div class='post'>
+Very useful<br /><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">$("SELECTOR").data("events");</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;"><br /></span><br />All bound event handlers are stored in the elements data context under the events key<br />This can be very useful when&nbsp;debugging&nbsp;with tools like FireBug<br /><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">$("form").submit(function () { alert('submit form'); });</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">$("form").data("events");</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">&gt; Object { submit=[1] }</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;"><br /></span><br />Resources<br /><br /><ul><li><a href="http://www.bennadel.com/blog/1727-Viewing-jQuery-DOM-Event-Bindings-With-FireBug.htm">http://www.bennadel.com/blog/1727-Viewing-jQuery-DOM-Event-Bindings-With-FireBug.htm</a>&nbsp;</li></ul></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[CoffeeScript with Rails 2.3 and Rails 3.0]]></title>
+    <link href="http://house9.github.io/blog/2011/08/22/coffeescript-with-rails-23-and-rails-30/"/>
+    <updated>2011-08-22T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2011/08/22/coffeescript-with-rails-23-and-rails-30</id>
+    <content type="html"><![CDATA[<div class='post'>
+I just uploaded a sample application that uses guard, coffee-script and a rake task to enable use of coffee-script with a rails 2.3 or 3.0 application. Check out the README file on github for details.<br /><br /><a href="https://github.com/house9/with_coffee">https://github.com/house9/with_coffee</a><br /><br /><br /></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fixing asp.net MVC AuthorizeAttribute]]></title>
+    <link href="http://house9.github.io/blog/2011/04/22/fixing-aspnet-mvc-authorizeattribute/"/>
+    <updated>2011-04-22T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2011/04/22/fixing-aspnet-mvc-authorizeattribute</id>
+    <content type="html"><![CDATA[<div class='post'>
+With very little code we can fix asp.net MVC AuthorizeAttribute<br />What problems does it have? <strong>Too much redirection</strong>.<br /><br /><ul><li>When making ajax calls a HTTP 401 (Unauthorized) would be better than a redirection</li><li>If I am already logged in but access a secure resource (controller / action) redirecting to the login page is far from ideal, an access denied view makes more sense</li></ul><div>When is the built in redirection appropriate? When making standard HTTP request and the user is not authenticated.</div><div><br /></div><div>it turns out it is&nbsp;relatively&nbsp;easy to fix these issues</div><div><ul><li>inherit AuthorizeAttribute</li><li>override&nbsp;HandleUnauthorizedRequest</li></ul></div><div>#1: Ajax request should not return redirection / html response</div><div><br /></div><div>if the user cannot authorize an action and the request is made via ajax we don't want 200 or 302 response codes</div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-1vMk4_AhaKg/TbGZafGuVHI/AAAAAAAAC10/IPvdbbfA-AQ/s1600/200.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://3.bp.blogspot.com/-1vMk4_AhaKg/TbGZafGuVHI/AAAAAAAAC10/IPvdbbfA-AQ/s1600/200.png" /></a></div><div><br /></div><div>we do want&nbsp;401 Unauthorized, but we have to settle for a 403&nbsp;Forbidden</div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-X05Vh4FqOcA/TbGZkKkHk5I/AAAAAAAAC14/S_Efpn5ZTFU/s1600/403.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://1.bp.blogspot.com/-X05Vh4FqOcA/TbGZkKkHk5I/AAAAAAAAC14/S_Efpn5ZTFU/s1600/403.png" /></a></div><div><br /></div><div>The code to fix this</div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-eqaE-lHvRKo/TbGZ8ktgViI/AAAAAAAAC18/61UvrRd6iSc/s1600/cod-403.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://3.bp.blogspot.com/-eqaE-lHvRKo/TbGZ8ktgViI/AAAAAAAAC18/61UvrRd6iSc/s1600/cod-403.png" /></a></div><div><br /></div><div>#2: Authenticated users should not redirect to the login page, they should get an Access Denied page</div><div>The code to fix this</div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-Rw2pqIKL5_U/TbGahZTmGLI/AAAAAAAAC2A/TnRnnwCVQ_o/s1600/access-denied-redirect.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://1.bp.blogspot.com/-Rw2pqIKL5_U/TbGahZTmGLI/AAAAAAAAC2A/TnRnnwCVQ_o/s1600/access-denied-redirect.png" /></a></div><div><br /></div><div>Turns out very little code is needed - but seems like some of this should just be built in? Using the 401 response won't work because the asp mvc framework must be picking that up later on and forcing the redirection to the login page, the 403 is not ideal but it is effective.</div><div><br /></div><div>The code for our class - AuthorizeFor</div><div><script src="https://gist.github.com/936865.js?file=AuthorizeForAttribute.cs"></script><br /><noscript>&amp;amp;amp;lt;br /&amp;amp;amp;gt; // view full gist at https://gist.github.com/936865.js?file=AuthorizeForAttribute.cs&amp;amp;amp;lt;br /&amp;amp;amp;gt; public class AuthorizeForAttribute : AuthorizeAttribute&amp;amp;amp;lt;br /&amp;amp;amp;gt; {&amp;amp;amp;lt;br /&amp;amp;amp;gt; protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)&amp;amp;amp;lt;br /&amp;amp;amp;gt; {&amp;amp;amp;lt;br /&amp;amp;amp;gt; if(filterContext.HttpContext.Request.IsAjaxRequest())&amp;amp;amp;lt;br /&amp;amp;amp;gt; {&amp;amp;amp;lt;br /&amp;amp;amp;gt; // filterContext.Result = new HttpStatusCodeResult(401, "Unauthorized");&amp;amp;amp;lt;br /&amp;amp;amp;gt; filterContext.Result = new HttpStatusCodeResult(403, "Forbidden");&amp;amp;amp;lt;br /&amp;amp;amp;gt; }&amp;amp;amp;lt;br /&amp;amp;amp;gt; else if(filterContext.HttpContext.User.Identity.IsAuthenticated)&amp;amp;amp;lt;br /&amp;amp;amp;gt; {&amp;amp;amp;lt;br /&amp;amp;amp;gt; filterContext.Result = new RedirectResult("~/Error/AccessDenied?For=" + filterContext.HttpContext.Request.Url);                    &amp;amp;amp;lt;br /&amp;amp;amp;gt; }&amp;amp;amp;lt;br /&amp;amp;amp;gt; else&amp;amp;amp;lt;br /&amp;amp;amp;gt; {&amp;amp;amp;lt;br /&amp;amp;amp;gt; base.HandleUnauthorizedRequest(filterContext);                &amp;amp;amp;lt;br /&amp;amp;amp;gt; }&amp;amp;amp;lt;br /&amp;amp;amp;gt; }&amp;amp;amp;lt;br /&amp;amp;amp;gt; }&amp;amp;amp;lt;br /&amp;amp;amp;gt; </noscript></div><div><br /></div><div>Usage of our AuthorizeFor attribute</div><div><script src="https://gist.github.com/936875.js?file=AuthorizeForAttribute-Usage.cs"></script><br /><noscript>&amp;amp;amp;lt;br /&amp;amp;amp;gt; // view full gist at https://gist.github.com/936875.js?file=AuthorizeForAttribute-Usage.cs&amp;amp;amp;lt;br /&amp;amp;amp;gt; [AuthorizeFor]&amp;amp;amp;lt;br /&amp;amp;amp;gt; public ActionResult Index()&amp;amp;amp;lt;br /&amp;amp;amp;gt; {&amp;amp;amp;lt;br /&amp;amp;amp;gt; // ....&amp;amp;amp;lt;br /&amp;amp;amp;gt; &amp;amp;amp;lt;br /&amp;amp;amp;gt; [AuthorizeFor(Roles = "Create, View")]&amp;amp;amp;lt;br /&amp;amp;amp;gt; public ActionResult Create()&amp;amp;amp;lt;br /&amp;amp;amp;gt; {&amp;amp;amp;lt;br /&amp;amp;amp;gt; // ....&amp;amp;amp;lt;br /&amp;amp;amp;gt; &amp;amp;amp;lt;br /&amp;amp;amp;gt; [HttpPost]&amp;amp;amp;lt;br /&amp;amp;amp;gt; [AuthorizeFor(Roles = "Create")]&amp;amp;amp;lt;br /&amp;amp;amp;gt; public ActionResult Create(ViewModel.Foo foo)&amp;amp;amp;lt;br /&amp;amp;amp;gt; {&amp;amp;amp;lt;br /&amp;amp;amp;gt; // ....&amp;amp;amp;lt;br /&amp;amp;amp;gt; </noscript></div><div><br /></div><div>Resources</div><div><ul><li><a href="http://msdn.microsoft.com/en-us/library/system.web.mvc.authorizeattribute.aspx">MSDN AuthorizeAttribute</a></li><li><a href="http://stackoverflow.com/questions/5519393/c-mvc-how-to-override-configured-authentication-redirect">Stack Overflow</a> post about the 401 403 issue</li></ul><div><br /></div></div></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[use jquery to disable a button when clicked]]></title>
+    <link href="http://house9.github.io/blog/2009/02/16/use-jquery-to-disable-button-when/"/>
+    <updated>2009-02-16T00:00:00-08:00</updated>
+    <id>http://house9.github.io/blog/2009/02/16/use-jquery-to-disable-button-when</id>
+    <content type="html"><![CDATA[<div class='post'>
+<a href="http://jquery.com/">jquery</a> is such a great javascript library, the more I use it the more I like it<div><br /></div><div><script src="http://gist.github.com/65438.js"></script></div><br /><div><br />NOTE: the above code snippets are untested - cut, pasted and modified from real code that was tested (and worked!)<br /></div><br /><div>&nbsp;<br /></div></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rails RJS and newline characters]]></title>
+    <link href="http://house9.github.io/blog/2007/10/18/rails-rjs-and-newline-characters/"/>
+    <updated>2007-10-18T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2007/10/18/rails-rjs-and-newline-characters</id>
+    <content type="html"><![CDATA[<div class='post'>
+ok this one really got me, I was generating a javascript alert from the server via an rjs file, i.e.<br /><br /><blockquote style="BORDER-RIGHT: 1px dashed; PADDING-RIGHT: 5px; BORDER-TOP: 1px dashed; PADDING-LEFT: 5px; BACKGROUND: #ffffff; LEFT: 65px; PADDING-BOTTOM: 5px; BORDER-LEFT: 1px dashed; WIDTH: 360px; PADDING-TOP: 5px; BORDER-BOTTOM: 1px dashed; POSITION: relative"><p style="BACKGROUND: #ffffff; WIDTH: 100%"><em><span style="color:#009900;"># rjs render a javascript alert on the client</span></em><br /><span style="color:#3333ff;">page<span style="color:#000000;">.alert</span> '<span style="color:#990000;">Errors\nError 1\nError 2</span>'</span></p></blockquote>and it kept on printing my error message as Errors<span style="color:#ff0000;">\n</span>Error message 1<span style="color:#ff0000;">\n</span>Error message2 - note that the newline characters were being escaped and rendered literally<br /><br />I found this <a href="http://www.agmweb.ca/blog/andy/1937/">informative post</a> which lead me to change my code from using single quotes to using double quotes - nasty.<br /><br /><blockquote style="BORDER-RIGHT: 1px dashed; PADDING-RIGHT: 5px; BORDER-TOP: 1px dashed; PADDING-LEFT: 5px; BACKGROUND: #ffffff; LEFT: 65px; PADDING-BOTTOM: 5px; BORDER-LEFT: 1px dashed; WIDTH: 460px; PADDING-TOP: 5px; BORDER-BOTTOM: 1px dashed; POSITION: relative"><p style="BACKGROUND: #ffffff; WIDTH: 100%; HEIGHT: 54px"><em><span style="color:#009900;"># this one will output the newlines in the javascript alert message</span></em><br /><span style="color:#3333ff;">page<span style="color:#000000;">.alert</span> "<span style="color:#990000;">Errors\nError 1\nError 2"</span></span></p></blockquote><br /><br />here is the final code, looping through each error on the model object (product in this case) and outputing a newline on the javascript alert for each error<br /><br /><br /><blockquote style="BORDER-RIGHT: 1px dashed; PADDING-RIGHT: 5px; BORDER-TOP: 1px dashed; PADDING-LEFT: 5px; BACKGROUND: #ffffff; LEFT: 65px; PADDING-BOTTOM: 5px; BORDER-LEFT: 1px dashed; WIDTH: 481px; PADDING-TOP: 5px; BORDER-BOTTOM: 1px dashed; POSITION: relative; HEIGHT: 301px"><p><em><span style="color:#009900;"># rjs file</span></em><br /><span style="color:#3333ff;">page</span>.alert <span style="color:#3333ff;">"</span><span style="color:#cc0000;">#{get_message_for_show_server_error}</span><span style="color:#3333ff;">"</span><br /></p><p><em><span style="color:#009900;"># helper file<br /></span></em><span style="color:#993399;">def</span> get_message_for_show_server_error<br /><span style="color:#ffffff;">__</span>s = "<span style="color:#cc0000;">Errors </span>"<br /><span style="color:#ffffff;">__</span><span style="color:#3333ff;">@product</span>.errors.full_messages.each <span style="color:#993399;">do</span> error<br /><span style="color:#ffffff;">____</span>s = s + "<span style="color:#cc0000;">\n</span>" + error.to_s<br /><span style="color:#993399;"><span style="color:#ffffff;">__</span>end</span></p><p><span style="color:#3333ff;"><span style="color:#ffffff;">__</span>return</span> s<br /><span style="color:#993399;">end</span><br /><br /></p><p style="BACKGROUND: #ffffff; WIDTH: 100%"></p></blockquote><br /><p></p><p></p></div>
+
+]]></content>
+  </entry>
+  
+</feed>

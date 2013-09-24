@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ruby | house9]]></title>
+  <link href="http://house9.github.io/blog/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://house9.github.io/"/>
+  <updated>2013-09-24T15:53:19-07:00</updated>
+  <id>http://house9.github.io/</id>
+  <author>
+    <name><![CDATA[Jesse House]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Generating barcodes with ruby and rails]]></title>
+    <link href="http://house9.github.io/blog/2011/10/15/generating-barcodes-with-ruby-and-rails/"/>
+    <updated>2011-10-15T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2011/10/15/generating-barcodes-with-ruby-and-rails</id>
+    <content type="html"><![CDATA[<div class='post'>
+Recently I had to convert some functionality from an old MS Access system to a Ruby on Rails application.&nbsp;The Access system generated a report that included a barcode; they were using a barcode font installed on the&nbsp;machine running access. I figured generating the barcode server side in the web app was going to be much nicer than installing barcode fonts on the client browsers. And since this is Ruby, I figured...<br /><blockquote><i><span class="Apple-style-span" style="font-size: large;">There must be a gem for that&nbsp;</span></i></blockquote>Sure enough, the barby gem. It allows you to output your barcode as png, gif, svg, pdf, etc...<br /><br />In my case I generated png barcodes and included image references to those in my view files.<br /><br />Sample code<br /><br /><script src="https://gist.github.com/1289751.js?file=using_barby_to_generate_barcodes_with_ruby.rb"></script><br /><noscript><br /># Gemfile, run bundle install after adding<br />gem 'barby'<br />gem 'chunky_png'<br /><br /># some code to generate the png file using 3 of 9 barcode style<br />require 'barby'<br />require 'barby/barcode/code_39'<br />require 'barby/outputter/png_outputter'<br /><br />barcode_value = "099999333"<br />full_path = "/somewhere/barcode_#{barcode_value}.png"<br />barcode = Barby::Code39.new(barcode_value)<br />File.open(full_path, 'w') { |f| f.write barcode.to_png(:margin => 3, :xdim => 2, :height => 55) }<br /></noscript><br /><br />There is no pixel setting, it uses some other type of unit to determine size; using the xdim, margin and height options&nbsp;you can tweak the size, but I found that it was not very precise - <i>for my use case it was good enough.</i><br /><br />The generated barcode does not include the value, it is just the image which can be scanned using a&nbsp;barcode scanner, but it would be nice if there was an option to include the value below that. This is somewhat trivial to add in your view using html.<br /><br />Overall I was really pleased with this gem!<br /><br />Resources<br /><ul><li><a href="http://toretore.eu/barby/">http://toretore.eu/barby/</a></li><li><a href="https://github.com/toretore/barby">https://github.com/toretore/barby</a></li><li><a href="http://barby.rubyforge.org/rdoc/">http://barby.rubyforge.org/rdoc/</a></li><li><a href="http://groups.google.com/group/ruby-barby">http://groups.google.com/group/ruby-barby</a></li></ul></div>
+
+
+<h2>Comments</h2>
+
+
+<div class='comments'>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+As far as i know the gem does not support that feature. You need to add that text to your pdf, html, etc... Might want to check the google groups link above for additional help</div>
+</div>
+<div class='comment'>
+<div class='author'>Icaro</div>
+<div class='content'>
+Perfect, thanks. How can i display the value at the bottom of the same image?</div>
+</div>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+Try setting your path to &quot;#{Rails.root}/public/barcodes&quot;</div>
+</div>
+<div class='comment'>
+<div class='author'>Icaro</div>
+<div class='content'>
+Im getting <br />No such file or directory - /public/barcodes/barcode_BARBY.png<br /><br />Is there anyway to not to create the png and then display it from public resources? like streaming each time i call a coupon for instance?.<br /><br />Thanks</div>
+</div>
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Get the date of the beginning and end of a month using Ruby]]></title>
+    <link href="http://house9.github.io/blog/2010/11/05/get-date-of-beginning-and-end-of-month/"/>
+    <updated>2010-11-05T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2010/11/05/get-date-of-beginning-and-end-of-month</id>
+    <content type="html"><![CDATA[<div class='post'>
+Sometimes Ruby blows my mind, I needed to get the start date and end date of the previous month. Guess what Ruby just happens to have methods to handle this -&nbsp;beginning_of_month, end_of_month, there is even beginning_of_quarter and end_of_quarter if you need them!<br /><br /><br /><script src="https://gist.github.com/665048.js?file=cool%20date%20functions%20in%20ruby"></script><br /><br /><noscript><br /><pre>last_month = Date.today.last_month # =&gt; Tue, 05 Oct 2010 <br /><br />last_month.beginning_of_month # =&gt; Fri, 01 Oct 2010 <br />last_month.end_of_month # =&gt; Sun, 31 Oct 2010<br /><br />last_month.beginning_of_quarter # =&gt; Fri, 01 Oct 2010<br />last_month.end_of_quarter # =&gt; Fri, 31 Dec 2010<br /></pre></noscript></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby Regex to remove script tags]]></title>
+    <link href="http://house9.github.io/blog/2010/01/06/ruby-regex-to-remove-script-tags/"/>
+    <updated>2010-01-06T00:00:00-08:00</updated>
+    <id>http://house9.github.io/blog/2010/01/06/ruby-regex-to-remove-script-tags</id>
+    <content type="html"><![CDATA[<div class='post'>
+<script src="http://gist.github.com/270463.js"></script><br />Resources<br /><ul><li><a href="http://rubular.com/">Rubular</a></li><li><a href="http://jamesmckay.net/2008/05/how-to-match-any-character-including-newlines-in-a-javascript-regular-expression/">Match any character in RegEx</a></li><li><a href="http://ruby-doc.org/core/classes/String.html#M000817">Ruby String gsub</a></li></ul></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby Http Get with Net::HTTP]]></title>
+    <link href="http://house9.github.io/blog/2010/01/06/ruby-http-get-with-nethttp/"/>
+    <updated>2010-01-06T00:00:00-08:00</updated>
+    <id>http://house9.github.io/blog/2010/01/06/ruby-http-get-with-nethttp</id>
+    <content type="html"><![CDATA[<div class='post'>
+<script src="http://gist.github.com/270459.js"></script><br />Resources<br /><ul><li><a href="http://ruby-doc.org/stdlib/libdoc/net/http/rdoc/classes/Net/HTTP.html">Net::HTTP ruby docs</a></li><li><a href="http://stackoverflow.com/questions/1252210/parametrized-get-request-in-ruby">Stackoverflow post</a></li></ul><br /><br /><div style="display:none"><br />require 'net/http'<br />require 'uri'<br /><br />def get_html_content(requested_url)<br />url = URI.parse(requested_url)<br />full_path = (url.query.blank?) ? url.path : "#{url.path}?#{url.query}"<br />the_request = Net::HTTP::Get.new(full_path)<br /><br />the_response = Net::HTTP.start(url.host, url.port) { |http|<br />http.request(the_request)<br />}<br /><br />raise "Response was not 200, response was #{the_response.code}" if the_response.code != "200"<br />return the_response.body       <br />end   <br /><br /># this will fail with ArgumentError: HTTP request path is empty<br />s = get_html_content("http://www.google.com")<br /># these should be fine<br />s = get_html_content("http://www.google.com/") <br />s = get_html_content("http://github.com/search?q=http")<br /># above code does not handle redirects but raises exception for non-200 <br />s = get_html_content("http://www.yahoo.com/") # http 302<br /></div></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA['Testing is Overrated' on InfoQ]]></title>
+    <link href="http://house9.github.io/blog/2009/01/07/testing-is-overrated-on-infoq/"/>
+    <updated>2009-01-07T00:00:00-08:00</updated>
+    <id>http://house9.github.io/blog/2009/01/07/testing-is-overrated-on-infoq</id>
+    <content type="html"><![CDATA[<div class='post'>
+This is a good presentation<br /><a href="http://www.infoq.com/presentations/francl-testing-overrated">http://www.infoq.com/presentations/francl-testing-overrated</a><br /><br />just over 22 minutes and worth the watch; I had to take a screen capture of one of the slides about doing code reviews, just too funny<br /><br /><a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://3.bp.blogspot.com/_vmq8pP42BnQ/SWTQFqkiD0I/AAAAAAAABDU/oxwPNBVYaSk/s1600-h/code_review.png"><img style="margin: 0px auto 10px; display: block; text-align: center; cursor: pointer; width: 400px; height: 288px;" src="http://3.bp.blogspot.com/_vmq8pP42BnQ/SWTQFqkiD0I/AAAAAAAABDU/oxwPNBVYaSk/s400/code_review.png" alt="" id="BLOGGER_PHOTO_ID_5288580658185244482" border="0" /></a></div>
+
+]]></content>
+  </entry>
+  
+</feed>

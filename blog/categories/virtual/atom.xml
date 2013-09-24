@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: virtual | house9]]></title>
+  <link href="http://house9.github.io/blog/categories/virtual/atom.xml" rel="self"/>
+  <link href="http://house9.github.io/"/>
+  <updated>2013-09-24T15:53:19-07:00</updated>
+  <id>http://house9.github.io/</id>
+  <author>
+    <name><![CDATA[Jesse House]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ping Guest OS from Host OS with VirtualBox]]></title>
+    <link href="http://house9.github.io/blog/2011/04/07/ping-guest-os-from-host-os-with/"/>
+    <updated>2011-04-07T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2011/04/07/ping-guest-os-from-host-os-with</id>
+    <content type="html"><![CDATA[<div class='post'>
+I am running a host Windows 7 machine with a Guest Windows Server 2008 RC2. The guest machine is hosted inside of <a href="http://www.virtualbox.org/">VirtualBox</a>. It appears that this issue can occur with any number of OS host or guest machines.<br /><br />From the guest machine I could access the internet and access the host machine, but I could not ping or access the guest machine from the host. Turns out there is a network setting that needs to be changed.<br /><br />On the guests 'container' go to Devices &gt; Network Adapters<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-3wcZuLntxu0/TZ3UqMsu66I/AAAAAAAAC0Q/7rAucnEe0ts/s1600/virtualbox-host-ping-guest-01.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="388" src="http://4.bp.blogspot.com/-3wcZuLntxu0/TZ3UqMsu66I/AAAAAAAAC0Q/7rAucnEe0ts/s640/virtualbox-host-ping-guest-01.png" width="640" /></a></div><br />Then change 'Attached to' from 'NAT' to 'Bridged Adapter'<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-9l70Yl2d02s/TZ3U2_-I1vI/AAAAAAAAC0U/0SrzQDCS9J8/s1600/virtualbox-host-ping-guest-02.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="368" src="http://1.bp.blogspot.com/-9l70Yl2d02s/TZ3U2_-I1vI/AAAAAAAAC0U/0SrzQDCS9J8/s640/virtualbox-host-ping-guest-02.png" width="640" /></a></div><br />at that point you should be good to go<br /><br />Resources<br /><br /><ul><li>virtualbox forums: <a href="http://forums.virtualbox.org/viewtopic.php?f=6&amp;t=15792&amp;sid=96a654bdcb88ff0b628c108663f681ce&amp;start=15">Host can't ping guest in Different OS ??</a></li></ul></div>
+
+
+<h2>Comments</h2>
+
+
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Diego Rafael Flores Gonzales</div>
+<div class='content'>
+I did that, they are in the same network but I can&#39;t ping from either side, What do I have to do?  the other comments says to change the setting from public to private HOW?</div>
+</div>
+<div class='comment'>
+<div class='author'>Darren Helsby</div>
+<div class='content'>
+Thanks for your post.  I was having the same problem between a Win 7 Pro host and a Win 8 Customer Preview guest and solved it using your method.<br /><br />The only extra thing I had to do was change the guest network setting from a public network to private and now I can ping both ways.</div>
+</div>
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Remote desktop mac OSX to Ubuntu]]></title>
+    <link href="http://house9.github.io/blog/2010/10/29/remote-desktop-mac-osx-to-ubuntu/"/>
+    <updated>2010-10-29T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2010/10/29/remote-desktop-mac-osx-to-ubuntu</id>
+    <content type="html"><![CDATA[<div class='post'>
+There is a good program (free) for remote connections between mac OSX and <a href="http://www.ubuntu.com/">Ubuntu</a>. It is called&nbsp;<a href="http://sourceforge.net/projects/cotvnc/">Chicken of the VNC</a>&nbsp;- in my case I needed to remote into an Ubuntu (9.04) desktop from my mac.<br /><br />First step - allow remote access on the Ubuntu machine<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/_vmq8pP42BnQ/TMtEx7LMHOI/AAAAAAAACyo/Bf6NsdQJYOY/s1600/blog-cvnc-01.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="400" src="http://1.bp.blogspot.com/_vmq8pP42BnQ/TMtEx7LMHOI/AAAAAAAACyo/Bf6NsdQJYOY/s400/blog-cvnc-01.png" width="380" /></a></div><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/_vmq8pP42BnQ/TMtEyCAzGzI/AAAAAAAACys/X1WGq2_VY08/s1600/blog-cvnc-01.2.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="355" src="http://1.bp.blogspot.com/_vmq8pP42BnQ/TMtEyCAzGzI/AAAAAAAACys/X1WGq2_VY08/s400/blog-cvnc-01.2.png" width="400" /></a></div><br />Install Chicken of the VNC<br /><br /><ul><li>download from&nbsp;<a href="http://sourceforge.net/projects/cotvnc/">http://sourceforge.net/projects/cotvnc/</a></li><li>install the dmg file</li><li>then drag the Chicken into your Applications folder</li></ul><br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/_vmq8pP42BnQ/TMtEy0IvLjI/AAAAAAAACyw/WbWopHr_EVQ/s1600/blog-cvnc-02.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="337" src="http://1.bp.blogspot.com/_vmq8pP42BnQ/TMtEy0IvLjI/AAAAAAAACyw/WbWopHr_EVQ/s640/blog-cvnc-02.png" width="640" /></a></div><br />Then open the program and type in the IP address of the machine you wish to connect to.<br />Done - you are now remoted!<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/_vmq8pP42BnQ/TMtEzyqVO6I/AAAAAAAACy0/D5YAplc3UcY/s1600/blog-cvnc-03.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="300" src="http://2.bp.blogspot.com/_vmq8pP42BnQ/TMtEzyqVO6I/AAAAAAAACy0/D5YAplc3UcY/s400/blog-cvnc-03.png" width="400" /></a></div></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[VirutalBox - Increase the memory on an existing guest machine]]></title>
+    <link href="http://house9.github.io/blog/2010/09/30/virutalbox-increase-memory-on-existing/"/>
+    <updated>2010-09-30T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2010/09/30/virutalbox-increase-memory-on-existing</id>
+    <content type="html"><![CDATA[<div class='post'>
+I use VirtualBox to run a guest Windows XP machine on my Mac. When I set up the virtual guest I set it to use 512MB of memory. And of course now I decide I want to bump it to 1GB. I could not find anyway to do this using the GUI but it can be done from the Terminal.<br /><br />When the virtual machine is not running execute this command<br /><blockquote><span class="Apple-style-span" style="font-family: 'Courier New', Courier, monospace;"><b>VBoxManage modifyvm XP1 --memory 1024</b></span></blockquote>XP1 is the name of my guest machine, so replace with yours. The memory parameter takes the amount in MB, in this case 1GB<br /><br />The first time I ran it I&nbsp;received&nbsp;the following error message<br /><br /><blockquote><i><span class="Apple-style-span" style="background-color: yellow;">ERROR: The machine is not mutable (state is Saved)</span></i></blockquote><br />Last time I turned off the guest machine I had selected the save state option. You need to Power the virtual machine down before you can run this command.</div>
+
+]]></content>
+  </entry>
+  
+</feed>

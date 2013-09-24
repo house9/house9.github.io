@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: mssql | house9]]></title>
+  <link href="http://house9.github.io/blog/categories/mssql/atom.xml" rel="self"/>
+  <link href="http://house9.github.io/"/>
+  <updated>2013-09-24T15:53:19-07:00</updated>
+  <id>http://house9.github.io/</id>
+  <author>
+    <name><![CDATA[Jesse House]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Procedure sp_droplogin, Line 93 Login is aliased or mapped to a user in one or more database(s)]]></title>
+    <link href="http://house9.github.io/blog/2009/09/02/procedure-spdroplogin-line-93-login-is/"/>
+    <updated>2009-09-02T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2009/09/02/procedure-spdroplogin-line-93-login-is</id>
+    <content type="html"><![CDATA[<div class='post'>
+<div>Trying to remove a MSSQL login from a database server, recieve the following eror<br /></div><br /><blockquote>Msg 15175, Level 16, State 1, Procedure sp_droplogin, Line 93<br />Login 'qa' is aliased or mapped to a user in one or more database(s). Drop the user or alias before dropping the login.</blockquote><br /><div>Solution: run this command to determine what alias or groups the login is associated with and then remove those; might be nice if they just added this to the error message?<br /></div><div><br /></div><div><blockquote>sp_helpuser 'qa'</blockquote></div></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Get Filenames and Database names from MSSQL]]></title>
+    <link href="http://house9.github.io/blog/2009/03/26/get-filenames-and-database-names-from/"/>
+    <updated>2009-03-26T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2009/03/26/get-filenames-and-database-names-from</id>
+    <content type="html"><![CDATA[<div class='post'>
+I was doing some clean up on one of our database servers; we have many databases created with backup/restore for testing purposes I was checking for the largest ldf files and making sure those databases were in simple mode and then shirking the data files, there were a few files I could not match to the databases because the mdf and ldf file names were different from the actual database file name - found the following queries using a few google searches<div><br /></div><br /><div><br /><script src="http://gist.github.com/86181.js"></script><br /></div><br /><div><br /><script src="http://gist.github.com/86182.js"></script><br /></div></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[MSSQL drop and re-add constraints]]></title>
+    <link href="http://house9.github.io/blog/2008/05/18/mssql-drop-and-re-add-constraints/"/>
+    <updated>2008-05-18T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2008/05/18/mssql-drop-and-re-add-constraints</id>
+    <content type="html"><![CDATA[<div class='post'>
+One of the guys at work hooked me up with this code - quite useful if you want to do a bunch of data inserts but don't want to worry about the order you apply the inserts because of foreign key constraints<br /><br /><span style="font-weight:bold;">Before performing data actions:</span><br /><pre>-- generate these and run<br />SELECT<br />'ALTER TABLE ' + so.NAME + ' NOCHECK CONSTRAINT ALL'<br />FROM sysobjects so<br />WHERE xtype = 'u'<br /></pre><br /><span style="font-weight:bold;">After performing data actions:</span><br /><pre>-- generate these and run<br />SELECT<br />'ALTER TABLE ' + so.NAME + ' CHECK CONSTRAINT ALL'<br />FROM sysobjects so<br />WHERE xtype = 'u'<br /></pre><br />Thanks to ET for this code bit!</div>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,402 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>jQuery iframe auto height plugin - house9</title>
+  <meta name="author" content="Jesse House">
+
+  
+  <meta name="description" content="This week I needed to automatically size the height of an iframe to the height of its contents. After a bunch of Google searches I came across this &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://house9.github.io/blog/2010/10/22/jquery-iframe-auto-height-plugin">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="house9" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">house9</a></h1>
+  
+    <h2>random code and what not</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:house9.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">jQuery Iframe Auto Height Plugin</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-22T00:00:00-07:00" pubdate data-updated="true">Oct 22<span>nd</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class='post'>
+This week I needed to automatically size the height of an iframe to the height of its contents. After a bunch of Google searches I came across this post from&nbsp;Nathan Smith <a href="http://sonspring.com/journal/jquery-iframe-sizing">here</a>; It used jquery but applied the auto height to every iframe on the page, I could not use the code out of the box and so the &#8216;jQuery iframe auto height plugin&#8217; was born. I made a few slight changes to the original code and wrapped it in a jquery plugin.<br /><br />Download from github<br /><br /><a href="http://github.com/house9/jquery-iframe-auto-height">http://github.com/house9/jquery-iframe-auto-height</a><br /><br />see the README file for usage</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+I have not used Drupal, so don&#39;t know much about it - but it does seem to be the factor</div>
+</div>
+<div class='comment'>
+<div class='author'>Erik Verkuil</div>
+<div class='content'>
+At the same site I use another Iframe to load an Imagegalerie and in this case your plugin works well in Firefox when the images(links) are clicked.<br /><br />Console Output:<br />({heightOffset:0, minHeight:0, callback:(function (newHeight) {}), debug:true, diagnostics:false})<br />[object XrayWrapper [object HTMLIFrameElement]]<br />New Height: 402<br />&#8211;<br />New Height: 501<br />&#8211;<br />New Height: 545<br /><br />After switching to the slideshow it does not work anymore. Is this also a Drupal problem?<br /><br />Erik</div>
+</div>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+it must have something to do with Durpal - your console output of [object XrayWrapper [object HTMLIFrameElement]]<br /><br />but in my demo pages that line outputs the iframe dom element - i.e. - &lt;iframe scrolling=&quot;no&quot; frameborder=&quot;0&quot; style=&quot;width: 660px&quot; src=&quot;/iframe_content/pic2&quot;&gt;</div>
+</div>
+<div class='comment'>
+<div class='author'>Erik Verkuil</div>
+<div class='content'>
+Thanks for your reaction.<br />The script that loads the form and the confirmation inside the Iframe is a php-script that just shows another html-page after the form is submitted, no ajax is involved.<br />I did what you suggested and here is the output of the console.<br />When the form is loaded-<br />({heightOffset:0, minHeight:0, callback:(function (newHeight) {}), debug:true, diagnostics:false})[object XrayWrapper [object HTMLIFrameElement]]<br />New Height: 1567<br /><br />After submitting the form -<br />New Height: 1567<br /><br />Hope this will do.<br /><br />Erik</div>
+</div>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+@Erik Verkuil - the plugin fires when the iframe loads, my guess is the form is submitting using ajax and never reloads - If that is the case I would not expect it to work in other browsers either, have you tried specifying debug:true and checking the output to the firefox console?</div>
+</div>
+<div class='comment'>
+<div class='author'>Jens</div>
+<div class='content'>
+Hi,<br /><br />nice plugin! I had a small problem with a frameset loaded in the iframe (yes, I know&#8230;) because a frameset has no body tag. I fixed it by replacing &quot;var newHeight = $body[0]&#8230;]&quot; (line 75) with the following code:<br />var newHeight=0;<br />if ($body.length&gt;0) {<br />    newHeight = $body[0].scrollHeight + options.heightOffset;<br />}  <br /><br />This way the minHeight is used when no body tag is found. <br /><br />Maybe this is useful for others too.</div>
+</div>
+<div class='comment'>
+<div class='author'>Erik Verkuil</div>
+<div class='content'>
+Hello,<br /><br />I&#39;m using your script to load a registering script(php) inside Drupal7. The script returns a confirmation page inside the iframe on success.<br /><br />Your plugin-script works very well in allmost every browser I&#39;ve tested. I only have a problem with Firefox(I&#39;ve tested with several versions) when the confirmation page is loaded. The first page with the registering form is nicely adjusted to the right height. The confirmation page however inherits the length of the first page. So it looks like a blank page and you have to scroll up to see it has data in it. All the other browsers I&#39;ve tested handle this right and adjust the page-length of the second page.<br /><br />I hope it is possible to solve this problem.<br /><br />Thanks, Erik</div>
+</div>
+<div class='comment'>
+<div class='author'>Ondrej Medek</div>
+<div class='content'>
+Hi,<br /><br />is it possible to add &quot;auto-width&quot; funtion? E.g. if the iframe has an content, which has style=&quot;width:500px&quot;. If the widht cannot be determined, then just use some default (100%).</div>
+</div>
+<div class='comment'>
+<div class='author'>aksel</div>
+<div class='content'>
+Sorry for double post. My comment was: Is there a solution for cross domain issue? Is there some js I can add that would allow this to work cross domain?<br /><br />Thx</div>
+</div>
+<div class='comment'>
+<div class='author'>Lars P</div>
+<div class='content'>
+Hi,<br /><br />I am experiencing a problem I can&#39;t understand and I hope you are able to help me. The thing is I am accessing a site (my site) from 2 different methods both using MSIE 9. One from my private pc where the Iframe behaves beautifully expanding and auto adjusting. But when I access the same page via my citrix connection running MSIE9 too the page is cut off and I can&#39;t scroll to the bottom of the page. If instead I use Firefox on the Citrix it once again show as beautiful as I had planned.<br /><br />Can you give me a hint on what to do? <br /><br />You can check the page at:<br /><br />http://www.stat.gl/BEE201003/o1<br /><br />best regards<br /><br />Lars</div>
+</div>
+<div class='comment'>
+<div class='author'>YoOne</div>
+<div class='content'>
+Hi,<br />Unfortunately, I can&#39;t show you the problem because the pages are on my intranet.<br /><br />The major problem is that on the child iframe, I put a text editor (the great aloha editor) : so, users can comment parts of the page. When the comment grow (carriage return for example), the main page scroll to top.<br /><br />Just to apologize, sorry for my poor english, it&#39;s difficult to me to explain in not my natural language :)<br />Thanks, yo</div>
+</div>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+@YoOne, I&#39;m  not 100% sure I know what you mean, if the &#39;host&#39; page is scrolling back to the top after the iframe is resized, it is most likely because the total content has shrunk to only be as big as the browser window?<br /><br />do you have an example I can look at<br /><br />if the above is the issue, maybe adding &#39;spacer&#39; divs below the iframe would stop this from happening?</div>
+</div>
+<div class='comment'>
+<div class='author'>YoOne</div>
+<div class='content'>
+Hi,<br />Thanks for this great plugin !<br />I&#39;ve got just one problem (Chrome12, FF4) : when the iframe is resized on a big page, the page scroll up to the top. I just want to the iframe be resized but no scroll appears.<br />Is this possible ?<br />Thanks, Yo</div>
+</div>
+<div class='comment'>
+<div class='author'>EPCO</div>
+<div class='content'>
+This is what I have been looking for, but I seem to have trouble with FF3.6. The contents of my iFrame is a .net application, so it is not doing a total refresh, but a postback. The same page works fine in IE7 and the iframe appears to resize properly. (your example code works fine in FF)<br /><br />Thanks,<br />David</div>
+</div>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+@carbeck - you might want to build up an array of file extensions that you do not want resizing for, then check the iframe.src $(iframe).attr(&#39;src&#39;) attribute and loop through the array using lastIndexOf<br /><br />there is probably a better way <br />- Jesse</div>
+</div>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+@Venkatesh - you must include the jquery.js, see the markup in the head tag, you need both of those script tags<br />https://github.com/house9/jquery-iframe-auto-height/blob/master/index.html</div>
+</div>
+<div class='comment'>
+<div class='author'>Venkatesh</div>
+<div class='content'>
+when i include the iframe.js,in this $ is not defained</div>
+</div>
+<div class='comment'>
+<div class='author'>carbeck</div>
+<div class='content'>
+Hi Nathan,<br /><br />is there any way to build in a check for the type of media that’s included in the iframe? Adjusting the height of text files and images automatically works fine as far as I’ve tried this out on my own page, but the problem with audio files is that the iframe will use the heigth of the previously viewed file, so you may easily get a 1000 px high audio player window in the iframe… So ideally, I’d like to exclude any file type other than text and image files from automatic resizing, and instead leave the value at a default of, say, 200 px. If this sounds too abstract, here’s what I wanted to use the script for: http://goo.gl/F7Zsf (Caution: contains serious geekery).<br /><br />The thing is, in that iframe sometimes .mp3 and .pdf files have to be included, however those of course don’t have a height. I tried my luck with if-statements in the  <i>function resizeHeight(iframe)</i> clause, checking the file name with <i>iframe.contentDocument.baseURI.lastIndexOf()</i>, however that only seems to allow for the case &quot;is&quot; and &quot;is not&quot; (e.g. <i>if(&#8230;lastIndexOf(&quot;mp3&quot;) == &#39;-1&#39;) { *do stuff to resize* } else { *set a fixed value* }</i>), so I cannot check multiple values with that. My Javascript-foo is weak and <i>else if</i> doesn&#39;t work like I&#39;d expect (from PHP), so I don&#39;t know how to proceed. It’s driving me nuts :O<br /><br />Best Wishes!</div>
+</div>
+<div class='comment'>
+<div class='author'>dr.alva.baker</div>
+<div class='content'>
+OK, thanks.</div>
+</div>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+I don&#39;t know how you would accomplish the same thing for PDF files? it is using javascript and the html DOM to resize things, as far as I know PDF does not expose anything like html DOM, in fact many browsers do not inline PDF.</div>
+</div>
+<div class='comment'>
+<div class='author'>dr.alva.baker</div>
+<div class='content'>
+Thank you for this code.  It works very well for me.<br /><br />Do you have a version that will do the same thing using pdf files instead of html files?<br /><br />Thank you again for sharing this code, and thank you for any help you can offer.</div>
+</div>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+@lamy, yeah the plugin only does resizing when the iframe loads, any clientside changes don&#39;t refire the resize.<br /><br />I just messed around, here is some code that might do what you want, will try to incorporate something similar in the future<br /><br />https://gist.github.com/853055<br /><br />this replaces the plugin code, there is 1 additional public method at the bottom and then an example of how you might call it</div>
+</div>
+<div class='comment'>
+<div class='author'>lamy</div>
+<div class='content'>
+the code works great but it doesnt auto-resize if the contents of the page inside the iframe is created dynamically, i have a page for newsfeeds that dynamically ads new divs every 5 seconds, is there a way to call the resize function whenever needed?</div>
+</div>
+<div class='comment'>
+<div class='author'>jérémie</div>
+<div class='content'>
+Hi,<br /><br />For information, demos don&#39;t work with chrome 9 :&#39;(</div>
+</div>
+<div class='comment'>
+<div class='author'>Adele Robinson</div>
+<div class='content'>
+I&#39;m having some issues with this in Safari. It seems to resize the iframe prematurely. Anyone else experiencing this?</div>
+</div>
+<div class='comment'>
+<div class='author'>russds</div>
+<div class='content'>
+I&#39;m having similar issues, in Chrome the page will not get short again, it will expand the height initially to long pages, but then when I go to short pages, the page doesn&#39;t shorten.  https://www.mattel.medsch.ucla.edu/ptrg.asp click on the links on the left &quot;History&quot;, &quot;Missions&quot;, etc.</div>
+</div>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+can you post some code that I can look at? I just did a test with chrome with a very tall iframe and did not have any issues?<br /><br />I am going to do further tests on IE8, with simple example it seems to work just fine</div>
+</div>
+<div class='comment'>
+<div class='author'>新竹大提琴教學 吳琳琳老師</div>
+<div class='content'>
+I use this plug-in with my code.<br />(1) I found that it is ok in google chrome. In google chrome will have some problem if afer load 1500px height IFRAME then we can not get short IFRAME.<br />(2)  in IE8 and opera would give the wroung IFRAME size.<br />Please, help me.</div>
+</div>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+@Rafael, I wonder if the issue you are encountering is related to this?<br /><br />https://github.com/house9/jquery-iframe-auto-height/issues#issue/1<br /><br />The fact that the html is generated by asp pages should not matter</div>
+</div>
+<div class='comment'>
+<div class='author'>Rafael Ordaz</div>
+<div class='content'>
+Hi,<br /><br />Thanks for making this available, I have tested this with regular content (h1, p)on html pages, It was successful.<br /><br />But found some problems where &quot;style=&quot;height:XXpx&quot; is not set properly. One instance the height was set to 143 px instead of the real content height (&gt;1500px).<br /><br />Pages in question are .asp with &quot;includes&quot; calling multiple files (Header, footer, top menu)<br /><br />I though the problem was that the iframe&#39;s source was calling an https  but I switch to a non https file and I still the problem</div>
+</div>
+</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jesse House</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-22T00:00:00-07:00" pubdate data-updated="true">Oct 22<span>nd</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/iframe/'>iframe</a>, <a class='category' href='/blog/categories/jquery/'>jquery</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://house9.github.io/blog/2010/10/22/jquery-iframe-auto-height-plugin/" data-via="" data-counturl="http://house9.github.io/blog/2010/10/22/jquery-iframe-auto-height-plugin/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/10/13/geek-desk-in-action/" title="Previous Post: Geek Desk in Action!">&laquo; Geek Desk in Action!</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2010/10/29/best-overload-for-rendersection-does/" title="Next Post: The best overload for 'RenderSection' does not have a parameter named 'optional'">The best overload for 'RenderSection' does not have a parameter named 'optional' &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: Supply_drop)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e Chef Cookbook</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and Puppet Postgres 9.2 on Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/01/vagrantfile-for-setting-up-multiple/">Vagrantfile for Setting Up Multiple Machines With Chef Configuration</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/house9">@house9</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'house9',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jesse House -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

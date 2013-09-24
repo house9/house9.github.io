@@ -1,0 +1,553 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>house9</title>
+  <meta name="author" content="Jesse House">
+
+  
+  <meta name="description" content="Finally! Visual Studio has a feature similar to Textmates &#8220;Go to File&#8221; (Command key + T), I love this feature. It means that you rarely &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://house9.github.io/blog/page/7">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="house9" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">house9</a></h1>
+  
+    <h2>random code and what not</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:house9.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/09/29/textmate-go-to-file-now-available-in/">Textmate Go to File Now Available in Visual Studio 2010</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-29T00:00:00-07:00" pubdate data-updated="true">Sep 29<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Finally! Visual Studio has a feature similar to Textmates &#8220;Go to File&#8221; (Command key + T), I love this feature. It means that you rarely need to look around in the project tree for a file, just type part of the file name and bam!<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/_vmq8pP42BnQ/TKQJQ2OwRZI/AAAAAAAACxQ/4ftjftseo6c/s1600/textmate-go-to-file.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://3.bp.blogspot.com/_vmq8pP42BnQ/TKQJQ2OwRZI/AAAAAAAACxQ/4ftjftseo6c/s1600/textmate-go-to-file.png" /></a></div><br /><br />In visual studio it is called &#8220;Navigate to&#8221; (Ctrl + ,) it takes it one step further and even brings up methods matching the name, not sure if that is a good thing or not, so far so good.<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/_vmq8pP42BnQ/TKPhnou-e4I/AAAAAAAACxM/XGC99X3JqFg/s1600/visual-studio-navigate-to.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://1.bp.blogspot.com/_vmq8pP42BnQ/TKPhnou-e4I/AAAAAAAACxM/XGC99X3JqFg/s1600/visual-studio-navigate-to.png" /></a></div><br /><br />Found out about it <a href="http://weblogs.asp.net/scottgu/archive/2009/10/21/searching-and-navigating-code-in-vs-2010-vs-2010-and-net-4-0-series.aspx">here</a>. Guess it has been around for awhile</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/09/29/code-smell-try-catch-that-swallows/">A Code Smell - Try Catch That Swallows an Exception</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-29T00:00:00-07:00" pubdate data-updated="true">Sep 29<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Came across a code smell this week - try catch that swallows an exception<br /><br />and yes the code that it wraps has some issues&#8230;.<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/_vmq8pP42BnQ/TKPUGdEJ7jI/AAAAAAAACxI/z5BV6Gqcujs/s1600/something-not-right-try-catch.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://4.bp.blogspot.com/_vmq8pP42BnQ/TKPUGdEJ7jI/AAAAAAAACxI/z5BV6Gqcujs/s1600/something-not-right-try-catch.png" /></a></div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/09/09/nfl-live-stream-thursday-and-sunday/">NFL Live Stream Thursday and Sunday Night on NBC</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-09T00:00:00-07:00" pubdate data-updated="true">Sep 9<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Awesome!<br /><br />does not seem like NBC or NFL is doing a lot to advertise the official free stream, but here we go!<br /><br /><a href="http://nbcsports.msnbc.com/id/26393211">http://nbcsports.msnbc.com/id/26393211</a><br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/_vmq8pP42BnQ/TIl_4gqM_JI/AAAAAAAACxA/T-BN242kf1I/s1600/nfl.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="331" src="http://2.bp.blogspot.com/_vmq8pP42BnQ/TIl_4gqM_JI/AAAAAAAACxA/T-BN242kf1I/s640/nfl.png" width="640" /></a></div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/09/04/2010-us-open-live-high-quality-stream/">2010 US Open Live High Quality Stream</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-04T00:00:00-07:00" pubdate data-updated="true">Sep 4<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+US Open has their high quality stream going again this year!<br /><br /><a href="http://www.usopen.org/en_US/interactive/video/live.html?promo=slamtracker">http://www.usopen.org/en_US/interactive/video/live.html?promo=slamtracker</a><br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/_vmq8pP42BnQ/TIKlAr19LXI/AAAAAAAACws/4sfOFZPi09A/s1600/us-open.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="486" src="http://4.bp.blogspot.com/_vmq8pP42BnQ/TIKlAr19LXI/AAAAAAAACws/4sfOFZPi09A/s640/us-open.png" width="640" /></a></div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/09/03/you-have-got-to-be-kidding/">You Have Got to Be Kidding</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-03T00:00:00-07:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<span class="Apple-style-span" style="font-family: Arial; font-size: small;"><span class="Apple-style-span" style="font-size: 13px;">Just did a search and ended up on msdn </span></span><br /><span class="Apple-style-span" style="font-family: Arial; font-size: small;"><span class="Apple-style-span" style="font-size: 13px;"><br /></span></span><br /><span class="Apple-style-span" style="font-family: Arial; font-size: small;"><span class="Apple-style-span" style="font-size: 13px;">I use Google Chrome for most of my web browsing - the msdn site pops up this &#8216;Ad&#8217; to &#8216;upgrade&#8217; to IE 8 - LOL!!!</span></span><br /><span class="Apple-style-span" style="font-family: Arial; font-size: small;"><span class="Apple-style-span" style="font-size: 13px;"><br /></span></span><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/_vmq8pP42BnQ/TIE3UjILqqI/AAAAAAAACwk/NPgiphXb9bQ/s1600/upgrade-ie-lol.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="188" src="http://1.bp.blogspot.com/_vmq8pP42BnQ/TIE3UjILqqI/AAAAAAAACwk/NPgiphXb9bQ/s640/upgrade-ie-lol.png" width="640" /></a></div><span class="Apple-style-span" style="font-family: Arial; font-size: small;"><span class="Apple-style-span" style="font-size: 13px;"><br /></span></span></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/20/ruby-192-and-rails-3rc-with-rvm/">Ruby 1.9.2 and Rails 3rc With Rvm</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-20T00:00:00-07:00" pubdate data-updated="true">Aug 20<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Get up and running with rails 3 release candidate on ruby 1.9.2<br /><br />First step install <a href="http://rvm.beginrescueend.com/">rvm (ruby version manager)</a>&nbsp;- note that rvm does not work on windows, for windows try&nbsp;<a href="http://github.com/vertiginous/pik/">pik</a><br /><br />You will need to wait between each step as installation times will vary<br /><br /><span class="Apple-style-span" style="color: #274e13;"># install 1.9.2 using rvm</span><br /><span class="Apple-style-span" style="background-color: #444444;"><span class="Apple-style-span" style="color: #f3f3f3;">&nbsp;rvm install 1.9.2 &nbsp;</span></span><br /><span class="Apple-style-span" style="color: #274e13;"># this installed the official release 1.9.2-p0</span><br /><br /><span class="Apple-style-span" style="color: #274e13;"># switch to 1.9.2</span><br /><span class="Apple-style-span" style="background-color: #444444;"><span class="Apple-style-span" style="color: #f3f3f3;">&nbsp;rvm 1.9.2&nbsp;</span></span><br /><span class="Apple-style-span" style="color: #274e13;"># gem install rails rc</span><br /><span class="Apple-style-span" style="background-color: #444444;"><span class="Apple-style-span" style="color: #f3f3f3;">&nbsp;gem install rails &#8211;pre&nbsp;</span></span><br /><div><span class="Apple-style-span" style="color: #274e13;"><br /></span></div><div><span class="Apple-style-span" style="color: #274e13;"># create a new rails app, in this case &#8216;sample-r3&#8217;, this differs from older versions of rails; new is a required arg&nbsp;</span></div><span class="Apple-style-span" style="background-color: #444444;"><span class="Apple-style-span" style="color: #f3f3f3;">&nbsp;rails new sample-r3&nbsp;</span></span><br /><span class="Apple-style-span" style="color: #274e13;"># navigate to the root of your new rails app</span><br /><span class="Apple-style-span" style="background-color: #444444;"><span class="Apple-style-span" style="color: #f3f3f3;">&nbsp;cd sample-r3&nbsp;</span></span><br /><span class="Apple-style-span" style="color: #274e13;"># install the app dependencies - in this case sqlite3, see Gemfile in the root dir</span><br /><span class="Apple-style-span" style="background-color: #444444;"><span class="Apple-style-span" style="color: #f3f3f3;">&nbsp;bundle install&nbsp;</span></span><br /><div><br /></div><div><span class="Apple-style-span" style="color: #274e13;"># generate a user scaffold, note g is shortcut for generate</span></div><div><div><span class="Apple-style-span" style="background-color: #444444;"><span class="Apple-style-span" style="color: #f3f3f3;">&nbsp;rails g scaffold User name:string email:string&nbsp;</span></span></div><div><span class="Apple-style-span" style="color: #274e13;"># create the database table users</span></div><div><span class="Apple-style-span" style="background-color: #444444;"><span class="Apple-style-span" style="color: #f3f3f3;">&nbsp;rake db:migrate&nbsp;</span></span></div><div><span class="Apple-style-span" style="color: #274e13;"># start up the rails server, note s is shortcut for server</span></div><div><span class="Apple-style-span" style="background-color: #444444;"><span class="Apple-style-span" style="color: #f3f3f3;">&nbsp;rails s&nbsp;</span></span></div></div><div><br /></div><div>Browse to http://localhost:3000/users and we are up and running and yes the scaffold pages still have the same old look and feel</div><br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/_vmq8pP42BnQ/TG69P81pQGI/AAAAAAAACwE/bg2WC5ruy9w/s1600/rails3-scaffold-01.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="316" src="http://1.bp.blogspot.com/_vmq8pP42BnQ/TG69P81pQGI/AAAAAAAACwE/bg2WC5ruy9w/s640/rails3-scaffold-01.png" width="640" /></a></div><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/_vmq8pP42BnQ/TG69RpI5fFI/AAAAAAAACwM/oxfKgmXN0Cs/s1600/rails3-scaffold-02.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="360" src="http://4.bp.blogspot.com/_vmq8pP42BnQ/TG69RpI5fFI/AAAAAAAACwM/oxfKgmXN0Cs/s640/rails3-scaffold-02.png" width="640" /></a></div><br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/_vmq8pP42BnQ/TG69S8z2W5I/AAAAAAAACwU/_hfjTK-1hHo/s1600/rails3-scaffold-03.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="360" src="http://2.bp.blogspot.com/_vmq8pP42BnQ/TG69S8z2W5I/AAAAAAAACwU/_hfjTK-1hHo/s640/rails3-scaffold-03.png" width="640" /></a></div><br />In the past I have tried installing and running rails3 beta and rc on different versions of ruby and ran into some serious difficulties; but it has been painless on the official release of ruby 1.9.2<br /><br />As a final step we want to add a .rvmrc file to the root of the rails project, this will force rvm to load the correct ruby version when we are in this directory. This can be quite handy, if we were on a different version of ruby running &#8216;rails s&#8217; would create a new rails app directory named &#8216;s&#8217; instead of running the server; from the terminal run<br /><br /><span class="Apple-style-span" style="color: #f3f3f3;"><span class="Apple-style-span" style="background-color: #444444;">&nbsp;echo &#8220;rvm 1.9.2&#8221; &gt; .rvmrc&nbsp;</span></span><br /><br />I learned about the .rvmrc file from <a href="http://cre8ivethought.com/blog/2010/08/18/the-rvmrc-file/">this post</a></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/19/updated-look/">Updated Look!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-19T00:00:00-07:00" pubdate data-updated="true">Aug 19<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Just switched to a different Blogger Template - much wider and mo better!<br /><br />Also consolidated my posting, I had 20+ code samples on another blog. Used the Blogger <a href="http://www.google.com/support/blogger/bin/answer.py?hl=en&amp;answer=97416">import / export tool</a>&nbsp;which was pretty seamless; needed to move a few code blocks over to <a href="http://gist.github.com/">gists</a> to get proper formatting but that was it!</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/18/valid-vs-errorsany-in-rails/">Valid? Vs errors.any? In Rails</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-18T00:00:00-07:00" pubdate data-updated="true">Aug 18<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Recently got bit by checking valid? in some rails code, thought I would share.<div><br /></div><div>In this situation I was manually adding to the errors collection of an ActiveRecord object and then calling valid? to see if the object was ok; this is not the normal style of validation on ActiveRecord objects, if I had been playing by the rules valid? would have done what I needed; it would check the current state of my objects attributes and &#8216;re-validate&#8217; the object.</div><div><br /></div><div>This screen shot of an irb console session shows the issue I was running into</div><br /><br /><a href="http://www.flickr.com/photos/house9/4904826045/" title="valid-v-errors-any by House9, on Flickr"><img src="http://farm5.static.flickr.com/4099/4904826045_aa14a62090_b.jpg" width="883" height="573" alt="valid-v-errors-any" /></a><br /><br /><div>Taking a look at the source code for valid? it becomes obvious why the manually added errors get cleared, just not what I expected to happen</div><br /><br /><a href="http://www.flickr.com/photos/house9/4905416116/" title="valid-source by House9, on Flickr"><img src="http://farm5.static.flickr.com/4096/4905416116_9983051ffb_b.jpg" width="855" height="373" alt="valid-source" /></a></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Vladimir A. Rybas</div>
+<div class='content'>
+wow. thanks!</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/07/28/adjustable-height-desks/">Adjustable Height Desks</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-28T00:00:00-07:00" pubdate data-updated="true">Jul 28<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Both of these look like pretty sweet adjustable height desks; <div><br /></div><div>- <a href="http://www.geekdesk.com/">Geek Desk</a> electronic and runs $750 to $800</div><div><br /></div><div>or </div><div><br /></div><div>- <a href="http://www.steelcase.com/en/products/category/tables/adjustable/airtouch/pages/gallery.aspx">Airtouch</a> uses air and no electronics - twice the price at $1500</div><div><br /></div><div>hopefully I&#8217;ll be able to try one of these out soon</div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/06/18/offsides-i-think-not/">Offsides? I Think Not&#8230;</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-18T00:00:00-07:00" pubdate data-updated="true">Jun 18<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<object width="480" height="289"><param name="movie" value="http://www.youtube.com/v/YGc6Kld7nzc&hl=en_US&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/YGc6Kld7nzc&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true"  width="480" height="289"></embed></object></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/8/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/6/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: Supply_drop)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e Chef Cookbook</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and Puppet Postgres 9.2 on Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/01/vagrantfile-for-setting-up-multiple/">Vagrantfile for Setting Up Multiple Machines With Chef Configuration</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/house9">@house9</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'house9',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jesse House -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

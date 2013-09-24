@@ -4,7 +4,7 @@
   <title><![CDATA[house9]]></title>
   <link href="http://house9.github.io/atom.xml" rel="self"/>
   <link href="http://house9.github.io/"/>
-  <updated>2013-09-24T14:08:09-07:00</updated>
+  <updated>2013-09-24T15:53:19-07:00</updated>
   <id>http://house9.github.io/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
@@ -19,6 +19,273 @@
     <updated>2013-09-24T14:06:00-07:00</updated>
     <id>http://house9.github.io/blog/2013/09/24/octopress-test</id>
     <content type="html"><![CDATA[<p>My first post using Octopress!</p>
+
+<p>Followed the fine documenation here: <a href="http://octopress.org/docs/">http://octopress.org/docs/</a> to get up and running.</p>
+
+<p>And used this script <a href="https://gist.github.com/juniorz/1564581">https://gist.github.com/juniorz/1564581</a> to import all of my old posts from blogger. It failed to import a few posts but overall worked great!</p>
+
+<p>I do have various formatting issues on older posts, will need to revisit those in the future&hellip;</p>
+
+<p>Authoring with markdown is so much better and no need for embedded gist: ya!</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="s2">&quot;Hello Octopress&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hello Octopress&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Puppet Solo (AKA: supply_drop)]]></title>
+    <link href="http://house9.github.io/blog/2013/07/06/puppet-solo-aka-supplydrop/"/>
+    <updated>2013-07-06T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2013/07/06/puppet-solo-aka-supplydrop</id>
+    <content type="html"><![CDATA[<div class='post'>
+Similar to <a href="http://matschaffer.github.io/knife-solo/">knife-solo</a> for use with <a href="http://www.opscode.com/chef/">chef</a>, <a href="https://github.com/pitluga/supply_drop">supply_drop</a> allows you to provision servers using <a href="https://puppetlabs.com/">puppet</a> without the need for a puppet master server. It uses <a href="https://github.com/capistrano/capistrano">capistrano</a> for executing commands on the remote server. I put together a working sample set of puppet and supply_drop deployment scripts for&nbsp;provisioning&nbsp;a postgres server.<br /><br /><blockquote class="tr_bq">See the github repo at &nbsp;<a href="https://github.com/house9/puppet-solo-hello-world">https://github.com/house9/puppet-solo-hello-world</a></blockquote><br /><b>Resources</b><br /><br /><ul><li><a href="http://www.confreaks.com/videos/2479-railsconf2013-devops-for-the-rubyist-soul">http://www.confreaks.com/videos/2479-railsconf2013-devops-for-the-rubyist-soul</a></li><li><a href="https://speakerdeck.com/jtdowney/devops-for-the-rubyist-soul-at-rubynation-2013">https://speakerdeck.com/jtdowney/devops-for-the-rubyist-soul-at-rubynation-2013</a></li></ul><br /><br /><br /></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[WAL-e chef cookbook]]></title>
+    <link href="http://house9.github.io/blog/2013/06/24/wal-e-chef-cookbook/"/>
+    <updated>2013-06-24T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2013/06/24/wal-e-chef-cookbook</id>
+    <content type="html"><![CDATA[<p>Postgres has various backup and restore options</p>
+
+<ul>
+<li><a href="http://www.postgresql.org/docs/9.2/static/backup.html">http://www.postgresql.org/docs/9.2/static/backup.html</a></li>
+</ul>
+
+
+<p>Do you have a recovery plan in case your Postgres server crashes &ndash; your daily pg_dump is probably not going to cut it.</p>
+
+<p>Postgres uses Write-Ahead Logging (WAL)</p>
+
+<blockquote><p>Write-Ahead Logging (WAL) is a standard method for ensuring data integrity. A detailed description can be found in most (if not all) books about transaction processing. Briefly, WAL&rsquo;s central concept is that changes to data files (where tables and indexes reside) must be written only after those changes have been logged, that is, after log records describing the changes have been flushed to permanent storage. If we follow this procedure, we do not need to flush data pages to disk on every transaction commit, because we know that in the event of a crash we will be able to recover the database using the log: any changes that have not been applied to the data pages can be redone from the log records. (This is roll-forward recovery, also known as REDO.)</p></blockquote>
+
+<ul>
+<li>from <a href="http://www.postgresql.org/docs/9.2/static/wal-intro.html">http://www.postgresql.org/docs/9.2/static/wal-intro.html</a></li>
+</ul>
+
+
+<p>Setting up Continuous Archiving and Point-in-Time Recovery (PITR) for your Postgres WAL files is very complex, lucky for us the WAL-e project has simplified this process greatly. WAL-e has utilities for sending all WAL files to an AWS S3 bucket as the log files are being generated. More Information, see:</p>
+
+<ul>
+<li><a href="http://www.postgresql.org/docs/9.2/static/continuous-archiving.html">http://www.postgresql.org/docs/9.2/static/continuous-archiving.html</a></li>
+<li><a href="https://github.com/wal-e/wal-e">https://github.com/wal-e/wal-e</a></li>
+</ul>
+
+
+<p>Recently I put together a chef cookbook which installs WAL-e on a Postgres instance, see:</p>
+
+<ul>
+<li><a href="https://github.com/house9/wal-e-cookbook">https://github.com/house9/wal-e-cookbook</a></li>
+<li><a href="https://github.com/house9/use_wal_e">https://github.com/house9/use_wal_e</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Vagrant and puppet postgres 9.2 on ubuntu]]></title>
+    <link href="http://house9.github.io/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/"/>
+    <updated>2013-06-11T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu</id>
+    <content type="html"><![CDATA[<div class='post'>
+Some vagrant configuration to install postgres 9.2 using puppet<br /><br /><script src="https://gist.github.com/house9/5762219.js"></script><noscript>see https://gist.github.com/house9/5762219.js</noscript><br /><script src="https://gist.github.com/house9/5762236.js"></script><noscript>see https://gist.github.com/house9/5762236.js</noscript><br /><b>Resources</b><br /><br /><ul><li><a href="https://forge.puppetlabs.com/puppetlabs/postgresql">https://forge.puppetlabs.com/puppetlabs/postgresql</a></li><li><a href="https://github.com/puppetlabs/puppetlabs-postgresql">https://github.com/puppetlabs/puppetlabs-postgresql</a></li></ul></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Vagrantfile for setting up multiple machines with chef configuration]]></title>
+    <link href="http://house9.github.io/blog/2013/06/01/vagrantfile-for-setting-up-multiple/"/>
+    <updated>2013-06-01T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2013/06/01/vagrantfile-for-setting-up-multiple</id>
+    <content type="html"><![CDATA[<div class='post'>
+Example Vagrantfile below for setting up multiple virtual machines and using chef to provision them<br /><br /><br /><script src="https://gist.github.com/house9/5690784.js"></script><noscript>Your reader does not support javascript - please view configuration here - https://gist.github.com/house9/5690784#file-vagrantfile-multibox-chef-rb  </noscript><br />Resources<br /><br /><ul><li><a href="http://docs.vagrantup.com/v2/multi-machine/index.html">http://docs.vagrantup.com/v2/multi-machine/index.html</a>&nbsp;</li><li><a href="http://jbbarth.com/posts/2011-03-20-vagrant-provisioning-with-chefsolo.html">http://jbbarth.com/posts/2011-03-20-vagrant-provisioning-with-chefsolo.html</a>&nbsp;</li></ul></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[HipChat is now free!]]></title>
+    <link href="http://house9.github.io/blog/2013/03/21/hipchat-is-now-free/"/>
+    <updated>2013-03-21T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2013/03/21/hipchat-is-now-free</id>
+    <content type="html"><![CDATA[<div class='post'>
+Just got an email from <a href="https://www.hipchat.com/">HipChat</a> - now free for small groups - awesome!<br /><br /><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-5_HhmM8Ilx8/UUs5raR5bHI/AAAAAAAAC7A/IJ_-ooOZJhY/s1600/hipchat.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://3.bp.blogspot.com/-5_HhmM8Ilx8/UUs5raR5bHI/AAAAAAAAC7A/IJ_-ooOZJhY/s1600/hipchat.png" /></a></div><br /></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby on Rails continuous integration (CI) with Jenkins the easy way with Chef and Knife]]></title>
+    <link href="http://house9.github.io/blog/2013/02/23/ruby-on-rails-continuous-integration-ci/"/>
+    <updated>2013-02-23T00:00:00-08:00</updated>
+    <id>http://house9.github.io/blog/2013/02/23/ruby-on-rails-continuous-integration-ci</id>
+    <content type="html"><![CDATA[<div class='post'>
+Do you need a CI build setup for your Ruby on Rails app?<br /><br />Here are some <a href="http://www.opscode.com/chef/">chef</a> / <a href="http://matschaffer.github.com/knife-solo/">knife solo</a> scripts that will deploy a <a href="http://jenkins-ci.org/">Jenkins</a> server to run your <a href="http://www.martinfowler.com/articles/continuousIntegration.html">CI build</a> - you could be up and running in less than 1/2 an hour<br /><br /><a href="https://github.com/house9/ci_chef_jenkins_rails"><b>https://github.com/house9/ci_chef_jenkins_rails</b></a><br /><br />Check out the README for details<br /><br /><br /></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>patcon</div>
+<div class='content'>
+You might want to look into Pivotal Labs&#39; ciborg project &#8211; sounds like it&#39;s just what you&#39;re looking for :)<br /><br />https://github.com/pivotal/ciborg</div>
+</div>
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[> random tricks you can do with Rails]]></title>
+    <link href="http://house9.github.io/blog/2013/02/23/random-tricks-you-can-do-with-rails/"/>
+    <updated>2013-02-23T00:00:00-08:00</updated>
+    <id>http://house9.github.io/blog/2013/02/23/random-tricks-you-can-do-with-rails</id>
+    <content type="html"><![CDATA[<div class='post'>
+There are bunch of really good nuggets in this presentation:<br /><br /><ul><li><a href="http://www.confreaks.com/videos/889-railsconf2012-ten-things-you-didn-t-know-rails-could-do">http://www.confreaks.com/videos/889-railsconf2012-ten-things-you-didn-t-know-rails-could-do</a>&nbsp;</li><li><a href="https://speakerdeck.com/jeg2/10-things-you-didnt-know-rails-could-do">https://speakerdeck.com/jeg2/10-things-you-didnt-know-rails-could-do</a></li></ul><div><br /></div></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[rails :remote => true jQuery events]]></title>
+    <link href="http://house9.github.io/blog/2012/12/19/rails-remote-true-jquery-events/"/>
+    <updated>2012-12-19T00:00:00-08:00</updated>
+    <id>http://house9.github.io/blog/2012/12/19/rails-remote-true-jquery-events</id>
+    <content type="html"><![CDATA[<div class='post'>
+I constantly find myself looking these up, saving this link for future reference<br /><br /><a href="https://github.com/rails/jquery-ujs/wiki/ajax">https://github.com/rails/jquery-ujs/wiki/ajax</a><br /><br />contains all of the rails custom jQuery events for remote forms, such as &#8220;ajax:success&#8221;, &#8220;ajax:before&#8221;; also includes the method signatures.<br /><br /><br /></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Nick</div>
+<div class='content'>
+It&#39;s like you opened my brain and looked right into my mind to see what I was thinking. <b><i>Woah</i></b>.</div>
+</div>
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sending email with Rails Mailers, The Random bits...]]></title>
+    <link href="http://house9.github.io/blog/2012/12/16/sending-email-with-rails-mailers-random/"/>
+    <updated>2012-12-16T00:00:00-08:00</updated>
+    <id>http://house9.github.io/blog/2012/12/16/sending-email-with-rails-mailers-random</id>
+    <content type="html"><![CDATA[<div class='post'>
+<i>See the rails guides and railscasts for getting started with Rails Mailers;&nbsp;</i><br /><i>this article includes some additional information on Rails Mailers not included in those articles.</i><br /><br /><b>RailsCasts: </b><a href="http://railscasts.com/episodes/206-action-mailer-in-rails-3">http://railscasts.com/episodes/206-action-mailer-in-rails-3</a><br /><b>Rails Guides: </b>&#8220;<a href="http://guides.rubyonrails.org/action_mailer_basics.html">Action Mailer Basics</a>&#8221; on the rails guides -&nbsp;The guide covers all of the common mailer tasks<br /><ul><li>setup and configuration</li><li>attachments</li><li>layouts</li></ul><br /><span style="font-size: x-large;">Random Bits</span><br /><blockquote class="tr_bq"><i>These examples were created using rails 3.2</i></blockquote><div><div><span style="font-size: large;">Add importance headers</span></div><div><br /></div><div><script src="https://gist.github.com/4308619.js"></script></div><blockquote class="tr_bq"><i>NOTE: many email clients will ignore these headers</i></blockquote></div><div><br /></div><div><div><span style="font-size: large;">Add receipt header</span></div><div><br /></div><div><script src="https://gist.github.com/4308683.js"></script></div><blockquote class="tr_bq"><i>NOTE: many email clients will ignore these headers</i></blockquote></div><div><div><span style="font-size: large;"><br /></span><span style="font-size: large;">Testing mailer headers with rspec</span></div><div><br /></div><div>If you have <a href="https://github.com/rspec/rspec-rails">rspec-rails gem</a> installed with your rails application then&nbsp;running the generator will stub out most of your mailer tests, including a fixture file for the mailer view, which you may or may not want to remove.</div><div><br /></div><div><script src="https://gist.github.com/4308712.js"></script></div><blockquote class="tr_bq"><i>NOTE: test against mail.header, not mail.headers</i></blockquote></div><div><div><span style="font-size: large;"><br /></span><span style="font-size: large;">Use a different layout for some Mailer actions</span></div><div><br /></div><div>our default layout is the customer facing one&nbsp;but we want to override it in some cases</div><div><br /></div><div><script src="https://gist.github.com/4309219.js"></script></div></div><div><br /></div><div><br /></div><br /></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Setting up a C.I. build (Continuous Integration) for a Ruby on Rails application]]></title>
+    <link href="http://house9.github.io/blog/2012/11/03/setting-up-ci-build-continuous/"/>
+    <updated>2012-11-03T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2012/11/03/setting-up-ci-build-continuous</id>
+    <content type="html"><![CDATA[<div class='post'>
+<br />It has never been easier than with Semaphore - Hosted Continuous Integration<br /><br /><ul><li><a href="https://semaphoreapp.com/">https://semaphoreapp.com/</a></li></ul><br />How easy is it<br /><br /><ul><li>add semaphore ssh key to your github repo</li><li>then semaphore automatically determines your ruby version, database, etc&#8230;</li><li>you can tweak the build steps later, the defaults are pretty good</li></ul><br />It will automatically detect new branches!!! That means zero setup when the new branch is added<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-HqVYteyXvQk/UJVdSqJnYOI/AAAAAAAAC6U/AU4oP3tZ2D8/s1600/semaphoreapp-01.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="348" src="http://4.bp.blogspot.com/-HqVYteyXvQk/UJVdSqJnYOI/AAAAAAAAC6U/AU4oP3tZ2D8/s640/semaphoreapp-01.png" width="640" /></a></div><br /><br />It is not <a href="https://semaphoreapp.com/pricing">cheap</a>, for personal side projects it might not make sense?<br />But well worth the money if you are doing paid development<br /></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Git Log Formatting ]]></title>
+    <link href="http://house9.github.io/blog/2012/11/03/git-log-formatting/"/>
+    <updated>2012-11-03T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2012/11/03/git-log-formatting</id>
+    <content type="html"><![CDATA[<div class='post'>
+The git log command is great and has tons of good information, but the output doesn&#8217;t give you that nice &#8216;overview&#8217; of the commit history, too much detail on too many lines<br /><br />I&#8217;ve been using the following in my .gitconfig file<br /><blockquote class="tr_bq"><span style="background-color: #cccccc;">l = log -20 &#8211;format=&#8217;%h %ad %d %an: %s&#8217; &#8211;date=short</span></blockquote>typing &#8217;<i style="background-color: #cccccc;">git l</i>&#8217; renders the following output:<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-0GRyv-72haA/UJVYQ96clhI/AAAAAAAAC58/Lptn1WKW9dA/s1600/git-l-01.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="297" src="http://2.bp.blogspot.com/-0GRyv-72haA/UJVYQ96clhI/AAAAAAAAC58/Lptn1WKW9dA/s640/git-l-01.png" width="640" /></a></div><br /><br />Last night I watched the <a href="https://www.destroyallsoftware.com/">Destroy All Software</a> &#8221;<a href="https://www.destroyallsoftware.com/screencasts/catalog/pretty-git-logs">PRETTY GIT LOGS</a>&#8221; screencast which takes &#8217;<i style="background-color: #cccccc;">git l</i>&#8217; to the next level<br /><br /><ul><li><a href="https://www.destroyallsoftware.com/screencasts/catalog/pretty-git-logs">https://www.destroyallsoftware.com/screencasts/catalog/pretty-git-logs</a></li><li><a href="https://github.com/garybernhardt/dotfiles/blob/master/.gitconfig">https://github.com/garybernhardt/dotfiles/blob/master/.gitconfig</a></li><li><a href="https://github.com/garybernhardt/dotfiles/blob/master/.githelpers">https://github.com/garybernhardt/dotfiles/blob/master/.githelpers</a></li></ul><div><div>now &#8217;<i style="background-color: #cccccc;">git l</i>&#8217; renders</div><div><br /></div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-Rgt39G9fGfg/UJVYWh9U0lI/AAAAAAAAC6E/3nxcaZO7Keo/s1600/git-l-02.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="242" src="http://1.bp.blogspot.com/-Rgt39G9fGfg/UJVYWh9U0lI/AAAAAAAAC6E/3nxcaZO7Keo/s640/git-l-02.png" width="640" /></a></div><div><br /></div><div>&nbsp; &nbsp;</div></div></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Helper script to delete git tags locally and remote]]></title>
+    <link href="http://house9.github.io/blog/2012/10/31/helper-script-to-delete-git-tags/"/>
+    <updated>2012-10-31T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2012/10/31/helper-script-to-delete-git-tags</id>
+    <content type="html"><![CDATA[<div class='post'>
+Might be useful to others, delete a bunch of git tags - remote and locally<br /><br /><br /><script src="https://gist.github.com/3989586.js?file=build-and-execute-multiple-git-commands.sh"></script><noscript>Your reader does not render gists; view code here -  <a href="https://gist.github.com/3989586.js?file=build-and-execute-multiple-git-commands.sh">https://gist.github.com/3989586.js?file=build-and-execute-multiple-git-commands.sh</a></noscript><br /><b>Resources</b><br /><br /><ul><li><a href="http://nathanhoad.net/how-to-delete-a-remote-git-tag">http://nathanhoad.net/how-to-delete-a-remote-git-tag</a>&nbsp;</li><li><a href="http://www.linuxquestions.org/questions/programming-9/bash-read-every-line-in-the-files-and-use-the-line-as-parameters-as-another-program-246291/">http://www.linuxquestions.org/questions/programming-9/bash-read-every-line-in-the-files-and-use-the-line-as-parameters-as-another-program-246291/</a></li><li><a href="http://stackoverflow.com/questions/1605232/use-bash-to-read-a-file-and-then-execute-a-command-from-the-words-extracted">http://stackoverflow.com/questions/1605232/use-bash-to-read-a-file-and-then-execute-a-command-from-the-words-extracted</a></li></ul></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Arnaud Frugier</div>
+<div class='content'>
+git tag -l | grep &quot;^\d&quot; | sed &#39;s/^/git push origin :/&#39; | sh<br />git tag -l | grep &quot;^\d&quot; | sed &#39;s/^/git tag -d /&#39; | sh</div>
+</div>
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[414 Request-URI Too Large]]></title>
+    <link href="http://house9.github.io/blog/2012/09/05/414-request-uri-too-large/"/>
+    <updated>2012-09-05T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2012/09/05/414-request-uri-too-large</id>
+    <content type="html"><![CDATA[<div class='post'>
+<br />How to configure nginx to accept larger querystring requests<br /><br />Increase the &#8217;<i>large_client_header_buffers</i>&#8217;<br /><br />This is located in the &#8217;<i>http</i>&#8217; section of the configuration<br /><br /><b>Example:</b><br /><div><blockquote class="tr_bq">&nbsp; &nbsp; http {<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # override to allow long query string<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; large_client_header_buffers 8 512k;<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#8230;<br />&nbsp; &nbsp; }</blockquote><br /><b>Resources</b><br /><br /><ul><li><a href="http://stackoverflow.com/questions/1067334/how-to-set-the-allowed-url-length-for-a-nginx-request-error-code-414-uri-too">http://stackoverflow.com/questions/1067334/how-to-set-the-allowed-url-length-for-a-nginx-request-error-code-414-uri-too</a>&nbsp;</li><li><a href="http://nginx.2469901.n2.nabble.com/Nginx-returning-414-even-when-large-client-header-buffers-is-set-td7451517.html">http://nginx.2469901.n2.nabble.com/Nginx-returning-414-even-when-large-client-header-buffers-is-set-td7451517.html</a></li><li><a href="http://wiki.nginx.org/NginxHttpCoreModule#large_client_header_buffers">http://wiki.nginx.org/NginxHttpCoreModule#large_client_header_buffers</a>&nbsp;</li></ul></div><div><br /></div><div><br /></div><div><br /></div></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Unofficial Twitter Bootstrap Documentation]]></title>
+    <link href="http://house9.github.io/blog/2012/08/25/unofficial-twitter-bootstrap/"/>
+    <updated>2012-08-25T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2012/08/25/unofficial-twitter-bootstrap</id>
+    <content type="html"><![CDATA[<div class='post'>
+Unofficial Twitter Bootstrap Documentation<br /><a href="http://unofficial-twitter-bootstrap-documentation.com/">http://unofficial-twitter-bootstrap-documentation.com/</a><br /><br />The current project I am working on is running bootstrap 2.0.2 and after the release of 2.1.0 the online documentation for 2.0.x was gone.<br /><br />I went ahead and compiled the archive docs from the bootstrap github repo into a single site - hopefully others find it useful.<br /><br /></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rails - ActiveRecord created_by and updated_by gem]]></title>
+    <link href="http://house9.github.io/blog/2012/07/01/rails-activerecord-createdby-and/"/>
+    <updated>2012-07-01T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2012/07/01/rails-activerecord-createdby-and</id>
+    <content type="html"><![CDATA[<div class='post'>
+<br />Often your application will want to track who created and updated your data.<br />On a previous rails 2 project I used a plugin called <a href="https://github.com/delynn/userstamp">userstamp</a> which worked well, but until recently it did not support rails 3+<br /><br />I didn&#8217;t find any other gems out there at the time, so I put together the clerk gem,<br />you can install it as a gem in your rails 3+ applications by adding&nbsp;<i style="background-color: #eeeeee;">gem &#8216;clerk&#8217;</i> to your Gemfile, see the <a href="https://github.com/house9/clerk/blob/master/README.md">README</a> on github for details<br /><br />NOTE: the current version relies on your database tables having columns named created_by_id and updated_by_id and the gem does not support any custom configuration.<br /><br /><br /><ul><li><a href="https://github.com/house9/clerk">https://github.com/house9/clerk</a></li><li><a href="http://rubygems.org/gems/clerk">http://rubygems.org/gems/clerk</a>&nbsp;</li></ul><br /></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[postgres: terminate all database connections]]></title>
+    <link href="http://house9.github.io/blog/2012/04/29/postgres-terminate-all-database/"/>
+    <updated>2012-04-29T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2012/04/29/postgres-terminate-all-database</id>
+    <content type="html"><![CDATA[<div class='post'>
+Using psql from the command line you can terminate all connections to a database<br /><div><br /></div><div><script src="https://gist.github.com/2552481.js?file=postgres_disconnect.sql.sh"></script></div>Comes in handy when you want to do things like restore your staging or development database<br /><br /><script src="https://gist.github.com/2552493.js?file=postgres_rebuild.sql.sh"></script>  <br /><div><b>Resources</b><br /><br /><ul><li><a href="http://www.postgresql.org/docs/9.1/static/reference-client.html">http://www.postgresql.org/docs/9.1/static/reference-client.html</a>&nbsp;</li><li><a href="http://blog.gahooa.com/2010/11/03/how-to-force-drop-a-postgresql-database-by-killing-off-connection-processes/">http://blog.gahooa.com/2010/11/03/how-to-force-drop-a-postgresql-database-by-killing-off-connection-processes/</a>&nbsp;</li></ul></div></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[postgres: random useful things]]></title>
+    <link href="http://house9.github.io/blog/2012/04/29/postgres-random-useful-things/"/>
+    <updated>2012-04-29T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2012/04/29/postgres-random-useful-things</id>
+    <content type="html"><![CDATA[<div class='post'>
+Run sql statements from the command line, use the -c flag<br /><script src="https://gist.github.com/2552568.js?file=postgres_sql_command.sql.sh"></script><br /><br />create a random value<br /><script src="https://gist.github.com/2552573.js?file=postgres.random_value.sql"></script><br /><br />crazy updates using&nbsp;regexp_matches<br /><script src="https://gist.github.com/2552587.js?file=postgres.regexp_matches.sql"></script><br /><br /></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Git Workflow]]></title>
+    <link href="http://house9.github.io/blog/2012/02/03/git-workflow/"/>
+    <updated>2012-02-03T00:00:00-08:00</updated>
+    <id>http://house9.github.io/blog/2012/02/03/git-workflow</id>
+    <content type="html"><![CDATA[<div class='post'>
+This is the current git workflow we are using at work, your mileage may vary:<br /><br /><script src="https://gist.github.com/1734394.js?file=git-workflow.rb"></script><br /><noscript>Your reader does not support javascript - see https://gist.github.com/1734394.js?file=git-workflow.rb</noscript><br /><br /><b>Resources</b><br /><ul><li><a href="http://cheat.errtheblog.com/s/git">http://cheat.errtheblog.com/s/git</a>&nbsp;</li><li><a href="http://yanpritzker.com/gitbook.html#Keeping+a+topic+branch+in+sync+with+its+parent">http://yanpritzker.com/gitbook.html#Keeping+a+topic+branch+in+sync+with+its+parent</a>&nbsp;</li><li><a href="http://yanpritzker.com/gitbook.html#One+branch+per+bug">http://yanpritzker.com/gitbook.html#One+branch+per+bug</a>&nbsp;</li><li><a href="http://gitready.com/beginner/2009/02/02/push-and-delete-branches.html">http://gitready.com/beginner/2009/02/02/push-and-delete-branches.html</a>&nbsp;</li><li><a href="http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html">http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html</a>&nbsp;</li><li><a href="http://sleeplessgeek.blogspot.com/2011/03/using-git-cherry-pick.html">http://sleeplessgeek.blogspot.com/2011/03/using-git-cherry-pick.html</a>&nbsp;</li></ul></div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Inspect all jQuery events on an element]]></title>
+    <link href="http://house9.github.io/blog/2011/12/30/inspect-all-jquery-events-on-element/"/>
+    <updated>2011-12-30T00:00:00-08:00</updated>
+    <id>http://house9.github.io/blog/2011/12/30/inspect-all-jquery-events-on-element</id>
+    <content type="html"><![CDATA[<div class='post'>
+Very useful<br /><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">$(&#8220;SELECTOR&#8221;).data(&#8220;events&#8221;);</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;"><br /></span><br />All bound event handlers are stored in the elements data context under the events key<br />This can be very useful when&nbsp;debugging&nbsp;with tools like FireBug<br /><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">$(&#8220;form&#8221;).submit(function () { alert(&#8216;submit form&#8217;); });</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">$(&#8220;form&#8221;).data(&#8220;events&#8221;);</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">&gt; Object { submit=[1] }</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;"><br /></span><br />Resources<br /><br /><ul><li><a href="http://www.bennadel.com/blog/1727-Viewing-jQuery-DOM-Event-Bindings-With-FireBug.htm">http://www.bennadel.com/blog/1727-Viewing-jQuery-DOM-Event-Bindings-With-FireBug.htm</a>&nbsp;</li></ul></div>
 ]]></content>
   </entry>
   

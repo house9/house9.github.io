@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: postgresql | house9]]></title>
+  <link href="http://house9.github.io/blog/categories/postgresql/atom.xml" rel="self"/>
+  <link href="http://house9.github.io/"/>
+  <updated>2013-09-24T15:53:19-07:00</updated>
+  <id>http://house9.github.io/</id>
+  <author>
+    <name><![CDATA[Jesse House]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Puppet Solo (AKA: supply_drop)]]></title>
+    <link href="http://house9.github.io/blog/2013/07/06/puppet-solo-aka-supplydrop/"/>
+    <updated>2013-07-06T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2013/07/06/puppet-solo-aka-supplydrop</id>
+    <content type="html"><![CDATA[<div class='post'>
+Similar to <a href="http://matschaffer.github.io/knife-solo/">knife-solo</a> for use with <a href="http://www.opscode.com/chef/">chef</a>, <a href="https://github.com/pitluga/supply_drop">supply_drop</a> allows you to provision servers using <a href="https://puppetlabs.com/">puppet</a> without the need for a puppet master server. It uses <a href="https://github.com/capistrano/capistrano">capistrano</a> for executing commands on the remote server. I put together a working sample set of puppet and supply_drop deployment scripts for&nbsp;provisioning&nbsp;a postgres server.<br /><br /><blockquote class="tr_bq">See the github repo at &nbsp;<a href="https://github.com/house9/puppet-solo-hello-world">https://github.com/house9/puppet-solo-hello-world</a></blockquote><br /><b>Resources</b><br /><br /><ul><li><a href="http://www.confreaks.com/videos/2479-railsconf2013-devops-for-the-rubyist-soul">http://www.confreaks.com/videos/2479-railsconf2013-devops-for-the-rubyist-soul</a></li><li><a href="https://speakerdeck.com/jtdowney/devops-for-the-rubyist-soul-at-rubynation-2013">https://speakerdeck.com/jtdowney/devops-for-the-rubyist-soul-at-rubynation-2013</a></li></ul><br /><br /><br /></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[WAL-e chef cookbook]]></title>
+    <link href="http://house9.github.io/blog/2013/06/24/wal-e-chef-cookbook/"/>
+    <updated>2013-06-24T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2013/06/24/wal-e-chef-cookbook</id>
+    <content type="html"><![CDATA[<p>Postgres has various backup and restore options</p>
+
+<ul>
+<li><a href="http://www.postgresql.org/docs/9.2/static/backup.html">http://www.postgresql.org/docs/9.2/static/backup.html</a></li>
+</ul>
+
+
+<p>Do you have a recovery plan in case your Postgres server crashes &ndash; your daily pg_dump is probably not going to cut it.</p>
+
+<p>Postgres uses Write-Ahead Logging (WAL)</p>
+
+<blockquote><p>Write-Ahead Logging (WAL) is a standard method for ensuring data integrity. A detailed description can be found in most (if not all) books about transaction processing. Briefly, WAL&rsquo;s central concept is that changes to data files (where tables and indexes reside) must be written only after those changes have been logged, that is, after log records describing the changes have been flushed to permanent storage. If we follow this procedure, we do not need to flush data pages to disk on every transaction commit, because we know that in the event of a crash we will be able to recover the database using the log: any changes that have not been applied to the data pages can be redone from the log records. (This is roll-forward recovery, also known as REDO.)</p></blockquote>
+
+<ul>
+<li>from <a href="http://www.postgresql.org/docs/9.2/static/wal-intro.html">http://www.postgresql.org/docs/9.2/static/wal-intro.html</a></li>
+</ul>
+
+
+<p>Setting up Continuous Archiving and Point-in-Time Recovery (PITR) for your Postgres WAL files is very complex, lucky for us the WAL-e project has simplified this process greatly. WAL-e has utilities for sending all WAL files to an AWS S3 bucket as the log files are being generated. More Information, see:</p>
+
+<ul>
+<li><a href="http://www.postgresql.org/docs/9.2/static/continuous-archiving.html">http://www.postgresql.org/docs/9.2/static/continuous-archiving.html</a></li>
+<li><a href="https://github.com/wal-e/wal-e">https://github.com/wal-e/wal-e</a></li>
+</ul>
+
+
+<p>Recently I put together a chef cookbook which installs WAL-e on a Postgres instance, see:</p>
+
+<ul>
+<li><a href="https://github.com/house9/wal-e-cookbook">https://github.com/house9/wal-e-cookbook</a></li>
+<li><a href="https://github.com/house9/use_wal_e">https://github.com/house9/use_wal_e</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[postgres: terminate all database connections]]></title>
+    <link href="http://house9.github.io/blog/2012/04/29/postgres-terminate-all-database/"/>
+    <updated>2012-04-29T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2012/04/29/postgres-terminate-all-database</id>
+    <content type="html"><![CDATA[<div class='post'>
+Using psql from the command line you can terminate all connections to a database<br /><div><br /></div><div><script src="https://gist.github.com/2552481.js?file=postgres_disconnect.sql.sh"></script></div>Comes in handy when you want to do things like restore your staging or development database<br /><br /><script src="https://gist.github.com/2552493.js?file=postgres_rebuild.sql.sh"></script>  <br /><div><b>Resources</b><br /><br /><ul><li><a href="http://www.postgresql.org/docs/9.1/static/reference-client.html">http://www.postgresql.org/docs/9.1/static/reference-client.html</a>&nbsp;</li><li><a href="http://blog.gahooa.com/2010/11/03/how-to-force-drop-a-postgresql-database-by-killing-off-connection-processes/">http://blog.gahooa.com/2010/11/03/how-to-force-drop-a-postgresql-database-by-killing-off-connection-processes/</a>&nbsp;</li></ul></div></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[postgres: random useful things]]></title>
+    <link href="http://house9.github.io/blog/2012/04/29/postgres-random-useful-things/"/>
+    <updated>2012-04-29T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2012/04/29/postgres-random-useful-things</id>
+    <content type="html"><![CDATA[<div class='post'>
+Run sql statements from the command line, use the -c flag<br /><script src="https://gist.github.com/2552568.js?file=postgres_sql_command.sql.sh"></script><br /><br />create a random value<br /><script src="https://gist.github.com/2552573.js?file=postgres.random_value.sql"></script><br /><br />crazy updates using&nbsp;regexp_matches<br /><script src="https://gist.github.com/2552587.js?file=postgres.regexp_matches.sql"></script><br /><br /></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Get table and column information in postgres]]></title>
+    <link href="http://house9.github.io/blog/2011/12/02/get-table-and-column-information-in/"/>
+    <updated>2011-12-02T00:00:00-08:00</updated>
+    <id>http://house9.github.io/blog/2011/12/02/get-table-and-column-information-in</id>
+    <content type="html"><![CDATA[<div class='post'>
+Use the information_schema catalog - <a href="http://www.postgresql.org/docs/9.1/static/information-schema.html">http://www.postgresql.org/docs/9.1/static/information-schema.html</a><br /><br />Get table and columns from the public schema<br /><br /><script src="https://gist.github.com/1423507.js?file=select_table_and_columns_from_postgres.sql"></script><br /><noscript><br />select <br />  tables.table_name, <br />  columns.column_name<br /><br />from information_schema.tables<br />inner join information_schema.columns <br />on information_schema.columns.table_name = information_schema.tables.table_name<br /><br />where tables.table_schema = 'public'<br />and tables.table_type = 'BASE TABLE'<br /><br />order by tables.table_name, columns.column_name;<br /></noscript><br /><br />This can be useful, maybe you want to auto generate some text that creates foreign keys based on a naming convention - for instance let's say we have a ruby/rails method called make_fk_unless_exists<br /><br /><script src="https://gist.github.com/1423533.js?file=create_fk_script_postgres.sql"></script><br /><noscript><br />select <br />  tables.table_name, <br />  columns.column_name,<br />  ('make_fk_unless_exists :' || tables.table_name || ', :' || columns.column_name || ', :' || REPLACE(columns.column_name, '_id', 's')) as code<br /> <br />from information_schema.tables<br />inner join information_schema.columns <br />on information_schema.columns.table_name = information_schema.tables.table_name<br /><br />where tables.table_schema = 'public'<br />and columns.column_name LIKE '%id'<br />and columns.column_name <> 'id'<br />and tables.table_type = 'BASE TABLE'<br /><br />order by tables.table_name, columns.column_name;<br /></noscript><br /><br />The 'code' column would render something like<br /><br /><blockquote class="tr_bq"><i>make_fk_unless_exists :projects, :milestone_id, :milestones</i><br /><i>make_fk_unless_exists :tasks, :project_id, :projects</i><br /><i>...</i><br /></blockquote><br /><br /></div>
+
+]]></content>
+  </entry>
+  
+</feed>

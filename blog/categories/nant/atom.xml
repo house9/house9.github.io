@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: nant | house9]]></title>
+  <link href="http://house9.github.io/blog/categories/nant/atom.xml" rel="self"/>
+  <link href="http://house9.github.io/"/>
+  <updated>2013-09-24T15:53:19-07:00</updated>
+  <id>http://house9.github.io/</id>
+  <author>
+    <name><![CDATA[Jesse House]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[robocopy fix for exit code of 2]]></title>
+    <link href="http://house9.github.io/blog/2011/06/01/robocopy-fix-for-exit-code-of-2/"/>
+    <updated>2011-06-01T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2011/06/01/robocopy-fix-for-exit-code-of-2</id>
+    <content type="html"><![CDATA[<div class='post'>
+Sometimes you want to use robocopy from nant, a sql job or another build tool, robocopy will return 2 during a successful run, this gets&nbsp;interpreted&nbsp;as an error, a google search on the issue returned this article&nbsp;<a href="http://weblogs.sqlteam.com/robv/archive/2010/02/17/61106.aspx">Fixing Robocopy for SQL Server Jobs</a>.<br /><br />Robocopy is now installed by default on Windows7 and Windows Server 2008<br /><a href="http://technet.microsoft.com/en-us/library/cc733145(WS.10).aspx">http://technet.microsoft.com/en-us/library/cc733145(WS.10).aspx</a><br /><br />here is robocopy_fix.bat based on the code in the "Fixing Robocopy for SQL Server Jobs" article<br /><br /><script src="https://gist.github.com/1003646.js?file=robocopy_fix.bat"></script><br /><noscript><br />rem http://weblogs.sqlteam.com/robv/archive/2010/02/17/61106.aspx<br />robocopy %*<br />rem suppress successful robocopy exit statuses, only report genuine errors (bitmask 16 and 8 settings)<br />set/A errlev="%ERRORLEVEL% & 24"<br />rem exit batch file with errorlevel so SQL job can succeed or fail appropriately<br />exit/B %errlev%<br /><br /><br /><br />rem USAGE: just like regular robocopy<br /><br />robocopy_fix.bat C:\temp\s C:\temp\d /MIR<br /></noscript></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[UPDATE: NAnt build with TFS changeset as revision number]]></title>
+    <link href="http://house9.github.io/blog/2009/04/09/update-nant-build-with-tfs-changeset-as/"/>
+    <updated>2009-04-09T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2009/04/09/update-nant-build-with-tfs-changeset-as</id>
+    <content type="html"><![CDATA[<div class='post'>
+this is a small revision to a previous post <a href="http://house9.blogspot.com/2008/04/nant-build-with-tfs-changeset-as.html">NAnt build with TFS changeset as revision number</a><br /><br />apparently there is a limitation on the size of the number used in each segment of a .net assembly version so this is a slight update to the c# code that gets the latest changeset from TFS - changes start at "if(latestChangsetId > 65534)"<br /><br /><script src="http://gist.github.com/538692.js?file=nant-tfs-changeset-to-revision-updated.cs"></script><br /><br />see also <a href="http://michaelsync.net/2007/01/12/assemblyversion-buildno-limitation">AssemblyVersion - BuildNo Limitation </a></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA['file version' is not in the normal 'major.minor.build.revision' format]]></title>
+    <link href="http://house9.github.io/blog/2009/04/09/file-version-is-not-in-normal/"/>
+    <updated>2009-04-09T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2009/04/09/file-version-is-not-in-normal</id>
+    <content type="html"><![CDATA[<div class='post'>
+At work we use TFS for source control and NAnt for building our application, yesterday our NAnt build started failing with the following error message "<span style="font-style: italic;">Assembly generation The version '2.7.1.65559' specified for the 'file version' is not in the normal 'major.minor.build.revision' format</span>"<br /><br />After a quick Google search it turns out that each segment in a .net assembly cannot be larger then 65534. We use the TFS changeset for the <span style="font-style: italic;">revision </span>segment but this will no longer work for us as we are now beyond changeset 65534 - doh! As a work around we are now using only the last 4 digits of the changeset, so instead of 2.7.1.65559 we are using the version 2.7.1.5559<br /><br />this required a small change to the Nant build script<br /><ul><li>the update is <a href="http://house9.blogspot.com/2009/04/update-nant-build-with-tfs-changeset-as.html">here</a></li><li>and the original is <a href="http://house9.blogspot.com/2008/04/nant-build-with-tfs-changeset-as.html">here</a></li></ul>this version constraint is documented <a href="http://msdn.microsoft.com/en-us/library/system.reflection.assemblyversionattribute.aspx">here</a></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[NAnt build with TFS changeset as revision number]]></title>
+    <link href="http://house9.github.io/blog/2008/04/20/nant-build-with-tfs-changeset-as/"/>
+    <updated>2008-04-20T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2008/04/20/nant-build-with-tfs-changeset-as</id>
+    <content type="html"><![CDATA[<div class='post'>
+This code sample is a <a href="http://nant.sourceforge.net/">nant</a> script that <br /><ul><li>deletes the CommonAssembly.cs file (linked to all projects)</li><li>uses the nant <a href="http://nant.sourceforge.net/release/latest/help/tasks/asminfo.html">asminfo</a> task to recreate the CommonAssembly.cs file, but after we query TFS for the changeset (revision) number which is used in the version number</li><li>build the solution in release mode using the ide.exe (there are other - better ways, but this one works)</li><li>xcopy files to C:\temp\{app} and clean up all the source files</li></ul><br />basically I just put together a few bits that I found on other blogs (should have saved the urls - doh!), most were related to using svn for source control and then I added in the code block for the c# stuff to query TFS.<br /><br />A quick note about the linked CommonAssembly.cs file, visual studio has an option when you are adding an existing file to a project to select 'linked', click the arrow on the 'Add' button when you select your existing file<br /><br />what this script does not do - get latest from TFS, I usually do that part manually or from ccnet<br /><br /><script src="http://gist.github.com/538649.js?file=nant-tfs-changeset-to-revision.xml"></script><br /><br />the c# bit that goes in the nant script block above<br />NOTE: see <a href="http://house9.blogspot.com/2009/04/update-nant-build-with-tfs-changeset-as.html">updated version</a> of this code block<br /><br /><script src="http://gist.github.com/538657.js?file=nant-tfs-changeset-to-revision.cs"></script><br /><br />nant is awesome!</div>
+
+
+<h2>Comments</h2>
+
+
+<div class='comments'>
+<div class='comment'>
+<div class='author'>juho</div>
+<div class='content'>
+Seems that this solution doesn&#39;t work with TFS2010, but thanks for the idea, I&#39;ll use it as a base for my project :)</div>
+</div>
+<div class='comment'>
+<div class='author'>Mahendra Mavani</div>
+<div class='content'>
+I was looking for this solution, since long. Thanks for providing this sample. It works great on my project</div>
+</div>
+</div>
+
+]]></content>
+  </entry>
+  
+</feed>

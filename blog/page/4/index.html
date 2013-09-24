@@ -1,0 +1,574 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>house9</title>
+  <meta name="author" content="Jesse House">
+
+  
+  <meta name="description" content="Looking at a few different ways to execute javascript in rails 3.1. By default all javascript is compiled into one file and embedded in anonymous &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://house9.github.io/blog/page/4">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="house9" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">house9</a></h1>
+  
+    <h2>random code and what not</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:house9.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/05/29/rails-31-javascript-execution/">Rails 3.1 Javascript Execution</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-29T00:00:00-07:00" pubdate data-updated="true">May 29<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Looking at a few different ways to execute javascript in rails 3.1. By default all javascript is compiled into one file and embedded in anonymous functions which all execute on each page.<br /><br />We often want to be selective in how our javascript executes, based on controller and actions. We look at 3 different approaches<br /><br /><ul><li>use selectors based on form id</li><li>use selectors based on css classes on the body</li><li>namespaced javascript objects</li></ul><br /><div>if you know of any other approaches I would love to hear those as well<br /><br />I recommend you click the HD link on the player and view it on <a href="http://vimeo.com/24391448">Vimeo</a> in full screen mode, this embed version is not so crisp.</div><div><br /></div><div align="center"><iframe frameborder="0" height="450" src="http://player.vimeo.com/video/24391448?byline=0&amp;portrait=0" width="800"></iframe></div><div><br /><b>Resources</b></div><div><ul><li><a href="http://railscasts.com/episodes/265-rails-3-1-overview">http://railscasts.com/episodes/265-rails-3-1-overview</a>&nbsp;</li><li><a href="http://jashkenas.github.com/coffee-script/">http://jashkenas.github.com/coffee-script/</a></li><li><a href="http://coffeescriptcookbook.com/">http://coffeescriptcookbook.com/</a>&nbsp;</li><li><a href="http://stackoverflow.com/questions/6133235/rails-3-1-rc1-javascript-and-asset-pipeline">http://stackoverflow.com/questions/6133235/rails-3-1-rc1-javascript-and-asset-pipeline</a></li><li><a href="http://coffeescript-book.com/">http://coffeescript-book.com/</a></li></ul></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Internet008</div>
+<div class='content'>
+great.<br /><br />I like third way.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/05/26/rails-31-asset-pipeline/">Rails 3.1 Asset Pipeline</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-26T00:00:00-07:00" pubdate data-updated="true">May 26<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+a quick look at app, lib, vendor and gem assets for rails 3.1 rc1<br /><br />It is a pretty rough screen cast, but hopefully has some useful information for you<br /><br />I recommend you click the HD link on the player and view it on <a href="http://vimeo.com/24296483">Vimeo</a>&nbsp;in full screen mode, this embed version is not so crisp.<br /><br /><div align="center"><iframe frameborder="0" height="450" src="http://player.vimeo.com/video/24296483?byline=0&amp;portrait=0" width="800"></iframe></div><br />Resources:<br /><br /><ul><li><a href="http://weblog.rubyonrails.org/2011/5/22/rails-3-1-release-candidate">http://weblog.rubyonrails.org/2011/5/22/rails-3-1-release-candidate</a></li><li><a href="http://www.youtube.com/watch?v=cGdCI2HhfAU">http://www.youtube.com/watch?v=cGdCI2HhfAU</a></li><li><a href="http://railscasts.com/episodes/265-rails-3-1-overview">http://railscasts.com/episodes/265-rails-3-1-overview</a></li><li><a href="https://github.com/rails/jquery-rails">https://github.com/rails/jquery-rails</a></li><li><a href="https://github.com/rails/rails/issues/1223">https://github.com/rails/rails/issues/1223</a></li></ul><div><br /><b>UPDATE:</b> see &#8221;<a href="http://railsapps.github.com/rails-javascript-include-external.html">Unholy Rails: External Scripts, jQuery Plugins, and Page-Specific JavaScript</a>&#8221; for a detailed look at using the asset pipeline with rails.&nbsp;</div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/05/25/stream-tennis-2011-roland-garros/">Stream Tennis - 2011 Roland Garros</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-25T00:00:00-07:00" pubdate data-updated="true">May 25<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+if your ISP supports <a href="http://espn.go.com/espn3/index/_/sport/tennis">ESPN3</a> they have live and replay streams for 2011 <a href="http://www.rolandgarros.com/en_FR/index.html">Roland Garros</a><br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-nx63GPyk2vA/Td2XsnjWzMI/AAAAAAAAC2Q/Mc9m5DngLbo/s1600/espn3-paris.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="476" src="http://3.bp.blogspot.com/-nx63GPyk2vA/Td2XsnjWzMI/AAAAAAAAC2Q/Mc9m5DngLbo/s640/espn3-paris.png" width="640" /></a></div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/05/08/at-site-has-some-serious-issues/">AT&T Site Has Some Serious Issues</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-08T00:00:00-07:00" pubdate data-updated="true">May 8<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I went to check on the price of DSL, I&#8217;ve been a long time Comcast customer and getting tired of the high cost. So I went to check it out on AT&amp;T - all I can say is WTF?<br /><br />Select &#8216;DSL without phone&#8217;, but then my choices are everything except what I am looking for?<br />I think they need to go back and do some more QA<br /><br /><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-ZymXl9H1l-E/TcdYStjrkEI/AAAAAAAAC2I/QcdIFalooBs/s1600/att-broke-01.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="256" src="http://3.bp.blogspot.com/-ZymXl9H1l-E/TcdYStjrkEI/AAAAAAAAC2I/QcdIFalooBs/s640/att-broke-01.png" width="640" /></a></div><br /><div class="separator" style="clear: both; text-align: center;"></div>Now I get to choose my phone service - WTF: I selected &#8216;without phone service&#8217; for a reason<br /><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-ADbiWwP4HuY/TcdYS4AqcHI/AAAAAAAAC2M/OHKfX6PSLg4/s1600/att-broke-02.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://4.bp.blogspot.com/-ADbiWwP4HuY/TcdYS4AqcHI/AAAAAAAAC2M/OHKfX6PSLg4/s1600/att-broke-02.png" /></a></div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/05/03/simpledata-and-mongodb/">Simple.Data and MongoDB</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-03T00:00:00-07:00" pubdate data-updated="true">May 3<span>rd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Get really dynamic with Simple.Data and MongoDB<br /><br />took me awhile to figure out the proper way to establish a connection with Simple.Data.MongoDB<br /><br /><script src="https://gist.github.com/954461.js?file=Simple.Data.MongoDB.openMongo.cs"></script><br /><noscript><br />GIST: https://gist.github.com/954461<br />using Simple.Data;<br />using Simple.Data.MongoDB;<br /><br />// connect<br />dynamic db = Database.Opener.OpenMongo(&#8220;mongodb://localhost:27017/myDB&#8221;);<br /><br />// insert<br />dynamic user = new ExpandoObject();<br />user.FirstName = &#8220;Joe&#8221;;<br />user.LastName = &#8220;Smith&#8221;;<br />user.Email = &#8220;jsmith@test.com&#8221;;<br /><br />db.Users.Insert(user);<br /><br />// find<br />dynamic existingUser = db.Users.FindByEmail(&#8220;jsmith@test.com&#8221;);<br /></noscript><br /><br />Resources<br /><br /><ul><li>MongoDB <a href="http://www.mongodb.org/downloads">download</a></li><li><a href="https://github.com/markrendle/Simple.Data/wiki">Simple.Data</a></li><li><a href="https://github.com/craiggwilson/Simple.Data.MongoDB">Simple.Data.MongoDB</a></li><li><a href="http://www.mongodb.org/display/DOCS/CSharp+Language+Center">Mongo and C#</a></li></ul><div>You can install all of the dlls using <a href="http://www.nuget.org">Nuget</a>, search for Simple.Data.MongoDB and install that package it will bring in the rest<br /></div><br /><div>Some of the errors I received on my journey</div><div><br /></div><div>From Simple.Data</div><blockquote><span class="Apple-style-span" style="background-color: yellow;">Message=No valid exports were found that match the constraint &#8216;((exportDefinition.ContractName == &#8220;Ado&#8221;) AndAlso (exportDefinition.Metadata.ContainsKey(&#8220;ExportTypeIdentity&#8221;) AndAlso &#8220;Simple.Data.Adapter&#8221;.Equals(exportDefinition.Metadata.get_Item(&#8220;ExportTypeIdentity&#8221;))))&#8217;, invalid exports may have been rejected.</span></blockquote>And from mongo driver when my connection string was not in the correct format, I was using the wrong port<br /><blockquote><span class="Apple-style-span" style="background-color: yellow;">Message=No connection could be made because the target machine actively refused it 127.0.0.1:</span></blockquote></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+honestly - I can&#39;t remember :(<br /><br />it might have been use of var vs dynamic<br /><br />// works<br />dynamic db = Database.Opener.OpenMongo(&#8230;<br /><br />// errors ???<br />var db = Database.Opener.OpenMongo(&#8230;<br /><br />I haven&#39;t done any c# in a few months and only spent a few days with simple.data at the time I posted this<br /><br />I would contact the authors on github if this doesn&#39;t help</div>
+</div>
+<div class='comment'>
+<div class='author'>David</div>
+<div class='content'>
+So what caused that &#39;No exports&#39; exception and what fixed it? Having the same thing but cannot figure out what to do to resolve it.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/22/fixing-aspnet-mvc-authorizeattribute/">Fixing asp.net MVC AuthorizeAttribute</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-22T00:00:00-07:00" pubdate data-updated="true">Apr 22<span>nd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+With very little code we can fix asp.net MVC AuthorizeAttribute<br />What problems does it have? <strong>Too much redirection</strong>.<br /><br /><ul><li>When making ajax calls a HTTP 401 (Unauthorized) would be better than a redirection</li><li>If I am already logged in but access a secure resource (controller / action) redirecting to the login page is far from ideal, an access denied view makes more sense</li></ul><div>When is the built in redirection appropriate? When making standard HTTP request and the user is not authenticated.</div><div><br /></div><div>it turns out it is&nbsp;relatively&nbsp;easy to fix these issues</div><div><ul><li>inherit AuthorizeAttribute</li><li>override&nbsp;HandleUnauthorizedRequest</li></ul></div><div>#1: Ajax request should not return redirection / html response</div><div><br /></div><div>if the user cannot authorize an action and the request is made via ajax we don&#8217;t want 200 or 302 response codes</div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-1vMk4_AhaKg/TbGZafGuVHI/AAAAAAAAC10/IPvdbbfA-AQ/s1600/200.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://3.bp.blogspot.com/-1vMk4_AhaKg/TbGZafGuVHI/AAAAAAAAC10/IPvdbbfA-AQ/s1600/200.png" /></a></div><div><br /></div><div>we do want&nbsp;401 Unauthorized, but we have to settle for a 403&nbsp;Forbidden</div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-X05Vh4FqOcA/TbGZkKkHk5I/AAAAAAAAC14/S_Efpn5ZTFU/s1600/403.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://1.bp.blogspot.com/-X05Vh4FqOcA/TbGZkKkHk5I/AAAAAAAAC14/S_Efpn5ZTFU/s1600/403.png" /></a></div><div><br /></div><div>The code to fix this</div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-eqaE-lHvRKo/TbGZ8ktgViI/AAAAAAAAC18/61UvrRd6iSc/s1600/cod-403.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://3.bp.blogspot.com/-eqaE-lHvRKo/TbGZ8ktgViI/AAAAAAAAC18/61UvrRd6iSc/s1600/cod-403.png" /></a></div><div><br /></div><div>#2: Authenticated users should not redirect to the login page, they should get an Access Denied page</div><div>The code to fix this</div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-Rw2pqIKL5_U/TbGahZTmGLI/AAAAAAAAC2A/TnRnnwCVQ_o/s1600/access-denied-redirect.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://1.bp.blogspot.com/-Rw2pqIKL5_U/TbGahZTmGLI/AAAAAAAAC2A/TnRnnwCVQ_o/s1600/access-denied-redirect.png" /></a></div><div><br /></div><div>Turns out very little code is needed - but seems like some of this should just be built in? Using the 401 response won&#8217;t work because the asp mvc framework must be picking that up later on and forcing the redirection to the login page, the 403 is not ideal but it is effective.</div><div><br /></div><div>The code for our class - AuthorizeFor</div><div><script src="https://gist.github.com/936865.js?file=AuthorizeForAttribute.cs"></script><br /><noscript>&amp;amp;amp;lt;br /&amp;amp;amp;gt; // view full gist at https://gist.github.com/936865.js?file=AuthorizeForAttribute.cs&amp;amp;amp;lt;br /&amp;amp;amp;gt; public class AuthorizeForAttribute : AuthorizeAttribute&amp;amp;amp;lt;br /&amp;amp;amp;gt; {&amp;amp;amp;lt;br /&amp;amp;amp;gt; protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)&amp;amp;amp;lt;br /&amp;amp;amp;gt; {&amp;amp;amp;lt;br /&amp;amp;amp;gt; if(filterContext.HttpContext.Request.IsAjaxRequest())&amp;amp;amp;lt;br /&amp;amp;amp;gt; {&amp;amp;amp;lt;br /&amp;amp;amp;gt; // filterContext.Result = new HttpStatusCodeResult(401, &#8220;Unauthorized&#8221;);&amp;amp;amp;lt;br /&amp;amp;amp;gt; filterContext.Result = new HttpStatusCodeResult(403, &#8220;Forbidden&#8221;);&amp;amp;amp;lt;br /&amp;amp;amp;gt; }&amp;amp;amp;lt;br /&amp;amp;amp;gt; else if(filterContext.HttpContext.User.Identity.IsAuthenticated)&amp;amp;amp;lt;br /&amp;amp;amp;gt; {&amp;amp;amp;lt;br /&amp;amp;amp;gt; filterContext.Result = new RedirectResult(&#8220;~/Error/AccessDenied?For=&#8221; + filterContext.HttpContext.Request.Url);                    &amp;amp;amp;lt;br /&amp;amp;amp;gt; }&amp;amp;amp;lt;br /&amp;amp;amp;gt; else&amp;amp;amp;lt;br /&amp;amp;amp;gt; {&amp;amp;amp;lt;br /&amp;amp;amp;gt; base.HandleUnauthorizedRequest(filterContext);                &amp;amp;amp;lt;br /&amp;amp;amp;gt; }&amp;amp;amp;lt;br /&amp;amp;amp;gt; }&amp;amp;amp;lt;br /&amp;amp;amp;gt; }&amp;amp;amp;lt;br /&amp;amp;amp;gt; </noscript></div><div><br /></div><div>Usage of our AuthorizeFor attribute</div><div><script src="https://gist.github.com/936875.js?file=AuthorizeForAttribute-Usage.cs"></script><br /><noscript>&amp;amp;amp;lt;br /&amp;amp;amp;gt; // view full gist at https://gist.github.com/936875.js?file=AuthorizeForAttribute-Usage.cs&amp;amp;amp;lt;br /&amp;amp;amp;gt; [AuthorizeFor]&amp;amp;amp;lt;br /&amp;amp;amp;gt; public ActionResult Index()&amp;amp;amp;lt;br /&amp;amp;amp;gt; {&amp;amp;amp;lt;br /&amp;amp;amp;gt; // &#8230;.&amp;amp;amp;lt;br /&amp;amp;amp;gt; &amp;amp;amp;lt;br /&amp;amp;amp;gt; [AuthorizeFor(Roles = &#8220;Create, View&#8221;)]&amp;amp;amp;lt;br /&amp;amp;amp;gt; public ActionResult Create()&amp;amp;amp;lt;br /&amp;amp;amp;gt; {&amp;amp;amp;lt;br /&amp;amp;amp;gt; // &#8230;.&amp;amp;amp;lt;br /&amp;amp;amp;gt; &amp;amp;amp;lt;br /&amp;amp;amp;gt; [HttpPost]&amp;amp;amp;lt;br /&amp;amp;amp;gt; [AuthorizeFor(Roles = &#8220;Create&#8221;)]&amp;amp;amp;lt;br /&amp;amp;amp;gt; public ActionResult Create(ViewModel.Foo foo)&amp;amp;amp;lt;br /&amp;amp;amp;gt; {&amp;amp;amp;lt;br /&amp;amp;amp;gt; // &#8230;.&amp;amp;amp;lt;br /&amp;amp;amp;gt; </noscript></div><div><br /></div><div>Resources</div><div><ul><li><a href="http://msdn.microsoft.com/en-us/library/system.web.mvc.authorizeattribute.aspx">MSDN AuthorizeAttribute</a></li><li><a href="http://stackoverflow.com/questions/5519393/c-mvc-how-to-override-configured-authentication-redirect">Stack Overflow</a> post about the 401 403 issue</li></ul><div><br /></div></div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/15/log-wildlife-sightings-summer-2010/">Log: Wildlife Sightings Summer 2010</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-15T00:00:00-07:00" pubdate data-updated="true">Apr 15<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Came across some notes from my vacation last summer, figured I might as well post them on the net (better late then never). Not in any order and contains both spelling and grammer errors, enjoy:<br /><br /><br />2010-06-27 UT,AZ,ID:<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Swainsons Hawk<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Black Throated Sparrow<br /><br />2010-06-30 Zion<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Rocky Mountain Bighorn Sheep<br /><br />2010-07-01 Uinta, UT:<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Tanager<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Kestrel<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Robins<br /><span class="Apple-tab-span" style="white-space: pre;"> </span><br />2010-07-01 Near Yellowstone:<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Bald Eagle<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Osprey<br /><span class="Apple-tab-span" style="white-space: pre;"> </span><br />2010-07-01 - 2010-07-04 Yellowstone:<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Grizzley Bear + 2 cubs<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Girizley Bear + 3 cubs<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Red Tail<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Gray Jay<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Mtn Blue Bird<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Mule Deer<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Cyotes<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Otters<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Junco<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Common Muskrat<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Deer Mouse<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Chipping Sparrow<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Cassins Finch<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Cliff Swallow<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Brewers Blackbird<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Cowbird<br /><span class="Apple-tab-span" style="white-space: pre;"> </span><br />2010-07-04 Leaving Yellowstone -&gt; Cody, WY:<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Black Bears<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Sandhill Cranes<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>2 Coopers Hawks<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>2 Golden Eagles<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Harrier (Male)<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Waxwings<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Terns<br /><span class="Apple-tab-span" style="white-space: pre;"> </span><br />2010-07-06 Big Horn National Forest, WY:<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Moose<br /><span class="Apple-tab-span" style="white-space: pre;"> </span>Marmots<br /><br />we went on to the Black Hills of South Dakota, Montana, and Alberta after this, but I must have stopped keeping track of sightings, there were plenty more&#8230;</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/09/some-notes-ubuntu-install-rails-3/">Some Notes - Ubuntu Install Rails 3 Environment</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-09T00:00:00-07:00" pubdate data-updated="true">Apr 9<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Had this on my desktop, notes to set up&nbsp;Ubuntu install rails 3 environment<br /><br /><pre>Ubuntu install rails 3 environment<br />================================================<br /><br />1) Get RVM installed with ruby 1.9.2<br /> - http://www.christopherirish.com/2010/08/25/how-to-install-rvm-on-ubuntu-10-04/<br /><br />2) Install Rails 3 gem<br /> - gem install rails --no-rdoc --no-ri<br /> - .... Successfully installed rails-3.0.5 ... 23 gems installed<br /><br />3) Install redcar 'ruby ide'<br /> - check out<br /> - http://azazeal.xelixis.net/post/How-to-install-Redcar-editor-under-Ubuntu-1010-with-RVM.aspx<br /> - for my situation I am only installing it on ruby 1.9.2, if you plan to run multiple versions of ruby this probably will not work when you have your rvm switched to another version<br />  - gem install redcar --no-rdoc --no-ri<br />  - redcar install<br /> - now you should be able to type redcar at the terminal to launch the gui<br /> - lets make a desktop shortcut<br />  - right click on the desktop : Create Launcher<br />   - Type: Application<br />   - Name: Redcar<br />   - Command: /home/YOUR_USER_NAME/.rvm/gems/ruby-1.9.2-head/gems/redcar-0.11/bin/redcar<br />   - Comment: Ruby IDE<br />  - need a tight icon for our launcher<br />   - right click > Properties > click the emblem icon<br />   - Path: /home/YOUR_USER_NAME/.rvm/gems/ruby-1.9.2-head/gems/redcar-0.11/share/icons/redcar-icon-beta.png<br />  - drag the desktop icon up to the launcher bar if you want one there as well<br />   - need to set the icon path again for that one<br /><br />4) Create a rails application <br /> - mkdir projects; cd projects<br /> - rails new sample_app_01; cd sample_app_01<br /> - in redcar > File > Open Directory > projects/sample_app_01<br />  - ctrl+T > type Gem > open Gemfile<br />  - verify line : gem 'sqlite3'<br /> - back to the terminal<br />  - bundle <br />  - rails g scaffold post title:string body:text<br />  - rake db:migrate<br />  - rails s<br /> - in a browser go to http://localhost:3000/posts<br /><br /></pre><br />Sorry the links above are not hot, just cut and paste from my notes into a pre tag - quick and dirty</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/09/notes-teamcity-setup-on-ubuntu/">Notes - TeamCity Setup on Ubuntu</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-09T00:00:00-07:00" pubdate data-updated="true">Apr 9<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Notes from setting up TeamCity on Ubuntu<br /><br /><pre>TeamCity on Ubuntu<br />==================================================================<br />Go to http://www.jetbrains.com/teamcity/download/ and download the linux distribution<br /><br />set JAVA_HOME : update .bashrc add the following lines<br />--------------------------<br />export JAVA_HOME=/usr/lib/jvm/java-1.6.0-openjdk/bin/java<br />export PATH=$PATH:/usr/lib/jvm/java-1.6.0-openjdk/bin<br /><br />tar xfz TeamCity-6.0.3.tar.gz<br />put extracted TeamCity directory under ~/TeamCity<br /><br />open terminal and run bin/runAll.sh start from the ~/TeamCity directory<br /><br />install tcWebHook plugin<br />==================================================================<br />http://tcplugins.sourceforge.net/files/tcWebHooks<br />- http://sourceforge.net/apps/trac/tcplugins/wiki/TcWebHooks<br /><br />create directory at ~/.BuildServer/plugins - tcWebHooks<br />put the jar file in that directory<br />restart the teamcity server<br />there should be a new tab 'web hooks' on the build results, not in the admin section<br /><br /></pre></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/08/could-not-find-generator/">Could Not Find Generator Delayed_job_migration.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-08T00:00:00-07:00" pubdate data-updated="true">Apr 8<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Maybe this post will help somebody? just installed delayed_job on a rails 3 application. The <a href="https://github.com/tobi/delayed_job">readme</a> for delayed_job is for the older version, here is a link to the <a href="http://rubydoc.info/gems/delayed_job/2.1.4/frames">newer docs</a>.<br /><br />Running this command<br /><blockquote><span class="Apple-style-span" style="background-color: yellow;">rails g delayed_job_migration</span></blockquote>Returned this error<br /><blockquote><span class="Apple-style-span" style="background-color: yellow;">Could not find generator delayed_job_migration.</span></blockquote><div>With rails 3 the command should be</div><div><blockquote><span class="Apple-style-span" style="background-color: yellow;">rails g delayed_job</span></blockquote></div><div><br /></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Zac Kloepping</div>
+<div class='content'>
+Helped me!  Thanks!</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/5/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/3/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: Supply_drop)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e Chef Cookbook</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and Puppet Postgres 9.2 on Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/01/vagrantfile-for-setting-up-multiple/">Vagrantfile for Setting Up Multiple Machines With Chef Configuration</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/house9">@house9</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'house9',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jesse House -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

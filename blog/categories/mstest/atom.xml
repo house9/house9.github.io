@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: mstest | house9]]></title>
+  <link href="http://house9.github.io/blog/categories/mstest/atom.xml" rel="self"/>
+  <link href="http://house9.github.io/"/>
+  <updated>2013-09-24T15:53:19-07:00</updated>
+  <id>http://house9.github.io/</id>
+  <author>
+    <name><![CDATA[Jesse House]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[MSTest output result to HTML]]></title>
+    <link href="http://house9.github.io/blog/2011/03/11/mstest-output-result-to-html/"/>
+    <updated>2011-03-11T00:00:00-08:00</updated>
+    <id>http://house9.github.io/blog/2011/03/11/mstest-output-result-to-html</id>
+    <content type="html"><![CDATA[<div class='post'>
+<a href="http://msdn.microsoft.com/en-us/library/ms182489(v=vs.80).aspx">MSTest</a> generates trx (xml) files which can be viewed in Visual Studio. But often you will be executing MSTest from the command line via your Continuous Integration (CI) server and you will want to view them in an html format outside Visual Studio.<br /><br /><a href="http://trx2html.codeplex.com/">trx2html</a> to the rescue!<br /><br /><ul><li>download the zip file here -&nbsp;<a href="http://trx2html.codeplex.com/">http://trx2html.codeplex.com/</a></li><li>unzip and put the files somewhere</li><ul><li>I choose C:\Program Files (x86)\trx2html</li></ul><li>execute it from the command line&nbsp;</li></ul><div><br /></div><div><pre><span class="Apple-style-span" style="color: #38761d;"># in YourTestProject\bin\Release</span><br /><span class="Apple-style-span" style="color: #444444;">"C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\mstest.exe"</span> <span class="Apple-style-span" style="color: #0b5394;">/testcontainer:</span>YourTestProject.dll <span class="Apple-style-span" style="color: #0b5394;">/resultsfile:</span>TestResult.trx<br /><br /><span class="Apple-style-span" style="color: #444444;">"C:\Program Files (x86)\trx2html\0.6\trx2html.exe"</span> TestResult.trx<br /><span class="Apple-style-span" style="color: #38761d;"># outputs TestResult.trx.htm</span><br /></pre></div><div><br /></div><div><br /></div></div>
+
+
+<h2>Comments</h2>
+
+
+<div class='comments'>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+Try running it from the directory that your trx file is in<br /><br />&gt; cd DIRECTORY_WIHT_TRX_FILE<br /><br />&gt; &quot;D:\share\TRX2HTML_A\0.6\trx2html.exe&quot; TRX_FILE_NAME</div>
+</div>
+<div class='comment'>
+<div class='author'>Atul Mhetre</div>
+<div class='content'>
+Hi,<br /><br />I am having problem in converting trx file into HTML file.<br /><br />I navigate to trx2htm.exe in command prompt and used command as - D:\share\TRX2HTML_A\0.6&gt;cd D:\share\TRX2HTML_A\0.6<br /><br />D:\share\TRX2HTML_A\0.6&gt;trx2html atul.mhetre_NTPC01395 2013-01-22 15_05_51.trx<br />trx2html.exe<br />  Create HTML reports of VSTS TestRuns. (c)rido&#39;08<br />version:0.6.0.2798<br /><br />Usage: trx2html .trx<br /><br />D:\share\TRX2HTML_A\0.6&gt;<br /><br />So I am getting output as -<br /><br />trx2html.exe<br />  Create HTML reports of VSTS TestRuns. (c)rido&#39;08<br />version:0.6.0.2798<br /><br />Usage: trx2html .trx<br /><br />And no html file is generating. Please help.</div>
+</div>
+</div>
+
+]]></content>
+  </entry>
+  
+</feed>

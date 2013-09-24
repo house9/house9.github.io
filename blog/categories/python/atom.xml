@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: python | house9]]></title>
+  <link href="http://house9.github.io/blog/categories/python/atom.xml" rel="self"/>
+  <link href="http://house9.github.io/"/>
+  <updated>2013-09-24T15:53:19-07:00</updated>
+  <id>http://house9.github.io/</id>
+  <author>
+    <name><![CDATA[Jesse House]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Python MVC web framework - web2py]]></title>
+    <link href="http://house9.github.io/blog/2008/05/10/python-mvc-web-framework-web2py/"/>
+    <updated>2008-05-10T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2008/05/10/python-mvc-web-framework-web2py</id>
+    <content type="html"><![CDATA[<div class='post'>
+Recently I did a google search for a <a href="http://www.google.com/search?q=Python+MVC+web+framework">Python MVC web framework</a>. I have never done any coding in <a href="http://www.python.org/">Python</a> but it seems to be one of the primary languages used at Google and currently the only language supported on the <a href="http://code.google.com/appengine/kb/general.html#language">Google App Engine</a> so it seemed worth getting familiar with.<br /><br /><a href="http://www.djangoproject.com/">Django</a> seems to be one of the most robust python mvc frameworks around at this time and I was going to dive in and create a small toy application with it, but then I stumbled across a comment on some blog that talked about the <a href="http://www.web2py.com/">web2py</a> MVC framework, still in it's infancy, development is very active on the project. It seems very easy to get up to speed with the framework and even someone who does not know Python can get a simple site up and running.<br /><br />I love this graphic from one of the pdfs on the site<br /><a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://3.bp.blogspot.com/_vmq8pP42BnQ/SCXEI9-YY2I/AAAAAAAAAD0/XJEy7-CaHGg/s1600-h/web2py.PNG"><img style="margin: 0px auto 10px; display: block; text-align: center; cursor: pointer;" src="http://3.bp.blogspot.com/_vmq8pP42BnQ/SCXEI9-YY2I/AAAAAAAAAD0/XJEy7-CaHGg/s400/web2py.PNG" alt="" id="BLOGGER_PHOTO_ID_5198777003223311202" border="0" /></a><br />The feature list taken directly from the site<br /><div style="font-style: italic;" class="post"> <ul><li><span style="font-size:85%;">No installation, no configuration, no dependencies. All in one package. You can run it off a USB drive</span></li><li><span style="font-size:85%;">Runs on Windows, OSX, Unix/Linux, and Windows CE phones.</span></li><li><span style="font-size:85%;">Allows development, debugging, testing, deployment, maintenance and administration, including database administration, via the provided web interface.</span></li><li><span style="font-size:85%;">Enforces good Software Engineer practices, like the Model-View-Controller design, validation and self-submission of forms.</span></li><li><span style="font-size:85%;">Strong on security. Prevents the most common types of vulnerabilities: Cross Site Scripting, Injection Flaws, and Malicious File Execution.</span></li><li><span style="font-size:85%;">Talks HTML, XML, RSS, ATOM, AJAX, JSON, RTF, CSV, WIKI, XML-RPC, REST, Flash, etc.</span></li><li><span style="font-size:85%;">Dynamically and transparently generates SQL queries for you for SQLite, MySQL, PostgreSQL and Oracle. Even creates and alters tables for you when required. Performs automatic transactions.</span></li><li><span style="font-size:85%;">Allows you to create apps easily, byte-code compile them, and distribute them in open or closed source under any license you like.</span></li><li><span style="font-size:85%;">Faster then the competition, designed for small as well as large projects, includes the ability to upload/download/stream large files, internationalization support, distributed transactions, ...</span></li></ul> </div><span style="font-size:100%;"><a href="http://www.web2py.com/">Web2py</a><span> is worth checking out!</span></span><br /><br />.</div>
+
+
+<h2>Comments</h2>
+
+
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Anonymous</div>
+<div class='content'>
+He's found the right balance!<BR/><BR/>No, I am not affiliated with him, nor the university.  I am just a user who is glad that I didn't go down the "everybody is using __framework already so let me use that too" path.</div>
+</div>
+<div class='comment'>
+<div class='author'>kindablue2</div>
+<div class='content'>
+I'm going to take a look. And btw - I like the credentials as well.  A framework written by a CS Prof is more likely to embody the abstract qualities cherished in acadamia - this in my mind is a good thing. The problems start when the abstract conflicts with the practical - *good* frameworks find the right balance.</div>
+</div>
+<div class='comment'>
+<div class='author'>Anonymous</div>
+<div class='content'>
+"Because the creator is a professor of Computer Science ..."<BR/><BR/>Oh dear god.  Being a computer science professor says nothing about your ability to design or implement a framework.  Some of the worst programmers I've ever met have been computer science professors.<BR/><BR/>This might be an awesome framework (I'm skeptical, but I've not tried it), but if so it's not because he's a professor.</div>
+</div>
+<div class='comment'>
+<div class='author'>Gregor</div>
+<div class='content'>
+It's more than that ... this is a step into a whole new world!<BR/><BR/>You may recall the recent release of the Google appengine, but what you may not know is: that platform will fundamentally change the way webapps are done, largely due to the Bigtable datastore and the banishment of the SQL-based relational database model to the realm of localhost, and eventually to the status of a horse-and-buggy.<BR/><BR/>What's exciting about web2py is that you live in the browser all the time, and, because it's written in python, it will integrate that much more quickly into the appengine domain.<BR/><BR/>Because the creator is a professor of Computer Science, you get all the good stuff boiled down to   the essence of just what you need for webapp development.<BR/><BR/>Download it, run the tutorial, and you too will be hooked.</div>
+</div>
+</div>
+
+]]></content>
+  </entry>
+  
+</feed>

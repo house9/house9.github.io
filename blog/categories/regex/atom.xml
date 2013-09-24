@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: regex | house9]]></title>
+  <link href="http://house9.github.io/blog/categories/regex/atom.xml" rel="self"/>
+  <link href="http://house9.github.io/"/>
+  <updated>2013-09-24T15:53:19-07:00</updated>
+  <id>http://house9.github.io/</id>
+  <author>
+    <name><![CDATA[Jesse House]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby Regex to remove script tags]]></title>
+    <link href="http://house9.github.io/blog/2010/01/06/ruby-regex-to-remove-script-tags/"/>
+    <updated>2010-01-06T00:00:00-08:00</updated>
+    <id>http://house9.github.io/blog/2010/01/06/ruby-regex-to-remove-script-tags</id>
+    <content type="html"><![CDATA[<div class='post'>
+<script src="http://gist.github.com/270463.js"></script><br />Resources<br /><ul><li><a href="http://rubular.com/">Rubular</a></li><li><a href="http://jamesmckay.net/2008/05/how-to-match-any-character-including-newlines-in-a-javascript-regular-expression/">Match any character in RegEx</a></li><li><a href="http://ruby-doc.org/core/classes/String.html#M000817">Ruby String gsub</a></li></ul></div>
+
+]]></content>
+  </entry>
+  
+</feed>

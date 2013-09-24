@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: rails | house9]]></title>
+  <link href="http://house9.github.io/blog/categories/rails/atom.xml" rel="self"/>
+  <link href="http://house9.github.io/"/>
+  <updated>2013-09-24T15:53:19-07:00</updated>
+  <id>http://house9.github.io/</id>
+  <author>
+    <name><![CDATA[Jesse House]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby on Rails continuous integration (CI) with Jenkins the easy way with Chef and Knife]]></title>
+    <link href="http://house9.github.io/blog/2013/02/23/ruby-on-rails-continuous-integration-ci/"/>
+    <updated>2013-02-23T00:00:00-08:00</updated>
+    <id>http://house9.github.io/blog/2013/02/23/ruby-on-rails-continuous-integration-ci</id>
+    <content type="html"><![CDATA[<div class='post'>
+Do you need a CI build setup for your Ruby on Rails app?<br /><br />Here are some <a href="http://www.opscode.com/chef/">chef</a> / <a href="http://matschaffer.github.com/knife-solo/">knife solo</a> scripts that will deploy a <a href="http://jenkins-ci.org/">Jenkins</a> server to run your <a href="http://www.martinfowler.com/articles/continuousIntegration.html">CI build</a> - you could be up and running in less than 1/2 an hour<br /><br /><a href="https://github.com/house9/ci_chef_jenkins_rails"><b>https://github.com/house9/ci_chef_jenkins_rails</b></a><br /><br />Check out the README for details<br /><br /><br /></div>
+
+
+<h2>Comments</h2>
+
+
+<div class='comments'>
+<div class='comment'>
+<div class='author'>patcon</div>
+<div class='content'>
+You might want to look into Pivotal Labs&#39; ciborg project -- sounds like it&#39;s just what you&#39;re looking for :)<br /><br />https://github.com/pivotal/ciborg</div>
+</div>
+</div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sending email with Rails Mailers, The Random bits...]]></title>
+    <link href="http://house9.github.io/blog/2012/12/16/sending-email-with-rails-mailers-random/"/>
+    <updated>2012-12-16T00:00:00-08:00</updated>
+    <id>http://house9.github.io/blog/2012/12/16/sending-email-with-rails-mailers-random</id>
+    <content type="html"><![CDATA[<div class='post'>
+<i>See the rails guides and railscasts for getting started with Rails Mailers;&nbsp;</i><br /><i>this article includes some additional information on Rails Mailers not included in those articles.</i><br /><br /><b>RailsCasts: </b><a href="http://railscasts.com/episodes/206-action-mailer-in-rails-3">http://railscasts.com/episodes/206-action-mailer-in-rails-3</a><br /><b>Rails Guides: </b>"<a href="http://guides.rubyonrails.org/action_mailer_basics.html">Action Mailer Basics</a>" on the rails guides -&nbsp;The guide covers all of the common mailer tasks<br /><ul><li>setup and configuration</li><li>attachments</li><li>layouts</li></ul><br /><span style="font-size: x-large;">Random Bits</span><br /><blockquote class="tr_bq"><i>These examples were created using rails 3.2</i></blockquote><div><div><span style="font-size: large;">Add importance headers</span></div><div><br /></div><div><script src="https://gist.github.com/4308619.js"></script></div><blockquote class="tr_bq"><i>NOTE: many email clients will ignore these headers</i></blockquote></div><div><br /></div><div><div><span style="font-size: large;">Add receipt header</span></div><div><br /></div><div><script src="https://gist.github.com/4308683.js"></script></div><blockquote class="tr_bq"><i>NOTE: many email clients will ignore these headers</i></blockquote></div><div><div><span style="font-size: large;"><br /></span><span style="font-size: large;">Testing mailer headers with rspec</span></div><div><br /></div><div>If you have <a href="https://github.com/rspec/rspec-rails">rspec-rails gem</a> installed with your rails application then&nbsp;running the generator will stub out most of your mailer tests, including a fixture file for the mailer view, which you may or may not want to remove.</div><div><br /></div><div><script src="https://gist.github.com/4308712.js"></script></div><blockquote class="tr_bq"><i>NOTE: test against mail.header, not mail.headers</i></blockquote></div><div><div><span style="font-size: large;"><br /></span><span style="font-size: large;">Use a different layout for some Mailer actions</span></div><div><br /></div><div>our default layout is the customer facing one&nbsp;but we want to override it in some cases</div><div><br /></div><div><script src="https://gist.github.com/4309219.js"></script></div></div><div><br /></div><div><br /></div><br /></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Setting up a C.I. build (Continuous Integration) for a Ruby on Rails application]]></title>
+    <link href="http://house9.github.io/blog/2012/11/03/setting-up-ci-build-continuous/"/>
+    <updated>2012-11-03T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2012/11/03/setting-up-ci-build-continuous</id>
+    <content type="html"><![CDATA[<div class='post'>
+<br />It has never been easier than with Semaphore - Hosted Continuous Integration<br /><br /><ul><li><a href="https://semaphoreapp.com/">https://semaphoreapp.com/</a></li></ul><br />How easy is it<br /><br /><ul><li>add semaphore ssh key to your github repo</li><li>then semaphore automatically determines your ruby version, database, etc...</li><li>you can tweak the build steps later, the defaults are pretty good</li></ul><br />It will automatically detect new branches!!! That means zero setup when the new branch is added<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-HqVYteyXvQk/UJVdSqJnYOI/AAAAAAAAC6U/AU4oP3tZ2D8/s1600/semaphoreapp-01.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="348" src="http://4.bp.blogspot.com/-HqVYteyXvQk/UJVdSqJnYOI/AAAAAAAAC6U/AU4oP3tZ2D8/s640/semaphoreapp-01.png" width="640" /></a></div><br /><br />It is not <a href="https://semaphoreapp.com/pricing">cheap</a>, for personal side projects it might not make sense?<br />But well worth the money if you are doing paid development<br /></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sample Routes and Links with Rails 3 in the console]]></title>
+    <link href="http://house9.github.io/blog/2011/11/12/sample-routes-and-links-with-rails-3-in/"/>
+    <updated>2011-11-12T00:00:00-08:00</updated>
+    <id>http://house9.github.io/blog/2011/11/12/sample-routes-and-links-with-rails-3-in</id>
+    <content type="html"><![CDATA[<div class='post'>
+The content for this post is all from a gist, hopefully someone finds it useful<br /><br /><script src="https://gist.github.com/1361290.js?file=routes_link_to_in_rails_console.rb"></script><br /><noscript><br />Your reader does not support script, view the gist here<br />https://gist.github.com/1361290<br /></noscript><br /><br /><b>Resources</b><br /><br /><br /><ul><li><a href="http://stackoverflow.com/questions/2778074/recognize-routes-in-rails-console-session">http://stackoverflow.com/questions/2778074/recognize-routes-in-rails-console-session</a></li></ul></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Generating barcodes with ruby and rails]]></title>
+    <link href="http://house9.github.io/blog/2011/10/15/generating-barcodes-with-ruby-and-rails/"/>
+    <updated>2011-10-15T00:00:00-07:00</updated>
+    <id>http://house9.github.io/blog/2011/10/15/generating-barcodes-with-ruby-and-rails</id>
+    <content type="html"><![CDATA[<div class='post'>
+Recently I had to convert some functionality from an old MS Access system to a Ruby on Rails application.&nbsp;The Access system generated a report that included a barcode; they were using a barcode font installed on the&nbsp;machine running access. I figured generating the barcode server side in the web app was going to be much nicer than installing barcode fonts on the client browsers. And since this is Ruby, I figured...<br /><blockquote><i><span class="Apple-style-span" style="font-size: large;">There must be a gem for that&nbsp;</span></i></blockquote>Sure enough, the barby gem. It allows you to output your barcode as png, gif, svg, pdf, etc...<br /><br />In my case I generated png barcodes and included image references to those in my view files.<br /><br />Sample code<br /><br /><script src="https://gist.github.com/1289751.js?file=using_barby_to_generate_barcodes_with_ruby.rb"></script><br /><noscript><br /># Gemfile, run bundle install after adding<br />gem 'barby'<br />gem 'chunky_png'<br /><br /># some code to generate the png file using 3 of 9 barcode style<br />require 'barby'<br />require 'barby/barcode/code_39'<br />require 'barby/outputter/png_outputter'<br /><br />barcode_value = "099999333"<br />full_path = "/somewhere/barcode_#{barcode_value}.png"<br />barcode = Barby::Code39.new(barcode_value)<br />File.open(full_path, 'w') { |f| f.write barcode.to_png(:margin => 3, :xdim => 2, :height => 55) }<br /></noscript><br /><br />There is no pixel setting, it uses some other type of unit to determine size; using the xdim, margin and height options&nbsp;you can tweak the size, but I found that it was not very precise - <i>for my use case it was good enough.</i><br /><br />The generated barcode does not include the value, it is just the image which can be scanned using a&nbsp;barcode scanner, but it would be nice if there was an option to include the value below that. This is somewhat trivial to add in your view using html.<br /><br />Overall I was really pleased with this gem!<br /><br />Resources<br /><ul><li><a href="http://toretore.eu/barby/">http://toretore.eu/barby/</a></li><li><a href="https://github.com/toretore/barby">https://github.com/toretore/barby</a></li><li><a href="http://barby.rubyforge.org/rdoc/">http://barby.rubyforge.org/rdoc/</a></li><li><a href="http://groups.google.com/group/ruby-barby">http://groups.google.com/group/ruby-barby</a></li></ul></div>
+
+
+<h2>Comments</h2>
+
+
+<div class='comments'>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+As far as i know the gem does not support that feature. You need to add that text to your pdf, html, etc... Might want to check the google groups link above for additional help</div>
+</div>
+<div class='comment'>
+<div class='author'>Icaro</div>
+<div class='content'>
+Perfect, thanks. How can i display the value at the bottom of the same image?</div>
+</div>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+Try setting your path to &quot;#{Rails.root}/public/barcodes&quot;</div>
+</div>
+<div class='comment'>
+<div class='author'>Icaro</div>
+<div class='content'>
+Im getting <br />No such file or directory - /public/barcodes/barcode_BARBY.png<br /><br />Is there anyway to not to create the png and then display it from public resources? like streaming each time i call a coupon for instance?.<br /><br />Thanks</div>
+</div>
+</div>
+
+]]></content>
+  </entry>
+  
+</feed>

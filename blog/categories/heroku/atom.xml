@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: heroku | house9]]></title>
+  <link href="http://house9.github.io/blog/categories/heroku/atom.xml" rel="self"/>
+  <link href="http://house9.github.io/"/>
+  <updated>2013-09-24T15:53:19-07:00</updated>
+  <id>http://house9.github.io/</id>
+  <author>
+    <name><![CDATA[Jesse House]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Heroku - sending email with Gmail]]></title>
+    <link href="http://house9.github.io/blog/2009/11/12/heroku-sending-email-with-gmail/"/>
+    <updated>2009-11-12T00:00:00-08:00</updated>
+    <id>http://house9.github.io/blog/2009/11/12/heroku-sending-email-with-gmail</id>
+    <content type="html"><![CDATA[<div class='post'>
+<p>I have been working on deploying a <a href="http://guides.rubyonrails.org/">Rails</a> application to <a href="http://heroku.com/">Heroku</a>. A couple of gotchas I ran into when following this post "<a href="http://blog.heroku.com/archives/2009/11/9/tech_sending_email_with_gmail/">Sending email with Gmail</a>"</p><ul><li>Don't use a dollar sign ($) in your password </li><li>this can work locally if you put single quotes around the value, but on the heroku server it saved the entire string but at runtime would truncate it at the dollar sign</li><li>for example using the password '<em>left-side$right-side</em>' </li><li>heroku config:add GMAIL_SMTP_PASSWORD=left-side$right-side</li><li>heroku config returns > GMAIL_SMTP_PASSWORD=left-side$right-side</li><li>heroku console </li><li>type ENV['GMAIL_SMTP_PASSWORD'] returns > left-side</li></ul><p>Heroku is running Ruby 1.8.6, locally I am running Ruby 1.8.7, I made a small hack to the plugin to avoid errors in development mode</p><p>./vendor/plugins/gmail_smtp/init.rb<br />changed the first line to<br />require 'smtp_tls' if RUBY_VERSION < "1.8.7" </p><p>tls is already handled in 1.8.7 and this code must have been creating some type of conflict</p></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Heroku - HTTP 502 Error]]></title>
+    <link href="http://house9.github.io/blog/2009/11/12/heroku-http-502-error/"/>
+    <updated>2009-11-12T00:00:00-08:00</updated>
+    <id>http://house9.github.io/blog/2009/11/12/heroku-http-502-error</id>
+    <content type="html"><![CDATA[<div class='post'>
+<p>This might be helpful to someone? </p><p>I was receiving 'App Failed To Respond (HTTP 502) Bad Gateway' errors when deploying my application on <a href="http://heroku.com/">Heroku</a>. Reading the <a href="http://docs.heroku.com/errors">error codes</a> page did not help me solve the problem, it took awhile but I was finally able to track it down.</p><p>The error was being generated in the browser but checking the rails logs, the requests were returning HTTP 200 success codes, so the problem was being generated at the web server level on the <a href="http://heroku.com/">Heroku</a> stack.</p><p>Turns out the problem was caused by setting response.header for no browser caching. I was using code similar to this <a href="http://arjunghosh.wordpress.com/2008/04/29/how-to-force-the-browser-to-not-cache-in-rails/">post</a>. Everything worked fine after I removed this line</p><ul><li>response.headers["Expires"] = 0</li></ul></div>
+
+]]></content>
+  </entry>
+  
+</feed>

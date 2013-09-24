@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: CQRS | house9]]></title>
+  <link href="http://house9.github.io/blog/categories/cqrs/atom.xml" rel="self"/>
+  <link href="http://house9.github.io/"/>
+  <updated>2013-09-24T15:53:19-07:00</updated>
+  <id>http://house9.github.io/</id>
+  <author>
+    <name><![CDATA[Jesse House]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[CQRS with .NET and C#]]></title>
+    <link href="http://house9.github.io/blog/2011/02/25/cqrs-with-net-and-c/"/>
+    <updated>2011-02-25T00:00:00-08:00</updated>
+    <id>http://house9.github.io/blog/2011/02/25/cqrs-with-net-and-c</id>
+    <content type="html"><![CDATA[<div class='post'>
+I've been intrigued with the idea of CQRS for some time; ever since I watched an <a href="http://www.infoq.com/">infoQ</a> presentation by <a href="http://codebetter.com/gregyoung/author/gregyoung/">Greg Young</a> on the subject. What is CQRS?<br /><blockquote><span class="Apple-style-span" style="color: #333333;"><i>Command-Query Responsibility Segregation</i></span></blockquote>See the links below to for more information from the experts.<br /><br />Over the last month I've actually had the&nbsp;opportunity&nbsp;to work with CQRS, so far I am really enjoying it.&nbsp;Separating&nbsp;your reads from your writes is truly liberating! Listed below are a bunch of resources related to CQRS:<br /><br />Informational:<br /><ul><li><a href="http://cqrsinfo.com/">http://cqrsinfo.com/</a>&nbsp;</li><li><a href="http://www.udidahan.com/2009/12/09/clarified-cqrs/">Clarified&nbsp;CQRS</a> by Udi Dahan</li><li><a href="http://groups.google.com/group/dddcqrs">DDD/CQRS google group</a></li></ul><div><div style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">Presentations:</div><div style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;"></div><ul><li>Greg Young on infoQ - <a href="http://www.infoq.com/presentations/greg-young-unshackle-qcon08">Unshackle Your Domain</a></li><li><a href="http://vimeo.com/8944337">Command Query Responsibility Segregation</a> - Udi Dahan</li></ul><div><div style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">CQRS examples:</div><div style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;"></div><ul><li><a href="https://github.com/MarkNijhof/Fohjin/tree/master/Fohjin.DDD.Example">https://github.com/MarkNijhof/Fohjin/tree/master/Fohjin.DDD.Example</a></li></ul><div><div style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">Some CQRS Frameworks:</div><div style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;"></div><ul><li><a href="https://github.com/tyronegroves/SimpleCQRS">SimpleCQRS</a></li><li><a href="http://ncqrs.org/">Ncqrs</a></li><li><a href="http://code.google.com/p/lokad-cqrs/">Lokad CQRS</a></li></ul></div></div><div><br /></div></div></div>
+
+]]></content>
+  </entry>
+  
+</feed>

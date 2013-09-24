@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>NAnt build with TFS changeset as revision number - house9</title>
+  <meta name="author" content="Jesse House">
+
+  
+  <meta name="description" content="This code sample is a nant script that deletes the CommonAssembly.cs file (linked to all projects)uses the nant asminfo task to recreate the &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://house9.github.io/blog/2008/04/20/nant-build-with-tfs-changeset-as">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="house9" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">house9</a></h1>
+  
+    <h2>random code and what not</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:house9.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">NAnt Build With TFS Changeset as Revision Number</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-04-20T00:00:00-07:00" pubdate data-updated="true">Apr 20<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class='post'>
+This code sample is a <a href="http://nant.sourceforge.net/">nant</a> script that <br /><ul><li>deletes the CommonAssembly.cs file (linked to all projects)</li><li>uses the nant <a href="http://nant.sourceforge.net/release/latest/help/tasks/asminfo.html">asminfo</a> task to recreate the CommonAssembly.cs file, but after we query TFS for the changeset (revision) number which is used in the version number</li><li>build the solution in release mode using the ide.exe (there are other - better ways, but this one works)</li><li>xcopy files to C:\temp\{app} and clean up all the source files</li></ul><br />basically I just put together a few bits that I found on other blogs (should have saved the urls - doh!), most were related to using svn for source control and then I added in the code block for the c# stuff to query TFS.<br /><br />A quick note about the linked CommonAssembly.cs file, visual studio has an option when you are adding an existing file to a project to select &#8216;linked&#8217;, click the arrow on the &#8216;Add&#8217; button when you select your existing file<br /><br />what this script does not do - get latest from TFS, I usually do that part manually or from ccnet<br /><br /><script src="http://gist.github.com/538649.js?file=nant-tfs-changeset-to-revision.xml"></script><br /><br />the c# bit that goes in the nant script block above<br />NOTE: see <a href="http://house9.blogspot.com/2009/04/update-nant-build-with-tfs-changeset-as.html">updated version</a> of this code block<br /><br /><script src="http://gist.github.com/538657.js?file=nant-tfs-changeset-to-revision.cs"></script><br /><br />nant is awesome!</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>juho</div>
+<div class='content'>
+Seems that this solution doesn&#39;t work with TFS2010, but thanks for the idea, I&#39;ll use it as a base for my project :)</div>
+</div>
+<div class='comment'>
+<div class='author'>Mahendra Mavani</div>
+<div class='content'>
+I was looking for this solution, since long. Thanks for providing this sample. It works great on my project</div>
+</div>
+</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jesse House</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-04-20T00:00:00-07:00" pubdate data-updated="true">Apr 20<span>th</span>, 2008</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/nant/'>nant</a>, <a class='category' href='/blog/categories/tfs/'>tfs</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://house9.github.io/blog/2008/04/20/nant-build-with-tfs-changeset-as/" data-via="" data-counturl="http://house9.github.io/blog/2008/04/20/nant-build-with-tfs-changeset-as/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2008/04/20/firefox-and-multiple-cookies-for-same/" title="Previous Post: FireFox and multiple cookies for the same site">&laquo; FireFox and multiple cookies for the same site</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2008/04/24/update-firefox-and-multiple-cookies-for/" title="Next Post: Update: FireFox and multiple cookies for the same site">Update: FireFox and multiple cookies for the same site &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: Supply_drop)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e Chef Cookbook</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and Puppet Postgres 9.2 on Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/01/vagrantfile-for-setting-up-multiple/">Vagrantfile for Setting Up Multiple Machines With Chef Configuration</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/house9">@house9</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'house9',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Jesse House -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
