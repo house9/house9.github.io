@@ -1,0 +1,9 @@
+---
+layout: post
+title: "varchar (MAX) SqlParameter length"
+date: 2011-03-03
+comments: false
+---
+
+<div class='post'>
+I am using <a href="http://logging.apache.org/log4net/">log4net</a> and the&nbsp;<a href="http://logging.apache.org/log4net/release/config-examples.html">AdoNetAppender</a> to log all entries to MSSQL server. The exception column by default is 2000, sometimes the stack traces get large. Not wanting to lose any information I changed the DDL to use varchar (MAX) but I also had to update the appender configuration. Using a size of -1 for the @exception parameter seemed to do the trick.<br /><br /><br /><br />Resources<br /><br /><ul><li><a href="http://msdn2.microsoft.com/en-us/library/bb399384.aspx">http://msdn2.microsoft.com/en-us/library/bb399384.aspx</a>&nbsp;</li></ul></div>

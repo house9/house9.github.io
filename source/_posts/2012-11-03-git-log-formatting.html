@@ -1,0 +1,11 @@
+---
+layout: post
+title: "Git Log Formatting "
+date: 2012-11-03
+comments: false
+categories:
+ - git
+---
+
+<div class='post'>
+The git log command is great and has tons of good information, but the output doesn't give you that nice 'overview' of the commit history, too much detail on too many lines<br /><br />I've been using the following in my .gitconfig file<br /><blockquote class="tr_bq"><span style="background-color: #cccccc;">l = log -20 --format='%h %ad %d %an: %s' --date=short</span></blockquote>typing '<i style="background-color: #cccccc;">git l</i>' renders the following output:<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-0GRyv-72haA/UJVYQ96clhI/AAAAAAAAC58/Lptn1WKW9dA/s1600/git-l-01.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="297" src="http://2.bp.blogspot.com/-0GRyv-72haA/UJVYQ96clhI/AAAAAAAAC58/Lptn1WKW9dA/s640/git-l-01.png" width="640" /></a></div><br /><br />Last night I watched the <a href="https://www.destroyallsoftware.com/">Destroy All Software</a> "<a href="https://www.destroyallsoftware.com/screencasts/catalog/pretty-git-logs">PRETTY GIT LOGS</a>" screencast which takes '<i style="background-color: #cccccc;">git l</i>' to the next level<br /><br /><ul><li><a href="https://www.destroyallsoftware.com/screencasts/catalog/pretty-git-logs">https://www.destroyallsoftware.com/screencasts/catalog/pretty-git-logs</a></li><li><a href="https://github.com/garybernhardt/dotfiles/blob/master/.gitconfig">https://github.com/garybernhardt/dotfiles/blob/master/.gitconfig</a></li><li><a href="https://github.com/garybernhardt/dotfiles/blob/master/.githelpers">https://github.com/garybernhardt/dotfiles/blob/master/.githelpers</a></li></ul><div><div>now '<i style="background-color: #cccccc;">git l</i>' renders</div><div><br /></div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-Rgt39G9fGfg/UJVYWh9U0lI/AAAAAAAAC6E/3nxcaZO7Keo/s1600/git-l-02.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="242" src="http://1.bp.blogspot.com/-Rgt39G9fGfg/UJVYWh9U0lI/AAAAAAAAC6E/3nxcaZO7Keo/s640/git-l-02.png" width="640" /></a></div><div><br /></div><div>&nbsp; &nbsp;</div></div></div>

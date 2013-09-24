@@ -1,0 +1,11 @@
+---
+layout: post
+title: "SyntaxHighlighter and Google Blogger"
+date: 2008-02-16
+comments: false
+categories:
+ - code
+---
+
+<div class='post'>
+Just started using the SyntaxHighlighter on my code samples blog - here is some quick notes on what I had to do <ul><br /><li>Download the SyntaxHighlighter javascript and css files from <a href="http://code.google.com/p/syntaxhighlighter/">http://code.google.com/p/syntaxhighlighter/</a><br /></li><li>Upload those to my googlepage website, if you don't have one go to <a href="https://www.google.com/accounts/ManageAccount">https://www.google.com/accounts/ManageAccount</a> and click on the 'Page Creator' link<br /></li><li>Edit the blog template -> Layout -> Edit Html</li><li>Add the references to the css and javascript files in the <em>head</em> section <li>Add the initialization javascript calls right before the <em>/body</em> tag at the end of the html template</li><li>see <a href="http://morten.lyhr.dk/2007/12/how-to-get-syntax-highlighting-in.html">http://morten.lyhr.dk/2007/12/how-to-get-syntax-highlighting-in.html</a></li><li>then use pre tags like this around your code <em>pre class="c-sharp" name="code"</em> <li>see <a href="http://code.google.com/p/syntaxhighlighter/wiki/Usage">http://code.google.com/p/syntaxhighlighter/wiki/Usage</a> </li></ul><p>One issue I ran into was that the google blogger automatically adds br tags where newlines appear in any content - makes the code pretty much unreadable, but the fix is well documented and easy to implement - <a href="http://code.google.com/p/syntaxhighlighter/wiki/BloggerMode">http://code.google.com/p/syntaxhighlighter/wiki/BloggerMode</a></p><p></p></div>

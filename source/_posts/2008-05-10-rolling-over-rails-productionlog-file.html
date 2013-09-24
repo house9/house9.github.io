@@ -1,0 +1,11 @@
+---
+layout: post
+title: "Rolling Over Rails production.log file"
+date: 2008-05-10
+comments: false
+categories:
+ - rails
+---
+
+<div class='post'>
+Just came across this on a rails forum (post by Freezzo), rails production.log files can grow very large - but no chron job required - this is very handy.<br /><br /><pre>config.logger = Logger.new("#{RAILS_ROOT}/log/#{ENV['RAILS_ENV']}.log", 'daily')<br /></pre><br />where 'daily' can be 'daily' to 'weekly', 'monthly', '5mb', etc...</div>

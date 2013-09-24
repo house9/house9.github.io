@@ -1,0 +1,12 @@
+---
+layout: post
+title: "Heroku - sending email with Gmail"
+date: 2009-11-12
+comments: false
+categories:
+ - rails
+ - heroku
+---
+
+<div class='post'>
+<p>I have been working on deploying a <a href="http://guides.rubyonrails.org/">Rails</a> application to <a href="http://heroku.com/">Heroku</a>. A couple of gotchas I ran into when following this post "<a href="http://blog.heroku.com/archives/2009/11/9/tech_sending_email_with_gmail/">Sending email with Gmail</a>"</p><ul><li>Don't use a dollar sign ($) in your password </li><li>this can work locally if you put single quotes around the value, but on the heroku server it saved the entire string but at runtime would truncate it at the dollar sign</li><li>for example using the password '<em>left-side$right-side</em>' </li><li>heroku config:add GMAIL_SMTP_PASSWORD=left-side$right-side</li><li>heroku config returns > GMAIL_SMTP_PASSWORD=left-side$right-side</li><li>heroku console </li><li>type ENV['GMAIL_SMTP_PASSWORD'] returns > left-side</li></ul><p>Heroku is running Ruby 1.8.6, locally I am running Ruby 1.8.7, I made a small hack to the plugin to avoid errors in development mode</p><p>./vendor/plugins/gmail_smtp/init.rb<br />changed the first line to<br />require 'smtp_tls' if RUBY_VERSION < "1.8.7" </p><p>tls is already handled in 1.8.7 and this code must have been creating some type of conflict</p></div>

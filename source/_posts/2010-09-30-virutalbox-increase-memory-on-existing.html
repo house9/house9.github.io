@@ -1,0 +1,11 @@
+---
+layout: post
+title: "VirutalBox - Increase the memory on an existing guest machine"
+date: 2010-09-30
+comments: false
+categories:
+ - virtual
+---
+
+<div class='post'>
+I use VirtualBox to run a guest Windows XP machine on my Mac. When I set up the virtual guest I set it to use 512MB of memory. And of course now I decide I want to bump it to 1GB. I could not find anyway to do this using the GUI but it can be done from the Terminal.<br /><br />When the virtual machine is not running execute this command<br /><blockquote><span class="Apple-style-span" style="font-family: 'Courier New', Courier, monospace;"><b>VBoxManage modifyvm XP1 --memory 1024</b></span></blockquote>XP1 is the name of my guest machine, so replace with yours. The memory parameter takes the amount in MB, in this case 1GB<br /><br />The first time I ran it I&nbsp;received&nbsp;the following error message<br /><br /><blockquote><i><span class="Apple-style-span" style="background-color: yellow;">ERROR: The machine is not mutable (state is Saved)</span></i></blockquote><br />Last time I turned off the guest machine I had selected the save state option. You need to Power the virtual machine down before you can run this command.</div>

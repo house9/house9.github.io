@@ -1,0 +1,24 @@
+---
+layout: post
+title: "rails send_data fails on IE when SSL enabled"
+date: 2010-02-17
+comments: false
+categories:
+ - rails
+---
+
+<div class='post'>
+Came across a nasty issue using rails <a href="http://api.rubyonrails.org/classes/ActionController/Streaming.html#M000422">send_data</a> with IE. Everything worked fine until the pages were running under SSL / HTTPS. Turns out the issue is with file download over SSL when the <a href="http://www.metatags.info/meta_http_equiv_cache_control">Cache-Control</a> and <a href="http://www.metatags.info/meta_http_equiv_pragma">Pragma</a> html headers are set to no-cache.<div><br /></div><div>The error message from IE</div><div><blockquote>Internet Explorer was unable to open this site. The requested site is either unavailable or cannot be found. Please try again later.</blockquote><div>The fix...</div><div><blockquote># before calling send_data<br />response.headers.delete("Pragma")<br />response.headers.delete('Cache-Control')</blockquote></div><div>This issue is not restricted to rails, any server side code that sets no-cache is subject to the same issue. Glad I was able to find this <a href="http://groups.google.com/group/rubyonrails-talk/browse_thread/thread/ef85d2af990f6c31/c500d6bce04dcc5f?lnk=gst&amp;q=815313#c500d6bce04dcc5f">post</a>.</div><div><br /></div><div>see also <a href="http://support.microsoft.com/kb/316431/">kb-316431</a></div></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Puneet Pandey</div>
+<div class='content'>
+Thanks Rafael, your post was really helpful, as we are giving IE-8 support to our Client&#39;s customers.<br /><br />- Puneet</div>
+</div>
+<div class='comment'>
+<div class='author'>Rafael Revi</div>
+<div class='content'>
+Thanks for posting this!!!!<br /><br />This is issue is gone in IE9. I replicated issue in IE7 and IE8.<br /><br />Thanks again</div>
+</div>
+</div>

@@ -1,0 +1,12 @@
+---
+layout: post
+title: "Ajax error handling with ruby on rails and jquery"
+date: 2009-08-21
+comments: false
+categories:
+ - rails
+ - jquery
+---
+
+<div class='post'>
+<p>This sample is just a slight modification of this post '<a href="http://www.railsfire.com/article/handling-ajax-errors-and-displaying-friendly-error-messages-users">Handling AJAX errors and displaying friendly error messages to users</a>'. Basically I wanted to maintain the existing rails error handling for non-ajax pages and then have good handling for errors in both development and production mode; i.e. get errors in the browser when in development mode and show a nice message when in production mode.</p><p>Modify /app/controllers/application.rb; add the rescue_from macro and the handler_exception method</p><br /><script src="http://gist.github.com/172342.js"></script><p>Then add a global javascript method for presenting the errors; most likely in application.js</p><script src="http://gist.github.com/172345.js"></script><p>Then a sample usage, jquery making an ajax post to a rails controller action</p><script src="http://gist.github.com/172347.js"></script><p>in development mode the error message is returned in an easier to read view in the firebug console and an alert message is presented that has a truncated version of the error</p><div><img src="http://lh4.ggpht.com/_vmq8pP42BnQ/So8KnG3kC8I/AAAAAAAACpY/MfilcJSygvQ/s800/ajax_error_development.png" alt="dev mode" /></div><p>in production mode just a friendly error message.</p><div><img src="http://lh4.ggpht.com/_vmq8pP42BnQ/So8JB8thiUI/AAAAAAAACpQ/g-OZI0E94Qk/s800/screen-shot-002.png" alt="production mode" /></div><p>Resources</p><ul><li><a href="http://www.railsfire.com/article/handling-ajax-errors-and-displaying-friendly-error-messages-users">Handling AJAX errors and displaying friendly error messages to users</a></li><li>Rails source code <a href="http://api.rubyonrails.org/classes/ActionController/Rescue.html">rescue.rb</a></li><li>Rails views source on your install lib/action_controller/templates/rescues</li><li><a href="http://docs.jquery.com/Ajax/jQuery.ajax">jquery ajax</a></li></ul></div>

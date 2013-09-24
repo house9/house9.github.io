@@ -1,0 +1,12 @@
+---
+layout: post
+title: "Heroku - HTTP 502 Error"
+date: 2009-11-12
+comments: false
+categories:
+ - rails
+ - heroku
+---
+
+<div class='post'>
+<p>This might be helpful to someone? </p><p>I was receiving 'App Failed To Respond (HTTP 502) Bad Gateway' errors when deploying my application on <a href="http://heroku.com/">Heroku</a>. Reading the <a href="http://docs.heroku.com/errors">error codes</a> page did not help me solve the problem, it took awhile but I was finally able to track it down.</p><p>The error was being generated in the browser but checking the rails logs, the requests were returning HTTP 200 success codes, so the problem was being generated at the web server level on the <a href="http://heroku.com/">Heroku</a> stack.</p><p>Turns out the problem was caused by setting response.header for no browser caching. I was using code similar to this <a href="http://arjunghosh.wordpress.com/2008/04/29/how-to-force-the-browser-to-not-cache-in-rails/">post</a>. Everything worked fine after I removed this line</p><ul><li>response.headers["Expires"] = 0</li></ul></div>

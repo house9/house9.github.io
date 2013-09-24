@@ -1,0 +1,25 @@
+---
+layout: post
+title: "NAnt build with TFS changeset as revision number"
+date: 2008-04-20
+comments: false
+categories:
+ - tfs
+ - nant
+---
+
+<div class='post'>
+This code sample is a <a href="http://nant.sourceforge.net/">nant</a> script that <br /><ul><li>deletes the CommonAssembly.cs file (linked to all projects)</li><li>uses the nant <a href="http://nant.sourceforge.net/release/latest/help/tasks/asminfo.html">asminfo</a> task to recreate the CommonAssembly.cs file, but after we query TFS for the changeset (revision) number which is used in the version number</li><li>build the solution in release mode using the ide.exe (there are other - better ways, but this one works)</li><li>xcopy files to C:\temp\{app} and clean up all the source files</li></ul><br />basically I just put together a few bits that I found on other blogs (should have saved the urls - doh!), most were related to using svn for source control and then I added in the code block for the c# stuff to query TFS.<br /><br />A quick note about the linked CommonAssembly.cs file, visual studio has an option when you are adding an existing file to a project to select 'linked', click the arrow on the 'Add' button when you select your existing file<br /><br />what this script does not do - get latest from TFS, I usually do that part manually or from ccnet<br /><br /><script src="http://gist.github.com/538649.js?file=nant-tfs-changeset-to-revision.xml"></script><br /><br />the c# bit that goes in the nant script block above<br />NOTE: see <a href="http://house9.blogspot.com/2009/04/update-nant-build-with-tfs-changeset-as.html">updated version</a> of this code block<br /><br /><script src="http://gist.github.com/538657.js?file=nant-tfs-changeset-to-revision.cs"></script><br /><br />nant is awesome!</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>juho</div>
+<div class='content'>
+Seems that this solution doesn&#39;t work with TFS2010, but thanks for the idea, I&#39;ll use it as a base for my project :)</div>
+</div>
+<div class='comment'>
+<div class='author'>Mahendra Mavani</div>
+<div class='content'>
+I was looking for this solution, since long. Thanks for providing this sample. It works great on my project</div>
+</div>
+</div>

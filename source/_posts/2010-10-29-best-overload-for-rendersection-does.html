@@ -1,0 +1,19 @@
+---
+layout: post
+title: "The best overload for 'RenderSection' does not have a parameter named 'optional'"
+date: 2010-10-29
+comments: false
+categories:
+ - mvc
+---
+
+<div class='post'>
+I've been taking a look at <a href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=0abac7a3-b302-4644-bd43-febf300b2c51&amp;displaylang=en">asp.net mvc 3 beta</a> with razor view templates.<br /><div><br /></div><div>some of the examples on the net are from previous releases and things have changed; one that I came across was the RenderSection method which can be used in layout (master) files</div><div><br /></div><blockquote><span class="Apple-style-span" style="font-family: 'Courier New', Courier, monospace;">@RenderSection("Header", optional:true)</span></blockquote>will throw an exception<br /><br /><blockquote><span class="Apple-style-span" style="background-color: yellow;"><i>The best overload for 'RenderSection' does not have a parameter named 'optional'</i></span></blockquote>the newer syntax for rendering an optional section appears to be<br /><br /><blockquote><span class="Apple-style-span" style="font-family: 'Courier New', Courier, monospace;">@RenderSection("Header", false)&nbsp;</span></blockquote></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>giddy</div>
+<div class='content'>
+The parameter name has been renamed to required actually =P</div>
+</div>
+</div>

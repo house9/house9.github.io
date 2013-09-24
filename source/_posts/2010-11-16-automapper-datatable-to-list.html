@@ -1,0 +1,19 @@
+---
+layout: post
+title: "Automapper Datatable to List"
+date: 2010-11-16
+comments: false
+categories:
+ - code
+---
+
+<div class='post'>
+I did a few Google searches for "<a href="http://www.google.com/search?q=c%23+automapper+datatable+to+list">c# automapper datatable to list</a>" but nothing good showed up right away, maybe this post will help someone in the future?<br /><br />The solution showed up on <a href="http://stackoverflow.com/">stackoverflow</a> here is the link<br /><br /><a href="http://stackoverflow.com/questions/2429194/automapper-mapping-ienumerable-to-datareader-issue">http://stackoverflow.com/questions/2429194/automapper-mapping-ienumerable-to-datareader-issue</a><br /><br />and here is a code snippet<br /><br /><script src="https://gist.github.com/701974.js?file=automapper-datatable-to-list.cs"></script><br /><noscript><br />System.Data.DataTable people = GetPeopleData();<br /><br />AutoMapper.Mapper.Reset();<br />AutoMapper.Mapper.CreateMap&lt;IDataReader, Person&gt;();<br /><br />var results = AutoMapper.Mapper.Map&lt;IDataReader, IList&lt;Person&gt;&gt;(people.CreateDataReader());<br /></noscript><br />Note that we are actually mapping IDataReader to a list, and DataTable has convenience method to do that for us 'CreateDataReader'<br /><br /><br /><ul><li><a href="http://automapper.codeplex.com/">Automapper</a></li></ul></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>happyapostate</div>
+<div class='content'>
+Thanks House9.  I&#39;ve added an extension method to DataTable using your code, and it works fine.  Now I just call ToList with the appropriate type for the records and away we go.</div>
+</div>
+</div>

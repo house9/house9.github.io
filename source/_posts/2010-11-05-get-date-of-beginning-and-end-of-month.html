@@ -1,0 +1,11 @@
+---
+layout: post
+title: "Get the date of the beginning and end of a month using Ruby"
+date: 2010-11-05
+comments: false
+categories:
+ - ruby
+---
+
+<div class='post'>
+Sometimes Ruby blows my mind, I needed to get the start date and end date of the previous month. Guess what Ruby just happens to have methods to handle this -&nbsp;beginning_of_month, end_of_month, there is even beginning_of_quarter and end_of_quarter if you need them!<br /><br /><br /><script src="https://gist.github.com/665048.js?file=cool%20date%20functions%20in%20ruby"></script><br /><br /><noscript><br /><pre>last_month = Date.today.last_month # =&gt; Tue, 05 Oct 2010 <br /><br />last_month.beginning_of_month # =&gt; Fri, 01 Oct 2010 <br />last_month.end_of_month # =&gt; Sun, 31 Oct 2010<br /><br />last_month.beginning_of_quarter # =&gt; Fri, 01 Oct 2010<br />last_month.end_of_quarter # =&gt; Fri, 31 Dec 2010<br /></pre></noscript></div>

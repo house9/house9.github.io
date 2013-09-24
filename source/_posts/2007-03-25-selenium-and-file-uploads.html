@@ -1,0 +1,11 @@
+---
+layout: post
+title: "Selenium and file uploads"
+date: 2007-03-25
+comments: false
+categories:
+ - coding
+---
+
+<div class='post'>
+I have recently started using <a href="http://www.openqa.org/selenium/">Selenium</a> for testing web applications; pretty sweet (you know it had to be good coming from <a href="http://www.thoughtworks.com/index.html">ThoughtWorks</a>); anyhow I ran into an issue with testing File uploads; after a couple of Google searches it turns out that Selenium is using javascript requests to manipulate all the html controls and there is a built in security feature (in the browser) that does not allow file uploads to be controlled via javascript. This is probably a real good thing, I sure wouldn't want personal files being randomly uploaded to someone else's web server.<br /><br />Anyhow if you simply change the browser string to *chrome it will work (at least against localhost, haven't tried it against any of our beta sites yet)<br /><br /><span style="font-family:courier new;font-size:78%;">selenium = new DefaultSelenium</span><span style="font-family:courier new;font-size:78%;">(</span><span style="font-family:courier new;font-size:78%;">"localhost", </span><span style="font-family:courier new;font-size:78%;">4444, </span><span style="font-family:courier new;font-size:78%;">"<span style="color:#3333ff;">*chrome</span>", </span><span style="font-family:courier new;font-size:78%;">"</span><a href="http://www.google.com/"><span style="font-family:courier new;font-size:78%;">http://www.google.com/</span></a><span style="font-family:courier new;font-size:78%;">"</span><span style="font-family:courier new;font-size:78%;">);</span><br /><br />Read more about chrome and other experimental browser launchers <a href="http://www.openqa.org/selenium-rc/experimental.html">here</a><br /><br />More on Selenium<br /><span style="font-size:85%;"><em>Selenium uses JavaScript and Iframes to embed a test automation engine in your browser. This technique should work with any JavaScript-enabled browser. Because different browsers handle JavaScript somewhat differently, we usually have to tweak the engine to support a wide range of browsers on Windows, Mac OS X and Linux.</em></span><br />- From <a href="http://www.openqa.org/selenium-core/">http://www.openqa.org/selenium-core/</a></div>

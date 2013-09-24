@@ -1,0 +1,12 @@
+---
+layout: post
+title: "Strange behavior with Rails find_or_initialize_by_id and Postgresql"
+date: 2009-04-25
+comments: false
+categories:
+ - rails
+ - postgresql
+---
+
+<div class='post'>
+The following code sample worked as I would expect when using MySql database - when the :widget_id is 0 it creates a new record with an id of 1; but after switching to Postgresql it was inserting a record into the database with an id of 0 (zero)?<div><br /></div><div><script src="http://gist.github.com/101669.js"></script></div><br /><div><span class="Apple-style-span" style="font-weight: bold;">Note:</span> params[:widget_id] does have a value of 0 (zero) when I want to generate a new record vs an actual value when doing an edit. This is a non-standard rails form, I did not experience any issues with a standard new/create view/action scenario.</div><div><br /></div><div><br /></div><div><br /></div></div>

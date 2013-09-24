@@ -1,0 +1,11 @@
+---
+layout: post
+title: "accesskey attribute on the select tag is not valid?"
+date: 2009-04-11
+comments: false
+categories:
+ - valid html
+---
+
+<div class='post'>
+Was just running some validation on a html form and it failed with the following error<br /><div>"<span class="Apple-style-span" style="font-style: italic;">Invalid markup: line 68: Attribute "accesskey" exists, but can not be used for this element.</span>"</div><br /><div>From <a href="http://www.w3.org/TR/html401/interact/forms.html#adef-accesskey">w3c</a> spec - "<span class="Apple-style-span" style="font-style: italic;">The following elements support the accesskey attribute: A, AREA, BUTTON, INPUT, LABEL, and LEGEND, and TEXTAREA.</span>"</div><br /><div>I have no idea why input and textarea would be supported but not select? this seems like a mistake? At least there is an easy work around - apply the accesskey attribute to the label tag that references the select menu.</div></div>

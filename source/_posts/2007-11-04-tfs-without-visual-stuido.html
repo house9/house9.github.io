@@ -1,0 +1,11 @@
+---
+layout: post
+title: "TFS without Visual Stuido"
+date: 2007-11-04
+comments: false
+categories:
+ - code
+---
+
+<div class='post'>
+you can actually install Team Foundation System source control without installing the entire Visual Studio IDE, why you would want to do this I am not sure, but we had some QA peoples who needed access to the source control system, seemed like it would be easier for them not to need to go through the VS IDE just to access the files.<br /><br />anyhow if you install TFS Source Control Explorer, everything should work ok from the command line, only one registry hack was required - found this on msdn forum somewhere but forgot to bookmark it<br /><br /><span style="font-family:verdana;font-size:85%;"><span style="color:#990000;">HKEY_CURRENT_USER\Software\Microsoft\VisualStudio\8.0\TeamFoundation\Servers </span><br /></span><br />add a new String Value with the key being the name of your TFS server and the value the uri for the TFS server i.e. MySourceControl=http://mysourcecontrol:8080<br /><br />or better yet forget all this and save your self a big headache and just use <a href="http://subversion.tigris.org/">Subversion</a> - it works better and it is free</div>

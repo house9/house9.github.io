@@ -1,0 +1,11 @@
+---
+layout: post
+title: "Procedure sp_droplogin, Line 93 Login is aliased or mapped to a user in one or more database(s)"
+date: 2009-09-02
+comments: false
+categories:
+ - mssql
+---
+
+<div class='post'>
+<div>Trying to remove a MSSQL login from a database server, recieve the following eror<br /></div><br /><blockquote>Msg 15175, Level 16, State 1, Procedure sp_droplogin, Line 93<br />Login 'qa' is aliased or mapped to a user in one or more database(s). Drop the user or alias before dropping the login.</blockquote><br /><div>Solution: run this command to determine what alias or groups the login is associated with and then remove those; might be nice if they just added this to the error message?<br /></div><div><br /></div><div><blockquote>sp_helpuser 'qa'</blockquote></div></div>

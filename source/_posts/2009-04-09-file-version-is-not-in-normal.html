@@ -1,0 +1,12 @@
+---
+layout: post
+title: "'file version' is not in the normal 'major.minor.build.revision' format"
+date: 2009-04-09
+comments: false
+categories:
+ - tfs
+ - nant
+---
+
+<div class='post'>
+At work we use TFS for source control and NAnt for building our application, yesterday our NAnt build started failing with the following error message "<span style="font-style: italic;">Assembly generation The version '2.7.1.65559' specified for the 'file version' is not in the normal 'major.minor.build.revision' format</span>"<br /><br />After a quick Google search it turns out that each segment in a .net assembly cannot be larger then 65534. We use the TFS changeset for the <span style="font-style: italic;">revision </span>segment but this will no longer work for us as we are now beyond changeset 65534 - doh! As a work around we are now using only the last 4 digits of the changeset, so instead of 2.7.1.65559 we are using the version 2.7.1.5559<br /><br />this required a small change to the Nant build script<br /><ul><li>the update is <a href="http://house9.blogspot.com/2009/04/update-nant-build-with-tfs-changeset-as.html">here</a></li><li>and the original is <a href="http://house9.blogspot.com/2008/04/nant-build-with-tfs-changeset-as.html">here</a></li></ul>this version constraint is documented <a href="http://msdn.microsoft.com/en-us/library/system.reflection.assemblyversionattribute.aspx">here</a></div>

@@ -1,0 +1,9 @@
+---
+layout: post
+title: "414 Request-URI Too Large"
+date: 2012-09-05
+comments: false
+---
+
+<div class='post'>
+<br />How to configure nginx to accept larger querystring requests<br /><br />Increase the '<i>large_client_header_buffers</i>'<br /><br />This is located in the '<i>http</i>' section of the configuration<br /><br /><b>Example:</b><br /><div><blockquote class="tr_bq">&nbsp; &nbsp; http {<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # override to allow long query string<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; large_client_header_buffers 8 512k;<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ...<br />&nbsp; &nbsp; }</blockquote><br /><b>Resources</b><br /><br /><ul><li><a href="http://stackoverflow.com/questions/1067334/how-to-set-the-allowed-url-length-for-a-nginx-request-error-code-414-uri-too">http://stackoverflow.com/questions/1067334/how-to-set-the-allowed-url-length-for-a-nginx-request-error-code-414-uri-too</a>&nbsp;</li><li><a href="http://nginx.2469901.n2.nabble.com/Nginx-returning-414-even-when-large-client-header-buffers-is-set-td7451517.html">http://nginx.2469901.n2.nabble.com/Nginx-returning-414-even-when-large-client-header-buffers-is-set-td7451517.html</a></li><li><a href="http://wiki.nginx.org/NginxHttpCoreModule#large_client_header_buffers">http://wiki.nginx.org/NginxHttpCoreModule#large_client_header_buffers</a>&nbsp;</li></ul></div><div><br /></div><div><br /></div><div><br /></div></div>

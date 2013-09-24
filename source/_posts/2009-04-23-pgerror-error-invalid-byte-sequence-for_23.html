@@ -1,0 +1,20 @@
+---
+layout: post
+title: "PGError: ERROR:  invalid byte sequence for encoding "UTF8": 0xa7 (ActiveRecord::StatementInvalid)"
+date: 2009-04-23
+comments: false
+categories:
+ - rails
+ - postgresql
+---
+
+<div class='post'>
+Working on a rails application and have decided to make the switch from MySql to <a href="http://www.postgresql.org/">Postgresql</a>; ran into a few minor issues along the way and one really annoying and unexpected issue<br /><br /><blockquote><span style="font-style:italic; background-color:yellow;">PGError: ERROR:  invalid byte sequence for encoding "UTF8": 0xa7 (ActiveRecord::StatementInvalid)<br />HINT:  This error can also happen if the byte sequence does not match the encoding expected by the server, which is controlled by "client_encoding".</span><br /></blockquote><br />The above error was being generated when I was trying to save model objects that had their string and text attributes assigned from data that had been scrapped using http with <a href="http://scrubyt.org/">scRUBYt</a>. After searching on Google the only 'work-around' I found was to use base64 encode and decode when reading and writing to these model attributes / database columns<br /><br />Given the following migration<br /><script src="http://gist.github.com/100947.js"></script><br />Our model before and then after applying the work-around<br /><script src="http://gist.github.com/100943.js"></script><br /><br />Resources<div><ul><li><a href="http://groups.google.com/group/rubyonrails-talk/browse_thread/thread/aa02ee4750670d06/f2d5c89dafae30a1?lnk=gst&amp;q=postgresql+base64">String encoding / Importing Feeds</a></li><li><a href="http://www.ruby-forum.com/topic/146059">override AR default attribute accessors</a><br /></li></ul><br /></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+Had an issue with comment moderation<br>------------------------------------<br><br>Justin Ko posted the following about a month ago<br>---------<br>The last solution on this post also works.<br>http://blogs.jetthoughts.com/blog/2009/12/16/postgresql-insert-not-valid-unicode-values/</div>
+</div>
+</div>

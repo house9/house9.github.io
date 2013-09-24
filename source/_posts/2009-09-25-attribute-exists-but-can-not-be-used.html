@@ -1,0 +1,25 @@
+---
+layout: post
+title: "Attribute "target" exists, but can not be used for this element."
+date: 2009-09-25
+comments: false
+categories:
+ - xhtml
+ - jquery
+---
+
+<div class='post'>
+These days I am all about valid xhtml and was surprised to receive this validation error when using the target attribute on an anchor tag.<div style="font-style: italic;"><blockquote style="background-color: yellow;">Attribute "target" exists, but can not be used for this element.</blockquote></div><br /><script src="http://gist.github.com/193604.js"></script><br /><div>I found a nice work around that does not involve window.open, using jquery we can hack the attribute on 'after' the dom has loaded.</div><br /><script src="http://gist.github.com/193608.js"></script><br /><div><br /><div>Now instead of target='_blank' you can just use class='target-blank', if the browser does not support javascript it will not open in a new window but the link will still work - and we have our valid xhtml.</div><br />Resources<br /><ul><li><a href="http://www.cre8asiteforums.com/forums/index.php?showtopic=58559">cre8asiteforums</a></li><li><a href="http://validator.w3.org/#validate_by_input+with_options">W3C Markup Validation Service</a></li><li><a href="http://jquery.com/">JQuery</a></li></ul></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+good point! link to jquery has been added</div>
+</div>
+<div class='comment'>
+<div class='author'>Anonymous</div>
+<div class='content'>
+Do not forget to add a link to jquery lib ;)</div>
+</div>
+</div>

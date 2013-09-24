@@ -1,0 +1,11 @@
+---
+layout: post
+title: "exclude .svn results with egrep recursive search"
+date: 2010-03-11
+comments: false
+categories:
+ - ubuntu
+---
+
+<div class='post'>
+The exclude-dir option works nicely, I was previously was using --exclude and it would include some sub-dir .svn files<br /><div><blockquote>egrep --exclude-dir=\.svn -r -n {search-criteria} {directory}</blockquote>i.e. find all TODO comments in the current directory and all sub directories<blockquote>egrep --exclude-dir=\.svn -r -n TODO .</blockquote><blockquote><br /></blockquote>Found this in the comments on this post - <a href="http://antoniolorusso.com/2008/05/12/grep-excluding-svn-dirs/">http://antoniolorusso.com/2008/05/12/grep-excluding-svn-dirs/ </a></div><div><br /></div><div>.</div></div>

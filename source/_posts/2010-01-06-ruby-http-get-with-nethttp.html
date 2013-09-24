@@ -1,0 +1,11 @@
+---
+layout: post
+title: "Ruby Http Get with Net::HTTP"
+date: 2010-01-06
+comments: false
+categories:
+ - ruby
+---
+
+<div class='post'>
+<script src="http://gist.github.com/270459.js"></script><br />Resources<br /><ul><li><a href="http://ruby-doc.org/stdlib/libdoc/net/http/rdoc/classes/Net/HTTP.html">Net::HTTP ruby docs</a></li><li><a href="http://stackoverflow.com/questions/1252210/parametrized-get-request-in-ruby">Stackoverflow post</a></li></ul><br /><br /><div style="display:none"><br />require 'net/http'<br />require 'uri'<br /><br />def get_html_content(requested_url)<br />url = URI.parse(requested_url)<br />full_path = (url.query.blank?) ? url.path : "#{url.path}?#{url.query}"<br />the_request = Net::HTTP::Get.new(full_path)<br /><br />the_response = Net::HTTP.start(url.host, url.port) { |http|<br />http.request(the_request)<br />}<br /><br />raise "Response was not 200, response was #{the_response.code}" if the_response.code != "200"<br />return the_response.body       <br />end   <br /><br /># this will fail with ArgumentError: HTTP request path is empty<br />s = get_html_content("http://www.google.com")<br /># these should be fine<br />s = get_html_content("http://www.google.com/") <br />s = get_html_content("http://github.com/search?q=http")<br /># above code does not handle redirects but raises exception for non-200 <br />s = get_html_content("http://www.yahoo.com/") # http 302<br /></div></div>

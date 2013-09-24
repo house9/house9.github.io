@@ -1,0 +1,11 @@
+---
+layout: post
+title: "Postgres: get the number of days in an interval"
+date: 2011-11-09
+comments: false
+categories:
+ - postgresql
+---
+
+<div class='post'>
+<blockquote><span class="Apple-style-span" style="color: #38761d;">-- seconds / 60 = minutes / 60 = hours / 24 = days </span><br /><span class="Apple-style-span" style="color: blue;">select</span> (((EXTRACT(EPOCH <span class="Apple-style-span" style="color: blue;">FROM</span> INTERVAL '<span class="Apple-style-span" style="color: #38761d;">2 years</span>') / 60) / 60) / 24)::integer <span class="Apple-style-span" style="color: blue;">as</span> number_of_days&nbsp;</blockquote><br />good resource -&nbsp;<a href="http://stackoverflow.com/questions/952493/how-do-i-convert-an-interval-into-a-number-of-hours-with-postgres">http://stackoverflow.com/questions/952493/how-do-i-convert-an-interval-into-a-number-of-hours-with-postgres</a></div>

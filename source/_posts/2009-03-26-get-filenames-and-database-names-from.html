@@ -1,0 +1,12 @@
+---
+layout: post
+title: "Get Filenames and Database names from MSSQL"
+date: 2009-03-26
+comments: false
+categories:
+ - sql
+ - mssql
+---
+
+<div class='post'>
+I was doing some clean up on one of our database servers; we have many databases created with backup/restore for testing purposes I was checking for the largest ldf files and making sure those databases were in simple mode and then shirking the data files, there were a few files I could not match to the databases because the mdf and ldf file names were different from the actual database file name - found the following queries using a few google searches<div><br /></div><br /><div><br /><script src="http://gist.github.com/86181.js"></script><br /></div><br /><div><br /><script src="http://gist.github.com/86182.js"></script><br /></div></div>

@@ -1,0 +1,12 @@
+---
+layout: post
+title: "MSSQL drop and re-add constraints"
+date: 2008-05-18
+comments: false
+categories:
+ - sql
+ - mssql
+---
+
+<div class='post'>
+One of the guys at work hooked me up with this code - quite useful if you want to do a bunch of data inserts but don't want to worry about the order you apply the inserts because of foreign key constraints<br /><br /><span style="font-weight:bold;">Before performing data actions:</span><br /><pre>-- generate these and run<br />SELECT<br />'ALTER TABLE ' + so.NAME + ' NOCHECK CONSTRAINT ALL'<br />FROM sysobjects so<br />WHERE xtype = 'u'<br /></pre><br /><span style="font-weight:bold;">After performing data actions:</span><br /><pre>-- generate these and run<br />SELECT<br />'ALTER TABLE ' + so.NAME + ' CHECK CONSTRAINT ALL'<br />FROM sysobjects so<br />WHERE xtype = 'u'<br /></pre><br />Thanks to ET for this code bit!</div>

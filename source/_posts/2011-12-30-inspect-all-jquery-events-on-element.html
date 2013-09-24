@@ -1,0 +1,12 @@
+---
+layout: post
+title: "Inspect all jQuery events on an element"
+date: 2011-12-30
+comments: false
+categories:
+ - javascript
+ - jquery
+---
+
+<div class='post'>
+Very useful<br /><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">$("SELECTOR").data("events");</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;"><br /></span><br />All bound event handlers are stored in the elements data context under the events key<br />This can be very useful when&nbsp;debugging&nbsp;with tools like FireBug<br /><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">$("form").submit(function () { alert('submit form'); });</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">$("form").data("events");</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">&gt; Object { submit=[1] }</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;"><br /></span><br />Resources<br /><br /><ul><li><a href="http://www.bennadel.com/blog/1727-Viewing-jQuery-DOM-Event-Bindings-With-FireBug.htm">http://www.bennadel.com/blog/1727-Viewing-jQuery-DOM-Event-Bindings-With-FireBug.htm</a>&nbsp;</li></ul></div>

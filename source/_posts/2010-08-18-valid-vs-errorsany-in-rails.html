@@ -1,0 +1,19 @@
+---
+layout: post
+title: "valid? vs errors.any? in rails"
+date: 2010-08-18
+comments: false
+categories:
+ - rails
+---
+
+<div class='post'>
+Recently got bit by checking valid? in some rails code, thought I would share.<div><br /></div><div>In this situation I was manually adding to the errors collection of an ActiveRecord object and then calling valid? to see if the object was ok; this is not the normal style of validation on ActiveRecord objects, if I had been playing by the rules valid? would have done what I needed; it would check the current state of my objects attributes and 're-validate' the object.</div><div><br /></div><div>This screen shot of an irb console session shows the issue I was running into</div><br /><br /><a href="http://www.flickr.com/photos/house9/4904826045/" title="valid-v-errors-any by House9, on Flickr"><img src="http://farm5.static.flickr.com/4099/4904826045_aa14a62090_b.jpg" width="883" height="573" alt="valid-v-errors-any" /></a><br /><br /><div>Taking a look at the source code for valid? it becomes obvious why the manually added errors get cleared, just not what I expected to happen</div><br /><br /><a href="http://www.flickr.com/photos/house9/4905416116/" title="valid-source by House9, on Flickr"><img src="http://farm5.static.flickr.com/4096/4905416116_9983051ffb_b.jpg" width="855" height="373" alt="valid-source" /></a></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Vladimir A. Rybas</div>
+<div class='content'>
+wow. thanks!</div>
+</div>
+</div>

@@ -1,0 +1,12 @@
+---
+layout: post
+title: "PGError: ERROR:  duplicate key value violates unique constraint "tablename_pkey""
+date: 2009-05-09
+comments: false
+categories:
+ - rails
+ - postgresql
+---
+
+<div class='post'>
+<p>Using Postgresql I ran into the following error when trying to create a new record through my rails application</p><ul><li><em>PGError: ERROR:  duplicate key value violates unique constraint "tablename_pkey"</em></li></ul><p>Found this link which had the needed fix; </p><p><a href="http://railspikes.com/2009/3/6/duplicate-key-violates-unique-constraint#comment-form">Dealing with 'duplicate key violates unique constraint' on the primary key</a></p><p>apparently with Postgresql after bulk loading records where the auto incrementing id is specified you then need to update the sequence value</p></div>

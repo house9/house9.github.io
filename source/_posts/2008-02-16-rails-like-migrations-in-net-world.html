@@ -1,0 +1,19 @@
+---
+layout: post
+title: "Rails like migrations in the .NET world"
+date: 2008-02-16
+comments: false
+categories:
+ - code
+---
+
+<div class='post'>
+I have done a few very small projects with rails; one of the really nice features with rails is <a href="http://wiki.rubyonrails.org/rails/pages/UnderstandingMigrations">database migrations</a><br /><br />There are a few ports of rails migrations to the .NET world (that's where I spend alot of my time). I have not used any of these for 'real' but I have 'sampled' them. They all look promising but it seems like there is not very much activity on these projects.<br /><br /><strong>Migratordotnet</strong><br /><a href="http://code.google.com/p/migratordotnet/">http://code.google.com/p/migratordotnet/</a><br /><br /><strong>RikMigrations</strong><br /><a href="http://www.rikware.com/RikMigrations.html">http://www.rikware.com/RikMigrations.html</a><br /><br /><strong>SubSonic Migrations</strong><br />I don't know if they ever did incorporate this into the official release of sub sonic? maybe it will come in a future release<br /><a href="http://blog.wekeroad.com/2007/10/03/subsonic-migrate-me/">http://blog.wekeroad.com/2007/10/03/subsonic-migrate-me/</a><br /><br />I recently stumbled across vincent-vega and have begun using it on a small project and am planning to incorporate it into some of our larger applications. It is an Nant task that handles database versioning. It is not a migration in the same way as the other solutions as it uses actual sql scripts for all schema changes instead of c# code, which makes sense to me!<br /><br /><strong>Vincent-Vega</strong><br />[update 2008/10/14]<br />vincent-vega is now part of the tarantino project. <br /><a href="http://code.google.com/p/tarantino/">http://code.google.com/p/tarantino/</a><br /> Thanks for the heads up Dan!<br />[/update]<br /><br /><p>&nbsp;</p></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Dan Nuttall</div>
+<div class='content'>
+vincent-vega is now part of the tarantino project. I know you mentions it in a later post, but it took me forever to find it!<BR/><BR/>http://code.google.com/p/tarantino/</div>
+</div>
+</div>

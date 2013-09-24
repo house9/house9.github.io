@@ -1,0 +1,12 @@
+---
+layout: post
+title: "UPDATE: NAnt build with TFS changeset as revision number"
+date: 2009-04-09
+comments: false
+categories:
+ - tfs
+ - nant
+---
+
+<div class='post'>
+this is a small revision to a previous post <a href="http://house9.blogspot.com/2008/04/nant-build-with-tfs-changeset-as.html">NAnt build with TFS changeset as revision number</a><br /><br />apparently there is a limitation on the size of the number used in each segment of a .net assembly version so this is a slight update to the c# code that gets the latest changeset from TFS - changes start at "if(latestChangsetId > 65534)"<br /><br /><script src="http://gist.github.com/538692.js?file=nant-tfs-changeset-to-revision-updated.cs"></script><br /><br />see also <a href="http://michaelsync.net/2007/01/12/assemblyversion-buildno-limitation">AssemblyVersion - BuildNo Limitation </a></div>

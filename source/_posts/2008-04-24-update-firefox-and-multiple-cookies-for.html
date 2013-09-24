@@ -1,0 +1,25 @@
+---
+layout: post
+title: "Update: FireFox and multiple cookies for the same site"
+date: 2008-04-24
+comments: false
+categories:
+ - firefox
+ - coding
+---
+
+<div class='post'>
+well after a few days with CookieSwap it seems a bit buggy, basically if you open two browser instances and then switch the CookieSwap profile it is updating both browser instances making it somewhat useless?<br /><br />so I did some more <a href="http://support.mozilla.com/en-US/kb/Managing%20profiles">googling</a> and now using this technique <br /><br />Initial Setup<br />- close all instances of firefox<br />- Start -> Run -> firefox.exe -ProfileManager<br />- create 5 or so profiles, I named them p1 - p5<br /><br />Then when you want to use different profiles launch each one from the command line<br />- Start -> Run -> firefox.exe -P p1 -no-remote<br /><br />each profile is totally distinct (history, cookies, etc...), only issue there does not seem to be an easy way to tell which profile you currently have open, I think I can live with that</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Anonymous</div>
+<div class='content'>
+You can use different skins in different profiles to distinguish them easily.</div>
+</div>
+<div class='comment'>
+<div class='author'>kinjal</div>
+<div class='content'>
+maybe someone can write a firefox addon which displays the profile name in the title.  maybe i can do this.</div>
+</div>
+</div>

@@ -1,0 +1,34 @@
+---
+layout: post
+title: "rails collection_select to prompt or include_blank?"
+date: 2009-04-12
+comments: false
+categories:
+ - rails
+---
+
+<div class='post'>
+Well I just wasted a bit of time but learned something in the end. When working with the rails form helper <a href="http://api.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html#M001593">collection_select</a> you might be interested in the difference between the prompt option and include_blank? option<div><br /></div><div>include_blank will always create an option tag, prompt will only create an option tag when creating a new record - in most cases I prefer include_blank</div><div><br /></div><div>both take either a boolean or a string, if true is passed then include_blank will create an option with no display text and prompt defaults to the display text of 'Please Select'</div><div><pre style="font-size:large">collection_select(:product,<br />  :category_id,<br />  Category.all,    <br />  :id,    <br />  :title,    <br />  {:prompt => true}<br />)<br /><br />collection_select(:product,    <br />  :category_id,    <br />  Category.all,    <br />  :id,    <br />  :title,    <br />  {:include_blank => 'Please Select'}<br />)</pre></div><div>both of these result in the same html, but the first one will not include the 'Please Select' option when you return to edit the previously created Product</div><div><br /></div><div>See also</div><div><ul><li><a href="http://api.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html">http://api.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html</a><a href="http://shiningthrough.co.uk/Select+helper+methods+in+Ruby+on+Rails"></a></li><li><a href="http://shiningthrough.co.uk/Select+helper+methods+in+Ruby+on+Rails">Select helper methods in Ruby on Rails</a></li></ul><div><br /></div></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Tarnschaf</div>
+<div class='content'>
+Thank you!</div>
+</div>
+<div class='comment'>
+<div class='author'>Eric Jones</div>
+<div class='content'>
+Thank you!  I was trying to figure out why I couldn&#39;t get the prompt to show up, now I know why.  I was editing an existing record.</div>
+</div>
+<div class='comment'>
+<div class='author'>Julien</div>
+<div class='content'>
+Thank you!! I was scratching my head to find how i could force &quot;prompt&quot; message in collection_select!</div>
+</div>
+<div class='comment'>
+<div class='author'>danieltsadok</div>
+<div class='content'>
+Thanks - I was wondering what the difference was...</div>
+</div>
+</div>

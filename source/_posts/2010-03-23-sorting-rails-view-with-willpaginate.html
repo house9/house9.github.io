@@ -1,0 +1,11 @@
+---
+layout: post
+title: "sorting rails view with will_paginate plugin"
+date: 2010-03-23
+comments: false
+categories:
+ - rails
+---
+
+<div class='post'>
+This solution for sorting data on rails index actions does NOT use ajax. Sometimes sorting with ajax is nice but often it is not actually as user friendly; breaking the browser back button, etc...<div><br /></div><div>Disclaimer 1: this code is probably using all kinds of ruby anti-patterns :) - but it is a very simple implementation and so I just went with it...</div><div><br /></div><div>Disclaimer 2: the title of the post might be a little miss leading as you can use this with or without the <a href="http://wiki.github.com/mislav/will_paginate/">will_paginate</a> plugin. In my case I am using it with the <a href="http://wiki.github.com/mislav/will_paginate/">will_paginate</a> plugin - and I highly recommend it!</div><div><br /></div><div>put this file in your rails lib directory /lib/sort_index.rb</div><div><script src="http://gist.github.com/341278.js?file=sort_index.rb"></script></div><div><br /></div><div>in your controller code, set up the SortIndex::Config (you can have more than one if you have multiple actions that need to support sorting</div><div><script src="http://gist.github.com/341290.js?file=sort_index_controller_usage.rb"></script></div><div><br /></div><div>then in your view code render your table headers using the sort object</div><div><script src="http://gist.github.com/341295.js?file=sort_index_view_usage.html.erb"></script></div><div><br /></div><div>Does not support the following:</div><div><ul><li>additional attributes on the anchor tags</li><li>additional attributes on the table header tags</li><li>additional query string parameters - might add this later, would be nice for search results</li></ul></div></div>

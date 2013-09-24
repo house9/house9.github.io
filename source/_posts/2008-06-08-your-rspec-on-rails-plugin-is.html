@@ -1,0 +1,12 @@
+---
+layout: post
+title: "Your RSpec on Rails plugin is incompatible with your installed RSpec"
+date: 2008-06-08
+comments: false
+categories:
+ - rspec
+ - rails
+---
+
+<div class='post'>
+just getting into <a href="http://rspec.info/">rspec</a>, after reading <a href="http://www.amazon.com/Rails-Way-Addison-Wesley-Professional-Ruby/dp/0321445619">The Rails Way by Obie Fernandez</a>, a very nice testing framework.<br /><br />after installing the gems and plugins I ran into this error when trying to run my tests <span style="font-style: italic;">"<span style="font-weight: bold;">Your RSpec on Rails plugin is incompatible with your installed RSpec</span>"</span><br /><br />a simple workaround, run spec from your local script directory<br /><br />this one raises the error, because it is running from the ruby gems?<br /><span style="font-style: italic;">spec spec/models</span><br /><br />this one does not raise the error because it is running the locally installed version<br />from your rails application root<br /><span style="font-style: italic;">script/spec spec/models</span><br />or make the output pretty<br /><span style="font-style: italic;">script/spec spec/models -fs</span><br /><br />the install was as follows<br /><span style="font-size:85%;"><span style="font-style: italic;">gem install rspec</span> (sudo gem install rspec, on some OS)<br /><span style="font-style: italic;">script/plugin install svn://rubyforge.org/var/svn/rspec/trunk/rspec</span><br /></span><span style="font-style: italic;"><span style="font-size:85%;">script/plugin install svn://rubyforge.org/var/svn/rspec/trunk/rspec_on_rails</span><br /><br />.<br /></span></div>

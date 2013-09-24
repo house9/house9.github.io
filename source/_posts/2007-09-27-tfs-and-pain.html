@@ -1,0 +1,11 @@
+---
+layout: post
+title: "TFS and the pain"
+date: 2007-09-27
+comments: false
+categories:
+ - code
+---
+
+<div class='post'>
+We have been using TFS (Microsoft Team Foundation System) at work for Source Control for a few months now; we've run into numerous issues none of which I am going to get into now; this post is really just some notes for my future reference.<br /><br />if you get into real trouble with TFS the following steps should almost definitely get you back to a fresh place<br /><ul><li>Start -> Programs -> Visual Studio 2005 Tools -> command line</li><li>tf workspaces </li><li>- this will show you your workspace name; probably the same as your machine</li><li>tf workspaces /remove:* </li><li>- this will remove local system cache of TFS</li><li>tf workspace /delete /server:{<span style="color:#3333ff;">servername</span>} {<span style="color:#ff0000;">workspacename</span>}</li><li>- this will remove from the server</li><li>- it will prompt you to verify - type in y</li><li>tf workspace /new /server:{<span style="color:#3333ff;">servername</span>} {<span style="color:#ff0000;">newworkspacename</span>}</li><li>- this will launch the GUI to map the server to your local system</li><li>- server = $/</li><li>- local = C:\TFS</li><li>cd C:\TFS</li><li>tf get </li><li>- pull down all the files</li></ul><p>This maps the root of the TFS server to C:\TFS, you may of course want it mapped to another location on your drive.</p><p>Check out tf command on <a href="http://msdn2.microsoft.com/en-us/library/z51z7zy0(VS.80).aspx">msdn</a></p></div>

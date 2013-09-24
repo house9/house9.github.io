@@ -1,0 +1,19 @@
+---
+layout: post
+title: "Helper script to delete git tags locally and remote"
+date: 2012-10-31
+comments: false
+categories:
+ - git
+---
+
+<div class='post'>
+Might be useful to others, delete a bunch of git tags - remote and locally<br /><br /><br /><script src="https://gist.github.com/3989586.js?file=build-and-execute-multiple-git-commands.sh"></script><noscript>Your reader does not render gists; view code here -  <a href="https://gist.github.com/3989586.js?file=build-and-execute-multiple-git-commands.sh">https://gist.github.com/3989586.js?file=build-and-execute-multiple-git-commands.sh</a></noscript><br /><b>Resources</b><br /><br /><ul><li><a href="http://nathanhoad.net/how-to-delete-a-remote-git-tag">http://nathanhoad.net/how-to-delete-a-remote-git-tag</a>&nbsp;</li><li><a href="http://www.linuxquestions.org/questions/programming-9/bash-read-every-line-in-the-files-and-use-the-line-as-parameters-as-another-program-246291/">http://www.linuxquestions.org/questions/programming-9/bash-read-every-line-in-the-files-and-use-the-line-as-parameters-as-another-program-246291/</a></li><li><a href="http://stackoverflow.com/questions/1605232/use-bash-to-read-a-file-and-then-execute-a-command-from-the-words-extracted">http://stackoverflow.com/questions/1605232/use-bash-to-read-a-file-and-then-execute-a-command-from-the-words-extracted</a></li></ul></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Arnaud Frugier</div>
+<div class='content'>
+git tag -l | grep &quot;^\d&quot; | sed &#39;s/^/git push origin :/&#39; | sh<br />git tag -l | grep &quot;^\d&quot; | sed &#39;s/^/git tag -d /&#39; | sh</div>
+</div>
+</div>

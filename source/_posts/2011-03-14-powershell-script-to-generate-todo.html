@@ -1,0 +1,12 @@
+---
+layout: post
+title: "Powershell script to generate a TODO report"
+date: 2011-03-14
+comments: false
+categories:
+ - visual studio
+ - tfs
+---
+
+<div class='post'>
+You can use this from your CI build process, help keep the code base clean. I am a big fan of the TODO: comment, but you don't want too many building up in the code base at some point you either need 'TO DO IT' or else forget about it.<br /><br /><script src="https://gist.github.com/869367.js?file=TODO-Report.ps1"></script><br /><noscript><br />$fileName = "_2-DO_log.txt"<br />$max = 20<br />$encoding = "ASCII"<br /><br /># remove previous file if exists<br />if(Test-Path $fileName) { Remove-Item $fileName }<br /><br /># dump 2-do report to the file system<br />Get-ChildItem –rec –include *.config,*.cs,*.js,*.cshtml,*.css,*.aspx | <br />where { $_ -notmatch 'lib' } | <br />where { $_ -notmatch 'Test' } | <br />select-string TODO | <br />out-string -width 4096 | <br />out-file $fileName -encoding $encoding<br /><br /># get the line count of the report<br />$content = Get-Content .\$fileName<br />$count = $content.Count.ToString()<br /># Write-Host "Total count is $count"<br /><br /># verify we don't have too many entries<br />if($content.Count -gt $max) <br />{ <br />$message = "TO DO comment count has been exceeded. Max Allowed is $max but found $count for the entire solution, excluding lib files and Test projects"<br /># prepend the message before the data<br />$message | out-file $fileName -encoding $encoding <br />$content | add-content $fileName<br />Throw [system.Exception]($message) <br />}<br /></noscript><br /><br />the above script is excluding all files found under lib or Test directories, and selecting only a subset of file types. Modify to your needs</div>

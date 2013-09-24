@@ -1,0 +1,9 @@
+---
+layout: post
+title: "Rails - ActiveRecord created_by and updated_by gem"
+date: 2012-07-01
+comments: false
+---
+
+<div class='post'>
+<br />Often your application will want to track who created and updated your data.<br />On a previous rails 2 project I used a plugin called <a href="https://github.com/delynn/userstamp">userstamp</a> which worked well, but until recently it did not support rails 3+<br /><br />I didn't find any other gems out there at the time, so I put together the clerk gem,<br />you can install it as a gem in your rails 3+ applications by adding&nbsp;<i style="background-color: #eeeeee;">gem 'clerk'</i> to your Gemfile, see the <a href="https://github.com/house9/clerk/blob/master/README.md">README</a> on github for details<br /><br />NOTE: the current version relies on your database tables having columns named created_by_id and updated_by_id and the gem does not support any custom configuration.<br /><br /><br /><ul><li><a href="https://github.com/house9/clerk">https://github.com/house9/clerk</a></li><li><a href="http://rubygems.org/gems/clerk">http://rubygems.org/gems/clerk</a>&nbsp;</li></ul><br /></div>

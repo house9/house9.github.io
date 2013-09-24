@@ -1,0 +1,11 @@
+---
+layout: post
+title: "robocopy fix for exit code of 2"
+date: 2011-06-01
+comments: false
+categories:
+ - nant
+---
+
+<div class='post'>
+Sometimes you want to use robocopy from nant, a sql job or another build tool, robocopy will return 2 during a successful run, this gets&nbsp;interpreted&nbsp;as an error, a google search on the issue returned this article&nbsp;<a href="http://weblogs.sqlteam.com/robv/archive/2010/02/17/61106.aspx">Fixing Robocopy for SQL Server Jobs</a>.<br /><br />Robocopy is now installed by default on Windows7 and Windows Server 2008<br /><a href="http://technet.microsoft.com/en-us/library/cc733145(WS.10).aspx">http://technet.microsoft.com/en-us/library/cc733145(WS.10).aspx</a><br /><br />here is robocopy_fix.bat based on the code in the "Fixing Robocopy for SQL Server Jobs" article<br /><br /><script src="https://gist.github.com/1003646.js?file=robocopy_fix.bat"></script><br /><noscript><br />rem http://weblogs.sqlteam.com/robv/archive/2010/02/17/61106.aspx<br />robocopy %*<br />rem suppress successful robocopy exit statuses, only report genuine errors (bitmask 16 and 8 settings)<br />set/A errlev="%ERRORLEVEL% & 24"<br />rem exit batch file with errorlevel so SQL job can succeed or fail appropriately<br />exit/B %errlev%<br /><br /><br /><br />rem USAGE: just like regular robocopy<br /><br />robocopy_fix.bat C:\temp\s C:\temp\d /MIR<br /></noscript></div>

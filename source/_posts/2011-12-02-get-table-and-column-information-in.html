@@ -1,0 +1,11 @@
+---
+layout: post
+title: "Get table and column information in postgres"
+date: 2011-12-02
+comments: false
+categories:
+ - postgresql
+---
+
+<div class='post'>
+Use the information_schema catalog - <a href="http://www.postgresql.org/docs/9.1/static/information-schema.html">http://www.postgresql.org/docs/9.1/static/information-schema.html</a><br /><br />Get table and columns from the public schema<br /><br /><script src="https://gist.github.com/1423507.js?file=select_table_and_columns_from_postgres.sql"></script><br /><noscript><br />select <br />  tables.table_name, <br />  columns.column_name<br /><br />from information_schema.tables<br />inner join information_schema.columns <br />on information_schema.columns.table_name = information_schema.tables.table_name<br /><br />where tables.table_schema = 'public'<br />and tables.table_type = 'BASE TABLE'<br /><br />order by tables.table_name, columns.column_name;<br /></noscript><br /><br />This can be useful, maybe you want to auto generate some text that creates foreign keys based on a naming convention - for instance let's say we have a ruby/rails method called make_fk_unless_exists<br /><br /><script src="https://gist.github.com/1423533.js?file=create_fk_script_postgres.sql"></script><br /><noscript><br />select <br />  tables.table_name, <br />  columns.column_name,<br />  ('make_fk_unless_exists :' || tables.table_name || ', :' || columns.column_name || ', :' || REPLACE(columns.column_name, '_id', 's')) as code<br /> <br />from information_schema.tables<br />inner join information_schema.columns <br />on information_schema.columns.table_name = information_schema.tables.table_name<br /><br />where tables.table_schema = 'public'<br />and columns.column_name LIKE '%id'<br />and columns.column_name <> 'id'<br />and tables.table_type = 'BASE TABLE'<br /><br />order by tables.table_name, columns.column_name;<br /></noscript><br /><br />The 'code' column would render something like<br /><br /><blockquote class="tr_bq"><i>make_fk_unless_exists :projects, :milestone_id, :milestones</i><br /><i>make_fk_unless_exists :tasks, :project_id, :projects</i><br /><i>...</i><br /></blockquote><br /><br /></div>

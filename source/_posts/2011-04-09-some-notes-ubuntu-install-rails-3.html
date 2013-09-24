@@ -1,0 +1,14 @@
+---
+layout: post
+title: "Some notes - Ubuntu install rails 3 environment"
+date: 2011-04-09
+comments: false
+categories:
+ - redcar
+ - rails
+ - rvm
+ - ubuntu
+---
+
+<div class='post'>
+Had this on my desktop, notes to set up&nbsp;Ubuntu install rails 3 environment<br /><br /><pre>Ubuntu install rails 3 environment<br />================================================<br /><br />1) Get RVM installed with ruby 1.9.2<br /> - http://www.christopherirish.com/2010/08/25/how-to-install-rvm-on-ubuntu-10-04/<br /><br />2) Install Rails 3 gem<br /> - gem install rails --no-rdoc --no-ri<br /> - .... Successfully installed rails-3.0.5 ... 23 gems installed<br /><br />3) Install redcar 'ruby ide'<br /> - check out<br /> - http://azazeal.xelixis.net/post/How-to-install-Redcar-editor-under-Ubuntu-1010-with-RVM.aspx<br /> - for my situation I am only installing it on ruby 1.9.2, if you plan to run multiple versions of ruby this probably will not work when you have your rvm switched to another version<br />  - gem install redcar --no-rdoc --no-ri<br />  - redcar install<br /> - now you should be able to type redcar at the terminal to launch the gui<br /> - lets make a desktop shortcut<br />  - right click on the desktop : Create Launcher<br />   - Type: Application<br />   - Name: Redcar<br />   - Command: /home/YOUR_USER_NAME/.rvm/gems/ruby-1.9.2-head/gems/redcar-0.11/bin/redcar<br />   - Comment: Ruby IDE<br />  - need a tight icon for our launcher<br />   - right click > Properties > click the emblem icon<br />   - Path: /home/YOUR_USER_NAME/.rvm/gems/ruby-1.9.2-head/gems/redcar-0.11/share/icons/redcar-icon-beta.png<br />  - drag the desktop icon up to the launcher bar if you want one there as well<br />   - need to set the icon path again for that one<br /><br />4) Create a rails application <br /> - mkdir projects; cd projects<br /> - rails new sample_app_01; cd sample_app_01<br /> - in redcar > File > Open Directory > projects/sample_app_01<br />  - ctrl+T > type Gem > open Gemfile<br />  - verify line : gem 'sqlite3'<br /> - back to the terminal<br />  - bundle <br />  - rails g scaffold post title:string body:text<br />  - rake db:migrate<br />  - rails s<br /> - in a browser go to http://localhost:3000/posts<br /><br /></pre><br />Sorry the links above are not hot, just cut and paste from my notes into a pre tag - quick and dirty</div>

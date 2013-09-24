@@ -1,0 +1,20 @@
+---
+layout: post
+title: "Ruby Notes - part 1 - dynamic object creation"
+date: 2007-09-01
+comments: false
+categories:
+ - ruby
+ - code
+---
+
+<div class='post'>
+I am starting to learn Ruby and Rails (just for fun) - took awhile to find a good example of creating an object at runtime given a string representing the objects name; finally came across this post <a href="http://www.ruby-forum.com/topic/96222">http://www.ruby-forum.com/topic/96222</a>;<br /><br />in theses 2 examples - given an ActiveRecord object 'Project' and a database table named 'projects', invoke the Project and execute some methods on it<br /><blockquote style="BORDER-RIGHT: 1px dashed; PADDING-RIGHT: 5px; BORDER-TOP: 1px dashed; PADDING-LEFT: 5px; BACKGROUND: #ffffff; LEFT: 65px; PADDING-BOTTOM: 5px; BORDER-LEFT: 1px dashed; WIDTH: 360px; PADDING-TOP: 5px; BORDER-BOTTOM: 1px dashed; POSITION: relative"><p style="BACKGROUND: #ffffff; WIDTH: 100%"><em><span style="color:#009900;"># using eval</span></em><br /><span style="color:#993399;">def</span> test_dynamic_invoke_with_eval<br /><span style="color:#ffffff;">__</span>object_name = <span style="color:#3333ff;">"Project"</span><br /><span style="color:#ffffff;">__</span>o = eval(object_name)<br /><br /><span style="color:#ffffff;">__</span>p <span style="color:#3333ff;">"object name is '"</span> + o.to_s + <span style="color:#3333ff;">"'"<br /></span><span style="color:#ffffff;">__</span>p <span style="color:#3333ff;">"object table name is '"</span> + o.table_name + <span style="color:#3333ff;">"'"<br /></span><span style="color:#993399;">end</span><br /><br /></p></blockquote><br /><br /><blockquote style="BORDER-RIGHT: 1px dashed; PADDING-RIGHT: 5px; BORDER-TOP: 1px dashed; PADDING-LEFT: 5px; BACKGROUND: #ffffff; LEFT: 65px; PADDING-BOTTOM: 5px; BORDER-LEFT: 1px dashed; WIDTH: 360px; PADDING-TOP: 5px; BORDER-BOTTOM: 1px dashed; POSITION: relative"><p style="BACKGROUND: #ffffff; WIDTH: 100%"><em><span style="color:#009900;"># using Object.const_get</span></em><br /><span style="color:#993399;">def</span> test_dynamic_invoke_with_object_const_get<br /><span style="color:#ffffff;">__</span>object_name = <span style="color:#3333ff;">"Project"</span><br /><span style="color:#ffffff;">__</span>o = Object.const_get(object_name)<br /><br /><span style="color:#ffffff;">__</span>p <span style="color:#3333ff;">"object name is '"</span> + o.to_s + <span style="color:#3333ff;">"'"<br /></span><span style="color:#ffffff;">__</span>p <span style="color:#3333ff;">"object table name is '"</span> + o.table_name + <span style="color:#3333ff;">"'"<br /></span><span style="color:#993399;">end</span></p></blockquote><br /><br />Check the ruby forum link above as well - the last entry posted by <em>'unknown (Guest)'</em>; this is probably the true ruby way to do it? extend the String object with a helper method so you can turn any string into an object? code from that post<br /><blockquote style="BORDER-RIGHT: 1px dashed; PADDING-RIGHT: 5px; BORDER-TOP: 1px dashed; PADDING-LEFT: 5px; BACKGROUND: #ffffff; LEFT: 65px; PADDING-BOTTOM: 5px; BORDER-LEFT: 1px dashed; WIDTH: 360px; PADDING-TOP: 5px; BORDER-BOTTOM: 1px dashed; POSITION: relative"><p style="BACKGROUND: #ffffff; WIDTH: 100%"><em><span style="color:#009900;"># extend String</span></em><br /><span style="color:#993399;">class</span> String<br /><span style="color:#993399;"><span style="color:#ffffff;">__</span>def </span>to_class<br /><span style="color:#ffffff;">_</span><span style="color:#ffffff;">__</span>Object.const_get(<span style="color:#3333ff;">self</span>)<br /><span style="color:#ffffff;">__</span><span style="color:#993399;">end</span><span style="color:#ffffff;">__</span><span style="color:#3333ff;"><br /></span><span style="color:#993399;">end</span></p></blockquote></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Ahmed</div>
+<div class='content'>
+Thank you very much for this article! It helped me creating an array from a string that represents nested arrays inside it (tree) without the need to parse the string to identify braces.<br><br>Best,<br>Ahmed Nabhan</div>
+</div>
+</div>

@@ -1,0 +1,19 @@
+---
+layout: post
+title: "ActionView::TemplateError uninitialized constant"
+date: 2008-10-18
+comments: false
+categories:
+ - rails
+---
+
+<div class='post'>
+<span style="font-style: italic;">ActionView::TemplateError (uninitialized constant ActionView::Base::CompiledTemplates::Literals) on line #10 of ...</span><br /><br />I just made a silly mistake which was generating this error; I have a Literals class in my Ruby on Rails application that has some strings stored as constants, everything was working great until I put this code on a server (Linux) didn't have any issues on the mac or windows machines before deploying<br /><br />turned out to be so simple...<br />I originally named the file Literals.rb which defined the class Literals<br /><br /><span style="font-weight: bold;">the fix:</span> rename Literals.rb to literals.rb<br /><br />- doh!</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Anonymous</div>
+<div class='content'>
+Thanks a lot for this hint. I named a class KursTeilnahme (capital T) and got the same error. For Kursteilnahme everything is okay.</div>
+</div>
+</div>
