@@ -4,7 +4,7 @@
   <title><![CDATA[house9]]></title>
   <link href="http://house9.github.io/atom.xml" rel="self"/>
   <link href="http://house9.github.io/"/>
-  <updated>2013-09-24T16:05:54-07:00</updated>
+  <updated>2013-09-24T19:13:32-07:00</updated>
   <id>http://house9.github.io/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
@@ -12,6 +12,81 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[The Cure for IBS]]></title>
+    <link href="http://house9.github.io/blog/2013/09/25/the-cure-for-ibs/"/>
+    <updated>2013-09-25T16:45:00-07:00</updated>
+    <id>http://house9.github.io/blog/2013/09/25/the-cure-for-ibs</id>
+    <content type="html"><![CDATA[<p>Wikipedia lists IBS (<a href="http://en.wikipedia.org/wiki/Irritable_bowel_syndrome">Irritable Bowel Syndrome</a>) as a &ldquo;Functional gastrointestinal disorder&rdquo;. It can cause both diarrhea or constipation and often alternates between the two. In short it is &ldquo;No fun&rdquo;.</p>
+
+<p>I was first diagnosed with IBS in 2002 and was told to</p>
+
+<ul>
+<li>eat more fiber</li>
+<li>take a stress reduction class</li>
+</ul>
+
+
+<p>I had never heard of such a thing as &lsquo;IBS&rsquo; before, it seems it is the &lsquo;catch-all&rsquo; diagnosis for stomach issues when the doctors do not know for certain what is causing the issue.</p>
+
+<p>Things that did help me, but I would not say they &lsquo;cured&rsquo; me:</p>
+
+<ul>
+<li>reduce meat intake
+
+<ul>
+<li>replace with lentils and other legumes which are high in fiber</li>
+</ul>
+</li>
+<li>increase cooked vegetable intake</li>
+<li>eliminate dairy
+
+<ul>
+<li>this made a huge difference for me, for awhile</li>
+</ul>
+</li>
+<li>yoga and meditation
+
+<ul>
+<li>IBS seems to be heavily linked to stress</li>
+</ul>
+</li>
+</ul>
+
+
+<p>Even after changing my diet I still had discomfort off and on. At one point in 2007 I thought my appendix was going to burst, went to the emergency room to find out my appendix was fine and that I was just really constipated. Talk about embarrassing.</p>
+
+<p>After that I decided to try some acupuncture treatment. It did help some, but the thing that &lsquo;cured&rsquo; my IBS was the advice my acupuncturist gave me:</p>
+
+<ul>
+<li>do NOT eat while you are working on the computer</li>
+<li>do NOT eat while you are driving</li>
+</ul>
+
+
+<p>The jist of it is when its time to eat, its time to eat and nothing else:</p>
+
+<ul>
+<li>chew your food</li>
+<li>eat slowly</li>
+<li>digest for at least 15 minutes before going back to work</li>
+<li>maybe take a short walk while you digest</li>
+<li>no reading or other mentally engaging activities</li>
+</ul>
+
+
+<p>Doing the above, my IBS has dwindled away, it did not happen overnight, it took many months of being very strict about my eating habits &ndash; mainly taking the time to digest after a meal before engaging in any work activities.</p>
+
+<p>I am somewhat of a grazer, I like to eat small amounts through out the day while working. My work consists of being on the computer over 90% of my work day. Sometimes my work is stressful, even when it is not &lsquo;stressful&rsquo; it is still very engaging and involves a very high level of concentration.</p>
+
+<p>I believe I was training my body to think it was under stress whenever I was eating, weather I was on the computer or not.</p>
+
+<p>If you suffer from IBS I hope the above will work for you as well.</p>
+
+<p>-Namaste</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopress Test]]></title>
@@ -276,16 +351,6 @@ Run sql statements from the command line, use the -c flag<br /><script src="http
     <id>http://house9.github.io/blog/2012/02/03/git-workflow</id>
     <content type="html"><![CDATA[<div class='post'>
 This is the current git workflow we are using at work, your mileage may vary:<br /><br /><script src="https://gist.github.com/1734394.js?file=git-workflow.rb"></script><br /><noscript>Your reader does not support javascript - see https://gist.github.com/1734394.js?file=git-workflow.rb</noscript><br /><br /><b>Resources</b><br /><ul><li><a href="http://cheat.errtheblog.com/s/git">http://cheat.errtheblog.com/s/git</a>&nbsp;</li><li><a href="http://yanpritzker.com/gitbook.html#Keeping+a+topic+branch+in+sync+with+its+parent">http://yanpritzker.com/gitbook.html#Keeping+a+topic+branch+in+sync+with+its+parent</a>&nbsp;</li><li><a href="http://yanpritzker.com/gitbook.html#One+branch+per+bug">http://yanpritzker.com/gitbook.html#One+branch+per+bug</a>&nbsp;</li><li><a href="http://gitready.com/beginner/2009/02/02/push-and-delete-branches.html">http://gitready.com/beginner/2009/02/02/push-and-delete-branches.html</a>&nbsp;</li><li><a href="http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html">http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html</a>&nbsp;</li><li><a href="http://sleeplessgeek.blogspot.com/2011/03/using-git-cherry-pick.html">http://sleeplessgeek.blogspot.com/2011/03/using-git-cherry-pick.html</a>&nbsp;</li></ul></div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Inspect all jQuery events on an element]]></title>
-    <link href="http://house9.github.io/blog/2011/12/30/inspect-all-jquery-events-on-element/"/>
-    <updated>2011-12-30T00:00:00-08:00</updated>
-    <id>http://house9.github.io/blog/2011/12/30/inspect-all-jquery-events-on-element</id>
-    <content type="html"><![CDATA[<div class='post'>
-Very useful<br /><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">$(&#8220;SELECTOR&#8221;).data(&#8220;events&#8221;);</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;"><br /></span><br />All bound event handlers are stored in the elements data context under the events key<br />This can be very useful when&nbsp;debugging&nbsp;with tools like FireBug<br /><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">$(&#8220;form&#8221;).submit(function () { alert(&#8216;submit form&#8217;); });</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">$(&#8220;form&#8221;).data(&#8220;events&#8221;);</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">&gt; Object { submit=[1] }</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;"><br /></span><br />Resources<br /><br /><ul><li><a href="http://www.bennadel.com/blog/1727-Viewing-jQuery-DOM-Event-Bindings-With-FireBug.htm">http://www.bennadel.com/blog/1727-Viewing-jQuery-DOM-Event-Bindings-With-FireBug.htm</a>&nbsp;</li></ul></div>
 ]]></content>
   </entry>
   

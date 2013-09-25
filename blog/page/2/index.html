@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="It has never been easier than with Semaphore - Hosted Continuous Integrationhttps://semaphoreapp.com/How easy is itadd semaphore ssh key to your &hellip;">
+  <meta name="description" content="See the rails guides and railscasts for getting started with Rails Mailers;&nbsp;this article includes some additional information on Rails Mailers &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,7 +71,44 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/11/03/setting-up-ci-build-continuous/">Setting Up a C.I. Build (Continuous Integration) for a Ruby on Rails Application</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/12/16/sending-email-with-rails-mailers-random/">Sending email with Rails Mailers, The Random bits&#8230;</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-16T00:00:00-08:00" pubdate data-updated="true">Dec 16<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<i>See the rails guides and railscasts for getting started with Rails Mailers;&nbsp;</i><br /><i>this article includes some additional information on Rails Mailers not included in those articles.</i><br /><br /><b>RailsCasts: </b><a href="http://railscasts.com/episodes/206-action-mailer-in-rails-3">http://railscasts.com/episodes/206-action-mailer-in-rails-3</a><br /><b>Rails Guides: </b>&#8220;<a href="http://guides.rubyonrails.org/action_mailer_basics.html">Action Mailer Basics</a>&#8221; on the rails guides -&nbsp;The guide covers all of the common mailer tasks<br /><ul><li>setup and configuration</li><li>attachments</li><li>layouts</li></ul><br /><span style="font-size: x-large;">Random Bits</span><br /><blockquote class="tr_bq"><i>These examples were created using rails 3.2</i></blockquote><div><div><span style="font-size: large;">Add importance headers</span></div><div><br /></div><div><script src="https://gist.github.com/4308619.js"></script></div><blockquote class="tr_bq"><i>NOTE: many email clients will ignore these headers</i></blockquote></div><div><br /></div><div><div><span style="font-size: large;">Add receipt header</span></div><div><br /></div><div><script src="https://gist.github.com/4308683.js"></script></div><blockquote class="tr_bq"><i>NOTE: many email clients will ignore these headers</i></blockquote></div><div><div><span style="font-size: large;"><br /></span><span style="font-size: large;">Testing mailer headers with rspec</span></div><div><br /></div><div>If you have <a href="https://github.com/rspec/rspec-rails">rspec-rails gem</a> installed with your rails application then&nbsp;running the generator will stub out most of your mailer tests, including a fixture file for the mailer view, which you may or may not want to remove.</div><div><br /></div><div><script src="https://gist.github.com/4308712.js"></script></div><blockquote class="tr_bq"><i>NOTE: test against mail.header, not mail.headers</i></blockquote></div><div><div><span style="font-size: large;"><br /></span><span style="font-size: large;">Use a different layout for some Mailer actions</span></div><div><br /></div><div>our default layout is the customer facing one&nbsp;but we want to override it in some cases</div><div><br /></div><div><script src="https://gist.github.com/4309219.js"></script></div></div><div><br /></div><div><br /></div><br /></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/03/setting-up-ci-build-continuous/">Setting up a C.I. build (Continuous Integration) for a Ruby on Rails application</a></h1>
     
     
       <p class="meta">
@@ -108,7 +145,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/11/03/git-log-formatting/">Git Log Formatting</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/11/03/git-log-formatting/">Git Log Formatting </a></h1>
     
     
       <p class="meta">
@@ -145,7 +182,7 @@ The git log command is great and has tons of good information, but the output do
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/10/31/helper-script-to-delete-git-tags/">Helper Script to Delete Git Tags Locally and Remote</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/10/31/helper-script-to-delete-git-tags/">Helper script to delete git tags locally and remote</a></h1>
     
     
       <p class="meta">
@@ -264,7 +301,7 @@ Unofficial Twitter Bootstrap Documentation<br /><a href="http://unofficial-twitt
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/07/01/rails-activerecord-createdby-and/">Rails - ActiveRecord Created_by and Updated_by Gem</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/07/01/rails-activerecord-createdby-and/">Rails - ActiveRecord created_by and updated_by gem</a></h1>
     
     
       <p class="meta">
@@ -301,7 +338,7 @@ Unofficial Twitter Bootstrap Documentation<br /><a href="http://unofficial-twitt
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/04/29/postgres-terminate-all-database/">Postgres: Terminate All Database Connections</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/04/29/postgres-terminate-all-database/">postgres: terminate all database connections</a></h1>
     
     
       <p class="meta">
@@ -338,7 +375,7 @@ Using psql from the command line you can terminate all connections to a database
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/04/29/postgres-random-useful-things/">Postgres: Random Useful Things</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/04/29/postgres-random-useful-things/">postgres: random useful things</a></h1>
     
     
       <p class="meta">
@@ -407,43 +444,6 @@ This is the current git workflow we are using at work, your mileage may vary:<br
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/12/30/inspect-all-jquery-events-on-element/">Inspect All jQuery Events on an Element</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-12-30T00:00:00-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Very useful<br /><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">$(&#8220;SELECTOR&#8221;).data(&#8220;events&#8221;);</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;"><br /></span><br />All bound event handlers are stored in the elements data context under the events key<br />This can be very useful when&nbsp;debugging&nbsp;with tools like FireBug<br /><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">$(&#8220;form&#8221;).submit(function () { alert(&#8216;submit form&#8217;); });</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">$(&#8220;form&#8221;).data(&#8220;events&#8221;);</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">&gt; Object { submit=[1] }</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;"><br /></span><br />Resources<br /><br /><ul><li><a href="http://www.bennadel.com/blog/1727-Viewing-jQuery-DOM-Event-Bindings-With-FireBug.htm">http://www.bennadel.com/blog/1727-Viewing-jQuery-DOM-Event-Bindings-With-FireBug.htm</a>&nbsp;</li></ul></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -461,27 +461,27 @@ Very useful<br /><br /><span style="background-color: whitesmoke; color: #333333
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/09/25/the-cure-for-ibs/">The Cure for IBS</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: Supply_drop)</a>
+        <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: supply_drop)</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e Chef Cookbook</a>
+        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e chef cookbook</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and Puppet Postgres 9.2 on Ubuntu</a>
+        <a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and puppet postgres 9.2 on ubuntu</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/06/01/vagrantfile-for-setting-up-multiple/">Vagrantfile for Setting Up Multiple Machines With Chef Configuration</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/03/21/hipchat-is-now-free/">HipChat Is Now Free!</a>
+        <a href="/blog/2013/06/01/vagrantfile-for-setting-up-multiple/">Vagrantfile for setting up multiple machines with chef configuration</a>
       </li>
     
   </ul>

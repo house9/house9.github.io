@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Looking at a few different ways to execute javascript in rails 3.1. By default all javascript is compiled into one file and embedded in anonymous &hellip;">
+  <meta name="description" content="Sometimes you want to use robocopy from nant, a sql job or another build tool, robocopy will return 2 during a successful run, this gets&nbsp; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,7 +71,44 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/05/29/rails-31-javascript-execution/">Rails 3.1 Javascript Execution</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/06/01/robocopy-fix-for-exit-code-of-2/">robocopy fix for exit code of 2</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-01T00:00:00-07:00" pubdate data-updated="true">Jun 1<span>st</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Sometimes you want to use robocopy from nant, a sql job or another build tool, robocopy will return 2 during a successful run, this gets&nbsp;interpreted&nbsp;as an error, a google search on the issue returned this article&nbsp;<a href="http://weblogs.sqlteam.com/robv/archive/2010/02/17/61106.aspx">Fixing Robocopy for SQL Server Jobs</a>.<br /><br />Robocopy is now installed by default on Windows7 and Windows Server 2008<br /><a href="http://technet.microsoft.com/en-us/library/cc733145(WS.10).aspx">http://technet.microsoft.com/en-us/library/cc733145(WS.10).aspx</a><br /><br />here is robocopy_fix.bat based on the code in the &#8220;Fixing Robocopy for SQL Server Jobs&#8221; article<br /><br /><script src="https://gist.github.com/1003646.js?file=robocopy_fix.bat"></script><br /><noscript><br />rem http://weblogs.sqlteam.com/robv/archive/2010/02/17/61106.aspx<br />robocopy %*<br />rem suppress successful robocopy exit statuses, only report genuine errors (bitmask 16 and 8 settings)<br />set/A errlev=&#8221;%ERRORLEVEL% & 24&#8221;<br />rem exit batch file with errorlevel so SQL job can succeed or fail appropriately<br />exit/B %errlev%<br /><br /><br /><br />rem USAGE: just like regular robocopy<br /><br />robocopy_fix.bat C:\temp\s C:\temp\d /MIR<br /></noscript></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/05/29/rails-31-javascript-execution/">rails 3.1 javascript execution</a></h1>
     
     
       <p class="meta">
@@ -116,7 +153,7 @@ great.<br /><br />I like third way.</div>
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/05/26/rails-31-asset-pipeline/">Rails 3.1 Asset Pipeline</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/05/26/rails-31-asset-pipeline/">rails 3.1 asset pipeline</a></h1>
     
     
       <p class="meta">
@@ -190,7 +227,7 @@ if your ISP supports <a href="http://espn.go.com/espn3/index/_/sport/tennis">ESP
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/05/08/at-site-has-some-serious-issues/">AT&T Site Has Some Serious Issues</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/05/08/at-site-has-some-serious-issues/">AT&T site has some serious issues</a></h1>
     
     
       <p class="meta">
@@ -314,7 +351,7 @@ With very little code we can fix asp.net MVC AuthorizeAttribute<br />What proble
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/04/15/log-wildlife-sightings-summer-2010/">Log: Wildlife Sightings Summer 2010</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/04/15/log-wildlife-sightings-summer-2010/">Log: Wildlife sightings summer 2010</a></h1>
     
     
       <p class="meta">
@@ -351,7 +388,7 @@ Came across some notes from my vacation last summer, figured I might as well pos
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/04/09/some-notes-ubuntu-install-rails-3/">Some Notes - Ubuntu Install Rails 3 Environment</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/04/09/some-notes-ubuntu-install-rails-3/">Some notes - Ubuntu install rails 3 environment</a></h1>
     
     
       <p class="meta">
@@ -388,7 +425,7 @@ Had this on my desktop, notes to set up&nbsp;Ubuntu install rails 3 environment<
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/04/09/notes-teamcity-setup-on-ubuntu/">Notes - TeamCity Setup on Ubuntu</a></h1>
+      <h1 class="entry-title"><a href="/blog/2011/04/09/notes-teamcity-setup-on-ubuntu/">Notes - TeamCity setup on Ubuntu</a></h1>
     
     
       <p class="meta">
@@ -420,51 +457,6 @@ Notes from setting up TeamCity on Ubuntu<br /><br /><pre>TeamCity on Ubuntu<br /
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/08/could-not-find-generator/">Could Not Find Generator Delayed_job_migration.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-08T00:00:00-07:00" pubdate data-updated="true">Apr 8<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Maybe this post will help somebody? just installed delayed_job on a rails 3 application. The <a href="https://github.com/tobi/delayed_job">readme</a> for delayed_job is for the older version, here is a link to the <a href="http://rubydoc.info/gems/delayed_job/2.1.4/frames">newer docs</a>.<br /><br />Running this command<br /><blockquote><span class="Apple-style-span" style="background-color: yellow;">rails g delayed_job_migration</span></blockquote>Returned this error<br /><blockquote><span class="Apple-style-span" style="background-color: yellow;">Could not find generator delayed_job_migration.</span></blockquote><div>With rails 3 the command should be</div><div><blockquote><span class="Apple-style-span" style="background-color: yellow;">rails g delayed_job</span></blockquote></div><div><br /></div></div>
-<h2>Comments</h2>
-<div class='comments'>
-<div class='comment'>
-<div class='author'>Zac Kloepping</div>
-<div class='content'>
-Helped me!  Thanks!</div>
-</div>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -482,27 +474,27 @@ Helped me!  Thanks!</div>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/09/25/the-cure-for-ibs/">The Cure for IBS</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: Supply_drop)</a>
+        <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: supply_drop)</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e Chef Cookbook</a>
+        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e chef cookbook</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and Puppet Postgres 9.2 on Ubuntu</a>
+        <a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and puppet postgres 9.2 on ubuntu</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/06/01/vagrantfile-for-setting-up-multiple/">Vagrantfile for Setting Up Multiple Machines With Chef Configuration</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/03/21/hipchat-is-now-free/">HipChat Is Now Free!</a>
+        <a href="/blog/2013/06/01/vagrantfile-for-setting-up-multiple/">Vagrantfile for setting up multiple machines with chef configuration</a>
       </li>
     
   </ul>
