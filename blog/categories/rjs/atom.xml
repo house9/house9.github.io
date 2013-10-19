@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: rjs | house9]]></title>
-  <link href="http://house9.github.io/blog/categories/rjs/atom.xml" rel="self"/>
-  <link href="http://house9.github.io/"/>
-  <updated>2013-09-24T19:13:32-07:00</updated>
-  <id>http://house9.github.io/</id>
+  <link href="http://jessehouse.com/blog/categories/rjs/atom.xml" rel="self"/>
+  <link href="http://jessehouse.com/"/>
+  <updated>2013-10-19T11:32:02-07:00</updated>
+  <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Rails RJS and newline characters]]></title>
-    <link href="http://house9.github.io/blog/2007/10/18/rails-rjs-and-newline-characters/"/>
+    <link href="http://jessehouse.com/blog/2007/10/18/rails-rjs-and-newline-characters/"/>
     <updated>2007-10-18T00:00:00-07:00</updated>
-    <id>http://house9.github.io/blog/2007/10/18/rails-rjs-and-newline-characters</id>
+    <id>http://jessehouse.com/blog/2007/10/18/rails-rjs-and-newline-characters</id>
     <content type="html"><![CDATA[<div class='post'>
 ok this one really got me, I was generating a javascript alert from the server via an rjs file, i.e.<br /><br /><blockquote style="BORDER-RIGHT: 1px dashed; PADDING-RIGHT: 5px; BORDER-TOP: 1px dashed; PADDING-LEFT: 5px; BACKGROUND: #ffffff; LEFT: 65px; PADDING-BOTTOM: 5px; BORDER-LEFT: 1px dashed; WIDTH: 360px; PADDING-TOP: 5px; BORDER-BOTTOM: 1px dashed; POSITION: relative"><p style="BACKGROUND: #ffffff; WIDTH: 100%"><em><span style="color:#009900;"># rjs render a javascript alert on the client</span></em><br /><span style="color:#3333ff;">page<span style="color:#000000;">.alert</span> '<span style="color:#990000;">Errors\nError 1\nError 2</span>'</span></p></blockquote>and it kept on printing my error message as Errors<span style="color:#ff0000;">\n</span>Error message 1<span style="color:#ff0000;">\n</span>Error message2 - note that the newline characters were being escaped and rendered literally<br /><br />I found this <a href="http://www.agmweb.ca/blog/andy/1937/">informative post</a> which lead me to change my code from using single quotes to using double quotes - nasty.<br /><br /><blockquote style="BORDER-RIGHT: 1px dashed; PADDING-RIGHT: 5px; BORDER-TOP: 1px dashed; PADDING-LEFT: 5px; BACKGROUND: #ffffff; LEFT: 65px; PADDING-BOTTOM: 5px; BORDER-LEFT: 1px dashed; WIDTH: 460px; PADDING-TOP: 5px; BORDER-BOTTOM: 1px dashed; POSITION: relative"><p style="BACKGROUND: #ffffff; WIDTH: 100%; HEIGHT: 54px"><em><span style="color:#009900;"># this one will output the newlines in the javascript alert message</span></em><br /><span style="color:#3333ff;">page<span style="color:#000000;">.alert</span> "<span style="color:#990000;">Errors\nError 1\nError 2"</span></span></p></blockquote><br /><br />here is the final code, looping through each error on the model object (product in this case) and outputing a newline on the javascript alert for each error<br /><br /><br /><blockquote style="BORDER-RIGHT: 1px dashed; PADDING-RIGHT: 5px; BORDER-TOP: 1px dashed; PADDING-LEFT: 5px; BACKGROUND: #ffffff; LEFT: 65px; PADDING-BOTTOM: 5px; BORDER-LEFT: 1px dashed; WIDTH: 481px; PADDING-TOP: 5px; BORDER-BOTTOM: 1px dashed; POSITION: relative; HEIGHT: 301px"><p><em><span style="color:#009900;"># rjs file</span></em><br /><span style="color:#3333ff;">page</span>.alert <span style="color:#3333ff;">"</span><span style="color:#cc0000;">#{get_message_for_show_server_error}</span><span style="color:#3333ff;">"</span><br /></p><p><em><span style="color:#009900;"># helper file<br /></span></em><span style="color:#993399;">def</span> get_message_for_show_server_error<br /><span style="color:#ffffff;">__</span>s = "<span style="color:#cc0000;">Errors </span>"<br /><span style="color:#ffffff;">__</span><span style="color:#3333ff;">@product</span>.errors.full_messages.each <span style="color:#993399;">do</span> error<br /><span style="color:#ffffff;">____</span>s = s + "<span style="color:#cc0000;">\n</span>" + error.to_s<br /><span style="color:#993399;"><span style="color:#ffffff;">__</span>end</span></p><p><span style="color:#3333ff;"><span style="color:#ffffff;">__</span>return</span> s<br /><span style="color:#993399;">end</span><br /><br /></p><p style="BACKGROUND: #ffffff; WIDTH: 100%"></p></blockquote><br /><p></p><p></p></div>
 

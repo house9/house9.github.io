@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://house9.github.io/sitemap.xml 
+Sitemap: http://jessehouse.com/sitemap.xml 

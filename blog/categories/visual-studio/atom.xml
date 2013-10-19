@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: visual studio | house9]]></title>
-  <link href="http://house9.github.io/blog/categories/visual-studio/atom.xml" rel="self"/>
-  <link href="http://house9.github.io/"/>
-  <updated>2013-09-24T19:13:32-07:00</updated>
-  <id>http://house9.github.io/</id>
+  <link href="http://jessehouse.com/blog/categories/visual-studio/atom.xml" rel="self"/>
+  <link href="http://jessehouse.com/"/>
+  <updated>2013-10-19T11:32:02-07:00</updated>
+  <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Powershell script to generate a TODO report]]></title>
-    <link href="http://house9.github.io/blog/2011/03/14/powershell-script-to-generate-todo/"/>
+    <link href="http://jessehouse.com/blog/2011/03/14/powershell-script-to-generate-todo/"/>
     <updated>2011-03-14T00:00:00-07:00</updated>
-    <id>http://house9.github.io/blog/2011/03/14/powershell-script-to-generate-todo</id>
+    <id>http://jessehouse.com/blog/2011/03/14/powershell-script-to-generate-todo</id>
     <content type="html"><![CDATA[<div class='post'>
 You can use this from your CI build process, help keep the code base clean. I am a big fan of the TODO: comment, but you don't want too many building up in the code base at some point you either need 'TO DO IT' or else forget about it.<br /><br /><script src="https://gist.github.com/869367.js?file=TODO-Report.ps1"></script><br /><noscript><br />$fileName = "_2-DO_log.txt"<br />$max = 20<br />$encoding = "ASCII"<br /><br /># remove previous file if exists<br />if(Test-Path $fileName) { Remove-Item $fileName }<br /><br /># dump 2-do report to the file system<br />Get-ChildItem –rec –include *.config,*.cs,*.js,*.cshtml,*.css,*.aspx | <br />where { $_ -notmatch 'lib' } | <br />where { $_ -notmatch 'Test' } | <br />select-string TODO | <br />out-string -width 4096 | <br />out-file $fileName -encoding $encoding<br /><br /># get the line count of the report<br />$content = Get-Content .\$fileName<br />$count = $content.Count.ToString()<br /># Write-Host "Total count is $count"<br /><br /># verify we don't have too many entries<br />if($content.Count -gt $max) <br />{ <br />$message = "TO DO comment count has been exceeded. Max Allowed is $max but found $count for the entire solution, excluding lib files and Test projects"<br /># prepend the message before the data<br />$message | out-file $fileName -encoding $encoding <br />$content | add-content $fileName<br />Throw [system.Exception]($message) <br />}<br /></noscript><br /><br />the above script is excluding all files found under lib or Test directories, and selecting only a subset of file types. Modify to your needs</div>
 
@@ -26,9 +26,9 @@ You can use this from your CI build process, help keep the code base clean. I am
   
   <entry>
     <title type="html"><![CDATA[MSTest output result to HTML]]></title>
-    <link href="http://house9.github.io/blog/2011/03/11/mstest-output-result-to-html/"/>
+    <link href="http://jessehouse.com/blog/2011/03/11/mstest-output-result-to-html/"/>
     <updated>2011-03-11T00:00:00-08:00</updated>
-    <id>http://house9.github.io/blog/2011/03/11/mstest-output-result-to-html</id>
+    <id>http://jessehouse.com/blog/2011/03/11/mstest-output-result-to-html</id>
     <content type="html"><![CDATA[<div class='post'>
 <a href="http://msdn.microsoft.com/en-us/library/ms182489(v=vs.80).aspx">MSTest</a> generates trx (xml) files which can be viewed in Visual Studio. But often you will be executing MSTest from the command line via your Continuous Integration (CI) server and you will want to view them in an html format outside Visual Studio.<br /><br /><a href="http://trx2html.codeplex.com/">trx2html</a> to the rescue!<br /><br /><ul><li>download the zip file here -&nbsp;<a href="http://trx2html.codeplex.com/">http://trx2html.codeplex.com/</a></li><li>unzip and put the files somewhere</li><ul><li>I choose C:\Program Files (x86)\trx2html</li></ul><li>execute it from the command line&nbsp;</li></ul><div><br /></div><div><pre><span class="Apple-style-span" style="color: #38761d;"># in YourTestProject\bin\Release</span><br /><span class="Apple-style-span" style="color: #444444;">"C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\mstest.exe"</span> <span class="Apple-style-span" style="color: #0b5394;">/testcontainer:</span>YourTestProject.dll <span class="Apple-style-span" style="color: #0b5394;">/resultsfile:</span>TestResult.trx<br /><br /><span class="Apple-style-span" style="color: #444444;">"C:\Program Files (x86)\trx2html\0.6\trx2html.exe"</span> TestResult.trx<br /><span class="Apple-style-span" style="color: #38761d;"># outputs TestResult.trx.htm</span><br /></pre></div><div><br /></div><div><br /></div></div>
 
@@ -54,9 +54,9 @@ Hi,<br /><br />I am having problem in converting trx file into HTML file.<br /><
   
   <entry>
     <title type="html"><![CDATA[Visual Studio Solution Items in a sub directory]]></title>
-    <link href="http://house9.github.io/blog/2011/03/09/visual-studio-solution-items-in-sub/"/>
+    <link href="http://jessehouse.com/blog/2011/03/09/visual-studio-solution-items-in-sub/"/>
     <updated>2011-03-09T00:00:00-08:00</updated>
-    <id>http://house9.github.io/blog/2011/03/09/visual-studio-solution-items-in-sub</id>
+    <id>http://jessehouse.com/blog/2011/03/09/visual-studio-solution-items-in-sub</id>
     <content type="html"><![CDATA[<div class='post'>
 Visual Studio Solutions have the "Add New Solution Folder" option.<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="https://lh3.googleusercontent.com/-_wY7D-Q3qOY/TXeybhp1O2I/AAAAAAAACzs/YK4O6ZztTOI/s1600/new_solution_folder.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="350" src="https://lh3.googleusercontent.com/-_wY7D-Q3qOY/TXeybhp1O2I/AAAAAAAACzs/YK4O6ZztTOI/s400/new_solution_folder.png" width="400" /></a></div><br /><br />I don't know about you but this makes me think it is going to create a physical directory on the hard drive to emulate what is in the solution, but this is not the case.<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="https://lh5.googleusercontent.com/-NANZTAZHPXU/TXeyi47KryI/AAAAAAAACzw/i3UY97vK3ag/s1600/solution_vs_explorer.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="308" src="https://lh5.googleusercontent.com/-NANZTAZHPXU/TXeyi47KryI/AAAAAAAACzw/i3UY97vK3ag/s640/solution_vs_explorer.png" width="640" /></a></div><div class="separator" style="clear: both; text-align: center;"><br /></div><div class="separator" style="clear: both; text-align: center;"><br /></div>The thing that really drives me crazy is if you try to add Test1.txt to the SubFolder it will throw an error because it is really trying to write to the root directory. I think solution folders are only really supposed to be used to organize Visual Studio projects.<br /><br />In my case I want to have a set of files that are not really part of a Visual Studio project but I want them available in the solution. It turns out there is a Project type called "Empty Project".<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="https://lh6.googleusercontent.com/-mVfvqv9P95o/TXezY_s3vZI/AAAAAAAACz0/qxReJ-c9lWo/s1600/empty_project.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="362" src="https://lh6.googleusercontent.com/-mVfvqv9P95o/TXezY_s3vZI/AAAAAAAACz0/qxReJ-c9lWo/s640/empty_project.png" width="640" /></a></div><br />This is exactly what the doctor ordered!<br /><br />You will probably want to do one additional step. Set this "Empty Project" to not build, otherwise you will get a compile time error. Right click on the Solution &gt; Properties &gt; Configuration Properties &gt; Configuration, then un-check the "Build" for this project.<br /><br />Found out about this from <a href="http://stackoverflow.com/questions/233900/visual-studio-solution-that-just-points-to-a-folder-and-shows-all-sub-folders-and">this stackoverflow post</a>.<br /><br />Here is a good link <a href="http://www.peter-urda.com/2010/09/solution-folders-in-visual-studio-2010-explained">explaining what you would use a solution folder for</a>, besides a ReadMe.txt</div>
 

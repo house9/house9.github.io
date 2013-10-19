@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: valid html | house9]]></title>
-  <link href="http://house9.github.io/blog/categories/valid-html/atom.xml" rel="self"/>
-  <link href="http://house9.github.io/"/>
-  <updated>2013-09-24T19:13:32-07:00</updated>
-  <id>http://house9.github.io/</id>
+  <link href="http://jessehouse.com/blog/categories/valid-html/atom.xml" rel="self"/>
+  <link href="http://jessehouse.com/"/>
+  <updated>2013-10-19T11:32:02-07:00</updated>
+  <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[accesskey attribute on the select tag is not valid?]]></title>
-    <link href="http://house9.github.io/blog/2009/04/11/accesskey-attribute-on-select-tag-is/"/>
+    <link href="http://jessehouse.com/blog/2009/04/11/accesskey-attribute-on-select-tag-is/"/>
     <updated>2009-04-11T00:00:00-07:00</updated>
-    <id>http://house9.github.io/blog/2009/04/11/accesskey-attribute-on-select-tag-is</id>
+    <id>http://jessehouse.com/blog/2009/04/11/accesskey-attribute-on-select-tag-is</id>
     <content type="html"><![CDATA[<div class='post'>
 Was just running some validation on a html form and it failed with the following error<br /><div>"<span class="Apple-style-span" style="font-style: italic;">Invalid markup: line 68: Attribute "accesskey" exists, but can not be used for this element.</span>"</div><br /><div>From <a href="http://www.w3.org/TR/html401/interact/forms.html#adef-accesskey">w3c</a> spec - "<span class="Apple-style-span" style="font-style: italic;">The following elements support the accesskey attribute: A, AREA, BUTTON, INPUT, LABEL, and LEGEND, and TEXTAREA.</span>"</div><br /><div>I have no idea why input and textarea would be supported but not select? this seems like a mistake? At least there is an easy work around - apply the accesskey attribute to the label tag that references the select menu.</div></div>
 

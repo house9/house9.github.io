@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: ubuntu | house9]]></title>
-  <link href="http://house9.github.io/blog/categories/ubuntu/atom.xml" rel="self"/>
-  <link href="http://house9.github.io/"/>
-  <updated>2013-09-24T19:13:32-07:00</updated>
-  <id>http://house9.github.io/</id>
+  <link href="http://jessehouse.com/blog/categories/ubuntu/atom.xml" rel="self"/>
+  <link href="http://jessehouse.com/"/>
+  <updated>2013-10-19T11:32:02-07:00</updated>
+  <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Some notes - Ubuntu install rails 3 environment]]></title>
-    <link href="http://house9.github.io/blog/2011/04/09/some-notes-ubuntu-install-rails-3/"/>
+    <link href="http://jessehouse.com/blog/2011/04/09/some-notes-ubuntu-install-rails-3/"/>
     <updated>2011-04-09T00:00:00-07:00</updated>
-    <id>http://house9.github.io/blog/2011/04/09/some-notes-ubuntu-install-rails-3</id>
+    <id>http://jessehouse.com/blog/2011/04/09/some-notes-ubuntu-install-rails-3</id>
     <content type="html"><![CDATA[<div class='post'>
 Had this on my desktop, notes to set up&nbsp;Ubuntu install rails 3 environment<br /><br /><pre>Ubuntu install rails 3 environment<br />================================================<br /><br />1) Get RVM installed with ruby 1.9.2<br /> - http://www.christopherirish.com/2010/08/25/how-to-install-rvm-on-ubuntu-10-04/<br /><br />2) Install Rails 3 gem<br /> - gem install rails --no-rdoc --no-ri<br /> - .... Successfully installed rails-3.0.5 ... 23 gems installed<br /><br />3) Install redcar 'ruby ide'<br /> - check out<br /> - http://azazeal.xelixis.net/post/How-to-install-Redcar-editor-under-Ubuntu-1010-with-RVM.aspx<br /> - for my situation I am only installing it on ruby 1.9.2, if you plan to run multiple versions of ruby this probably will not work when you have your rvm switched to another version<br />  - gem install redcar --no-rdoc --no-ri<br />  - redcar install<br /> - now you should be able to type redcar at the terminal to launch the gui<br /> - lets make a desktop shortcut<br />  - right click on the desktop : Create Launcher<br />   - Type: Application<br />   - Name: Redcar<br />   - Command: /home/YOUR_USER_NAME/.rvm/gems/ruby-1.9.2-head/gems/redcar-0.11/bin/redcar<br />   - Comment: Ruby IDE<br />  - need a tight icon for our launcher<br />   - right click > Properties > click the emblem icon<br />   - Path: /home/YOUR_USER_NAME/.rvm/gems/ruby-1.9.2-head/gems/redcar-0.11/share/icons/redcar-icon-beta.png<br />  - drag the desktop icon up to the launcher bar if you want one there as well<br />   - need to set the icon path again for that one<br /><br />4) Create a rails application <br /> - mkdir projects; cd projects<br /> - rails new sample_app_01; cd sample_app_01<br /> - in redcar > File > Open Directory > projects/sample_app_01<br />  - ctrl+T > type Gem > open Gemfile<br />  - verify line : gem 'sqlite3'<br /> - back to the terminal<br />  - bundle <br />  - rails g scaffold post title:string body:text<br />  - rake db:migrate<br />  - rails s<br /> - in a browser go to http://localhost:3000/posts<br /><br /></pre><br />Sorry the links above are not hot, just cut and paste from my notes into a pre tag - quick and dirty</div>
 
@@ -26,9 +26,9 @@ Had this on my desktop, notes to set up&nbsp;Ubuntu install rails 3 environment<
   
   <entry>
     <title type="html"><![CDATA[Notes - TeamCity setup on Ubuntu]]></title>
-    <link href="http://house9.github.io/blog/2011/04/09/notes-teamcity-setup-on-ubuntu/"/>
+    <link href="http://jessehouse.com/blog/2011/04/09/notes-teamcity-setup-on-ubuntu/"/>
     <updated>2011-04-09T00:00:00-07:00</updated>
-    <id>http://house9.github.io/blog/2011/04/09/notes-teamcity-setup-on-ubuntu</id>
+    <id>http://jessehouse.com/blog/2011/04/09/notes-teamcity-setup-on-ubuntu</id>
     <content type="html"><![CDATA[<div class='post'>
 Notes from setting up TeamCity on Ubuntu<br /><br /><pre>TeamCity on Ubuntu<br />==================================================================<br />Go to http://www.jetbrains.com/teamcity/download/ and download the linux distribution<br /><br />set JAVA_HOME : update .bashrc add the following lines<br />--------------------------<br />export JAVA_HOME=/usr/lib/jvm/java-1.6.0-openjdk/bin/java<br />export PATH=$PATH:/usr/lib/jvm/java-1.6.0-openjdk/bin<br /><br />tar xfz TeamCity-6.0.3.tar.gz<br />put extracted TeamCity directory under ~/TeamCity<br /><br />open terminal and run bin/runAll.sh start from the ~/TeamCity directory<br /><br />install tcWebHook plugin<br />==================================================================<br />http://tcplugins.sourceforge.net/files/tcWebHooks<br />- http://sourceforge.net/apps/trac/tcplugins/wiki/TcWebHooks<br /><br />create directory at ~/.BuildServer/plugins - tcWebHooks<br />put the jar file in that directory<br />restart the teamcity server<br />there should be a new tab 'web hooks' on the build results, not in the admin section<br /><br /></pre></div>
 
@@ -37,9 +37,9 @@ Notes from setting up TeamCity on Ubuntu<br /><br /><pre>TeamCity on Ubuntu<br /
   
   <entry>
     <title type="html"><![CDATA[Remote desktop mac OSX to Ubuntu]]></title>
-    <link href="http://house9.github.io/blog/2010/10/29/remote-desktop-mac-osx-to-ubuntu/"/>
+    <link href="http://jessehouse.com/blog/2010/10/29/remote-desktop-mac-osx-to-ubuntu/"/>
     <updated>2010-10-29T00:00:00-07:00</updated>
-    <id>http://house9.github.io/blog/2010/10/29/remote-desktop-mac-osx-to-ubuntu</id>
+    <id>http://jessehouse.com/blog/2010/10/29/remote-desktop-mac-osx-to-ubuntu</id>
     <content type="html"><![CDATA[<div class='post'>
 There is a good program (free) for remote connections between mac OSX and <a href="http://www.ubuntu.com/">Ubuntu</a>. It is called&nbsp;<a href="http://sourceforge.net/projects/cotvnc/">Chicken of the VNC</a>&nbsp;- in my case I needed to remote into an Ubuntu (9.04) desktop from my mac.<br /><br />First step - allow remote access on the Ubuntu machine<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/_vmq8pP42BnQ/TMtEx7LMHOI/AAAAAAAACyo/Bf6NsdQJYOY/s1600/blog-cvnc-01.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="400" src="http://1.bp.blogspot.com/_vmq8pP42BnQ/TMtEx7LMHOI/AAAAAAAACyo/Bf6NsdQJYOY/s400/blog-cvnc-01.png" width="380" /></a></div><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/_vmq8pP42BnQ/TMtEyCAzGzI/AAAAAAAACys/X1WGq2_VY08/s1600/blog-cvnc-01.2.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="355" src="http://1.bp.blogspot.com/_vmq8pP42BnQ/TMtEyCAzGzI/AAAAAAAACys/X1WGq2_VY08/s400/blog-cvnc-01.2.png" width="400" /></a></div><br />Install Chicken of the VNC<br /><br /><ul><li>download from&nbsp;<a href="http://sourceforge.net/projects/cotvnc/">http://sourceforge.net/projects/cotvnc/</a></li><li>install the dmg file</li><li>then drag the Chicken into your Applications folder</li></ul><br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/_vmq8pP42BnQ/TMtEy0IvLjI/AAAAAAAACyw/WbWopHr_EVQ/s1600/blog-cvnc-02.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="337" src="http://1.bp.blogspot.com/_vmq8pP42BnQ/TMtEy0IvLjI/AAAAAAAACyw/WbWopHr_EVQ/s640/blog-cvnc-02.png" width="640" /></a></div><br />Then open the program and type in the IP address of the machine you wish to connect to.<br />Done - you are now remoted!<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/_vmq8pP42BnQ/TMtEzyqVO6I/AAAAAAAACy0/D5YAplc3UcY/s1600/blog-cvnc-03.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="300" src="http://2.bp.blogspot.com/_vmq8pP42BnQ/TMtEzyqVO6I/AAAAAAAACy0/D5YAplc3UcY/s400/blog-cvnc-03.png" width="400" /></a></div></div>
 
@@ -48,9 +48,9 @@ There is a good program (free) for remote connections between mac OSX and <a hre
   
   <entry>
     <title type="html"><![CDATA[exclude .svn results with egrep recursive search]]></title>
-    <link href="http://house9.github.io/blog/2010/03/11/exclude-svn-results-with-egrep/"/>
+    <link href="http://jessehouse.com/blog/2010/03/11/exclude-svn-results-with-egrep/"/>
     <updated>2010-03-11T00:00:00-08:00</updated>
-    <id>http://house9.github.io/blog/2010/03/11/exclude-svn-results-with-egrep</id>
+    <id>http://jessehouse.com/blog/2010/03/11/exclude-svn-results-with-egrep</id>
     <content type="html"><![CDATA[<div class='post'>
 The exclude-dir option works nicely, I was previously was using --exclude and it would include some sub-dir .svn files<br /><div><blockquote>egrep --exclude-dir=\.svn -r -n {search-criteria} {directory}</blockquote>i.e. find all TODO comments in the current directory and all sub directories<blockquote>egrep --exclude-dir=\.svn -r -n TODO .</blockquote><blockquote><br /></blockquote>Found this in the comments on this post - <a href="http://antoniolorusso.com/2008/05/12/grep-excluding-svn-dirs/">http://antoniolorusso.com/2008/05/12/grep-excluding-svn-dirs/ </a></div><div><br /></div><div>.</div></div>
 
@@ -59,43 +59,11 @@ The exclude-dir option works nicely, I was previously was using --exclude and it
   
   <entry>
     <title type="html"><![CDATA[imeem on 64-bit ubuntu]]></title>
-    <link href="http://house9.github.io/blog/2009/10/25/imeem-on-64-bit-ubuntu/"/>
+    <link href="http://jessehouse.com/blog/2009/10/25/imeem-on-64-bit-ubuntu/"/>
     <updated>2009-10-25T00:00:00-07:00</updated>
-    <id>http://house9.github.io/blog/2009/10/25/imeem-on-64-bit-ubuntu</id>
+    <id>http://jessehouse.com/blog/2009/10/25/imeem-on-64-bit-ubuntu</id>
     <content type="html"><![CDATA[<div class='post'>
 <p>Getting flash to work correctly on 64-bit <a href="http://www.ubuntu.com/">Ubuntu</a> can be challenging. By following various blog and forum posts I was able to get it to work, but never the flash player for <a href="http://www.imeem.com/">imeem</a>. Every now and again I would try to re-install flash and see if it would work for imeem but until last night I was never successful. </p><p>It turns out that imeem will only work with the 32-bit flash player. After so much work to get the 64-bit player working in Firefox 3.0 and 3.5 I did not want to remove it so I downloaded Opera and installed the 32-bit player under its plugin directory and <a href="http://www.imeem.com/">imeem</a> works great!</p><ul><li>Download and install <a href="http://www.opera.com/browser/download/">Opera</a></li><li>verify that you cannot play music in <a href="http://www.imeem.com/">imeem</a></li><li>Close Opera</li><li>download the <a href="http://get.adobe.com/flashplayer/">32-bit flash player</a> in '.tar.gz' format</li><li>extract the libflashplayer.so file from the archive</li><li>then you will need to put this in the directory /usr/lib/opera/plugins/</li><li>you won't have permissions to write to that directory unless you are in sudo mode</li><li>open a terminal and type '<em>sudo nautilus</em>'</li><li>copy the file into the directory (you could do this from the terminal window also probably '<em>sudo mv libflashplayer.so /usr/lib/opera/plugins/libflashplayer.so</em>'</li><li>Open Opera</li><li>check the plugins - type opera:plugins in the address bar</li><li>you should see Shockwave Flash and it should be pointing to the libflashplayer.so file under opera plugins, by default my opera installation was pointing to /usr/lib/mozilla/plugins/ for the flash plugin, my guess is opera looks for plugins in its own directory and if not found then looks in mozilla directory</li><li>you should now be able to play music with imeem!</li></ul><p>I am running Ubuntu 9.04 Jaunty Jackalope by the way. Here are some links that might work to get the 64-bit player working for Firefox</p><ul><li><a href="http://art.ubuntuforums.org/showthread.php?t=1297385">http://art.ubuntuforums.org/showthread.php?t=1297385</a></li><li><a href="http://www.ubuntugeek.com/how-to-install-adobe-flash-player-10-in-ubuntu-804-hardy-heron.html">http://www.ubuntugeek.com/how-to-install-adobe-flash-player-10-in-ubuntu-804-hardy-heron.html</a></li><li><a href="http://art.ubuntuforums.org/showthread.php?t=1292438">http://art.ubuntuforums.org/showthread.php?t=1292438</a></li><li><a href="http://www.cyberciti.biz/tips/install-flash-10-ubuntu-linux-64bit.html">http://www.cyberciti.biz/tips/install-flash-10-ubuntu-linux-64bit.html</a></li><li>this last one is probably the best bet, check the comments there</li></ul><p><br /></p></div>
-
-
-<h2>Comments</h2>
-
-
-<div class='comments'>
-<div class='comment'>
-<div class='author'>House 9</div>
-<div class='content'>
-FUCK YOU SPAMMING BITCHES!</div>
-</div>
-<div class='comment'>
-<div class='author'>Anonymous</div>
-<div class='content'>
-Wonderful post -- why don&#39;t you have a &quot;print this&quot; button?<br /><br /><a href="http://www.zimbio.com/Mapleeclean/articles/QX_NtC9FOp6/Non+Toxic+Homes+Organics+Baby" rel="nofollow">Non Toxic Homes</a><br /><br /><a href="http://mapleaclean.blogspot.com/2010/01/non-toxic-houses-non-toxic-cleaners-for.html" rel="nofollow">Non toxic home cleaning</a></div>
-</div>
-<div class='comment'>
-<div class='author'>House 9</div>
-<div class='content'>
-This blog runs on Google Blogger software - https://www.blogger.com/<br /><br />as far as I know they don&#39;t offer that feature?<br />you can just use your normal browser print function.</div>
-</div>
-<div class='comment'>
-<div class='author'>Anonymous</div>
-<div class='content'>
-Wonderful post -- why don&#39;t you have a &quot;print this&quot; button?</div>
-</div>
-<div class='comment'>
-<div class='author'>Anonymous</div>
-<div class='content'>
-Thanks a lot. It worked great. I appreciate your time and effort in sharing this great deal of info with the rest.<br /><br />Mustaq</div>
-</div>
-</div>
 
 ]]></content>
   </entry>

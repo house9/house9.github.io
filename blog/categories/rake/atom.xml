@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: rake | house9]]></title>
-  <link href="http://house9.github.io/blog/categories/rake/atom.xml" rel="self"/>
-  <link href="http://house9.github.io/"/>
-  <updated>2013-09-24T19:13:32-07:00</updated>
-  <id>http://house9.github.io/</id>
+  <link href="http://jessehouse.com/blog/categories/rake/atom.xml" rel="self"/>
+  <link href="http://jessehouse.com/"/>
+  <updated>2013-10-19T11:32:02-07:00</updated>
+  <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Calling rake tasks from another rake task]]></title>
-    <link href="http://house9.github.io/blog/2008/11/01/calling-rake-tasks-from-another-rake/"/>
+    <link href="http://jessehouse.com/blog/2008/11/01/calling-rake-tasks-from-another-rake/"/>
     <updated>2008-11-01T00:00:00-07:00</updated>
-    <id>http://house9.github.io/blog/2008/11/01/calling-rake-tasks-from-another-rake</id>
+    <id>http://jessehouse.com/blog/2008/11/01/calling-rake-tasks-from-another-rake</id>
     <content type="html"><![CDATA[<div class='post'>
 This turns out to be pretty straight forward, but was not obvious<br /><br /><pre>Rake::Task['task_name'].execute<br /></pre><br />A rake task to rebuild the development database<br /><pre>desc 'drop, create and rebuild development db'<br />task(:rebuild_development_db) do<br />  puts "drop the db"<br />  Rake::Task['db:drop'].execute <br />  puts "create the db"<br />  Rake::Task['db:create'].execute<br />  puts "run the migrations"<br />  Rake::Task['db:migrate'].execute<br />  # do other stuff...<br />end<br /></pre><br />Resources<br /><ul><li><a href="http://www.railsenvy.com/2007/6/11/ruby-on-rails-rake-tutorial">http://www.railsenvy.com/2007/6/11/ruby-on-rails-rake-tutorial</a></li><li><a href="http://pastie.org/153991">Pastie code sample Rake calling Rake</a><br /></li></ul></div>
 

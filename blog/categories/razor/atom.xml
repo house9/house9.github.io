@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: razor | house9]]></title>
-  <link href="http://house9.github.io/blog/categories/razor/atom.xml" rel="self"/>
-  <link href="http://house9.github.io/"/>
-  <updated>2013-09-24T19:13:32-07:00</updated>
-  <id>http://house9.github.io/</id>
+  <link href="http://jessehouse.com/blog/categories/razor/atom.xml" rel="self"/>
+  <link href="http://jessehouse.com/"/>
+  <updated>2013-10-19T11:32:02-07:00</updated>
+  <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[ASP MVC Razor templates with nested layout and sections]]></title>
-    <link href="http://house9.github.io/blog/2010/11/17/asp-mvc-razor-templates-with-nested/"/>
+    <link href="http://jessehouse.com/blog/2010/11/17/asp-mvc-razor-templates-with-nested/"/>
     <updated>2010-11-17T00:00:00-08:00</updated>
-    <id>http://house9.github.io/blog/2010/11/17/asp-mvc-razor-templates-with-nested</id>
+    <id>http://jessehouse.com/blog/2010/11/17/asp-mvc-razor-templates-with-nested</id>
     <content type="html"><![CDATA[<div class='post'>
 Using ASP MVC 3 with Razor views.<br /><br />Ran into an issue with nested layouts and wanting to render a section in a top level layout, but define it in the view which uses a 'child' layout (master) page. This was generating a runtime error of:<br /><br /><blockquote><span class="Apple-style-span" style="background-color: yellow;">The following sections have been defined but have not been rendered for the layout page...</span>&nbsp;</blockquote><br />I posted some code to the asp.net forum and github. A nice workaround was supplied by 'Imran Baloch'<br /><br /><br /><ul><li><a href="https://github.com/house9/SampleAspMvc3NestedLayoutSectionIssue">Sample code at github</a></li><li><a href="http://forums.asp.net/p/1623650/4170485.aspx">Forum Post over at asp.net forums</a></li></ul></div>
 

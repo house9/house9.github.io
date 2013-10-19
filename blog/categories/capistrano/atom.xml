@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: capistrano | house9]]></title>
-  <link href="http://house9.github.io/blog/categories/capistrano/atom.xml" rel="self"/>
-  <link href="http://house9.github.io/"/>
-  <updated>2013-09-24T19:13:32-07:00</updated>
-  <id>http://house9.github.io/</id>
+  <link href="http://jessehouse.com/blog/categories/capistrano/atom.xml" rel="self"/>
+  <link href="http://jessehouse.com/"/>
+  <updated>2013-10-19T11:32:02-07:00</updated>
+  <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Puppet Solo (AKA: supply_drop)]]></title>
-    <link href="http://house9.github.io/blog/2013/07/06/puppet-solo-aka-supplydrop/"/>
+    <link href="http://jessehouse.com/blog/2013/07/06/puppet-solo-aka-supplydrop/"/>
     <updated>2013-07-06T00:00:00-07:00</updated>
-    <id>http://house9.github.io/blog/2013/07/06/puppet-solo-aka-supplydrop</id>
+    <id>http://jessehouse.com/blog/2013/07/06/puppet-solo-aka-supplydrop</id>
     <content type="html"><![CDATA[<div class='post'>
 Similar to <a href="http://matschaffer.github.io/knife-solo/">knife-solo</a> for use with <a href="http://www.opscode.com/chef/">chef</a>, <a href="https://github.com/pitluga/supply_drop">supply_drop</a> allows you to provision servers using <a href="https://puppetlabs.com/">puppet</a> without the need for a puppet master server. It uses <a href="https://github.com/capistrano/capistrano">capistrano</a> for executing commands on the remote server. I put together a working sample set of puppet and supply_drop deployment scripts for&nbsp;provisioning&nbsp;a postgres server.<br /><br /><blockquote class="tr_bq">See the github repo at &nbsp;<a href="https://github.com/house9/puppet-solo-hello-world">https://github.com/house9/puppet-solo-hello-world</a></blockquote><br /><b>Resources</b><br /><br /><ul><li><a href="http://www.confreaks.com/videos/2479-railsconf2013-devops-for-the-rubyist-soul">http://www.confreaks.com/videos/2479-railsconf2013-devops-for-the-rubyist-soul</a></li><li><a href="https://speakerdeck.com/jtdowney/devops-for-the-rubyist-soul-at-rubynation-2013">https://speakerdeck.com/jtdowney/devops-for-the-rubyist-soul-at-rubynation-2013</a></li></ul><br /><br /><br /></div>
 

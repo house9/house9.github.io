@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: tfs | house9]]></title>
-  <link href="http://house9.github.io/blog/categories/tfs/atom.xml" rel="self"/>
-  <link href="http://house9.github.io/"/>
-  <updated>2013-09-24T19:13:32-07:00</updated>
-  <id>http://house9.github.io/</id>
+  <link href="http://jessehouse.com/blog/categories/tfs/atom.xml" rel="self"/>
+  <link href="http://jessehouse.com/"/>
+  <updated>2013-10-19T11:32:02-07:00</updated>
+  <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Git Workflow]]></title>
-    <link href="http://house9.github.io/blog/2012/02/03/git-workflow/"/>
+    <link href="http://jessehouse.com/blog/2012/02/03/git-workflow/"/>
     <updated>2012-02-03T00:00:00-08:00</updated>
-    <id>http://house9.github.io/blog/2012/02/03/git-workflow</id>
+    <id>http://jessehouse.com/blog/2012/02/03/git-workflow</id>
     <content type="html"><![CDATA[<div class='post'>
 This is the current git workflow we are using at work, your mileage may vary:<br /><br /><script src="https://gist.github.com/1734394.js?file=git-workflow.rb"></script><br /><noscript>Your reader does not support javascript - see https://gist.github.com/1734394.js?file=git-workflow.rb</noscript><br /><br /><b>Resources</b><br /><ul><li><a href="http://cheat.errtheblog.com/s/git">http://cheat.errtheblog.com/s/git</a>&nbsp;</li><li><a href="http://yanpritzker.com/gitbook.html#Keeping+a+topic+branch+in+sync+with+its+parent">http://yanpritzker.com/gitbook.html#Keeping+a+topic+branch+in+sync+with+its+parent</a>&nbsp;</li><li><a href="http://yanpritzker.com/gitbook.html#One+branch+per+bug">http://yanpritzker.com/gitbook.html#One+branch+per+bug</a>&nbsp;</li><li><a href="http://gitready.com/beginner/2009/02/02/push-and-delete-branches.html">http://gitready.com/beginner/2009/02/02/push-and-delete-branches.html</a>&nbsp;</li><li><a href="http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html">http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html</a>&nbsp;</li><li><a href="http://sleeplessgeek.blogspot.com/2011/03/using-git-cherry-pick.html">http://sleeplessgeek.blogspot.com/2011/03/using-git-cherry-pick.html</a>&nbsp;</li></ul></div>
 
@@ -26,9 +26,9 @@ This is the current git workflow we are using at work, your mileage may vary:<br
   
   <entry>
     <title type="html"><![CDATA[Powershell script to generate a TODO report]]></title>
-    <link href="http://house9.github.io/blog/2011/03/14/powershell-script-to-generate-todo/"/>
+    <link href="http://jessehouse.com/blog/2011/03/14/powershell-script-to-generate-todo/"/>
     <updated>2011-03-14T00:00:00-07:00</updated>
-    <id>http://house9.github.io/blog/2011/03/14/powershell-script-to-generate-todo</id>
+    <id>http://jessehouse.com/blog/2011/03/14/powershell-script-to-generate-todo</id>
     <content type="html"><![CDATA[<div class='post'>
 You can use this from your CI build process, help keep the code base clean. I am a big fan of the TODO: comment, but you don't want too many building up in the code base at some point you either need 'TO DO IT' or else forget about it.<br /><br /><script src="https://gist.github.com/869367.js?file=TODO-Report.ps1"></script><br /><noscript><br />$fileName = "_2-DO_log.txt"<br />$max = 20<br />$encoding = "ASCII"<br /><br /># remove previous file if exists<br />if(Test-Path $fileName) { Remove-Item $fileName }<br /><br /># dump 2-do report to the file system<br />Get-ChildItem –rec –include *.config,*.cs,*.js,*.cshtml,*.css,*.aspx | <br />where { $_ -notmatch 'lib' } | <br />where { $_ -notmatch 'Test' } | <br />select-string TODO | <br />out-string -width 4096 | <br />out-file $fileName -encoding $encoding<br /><br /># get the line count of the report<br />$content = Get-Content .\$fileName<br />$count = $content.Count.ToString()<br /># Write-Host "Total count is $count"<br /><br /># verify we don't have too many entries<br />if($content.Count -gt $max) <br />{ <br />$message = "TO DO comment count has been exceeded. Max Allowed is $max but found $count for the entire solution, excluding lib files and Test projects"<br /># prepend the message before the data<br />$message | out-file $fileName -encoding $encoding <br />$content | add-content $fileName<br />Throw [system.Exception]($message) <br />}<br /></noscript><br /><br />the above script is excluding all files found under lib or Test directories, and selecting only a subset of file types. Modify to your needs</div>
 
@@ -37,9 +37,9 @@ You can use this from your CI build process, help keep the code base clean. I am
   
   <entry>
     <title type="html"><![CDATA[UPDATE: NAnt build with TFS changeset as revision number]]></title>
-    <link href="http://house9.github.io/blog/2009/04/09/update-nant-build-with-tfs-changeset-as/"/>
+    <link href="http://jessehouse.com/blog/2009/04/09/update-nant-build-with-tfs-changeset-as/"/>
     <updated>2009-04-09T00:00:00-07:00</updated>
-    <id>http://house9.github.io/blog/2009/04/09/update-nant-build-with-tfs-changeset-as</id>
+    <id>http://jessehouse.com/blog/2009/04/09/update-nant-build-with-tfs-changeset-as</id>
     <content type="html"><![CDATA[<div class='post'>
 this is a small revision to a previous post <a href="http://house9.blogspot.com/2008/04/nant-build-with-tfs-changeset-as.html">NAnt build with TFS changeset as revision number</a><br /><br />apparently there is a limitation on the size of the number used in each segment of a .net assembly version so this is a slight update to the c# code that gets the latest changeset from TFS - changes start at "if(latestChangsetId > 65534)"<br /><br /><script src="http://gist.github.com/538692.js?file=nant-tfs-changeset-to-revision-updated.cs"></script><br /><br />see also <a href="http://michaelsync.net/2007/01/12/assemblyversion-buildno-limitation">AssemblyVersion - BuildNo Limitation </a></div>
 
@@ -48,9 +48,9 @@ this is a small revision to a previous post <a href="http://house9.blogspot.com/
   
   <entry>
     <title type="html"><![CDATA['file version' is not in the normal 'major.minor.build.revision' format]]></title>
-    <link href="http://house9.github.io/blog/2009/04/09/file-version-is-not-in-normal/"/>
+    <link href="http://jessehouse.com/blog/2009/04/09/file-version-is-not-in-normal/"/>
     <updated>2009-04-09T00:00:00-07:00</updated>
-    <id>http://house9.github.io/blog/2009/04/09/file-version-is-not-in-normal</id>
+    <id>http://jessehouse.com/blog/2009/04/09/file-version-is-not-in-normal</id>
     <content type="html"><![CDATA[<div class='post'>
 At work we use TFS for source control and NAnt for building our application, yesterday our NAnt build started failing with the following error message "<span style="font-style: italic;">Assembly generation The version '2.7.1.65559' specified for the 'file version' is not in the normal 'major.minor.build.revision' format</span>"<br /><br />After a quick Google search it turns out that each segment in a .net assembly cannot be larger then 65534. We use the TFS changeset for the <span style="font-style: italic;">revision </span>segment but this will no longer work for us as we are now beyond changeset 65534 - doh! As a work around we are now using only the last 4 digits of the changeset, so instead of 2.7.1.65559 we are using the version 2.7.1.5559<br /><br />this required a small change to the Nant build script<br /><ul><li>the update is <a href="http://house9.blogspot.com/2009/04/update-nant-build-with-tfs-changeset-as.html">here</a></li><li>and the original is <a href="http://house9.blogspot.com/2008/04/nant-build-with-tfs-changeset-as.html">here</a></li></ul>this version constraint is documented <a href="http://msdn.microsoft.com/en-us/library/system.reflection.assemblyversionattribute.aspx">here</a></div>
 
@@ -59,9 +59,9 @@ At work we use TFS for source control and NAnt for building our application, yes
   
   <entry>
     <title type="html"><![CDATA[NAnt build with TFS changeset as revision number]]></title>
-    <link href="http://house9.github.io/blog/2008/04/20/nant-build-with-tfs-changeset-as/"/>
+    <link href="http://jessehouse.com/blog/2008/04/20/nant-build-with-tfs-changeset-as/"/>
     <updated>2008-04-20T00:00:00-07:00</updated>
-    <id>http://house9.github.io/blog/2008/04/20/nant-build-with-tfs-changeset-as</id>
+    <id>http://jessehouse.com/blog/2008/04/20/nant-build-with-tfs-changeset-as</id>
     <content type="html"><![CDATA[<div class='post'>
 This code sample is a <a href="http://nant.sourceforge.net/">nant</a> script that <br /><ul><li>deletes the CommonAssembly.cs file (linked to all projects)</li><li>uses the nant <a href="http://nant.sourceforge.net/release/latest/help/tasks/asminfo.html">asminfo</a> task to recreate the CommonAssembly.cs file, but after we query TFS for the changeset (revision) number which is used in the version number</li><li>build the solution in release mode using the ide.exe (there are other - better ways, but this one works)</li><li>xcopy files to C:\temp\{app} and clean up all the source files</li></ul><br />basically I just put together a few bits that I found on other blogs (should have saved the urls - doh!), most were related to using svn for source control and then I added in the code block for the c# stuff to query TFS.<br /><br />A quick note about the linked CommonAssembly.cs file, visual studio has an option when you are adding an existing file to a project to select 'linked', click the arrow on the 'Add' button when you select your existing file<br /><br />what this script does not do - get latest from TFS, I usually do that part manually or from ccnet<br /><br /><script src="http://gist.github.com/538649.js?file=nant-tfs-changeset-to-revision.xml"></script><br /><br />the c# bit that goes in the nant script block above<br />NOTE: see <a href="http://house9.blogspot.com/2009/04/update-nant-build-with-tfs-changeset-as.html">updated version</a> of this code block<br /><br /><script src="http://gist.github.com/538657.js?file=nant-tfs-changeset-to-revision.cs"></script><br /><br />nant is awesome!</div>
 

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: code | house9]]></title>
-  <link href="http://house9.github.io/blog/categories/code/atom.xml" rel="self"/>
-  <link href="http://house9.github.io/"/>
-  <updated>2013-09-24T19:13:32-07:00</updated>
-  <id>http://house9.github.io/</id>
+  <link href="http://jessehouse.com/blog/categories/code/atom.xml" rel="self"/>
+  <link href="http://jessehouse.com/"/>
+  <updated>2013-10-19T11:32:02-07:00</updated>
+  <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Automapper Datatable to List]]></title>
-    <link href="http://house9.github.io/blog/2010/11/16/automapper-datatable-to-list/"/>
+    <link href="http://jessehouse.com/blog/2010/11/16/automapper-datatable-to-list/"/>
     <updated>2010-11-16T00:00:00-08:00</updated>
-    <id>http://house9.github.io/blog/2010/11/16/automapper-datatable-to-list</id>
+    <id>http://jessehouse.com/blog/2010/11/16/automapper-datatable-to-list</id>
     <content type="html"><![CDATA[<div class='post'>
 I did a few Google searches for "<a href="http://www.google.com/search?q=c%23+automapper+datatable+to+list">c# automapper datatable to list</a>" but nothing good showed up right away, maybe this post will help someone in the future?<br /><br />The solution showed up on <a href="http://stackoverflow.com/">stackoverflow</a> here is the link<br /><br /><a href="http://stackoverflow.com/questions/2429194/automapper-mapping-ienumerable-to-datareader-issue">http://stackoverflow.com/questions/2429194/automapper-mapping-ienumerable-to-datareader-issue</a><br /><br />and here is a code snippet<br /><br /><script src="https://gist.github.com/701974.js?file=automapper-datatable-to-list.cs"></script><br /><noscript><br />System.Data.DataTable people = GetPeopleData();<br /><br />AutoMapper.Mapper.Reset();<br />AutoMapper.Mapper.CreateMap&lt;IDataReader, Person&gt;();<br /><br />var results = AutoMapper.Mapper.Map&lt;IDataReader, IList&lt;Person&gt;&gt;(people.CreateDataReader());<br /></noscript><br />Note that we are actually mapping IDataReader to a list, and DataTable has convenience method to do that for us 'CreateDataReader'<br /><br /><br /><ul><li><a href="http://automapper.codeplex.com/">Automapper</a></li></ul></div>
 
@@ -38,9 +38,9 @@ Thanks House9.  I&#39;ve added an extension method to DataTable using your code,
   
   <entry>
     <title type="html"><![CDATA[Textmate Go to File now available in Visual Studio 2010]]></title>
-    <link href="http://house9.github.io/blog/2010/09/29/textmate-go-to-file-now-available-in/"/>
+    <link href="http://jessehouse.com/blog/2010/09/29/textmate-go-to-file-now-available-in/"/>
     <updated>2010-09-29T00:00:00-07:00</updated>
-    <id>http://house9.github.io/blog/2010/09/29/textmate-go-to-file-now-available-in</id>
+    <id>http://jessehouse.com/blog/2010/09/29/textmate-go-to-file-now-available-in</id>
     <content type="html"><![CDATA[<div class='post'>
 Finally! Visual Studio has a feature similar to Textmates "Go to File" (Command key + T), I love this feature. It means that you rarely need to look around in the project tree for a file, just type part of the file name and bam!<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/_vmq8pP42BnQ/TKQJQ2OwRZI/AAAAAAAACxQ/4ftjftseo6c/s1600/textmate-go-to-file.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://3.bp.blogspot.com/_vmq8pP42BnQ/TKQJQ2OwRZI/AAAAAAAACxQ/4ftjftseo6c/s1600/textmate-go-to-file.png" /></a></div><br /><br />In visual studio it is called "Navigate to" (Ctrl + ,) it takes it one step further and even brings up methods matching the name, not sure if that is a good thing or not, so far so good.<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/_vmq8pP42BnQ/TKPhnou-e4I/AAAAAAAACxM/XGC99X3JqFg/s1600/visual-studio-navigate-to.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://1.bp.blogspot.com/_vmq8pP42BnQ/TKPhnou-e4I/AAAAAAAACxM/XGC99X3JqFg/s1600/visual-studio-navigate-to.png" /></a></div><br /><br />Found out about it <a href="http://weblogs.asp.net/scottgu/archive/2009/10/21/searching-and-navigating-code-in-vs-2010-vs-2010-and-net-4-0-series.aspx">here</a>. Guess it has been around for awhile</div>
 
@@ -49,9 +49,9 @@ Finally! Visual Studio has a feature similar to Textmates "Go to File" (Command 
   
   <entry>
     <title type="html"><![CDATA[A code smell - try catch that swallows an exception]]></title>
-    <link href="http://house9.github.io/blog/2010/09/29/code-smell-try-catch-that-swallows/"/>
+    <link href="http://jessehouse.com/blog/2010/09/29/code-smell-try-catch-that-swallows/"/>
     <updated>2010-09-29T00:00:00-07:00</updated>
-    <id>http://house9.github.io/blog/2010/09/29/code-smell-try-catch-that-swallows</id>
+    <id>http://jessehouse.com/blog/2010/09/29/code-smell-try-catch-that-swallows</id>
     <content type="html"><![CDATA[<div class='post'>
 Came across a code smell this week - try catch that swallows an exception<br /><br />and yes the code that it wraps has some issues....<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/_vmq8pP42BnQ/TKPUGdEJ7jI/AAAAAAAACxI/z5BV6Gqcujs/s1600/something-not-right-try-catch.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://4.bp.blogspot.com/_vmq8pP42BnQ/TKPUGdEJ7jI/AAAAAAAACxI/z5BV6Gqcujs/s1600/something-not-right-try-catch.png" /></a></div></div>
 
@@ -60,9 +60,9 @@ Came across a code smell this week - try catch that swallows an exception<br /><
   
   <entry>
     <title type="html"><![CDATA[jqueryUI effect error with Google Chrome and Safari]]></title>
-    <link href="http://house9.github.io/blog/2009/03/02/jqueryui-effect-error-with-google/"/>
+    <link href="http://jessehouse.com/blog/2009/03/02/jqueryui-effect-error-with-google/"/>
     <updated>2009-03-02T00:00:00-08:00</updated>
-    <id>http://house9.github.io/blog/2009/03/02/jqueryui-effect-error-with-google</id>
+    <id>http://jessehouse.com/blog/2009/03/02/jqueryui-effect-error-with-google</id>
     <content type="html"><![CDATA[<div class='post'>
 <div>Ran into a strange issue using <a href="http://jqueryui.com/">jqueryUI</a> <a href="http://jqueryui.com/demos/effects_general/#highlight">highlight effect</a>, the issue only occurred with <a href="http://webkit.org/">Webkit</a> browsers (Google Chrome and Safari) and only when I was manipulating the background property of the element that was being highlighted.</div><div><br />Using a slightly modified version of the <a href="http://jqueryui.com/demos/effects_general/highlight.html">demo</a>. I tweak the background image before applying the highlight effect</div><pre><br />$("#highlight").click(function() {<br />  $(this).css("background", "url(some_image.png) no-repeat");<br />  $(this).effect("highlight");<br />});<br /></pre><div>This resulted in the highlight appearing but not going away. Then checking it in the debugger the following javascript error was being generated - <span class="Apple-style-span" style="font-style: italic;"><span class="Apple-style-span" style="font-weight: bold;">"Uncaught TypeError: Cannot read property '0' of undefined,"</span></span> Changing the background manipulation to the following fixed the issue.</div><pre><br />$(this).css("background-image", "url(some_image.png)");<br />$(this).css("background-repeat", "no-repeat");<br />$(this).effect("highlight");<br /></pre><br /><div>Update 2009-03-06: You also need to make sure that if there is an existing style on the element being highlighted it is using the more verbose style tags of background-image and background-repeat or the same error will be encountered</div></div>
 
@@ -88,9 +88,9 @@ just had the same problem.<br /><br />was trying to highlight a table row that h
   
   <entry>
     <title type="html"><![CDATA[Assembla to start charging for all private services]]></title>
-    <link href="http://house9.github.io/blog/2008/10/19/assembla-to-start-charging-for-all/"/>
+    <link href="http://jessehouse.com/blog/2008/10/19/assembla-to-start-charging-for-all/"/>
     <updated>2008-10-19T00:00:00-07:00</updated>
-    <id>http://house9.github.io/blog/2008/10/19/assembla-to-start-charging-for-all</id>
+    <id>http://jessehouse.com/blog/2008/10/19/assembla-to-start-charging-for-all</id>
     <content type="html"><![CDATA[<div class='post'>
 well I guess it had to happen sooner or later - Assembla to start charging for all private services<br /><br />they do offer a great service and the fact that it has been free up until now has been really great!<br />I can understand why they need to start charging and it still seems very reasonable,<br />but it would be nicer if it was based purely on disk space instead of per project<br /><br />read more <a href="http://blog.assembla.com/assemblablog/tabid/12618/bid/6986/Release-2-0-restricting-free-plans-giving-back-with-features-and-pric">here</a></div>
 

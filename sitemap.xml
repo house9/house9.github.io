@@ -1,815 +1,787 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://house9.github.io/blog/2006/12/04/nhibernate-nunit-and-test-driven/</loc>
+        <loc>http://jessehouse.com/blog/2006/12/04/nhibernate-nunit-and-test-driven/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2006/12/04/tour-of-california-back-for-2007_04/</loc>
+        <loc>http://jessehouse.com/blog/2006/12/04/tour-of-california-back-for-2007_04/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2006/12/09/thee-black-roses_09/</loc>
+        <loc>http://jessehouse.com/blog/2006/12/09/thee-black-roses_09/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2006/12/10/2006-cyclo-cross-world-cup/</loc>
+        <loc>http://jessehouse.com/blog/2006/12/10/2006-cyclo-cross-world-cup/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2006/12/30/arizona-christmas/</loc>
+        <loc>http://jessehouse.com/blog/2006/12/30/arizona-christmas/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2006/12/30/mountain-biking-in-prescott/</loc>
+        <loc>http://jessehouse.com/blog/2006/12/30/mountain-biking-in-prescott/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2006/12/30/road-riding-around-prescott-az/</loc>
+        <loc>http://jessehouse.com/blog/2006/12/30/road-riding-around-prescott-az/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/01/06/maverick-success-story-behind-worlds/</loc>
+        <loc>http://jessehouse.com/blog/2007/01/06/maverick-success-story-behind-worlds/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/01/08/2007-grasshopper-adventure-series/</loc>
+        <loc>http://jessehouse.com/blog/2007/01/08/2007-grasshopper-adventure-series/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://house9.github.io/blog/2007/01/23/client-side-javascript-confirm-box-with/
-        </loc>
+        <loc>http://jessehouse.com/blog/2007/01/23/client-side-javascript-confirm-box-with/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/02/10/coding-links/</loc>
+        <loc>http://jessehouse.com/blog/2007/02/10/coding-links/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://house9.github.io/blog/2007/02/11/client-side-javascript-confirm-box-with/
-        </loc>
+        <loc>http://jessehouse.com/blog/2007/02/11/client-side-javascript-confirm-box-with/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/02/11/free-net-business-rule-engines/</loc>
+        <loc>http://jessehouse.com/blog/2007/02/11/free-net-business-rule-engines/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/02/11/generate-guid-from-mssql/</loc>
+        <loc>http://jessehouse.com/blog/2007/02/11/generate-guid-from-mssql/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/02/18/2007-tour-of-california-prologue/</loc>
+        <loc>http://jessehouse.com/blog/2007/02/18/2007-tour-of-california-prologue/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/02/19/2007-tour-of-california-stage-1/</loc>
+        <loc>http://jessehouse.com/blog/2007/02/19/2007-tour-of-california-stage-1/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/02/27/2007-grasshopper-1-old-caz-results/</loc>
+        <loc>http://jessehouse.com/blog/2007/02/27/2007-grasshopper-1-old-caz-results/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/03/16/2007-grasshopper-2-chileno-valley/</loc>
+        <loc>http://jessehouse.com/blog/2007/03/16/2007-grasshopper-2-chileno-valley/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/03/25/colivitasutterhome-norcal-corporate/</loc>
+        <loc>http://jessehouse.com/blog/2007/03/25/colivitasutterhome-norcal-corporate/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/03/25/selenium-and-file-uploads/</loc>
+        <loc>http://jessehouse.com/blog/2007/03/25/selenium-and-file-uploads/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/04/15/kung-fu-revisited/</loc>
+        <loc>http://jessehouse.com/blog/2007/04/15/kung-fu-revisited/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/04/15/what-would-kwai-chang-caine-do/</loc>
+        <loc>http://jessehouse.com/blog/2007/04/15/what-would-kwai-chang-caine-do/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/05/27/ubuntu-really-is-easy/</loc>
+        <loc>http://jessehouse.com/blog/2007/05/27/ubuntu-really-is-easy/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/09/01/ruby-and-rails/</loc>
+        <loc>http://jessehouse.com/blog/2007/09/01/ruby-and-rails/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/09/01/ruby-notes-part-1-dynamic-object/</loc>
+        <loc>http://jessehouse.com/blog/2007/09/01/ruby-notes-part-1-dynamic-object/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/09/21/first-rails-project/</loc>
+        <loc>http://jessehouse.com/blog/2007/09/21/first-rails-project/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/09/27/tfs-and-pain/</loc>
+        <loc>http://jessehouse.com/blog/2007/09/27/tfs-and-pain/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/10/14/assembla-is-cool/</loc>
+        <loc>http://jessehouse.com/blog/2007/10/14/assembla-is-cool/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/10/14/peregrine-sighting-in-gualala/</loc>
+        <loc>http://jessehouse.com/blog/2007/10/14/peregrine-sighting-in-gualala/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/10/18/rails-rjs-and-newline-characters/</loc>
+        <loc>http://jessehouse.com/blog/2007/10/18/rails-rjs-and-newline-characters/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/10/21/tic-tac-toe-on-rails/</loc>
+        <loc>http://jessehouse.com/blog/2007/10/21/tic-tac-toe-on-rails/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/11/04/tfs-without-visual-stuido/</loc>
+        <loc>http://jessehouse.com/blog/2007/11/04/tfs-without-visual-stuido/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/12/01/9-golden-eagles/</loc>
+        <loc>http://jessehouse.com/blog/2007/12/01/9-golden-eagles/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/12/02/tesla-motors-electric-cars/</loc>
+        <loc>http://jessehouse.com/blog/2007/12/02/tesla-motors-electric-cars/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/12/08/mysql-migration-toolkit/</loc>
+        <loc>http://jessehouse.com/blog/2007/12/08/mysql-migration-toolkit/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/12/15/personal-web-page-revisited/</loc>
+        <loc>http://jessehouse.com/blog/2007/12/15/personal-web-page-revisited/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2007/12/15/random-coding-links-1/</loc>
+        <loc>http://jessehouse.com/blog/2007/12/15/random-coding-links-1/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/01/06/mssql-reporting-services-logs/</loc>
+        <loc>http://jessehouse.com/blog/2008/01/06/mssql-reporting-services-logs/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/02/16/rails-like-migrations-in-net-world/</loc>
+        <loc>http://jessehouse.com/blog/2008/02/16/rails-like-migrations-in-net-world/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/02/16/rhinomocks-basics/</loc>
+        <loc>http://jessehouse.com/blog/2008/02/16/rhinomocks-basics/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/02/16/rhinomocks-basics_16/</loc>
+        <loc>http://jessehouse.com/blog/2008/02/16/rhinomocks-basics_16/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/02/16/syntaxhighlighter-and-google-blogger/</loc>
+        <loc>http://jessehouse.com/blog/2008/02/16/syntaxhighlighter-and-google-blogger/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/02/18/first-annual-amgen-tour-of-california/</loc>
+        <loc>http://jessehouse.com/blog/2008/02/18/first-annual-amgen-tour-of-california/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/03/03/vincent-vega-is-now-tarantino-project/</loc>
+        <loc>http://jessehouse.com/blog/2008/03/03/vincent-vega-is-now-tarantino-project/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/04/20/firefox-and-multiple-cookies-for-same/</loc>
+        <loc>http://jessehouse.com/blog/2008/04/20/firefox-and-multiple-cookies-for-same/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/04/20/nant-build-with-tfs-changeset-as/</loc>
+        <loc>http://jessehouse.com/blog/2008/04/20/nant-build-with-tfs-changeset-as/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://house9.github.io/blog/2008/04/24/update-firefox-and-multiple-cookies-for/
-        </loc>
+        <loc>http://jessehouse.com/blog/2008/04/24/update-firefox-and-multiple-cookies-for/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/05/03/komodo-edit-new-text-editor-of-choice/</loc>
+        <loc>http://jessehouse.com/blog/2008/05/03/komodo-edit-new-text-editor-of-choice/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/05/10/python-mvc-web-framework-web2py/</loc>
+        <loc>http://jessehouse.com/blog/2008/05/10/python-mvc-web-framework-web2py/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/05/10/rolling-over-rails-productionlog-file/</loc>
+        <loc>http://jessehouse.com/blog/2008/05/10/rolling-over-rails-productionlog-file/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/05/14/snagit-promotional-code-coupon-for-10/</loc>
+        <loc>http://jessehouse.com/blog/2008/05/14/snagit-promotional-code-coupon-for-10/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/05/18/mssql-drop-and-re-add-constraints/</loc>
+        <loc>http://jessehouse.com/blog/2008/05/18/mssql-drop-and-re-add-constraints/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/05/19/free-rice/</loc>
+        <loc>http://jessehouse.com/blog/2008/05/19/free-rice/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/05/20/ruby-on-rails-chron-job/</loc>
+        <loc>http://jessehouse.com/blog/2008/05/20/ruby-on-rails-chron-job/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/06/08/your-rspec-on-rails-plugin-is/</loc>
+        <loc>http://jessehouse.com/blog/2008/06/08/your-rspec-on-rails-plugin-is/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/06/20/rant-exchange-drives-me-crazy/</loc>
+        <loc>http://jessehouse.com/blog/2008/06/20/rant-exchange-drives-me-crazy/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/07/23/australia/</loc>
+        <loc>http://jessehouse.com/blog/2008/07/23/australia/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/08/02/archipelago-studio-apartments-port/</loc>
+        <loc>http://jessehouse.com/blog/2008/08/02/archipelago-studio-apartments-port/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/08/02/coral-tree-inn-cairns-australia/</loc>
+        <loc>http://jessehouse.com/blog/2008/08/02/coral-tree-inn-cairns-australia/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/08/02/hotel-george-williams-ymca-brisbane/</loc>
+        <loc>http://jessehouse.com/blog/2008/08/02/hotel-george-williams-ymca-brisbane/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/08/02/medina-grand-harbourside-sydney/</loc>
+        <loc>http://jessehouse.com/blog/2008/08/02/medina-grand-harbourside-sydney/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/08/24/buycom-and-google-checkout-doesnt-work/</loc>
+        <loc>http://jessehouse.com/blog/2008/08/24/buycom-and-google-checkout-doesnt-work/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/09/27/scrubyt/</loc>
+        <loc>http://jessehouse.com/blog/2008/09/27/scrubyt/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/10/16/ge-microwaves-are-junk/</loc>
+        <loc>http://jessehouse.com/blog/2008/10/16/ge-microwaves-are-junk/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/10/16/running-scripts-on-windows-cscript-vs/</loc>
+        <loc>http://jessehouse.com/blog/2008/10/16/running-scripts-on-windows-cscript-vs/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/10/18/actionviewtemplateerror-uninitialized/</loc>
+        <loc>http://jessehouse.com/blog/2008/10/18/actionviewtemplateerror-uninitialized/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/10/19/assembla-to-start-charging-for-all/</loc>
+        <loc>http://jessehouse.com/blog/2008/10/19/assembla-to-start-charging-for-all/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/10/23/obama-for-president/</loc>
+        <loc>http://jessehouse.com/blog/2008/10/23/obama-for-president/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/11/01/calling-rake-tasks-from-another-rake/</loc>
+        <loc>http://jessehouse.com/blog/2008/11/01/calling-rake-tasks-from-another-rake/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/12/06/rails-21-and-22-documentation/</loc>
+        <loc>http://jessehouse.com/blog/2008/12/06/rails-21-and-22-documentation/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2008/12/30/dilbert-share-point-web-part/</loc>
+        <loc>http://jessehouse.com/blog/2008/12/30/dilbert-share-point-web-part/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/01/07/coding-cheat-sheets/</loc>
+        <loc>http://jessehouse.com/blog/2009/01/07/coding-cheat-sheets/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/01/07/testing-is-overrated-on-infoq/</loc>
+        <loc>http://jessehouse.com/blog/2009/01/07/testing-is-overrated-on-infoq/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/01/16/words-to-live-by/</loc>
+        <loc>http://jessehouse.com/blog/2009/01/16/words-to-live-by/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/01/17/best-binoculars-for-birding/</loc>
+        <loc>http://jessehouse.com/blog/2009/01/17/best-binoculars-for-birding/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/01/21/2009-grasshopper-adventure-series/</loc>
+        <loc>http://jessehouse.com/blog/2009/01/21/2009-grasshopper-adventure-series/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/02/16/i-do-alright-with-css-positioning-but/</loc>
+        <loc>http://jessehouse.com/blog/2009/02/16/i-do-alright-with-css-positioning-but/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/02/16/use-jquery-to-disable-button-when/</loc>
+        <loc>http://jessehouse.com/blog/2009/02/16/use-jquery-to-disable-button-when/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/03/02/jqueryui-effect-error-with-google/</loc>
+        <loc>http://jessehouse.com/blog/2009/03/02/jqueryui-effect-error-with-google/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/03/12/acephalix/</loc>
+        <loc>http://jessehouse.com/blog/2009/03/12/acephalix/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/03/26/get-filenames-and-database-names-from/</loc>
+        <loc>http://jessehouse.com/blog/2009/03/26/get-filenames-and-database-names-from/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/04/09/file-version-is-not-in-normal/</loc>
+        <loc>http://jessehouse.com/blog/2009/04/09/file-version-is-not-in-normal/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/04/09/ie8-multiple-cookies-for-same-site/</loc>
+        <loc>http://jessehouse.com/blog/2009/04/09/ie8-multiple-cookies-for-same-site/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://house9.github.io/blog/2009/04/09/update-nant-build-with-tfs-changeset-as/
-        </loc>
+        <loc>http://jessehouse.com/blog/2009/04/09/update-nant-build-with-tfs-changeset-as/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/04/11/accesskey-attribute-on-select-tag-is/</loc>
+        <loc>http://jessehouse.com/blog/2009/04/11/accesskey-attribute-on-select-tag-is/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/04/12/rails-collectionselect-to-prompt-or/</loc>
+        <loc>http://jessehouse.com/blog/2009/04/12/rails-collectionselect-to-prompt-or/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/04/25/strange-behavior-with-rails/</loc>
+        <loc>http://jessehouse.com/blog/2009/04/25/strange-behavior-with-rails/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://house9.github.io/blog/2009/05/03/bash-scirpt-to-launch-rails-development/
-        </loc>
+        <loc>http://jessehouse.com/blog/2009/05/03/bash-scirpt-to-launch-rails-development/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/05/30/secure-your-gmail/</loc>
+        <loc>http://jessehouse.com/blog/2009/05/30/secure-your-gmail/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/06/27/frontair-congress-barcelona-spain/</loc>
+        <loc>http://jessehouse.com/blog/2009/06/27/frontair-congress-barcelona-spain/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/06/27/hotel-costabella-sercotel-girona-spain/</loc>
+        <loc>http://jessehouse.com/blog/2009/06/27/hotel-costabella-sercotel-girona-spain/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/06/27/hotel-front-maritim-barcelona-spain/</loc>
+        <loc>http://jessehouse.com/blog/2009/06/27/hotel-front-maritim-barcelona-spain/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/06/27/husa-imperial-tarraco-tarragona-spain/</loc>
+        <loc>http://jessehouse.com/blog/2009/06/27/husa-imperial-tarraco-tarragona-spain/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://house9.github.io/blog/2009/06/27/medplaya-aparthotel-esmeraldas-tossa-de/
-        </loc>
-        <lastmod>2013-09-24T15:09:36-07:00</lastmod>
+        <loc>http://jessehouse.com/blog/2009/06/27/medplaya-aparthotel-esmeraldas-tossa-de/</loc>
+        <lastmod>2013-10-19T11:17:01-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/06/27/spain/</loc>
+        <loc>http://jessehouse.com/blog/2009/06/27/spain/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/07/18/replace-keyboard-on-sony-vaio-laptop/</loc>
+        <loc>http://jessehouse.com/blog/2009/07/18/replace-keyboard-on-sony-vaio-laptop/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/08/04/get-list-of-mssql-jobs-that-are/</loc>
+        <loc>http://jessehouse.com/blog/2009/08/04/get-list-of-mssql-jobs-that-are/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/08/21/ajax-error-handling-with-ruby-on-rails/</loc>
+        <loc>http://jessehouse.com/blog/2009/08/21/ajax-error-handling-with-ruby-on-rails/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/08/23/scrolling-screen-shot-on-ubuntu/</loc>
+        <loc>http://jessehouse.com/blog/2009/08/23/scrolling-screen-shot-on-ubuntu/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/09/02/procedure-spdroplogin-line-93-login-is/</loc>
+        <loc>http://jessehouse.com/blog/2009/09/02/procedure-spdroplogin-line-93-login-is/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/10/17/convert-mkv-files-to-dvd-with-ubuntu/</loc>
+        <loc>http://jessehouse.com/blog/2009/10/17/convert-mkv-files-to-dvd-with-ubuntu/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/10/24/factory-girl-makes-rails-testing-so/</loc>
+        <loc>http://jessehouse.com/blog/2009/10/24/factory-girl-makes-rails-testing-so/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/10/25/imeem-on-64-bit-ubuntu/</loc>
-        <lastmod>2013-09-24T15:09:36-07:00</lastmod>
+        <loc>http://jessehouse.com/blog/2009/10/25/imeem-on-64-bit-ubuntu/</loc>
+        <lastmod>2013-10-19T11:23:53-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/11/12/heroku-http-502-error/</loc>
+        <loc>http://jessehouse.com/blog/2009/11/12/heroku-http-502-error/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/11/12/heroku-sending-email-with-gmail/</loc>
+        <loc>http://jessehouse.com/blog/2009/11/12/heroku-sending-email-with-gmail/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2009/12/09/imeem-acquired-by-myspace-bummer/</loc>
+        <loc>http://jessehouse.com/blog/2009/12/09/imeem-acquired-by-myspace-bummer/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/01/06/ruby-http-get-with-nethttp/</loc>
+        <loc>http://jessehouse.com/blog/2010/01/06/ruby-http-get-with-nethttp/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/01/06/ruby-regex-to-remove-script-tags/</loc>
+        <loc>http://jessehouse.com/blog/2010/01/06/ruby-regex-to-remove-script-tags/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/01/18/neat-site-to-generate-graphics/</loc>
+        <loc>http://jessehouse.com/blog/2010/01/18/neat-site-to-generate-graphics/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/01/26/install-older-version-of-rails-and/</loc>
+        <loc>http://jessehouse.com/blog/2010/01/26/install-older-version-of-rails-and/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/02/16/google-webmaster-tools-sitemapxml/</loc>
+        <loc>http://jessehouse.com/blog/2010/02/16/google-webmaster-tools-sitemapxml/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/02/17/rails-senddata-fails-on-ie-when-ssl/</loc>
+        <loc>http://jessehouse.com/blog/2010/02/17/rails-senddata-fails-on-ie-when-ssl/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/03/05/cut-back-on-blog-reading/</loc>
+        <loc>http://jessehouse.com/blog/2010/03/05/cut-back-on-blog-reading/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/03/11/exclude-svn-results-with-egrep/</loc>
+        <loc>http://jessehouse.com/blog/2010/03/11/exclude-svn-results-with-egrep/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/03/15/digg-style-css-for-willpaginate-plugin/</loc>
+        <loc>http://jessehouse.com/blog/2010/03/15/digg-style-css-for-willpaginate-plugin/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/03/23/sorting-rails-view-with-willpaginate/</loc>
+        <loc>http://jessehouse.com/blog/2010/03/23/sorting-rails-view-with-willpaginate/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/04/14/gimp-install-on-mac/</loc>
+        <loc>http://jessehouse.com/blog/2010/04/14/gimp-install-on-mac/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/04/20/need-to-find-real-estate-comps/</loc>
+        <loc>http://jessehouse.com/blog/2010/04/20/need-to-find-real-estate-comps/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/04/20/uptime-and-performance-monitoring-made/</loc>
+        <loc>http://jessehouse.com/blog/2010/04/20/uptime-and-performance-monitoring-made/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/05/24/snag-it-for-mac/</loc>
+        <loc>http://jessehouse.com/blog/2010/05/24/snag-it-for-mac/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/05/27/jsfiddle-is-awesome/</loc>
+        <loc>http://jessehouse.com/blog/2010/05/27/jsfiddle-is-awesome/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/06/01/pomodoro-timer-application/</loc>
+        <loc>http://jessehouse.com/blog/2010/06/01/pomodoro-timer-application/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/06/18/offsides-i-think-not/</loc>
+        <loc>http://jessehouse.com/blog/2010/06/18/offsides-i-think-not/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/07/28/adjustable-height-desks/</loc>
+        <loc>http://jessehouse.com/blog/2010/07/28/adjustable-height-desks/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/08/18/valid-vs-errorsany-in-rails/</loc>
+        <loc>http://jessehouse.com/blog/2010/08/18/valid-vs-errorsany-in-rails/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/08/19/updated-look/</loc>
+        <loc>http://jessehouse.com/blog/2010/08/19/updated-look/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/08/20/ruby-192-and-rails-3rc-with-rvm/</loc>
+        <loc>http://jessehouse.com/blog/2010/08/20/ruby-192-and-rails-3rc-with-rvm/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/09/03/you-have-got-to-be-kidding/</loc>
+        <loc>http://jessehouse.com/blog/2010/09/03/you-have-got-to-be-kidding/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/09/04/2010-us-open-live-high-quality-stream/</loc>
+        <loc>http://jessehouse.com/blog/2010/09/04/2010-us-open-live-high-quality-stream/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/09/09/nfl-live-stream-thursday-and-sunday/</loc>
+        <loc>http://jessehouse.com/blog/2010/09/09/nfl-live-stream-thursday-and-sunday/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/09/29/code-smell-try-catch-that-swallows/</loc>
+        <loc>http://jessehouse.com/blog/2010/09/29/code-smell-try-catch-that-swallows/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/09/29/textmate-go-to-file-now-available-in/</loc>
+        <loc>http://jessehouse.com/blog/2010/09/29/textmate-go-to-file-now-available-in/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/09/30/virutalbox-increase-memory-on-existing/</loc>
+        <loc>http://jessehouse.com/blog/2010/09/30/virutalbox-increase-memory-on-existing/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/10/13/geek-desk-in-action/</loc>
+        <loc>http://jessehouse.com/blog/2010/10/13/geek-desk-in-action/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/10/22/jquery-iframe-auto-height-plugin/</loc>
+        <loc>http://jessehouse.com/blog/2010/10/22/jquery-iframe-auto-height-plugin/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/10/29/best-overload-for-rendersection-does/</loc>
+        <loc>http://jessehouse.com/blog/2010/10/29/best-overload-for-rendersection-does/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/10/29/remote-desktop-mac-osx-to-ubuntu/</loc>
+        <loc>http://jessehouse.com/blog/2010/10/29/remote-desktop-mac-osx-to-ubuntu/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/11/05/get-date-of-beginning-and-end-of-month/</loc>
+        <loc>http://jessehouse.com/blog/2010/11/05/get-date-of-beginning-and-end-of-month/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/11/16/automapper-datatable-to-list/</loc>
+        <loc>http://jessehouse.com/blog/2010/11/16/automapper-datatable-to-list/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2010/11/17/asp-mvc-razor-templates-with-nested/</loc>
+        <loc>http://jessehouse.com/blog/2010/11/17/asp-mvc-razor-templates-with-nested/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/02/20/libre-office-real-open-office/</loc>
+        <loc>http://jessehouse.com/blog/2011/02/20/libre-office-real-open-office/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/02/21/osha-safety-software/</loc>
+        <loc>http://jessehouse.com/blog/2011/02/21/osha-safety-software/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/02/25/cqrs-with-net-and-c/</loc>
+        <loc>http://jessehouse.com/blog/2011/02/25/cqrs-with-net-and-c/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/03/03/varchar-max-sqlparameter-length/</loc>
+        <loc>http://jessehouse.com/blog/2011/03/03/varchar-max-sqlparameter-length/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/03/06/ergonomic-keyboard-for-mac/</loc>
+        <loc>http://jessehouse.com/blog/2011/03/06/ergonomic-keyboard-for-mac/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/03/09/visual-studio-solution-items-in-sub/</loc>
+        <loc>http://jessehouse.com/blog/2011/03/09/visual-studio-solution-items-in-sub/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/03/11/mstest-output-result-to-html/</loc>
+        <loc>http://jessehouse.com/blog/2011/03/11/mstest-output-result-to-html/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/03/14/powershell-script-to-generate-todo/</loc>
+        <loc>http://jessehouse.com/blog/2011/03/14/powershell-script-to-generate-todo/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/03/15/asp-mvc-jquery-from-cdn-with-fallback/</loc>
+        <loc>http://jessehouse.com/blog/2011/03/15/asp-mvc-jquery-from-cdn-with-fallback/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/03/29/add-tfexe-and-other-net-command-line/</loc>
+        <loc>http://jessehouse.com/blog/2011/03/29/add-tfexe-and-other-net-command-line/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/03/29/rows-and-columns-with-css/</loc>
+        <loc>http://jessehouse.com/blog/2011/03/29/rows-and-columns-with-css/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/04/07/ping-guest-os-from-host-os-with/</loc>
+        <loc>http://jessehouse.com/blog/2011/04/07/ping-guest-os-from-host-os-with/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/04/08/could-not-find-generator/</loc>
+        <loc>http://jessehouse.com/blog/2011/04/08/could-not-find-generator/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/04/09/notes-teamcity-setup-on-ubuntu/</loc>
+        <loc>http://jessehouse.com/blog/2011/04/09/notes-teamcity-setup-on-ubuntu/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/04/09/some-notes-ubuntu-install-rails-3/</loc>
+        <loc>http://jessehouse.com/blog/2011/04/09/some-notes-ubuntu-install-rails-3/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/04/15/log-wildlife-sightings-summer-2010/</loc>
+        <loc>http://jessehouse.com/blog/2011/04/15/log-wildlife-sightings-summer-2010/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/04/22/fixing-aspnet-mvc-authorizeattribute/</loc>
+        <loc>http://jessehouse.com/blog/2011/04/22/fixing-aspnet-mvc-authorizeattribute/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/05/03/simpledata-and-mongodb/</loc>
+        <loc>http://jessehouse.com/blog/2011/05/03/simpledata-and-mongodb/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/05/08/at-site-has-some-serious-issues/</loc>
+        <loc>http://jessehouse.com/blog/2011/05/08/at-site-has-some-serious-issues/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/05/25/stream-tennis-2011-roland-garros/</loc>
+        <loc>http://jessehouse.com/blog/2011/05/25/stream-tennis-2011-roland-garros/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/05/26/rails-31-asset-pipeline/</loc>
+        <loc>http://jessehouse.com/blog/2011/05/26/rails-31-asset-pipeline/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/05/29/rails-31-javascript-execution/</loc>
+        <loc>http://jessehouse.com/blog/2011/05/29/rails-31-javascript-execution/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/06/01/robocopy-fix-for-exit-code-of-2/</loc>
+        <loc>http://jessehouse.com/blog/2011/06/01/robocopy-fix-for-exit-code-of-2/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/06/16/rails-31-asset-gem/</loc>
+        <loc>http://jessehouse.com/blog/2011/06/16/rails-31-asset-gem/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://house9.github.io/blog/2011/06/24/rails-31-and-ruby-192-p180-rake-aborted/
-        </loc>
+        <loc>http://jessehouse.com/blog/2011/06/24/rails-31-and-ruby-192-p180-rake-aborted/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/07/08/grow-vegetables-go-to-jail/</loc>
+        <loc>http://jessehouse.com/blog/2011/07/08/grow-vegetables-go-to-jail/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://house9.github.io/blog/2011/08/22/coffeescript-with-rails-23-and-rails-30/
-        </loc>
+        <loc>http://jessehouse.com/blog/2011/08/22/coffeescript-with-rails-23-and-rails-30/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/09/18/nfl-2011-sunday-night-hd-stream-for/</loc>
+        <loc>http://jessehouse.com/blog/2011/09/18/nfl-2011-sunday-night-hd-stream-for/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://house9.github.io/blog/2011/10/15/generating-barcodes-with-ruby-and-rails/
-        </loc>
+        <loc>http://jessehouse.com/blog/2011/10/15/generating-barcodes-with-ruby-and-rails/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://house9.github.io/blog/2011/11/09/postgres-get-number-of-days-in-interval/
-        </loc>
+        <loc>http://jessehouse.com/blog/2011/11/09/postgres-get-number-of-days-in-interval/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://house9.github.io/blog/2011/11/12/sample-routes-and-links-with-rails-3-in/
-        </loc>
+        <loc>http://jessehouse.com/blog/2011/11/12/sample-routes-and-links-with-rails-3-in/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/12/02/get-table-and-column-information-in/</loc>
+        <loc>http://jessehouse.com/blog/2011/12/02/get-table-and-column-information-in/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2011/12/30/inspect-all-jquery-events-on-element/</loc>
+        <loc>http://jessehouse.com/blog/2011/12/30/inspect-all-jquery-events-on-element/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2012/02/03/git-workflow/</loc>
+        <loc>http://jessehouse.com/blog/2012/02/03/git-workflow/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2012/04/29/postgres-random-useful-things/</loc>
+        <loc>http://jessehouse.com/blog/2012/04/29/postgres-random-useful-things/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2012/04/29/postgres-terminate-all-database/</loc>
+        <loc>http://jessehouse.com/blog/2012/04/29/postgres-terminate-all-database/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2012/07/01/rails-activerecord-createdby-and/</loc>
+        <loc>http://jessehouse.com/blog/2012/07/01/rails-activerecord-createdby-and/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2012/08/25/unofficial-twitter-bootstrap/</loc>
+        <loc>http://jessehouse.com/blog/2012/08/25/unofficial-twitter-bootstrap/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2012/09/05/414-request-uri-too-large/</loc>
+        <loc>http://jessehouse.com/blog/2012/09/05/414-request-uri-too-large/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2012/10/31/helper-script-to-delete-git-tags/</loc>
+        <loc>http://jessehouse.com/blog/2012/10/31/helper-script-to-delete-git-tags/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2012/11/03/git-log-formatting/</loc>
+        <loc>http://jessehouse.com/blog/2012/11/03/git-log-formatting/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2012/11/03/setting-up-ci-build-continuous/</loc>
+        <loc>http://jessehouse.com/blog/2012/11/03/setting-up-ci-build-continuous/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://house9.github.io/blog/2012/12/16/sending-email-with-rails-mailers-random/
-        </loc>
+        <loc>http://jessehouse.com/blog/2012/12/16/sending-email-with-rails-mailers-random/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2012/12/19/rails-remote-true-jquery-events/</loc>
+        <loc>http://jessehouse.com/blog/2012/12/19/rails-remote-true-jquery-events/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2013/02/23/random-tricks-you-can-do-with-rails/</loc>
+        <loc>http://jessehouse.com/blog/2013/02/23/random-tricks-you-can-do-with-rails/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://house9.github.io/blog/2013/02/23/ruby-on-rails-continuous-integration-ci/
-        </loc>
+        <loc>http://jessehouse.com/blog/2013/02/23/ruby-on-rails-continuous-integration-ci/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2013/03/21/hipchat-is-now-free/</loc>
+        <loc>http://jessehouse.com/blog/2013/03/21/hipchat-is-now-free/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2013/06/01/vagrantfile-for-setting-up-multiple/</loc>
+        <loc>http://jessehouse.com/blog/2013/06/01/vagrantfile-for-setting-up-multiple/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://house9.github.io/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/
-        </loc>
+        <loc>http://jessehouse.com/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2013/06/24/wal-e-chef-cookbook/</loc>
+        <loc>http://jessehouse.com/blog/2013/06/24/wal-e-chef-cookbook/</loc>
         <lastmod>2013-09-24T15:44:40-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2013/07/06/puppet-solo-aka-supplydrop/</loc>
+        <loc>http://jessehouse.com/blog/2013/07/06/puppet-solo-aka-supplydrop/</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2013/09/24/octopress-test/</loc>
+        <loc>http://jessehouse.com/blog/2013/09/24/octopress-test/</loc>
         <lastmod>2013-09-24T15:53:19-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/2013/09/25/the-cure-for-ibs/</loc>
+        <loc>http://jessehouse.com/blog/2013/09/25/the-cure-for-ibs/</loc>
         <lastmod>2013-09-24T18:56:57-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/blog/archives/</loc>
-        <lastmod>2013-09-24T18:56:57-07:00</lastmod>
+        <loc>http://jessehouse.com/blog/archives/</loc>
+        <lastmod>2013-10-19T11:23:53-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/</loc>
-        <lastmod>2013-09-24T18:56:57-07:00</lastmod>
+        <loc>http://jessehouse.com/</loc>
+        <lastmod>2013-10-19T11:23:53-07:00</lastmod>
     </url>
     <url>
-        <loc>http://house9.github.io/robots.txt</loc>
+        <loc>http://jessehouse.com/robots.txt</loc>
         <lastmod>2013-09-24T15:09:36-07:00</lastmod>
     </url>
 </urlset>

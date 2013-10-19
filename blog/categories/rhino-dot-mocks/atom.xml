@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: rhino.mocks | house9]]></title>
-  <link href="http://house9.github.io/blog/categories/rhino-dot-mocks/atom.xml" rel="self"/>
-  <link href="http://house9.github.io/"/>
-  <updated>2013-09-24T19:13:32-07:00</updated>
-  <id>http://house9.github.io/</id>
+  <link href="http://jessehouse.com/blog/categories/rhino-dot-mocks/atom.xml" rel="self"/>
+  <link href="http://jessehouse.com/"/>
+  <updated>2013-10-19T11:32:02-07:00</updated>
+  <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Rhino.Mocks - the basics]]></title>
-    <link href="http://house9.github.io/blog/2008/02/16/rhinomocks-basics_16/"/>
+    <link href="http://jessehouse.com/blog/2008/02/16/rhinomocks-basics_16/"/>
     <updated>2008-02-16T00:00:00-08:00</updated>
-    <id>http://house9.github.io/blog/2008/02/16/rhinomocks-basics_16</id>
+    <id>http://jessehouse.com/blog/2008/02/16/rhinomocks-basics_16</id>
     <content type="html"><![CDATA[<div class='post'>
 Started using Rhino.Mocks recently (Awesome!!!) - just wanted to list a few of the basics; the official Rhino Mocks Documentation is very good and available <a href="http://www.ayende.com/Wiki/(S(0asrslmlg1jh5355jtljowre))/Rhino+Mocks+Documentation.ashx">here</a>. These examples are a bit rough, they have not been compiled; there may be typos.<br /><br /><b>using</b><br /><pre>using Rhino.Mocks;</pre><br /><b>The mock repository</b><br /><pre>// use the mock repository to create the mocked objects<br />MockRepository mocks = new Rhino.Mocks.MockRepository();<br />// example<br />System.Object someObject = mocks.CreateMock<System.Object>();<br />// set up the behaviour you want from calls to your mocked object <br />Rhino.Mocks.Expect.Call(someObject.Equals(someParameter)).Return(false);<br />// then don't forget<br />mocks.ReplayAll();<br />// now do stuff that calls your mocked object Equals method<br />...<br /></pre><br /><b>Mock a call to the db</b><br /><pre>// create our mocked repository object - IProductRepository, the real one calls the db<br />IProductRepository repository = mocks.CreateMock<iproductrepository>();<br />// tell rhino.mocks when we call the method GetProduct with the argument 33 to return null<br />Rhino.Mocks.Expect.Call(repository.GetProduct(33)).Return(null);<br />// get the mocking ready<br />mocks.ReplayAll();<br />// pass our mock to our product service layer<br />ProductService service = new ProductService(repository);<br />// service.GetProduct makes a call to the mocked repository.GetProduct which will return null<br />IProduct product = service.GetProduct(33);<br />// should be null<br />Assert.IsNull(product);<br /></pre><br /><b>Ignore any arguments</b><br /><pre>// any call to GetProduct will return null no matter the value of the arg<br />Rhino.Mocks.Expect.Call(repository.GetProduct(null)).Return(null).IgnoreArguments();<br /></pre><br /><b>mock a method that returns void</b><br /><pre>IProduct product = new Product("003092", "Sierra Nevada", 6.49);<br />// this void call will handle our product 003092<br />Rhino.Mocks.Expect.Call(delegate { repository.Save(product); });<br />// this void call will handle any argument<br />Rhino.Mocks.Expect.Call(delegate { repository.Save(null); }).IgnoreArguments();<br /></pre><br /><b>Handle multiple calls to the same method</b><br /><pre>IProduct product = new Product("003092", "Sierra Nevada", 6.49);<br />// note the .Repeat.Any()<br />Rhino.Mocks.Expect.Call(repository.GetProduct("003092")).Return(product).Repeat.Any();<br />// send the mock to our product service object<br />ProductService service = new ProductService(repository);<br />// find by sku calls GetProduct on the mocked Product repository<br />IProduct beer = service.FindBySku("003092");<br />// find decent beer calls GetProduct on the mocked Product repository also<br />IProduct decentBeer = service.FindDecentBeer();<br /></pre><br /><b>Partial Mock</b><br /><pre>// create a partial mock with constructor args (our product repository again)<br />IProductService service = mocks.PartialMock<iproductservice>(repository);<br />// our test case data<br />IUser loggedOnUser = new User("John", "Doe", CustomerType.Gold);<br />// mock product service calls to GetLoggedOnUser<br />Rhino.Mocks.Expect.Call(service.GetLoggedOnUser()).Return(loggedOnUser);<br />// get the mocking ready<br />mocks.ReplayAll();<br />// now GetDiscount is not a mocked method but it does call the mocked GetLoggedOnUser method<br />decimal discount = service.GetDiscount();<br />// assert the result<br />Assert.AreSame(44.4M, discount, "Gold customer discount not correct?");<br />// NOTE: this will not work (compile) unless the mocked method GetLoggedOnUser is public<br /></pre></div>
 

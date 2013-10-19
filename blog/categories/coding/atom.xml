@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: coding | house9]]></title>
-  <link href="http://house9.github.io/blog/categories/coding/atom.xml" rel="self"/>
-  <link href="http://house9.github.io/"/>
-  <updated>2013-09-24T19:13:32-07:00</updated>
-  <id>http://house9.github.io/</id>
+  <link href="http://jessehouse.com/blog/categories/coding/atom.xml" rel="self"/>
+  <link href="http://jessehouse.com/"/>
+  <updated>2013-10-19T11:32:02-07:00</updated>
+  <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[CSS position:relative + position:absolute]]></title>
-    <link href="http://house9.github.io/blog/2009/02/16/i-do-alright-with-css-positioning-but/"/>
+    <link href="http://jessehouse.com/blog/2009/02/16/i-do-alright-with-css-positioning-but/"/>
     <updated>2009-02-16T00:00:00-08:00</updated>
-    <id>http://house9.github.io/blog/2009/02/16/i-do-alright-with-css-positioning-but</id>
+    <id>http://jessehouse.com/blog/2009/02/16/i-do-alright-with-css-positioning-but</id>
     <content type="html"><![CDATA[<div class='post'>
 <div>I do alright with css positioning but I just don't do enough css to have it mastered; anyhow I needed to float an image over into the right upper corner of a form, no problem put a div at the bottom of the form with position relative and top at -xyz. this worked but was not ideal, depending on the amount of fields in the form I would have to adjust the top setting for each, also the alignment was not consistent enough across browsers, so a <a href="http://www.google.com/search?q=css+postion+image+in+right+corner+of+div">google search</a> was on once again...<br /></div><div><br /></div><div>Came across <a href="http://www.barelyfitz.com/screencast/html-training/css/positioning/">this great post</a>, see tab 4 "position:relative + position:absolute", using a relative div with a nested absolute div, I did not even know this was possible but it appears to work great!</div><div><br /></div></div>
 
@@ -26,9 +26,9 @@
   
   <entry>
     <title type="html"><![CDATA['Testing is Overrated' on InfoQ]]></title>
-    <link href="http://house9.github.io/blog/2009/01/07/testing-is-overrated-on-infoq/"/>
+    <link href="http://jessehouse.com/blog/2009/01/07/testing-is-overrated-on-infoq/"/>
     <updated>2009-01-07T00:00:00-08:00</updated>
-    <id>http://house9.github.io/blog/2009/01/07/testing-is-overrated-on-infoq</id>
+    <id>http://jessehouse.com/blog/2009/01/07/testing-is-overrated-on-infoq</id>
     <content type="html"><![CDATA[<div class='post'>
 This is a good presentation<br /><a href="http://www.infoq.com/presentations/francl-testing-overrated">http://www.infoq.com/presentations/francl-testing-overrated</a><br /><br />just over 22 minutes and worth the watch; I had to take a screen capture of one of the slides about doing code reviews, just too funny<br /><br /><a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://3.bp.blogspot.com/_vmq8pP42BnQ/SWTQFqkiD0I/AAAAAAAABDU/oxwPNBVYaSk/s1600-h/code_review.png"><img style="margin: 0px auto 10px; display: block; text-align: center; cursor: pointer; width: 400px; height: 288px;" src="http://3.bp.blogspot.com/_vmq8pP42BnQ/SWTQFqkiD0I/AAAAAAAABDU/oxwPNBVYaSk/s400/code_review.png" alt="" id="BLOGGER_PHOTO_ID_5288580658185244482" border="0" /></a></div>
 
@@ -37,9 +37,9 @@ This is a good presentation<br /><a href="http://www.infoq.com/presentations/fra
   
   <entry>
     <title type="html"><![CDATA[Update: FireFox and multiple cookies for the same site]]></title>
-    <link href="http://house9.github.io/blog/2008/04/24/update-firefox-and-multiple-cookies-for/"/>
+    <link href="http://jessehouse.com/blog/2008/04/24/update-firefox-and-multiple-cookies-for/"/>
     <updated>2008-04-24T00:00:00-07:00</updated>
-    <id>http://house9.github.io/blog/2008/04/24/update-firefox-and-multiple-cookies-for</id>
+    <id>http://jessehouse.com/blog/2008/04/24/update-firefox-and-multiple-cookies-for</id>
     <content type="html"><![CDATA[<div class='post'>
 well after a few days with CookieSwap it seems a bit buggy, basically if you open two browser instances and then switch the CookieSwap profile it is updating both browser instances making it somewhat useless?<br /><br />so I did some more <a href="http://support.mozilla.com/en-US/kb/Managing%20profiles">googling</a> and now using this technique <br /><br />Initial Setup<br />- close all instances of firefox<br />- Start -> Run -> firefox.exe -ProfileManager<br />- create 5 or so profiles, I named them p1 - p5<br /><br />Then when you want to use different profiles launch each one from the command line<br />- Start -> Run -> firefox.exe -P p1 -no-remote<br /><br />each profile is totally distinct (history, cookies, etc...), only issue there does not seem to be an easy way to tell which profile you currently have open, I think I can live with that</div>
 
@@ -65,9 +65,9 @@ maybe someone can write a firefox addon which displays the profile name in the t
   
   <entry>
     <title type="html"><![CDATA[FireFox and multiple cookies for the same site]]></title>
-    <link href="http://house9.github.io/blog/2008/04/20/firefox-and-multiple-cookies-for-same/"/>
+    <link href="http://jessehouse.com/blog/2008/04/20/firefox-and-multiple-cookies-for-same/"/>
     <updated>2008-04-20T00:00:00-07:00</updated>
-    <id>http://house9.github.io/blog/2008/04/20/firefox-and-multiple-cookies-for-same</id>
+    <id>http://jessehouse.com/blog/2008/04/20/firefox-and-multiple-cookies-for-same</id>
     <content type="html"><![CDATA[<div class='post'>
 I like FireFox but still use IE most of the time; one of the main reasons is during web application development I need to login to the same web application as different users at the same time, switching back and forth between each user account. IE makes it easy just open a new instance for each individual user account.<br /><br />In the past I tried to find a solution for FireFox, but always came up short. Well today I did a google search and came up with two different ones!<br /><br />both are FireFox extensions<br /><ul><li><a href="http://www.nektra.com/oss/firefox/extensions/cookiepie/">CookiePie</a></li><li><a href="https://addons.mozilla.org/en-US/firefox/addon/3255">CookieSwap</a></li></ul><p>after a quik spin with both I am liking CookieSwap better</p><p>With CookiePie you right click on the individual tab to toggle seperate cookie sessions on or off; just didn't have good luck using it the way I would do stuff with IE</p><p>With CookieSwap you right click in the lower right hand status bar area of FireFox and can toggle between named profiles (default is Profile1, Profile2, Profile3) - this worked right out of the box as I would expect!</p><p> </p></div>
 
@@ -76,9 +76,9 @@ I like FireFox but still use IE most of the time; one of the main reasons is dur
   
   <entry>
     <title type="html"><![CDATA[mssql reporting services - logs]]></title>
-    <link href="http://house9.github.io/blog/2008/01/06/mssql-reporting-services-logs/"/>
+    <link href="http://jessehouse.com/blog/2008/01/06/mssql-reporting-services-logs/"/>
     <updated>2008-01-06T00:00:00-08:00</updated>
-    <id>http://house9.github.io/blog/2008/01/06/mssql-reporting-services-logs</id>
+    <id>http://jessehouse.com/blog/2008/01/06/mssql-reporting-services-logs</id>
     <content type="html"><![CDATA[<div class='post'>
 a while back I had to set up reporting services; <em>most</em> of the errors do not get logged to the event log, instead they are logged to a file:<br /><br /><span style="font-size:85%;"><strong>{drive}\Program Files\Microsoft SQL Server\{instance}\Reporting Services\LogFiles</strong></span></div>
 

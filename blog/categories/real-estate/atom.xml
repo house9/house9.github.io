@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: real estate | house9]]></title>
-  <link href="http://house9.github.io/blog/categories/real-estate/atom.xml" rel="self"/>
-  <link href="http://house9.github.io/"/>
-  <updated>2013-09-24T19:13:32-07:00</updated>
-  <id>http://house9.github.io/</id>
+  <link href="http://jessehouse.com/blog/categories/real-estate/atom.xml" rel="self"/>
+  <link href="http://jessehouse.com/"/>
+  <updated>2013-10-19T11:32:02-07:00</updated>
+  <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Need to find real estate comps? www.redfin.com]]></title>
-    <link href="http://house9.github.io/blog/2010/04/20/need-to-find-real-estate-comps/"/>
+    <link href="http://jessehouse.com/blog/2010/04/20/need-to-find-real-estate-comps/"/>
     <updated>2010-04-20T00:00:00-07:00</updated>
-    <id>http://house9.github.io/blog/2010/04/20/need-to-find-real-estate-comps</id>
+    <id>http://jessehouse.com/blog/2010/04/20/need-to-find-real-estate-comps</id>
     <content type="html"><![CDATA[<div class='post'>
 Need to find real estate comps? <a href="http://www.redfin.com/">www.redfin.com</a> is a sweet site. Not only can you search for new homes on the MLS listings but you can also search previous Sale Records. I don't know of any other site that offers the same functionality. Click the 'More Options' link by the 'Search Listings' button.<div><br /></div><div>Another really nice feature, If you find a bunch of homes for sale in a viewable area on the map, click the 'DOWNLOAD' link to get all of the info in excel (csv).</div></div>
 

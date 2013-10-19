@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: iframe | house9]]></title>
-  <link href="http://house9.github.io/blog/categories/iframe/atom.xml" rel="self"/>
-  <link href="http://house9.github.io/"/>
-  <updated>2013-09-24T19:13:32-07:00</updated>
-  <id>http://house9.github.io/</id>
+  <link href="http://jessehouse.com/blog/categories/iframe/atom.xml" rel="self"/>
+  <link href="http://jessehouse.com/"/>
+  <updated>2013-10-19T11:32:02-07:00</updated>
+  <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[jQuery iframe auto height plugin]]></title>
-    <link href="http://house9.github.io/blog/2010/10/22/jquery-iframe-auto-height-plugin/"/>
+    <link href="http://jessehouse.com/blog/2010/10/22/jquery-iframe-auto-height-plugin/"/>
     <updated>2010-10-22T00:00:00-07:00</updated>
-    <id>http://house9.github.io/blog/2010/10/22/jquery-iframe-auto-height-plugin</id>
+    <id>http://jessehouse.com/blog/2010/10/22/jquery-iframe-auto-height-plugin</id>
     <content type="html"><![CDATA[<div class='post'>
 This week I needed to automatically size the height of an iframe to the height of its contents. After a bunch of Google searches I came across this post from&nbsp;Nathan Smith <a href="http://sonspring.com/journal/jquery-iframe-sizing">here</a>; It used jquery but applied the auto height to every iframe on the page, I could not use the code out of the box and so the 'jQuery iframe auto height plugin' was born. I made a few slight changes to the original code and wrapped it in a jquery plugin.<br /><br />Download from github<br /><br /><a href="http://github.com/house9/jquery-iframe-auto-height">http://github.com/house9/jquery-iframe-auto-height</a><br /><br />see the README file for usage</div>
 

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Jenkins | house9]]></title>
-  <link href="http://house9.github.io/blog/categories/jenkins/atom.xml" rel="self"/>
-  <link href="http://house9.github.io/"/>
-  <updated>2013-09-24T19:13:32-07:00</updated>
-  <id>http://house9.github.io/</id>
+  <link href="http://jessehouse.com/blog/categories/jenkins/atom.xml" rel="self"/>
+  <link href="http://jessehouse.com/"/>
+  <updated>2013-10-19T11:32:02-07:00</updated>
+  <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Ruby on Rails continuous integration (CI) with Jenkins the easy way with Chef and Knife]]></title>
-    <link href="http://house9.github.io/blog/2013/02/23/ruby-on-rails-continuous-integration-ci/"/>
+    <link href="http://jessehouse.com/blog/2013/02/23/ruby-on-rails-continuous-integration-ci/"/>
     <updated>2013-02-23T00:00:00-08:00</updated>
-    <id>http://house9.github.io/blog/2013/02/23/ruby-on-rails-continuous-integration-ci</id>
+    <id>http://jessehouse.com/blog/2013/02/23/ruby-on-rails-continuous-integration-ci</id>
     <content type="html"><![CDATA[<div class='post'>
 Do you need a CI build setup for your Ruby on Rails app?<br /><br />Here are some <a href="http://www.opscode.com/chef/">chef</a> / <a href="http://matschaffer.github.com/knife-solo/">knife solo</a> scripts that will deploy a <a href="http://jenkins-ci.org/">Jenkins</a> server to run your <a href="http://www.martinfowler.com/articles/continuousIntegration.html">CI build</a> - you could be up and running in less than 1/2 an hour<br /><br /><a href="https://github.com/house9/ci_chef_jenkins_rails"><b>https://github.com/house9/ci_chef_jenkins_rails</b></a><br /><br />Check out the README for details<br /><br /><br /></div>
 

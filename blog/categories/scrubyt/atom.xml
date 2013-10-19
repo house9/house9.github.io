@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: scRUBYt | house9]]></title>
-  <link href="http://house9.github.io/blog/categories/scrubyt/atom.xml" rel="self"/>
-  <link href="http://house9.github.io/"/>
-  <updated>2013-09-24T19:13:32-07:00</updated>
-  <id>http://house9.github.io/</id>
+  <link href="http://jessehouse.com/blog/categories/scrubyt/atom.xml" rel="self"/>
+  <link href="http://jessehouse.com/"/>
+  <updated>2013-10-19T11:32:02-07:00</updated>
+  <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[scRUBYt]]></title>
-    <link href="http://house9.github.io/blog/2008/09/27/scrubyt/"/>
+    <link href="http://jessehouse.com/blog/2008/09/27/scrubyt/"/>
     <updated>2008-09-27T00:00:00-07:00</updated>
-    <id>http://house9.github.io/blog/2008/09/27/scrubyt</id>
+    <id>http://jessehouse.com/blog/2008/09/27/scrubyt</id>
     <content type="html"><![CDATA[<div class='post'>
 I needed to do some screen scrapping using Ruby, so after a few google searches I came across this <a href="http://www.igvita.com/2007/02/04/ruby-screen-scraper-in-60-seconds/">post</a> which looked very promising, after a quick scan through the comments <a href="http://scrubyt.org/">scRUBYt</a> looked even better.<div><br /></div><div><span class="Apple-style-span" style="font-weight: bold;">stumbling block #1:</span> well it did take me a bit to get it installed, turns out it is currently (0.3.4) hard-wired to use RubyInline 3.6.3, but I had RubyInLine 3.7.0 installed, this <a href="http://blog.jayamster.com/scrubyt-and-the-stupid-rubyinline-gem-error/2008/08/22/">post</a> gives the details to work around this issue, otherwise you will get an error something like <span class="Apple-style-span" style="font-style: italic;"><span class="Apple-style-span" style="color: rgb(102, 102, 102);">Gem::Exception: can't activate RubyInline (= 3.6.3), already activated RubyInline-3.7.0]</span></span>.</div><br /><br /><div><span class="Apple-style-span" style="font-weight: bold;">stumbling block #2:</span> trying the simple example for scrapping google <a href="http://scrubyt.org/scrapin-google-in-no-sec/">here</a> I got the following error -  <span class="Apple-style-span" style="font-style: italic;"><span class="Apple-style-span" style="color: rgb(102, 102, 102);">can't convert Hash into String</span></span>. So I tried commenting out some of the code, just limiting it to hit the submit button, the result - no error but no output either? after looking around on the <a href="http://agora.scrubyt.org/">scRUBYt forums</a> turns out scRUBYt logging is not on by default, so turn it on... <span class="Apple-style-span" style="font-style: italic;"><span class="Apple-style-span" style="font-weight: bold;">Scrubyt.logger = Scrubyt::Logger.new</span></span> and run the code again <span class="Apple-style-span" style="font-style: italic;"><span class="Apple-style-span" style="color: rgb(102, 102, 102);">[ERROR] No extractor defined, exiting... </span></span>ok, so un-comment the code and run it again now that I have the logging on, same error, I am obviously doing something wrong? try a couple other code samples, more fun error messages - <span class="Apple-style-span" style="font-style: italic;"><span class="Apple-style-span" style="color: rgb(102, 102, 102);">The error occurred while evaluating nil.example_type</span></span>.</div><div><br /></div><div>Well it turns out I was jumping ahead because I was calling this code from inside a <a href="http://rake.rubyforge.org/">Rake</a> task. After moving the code into a regular ruby file and calling it using ruby instead of rake everything works just great! I did not look into why this code is failing from inside the rake task but I am guessing there is some conflict with the libraries? an exercise for another day...</div></div>
 

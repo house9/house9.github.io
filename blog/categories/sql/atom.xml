@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: sql | house9]]></title>
-  <link href="http://house9.github.io/blog/categories/sql/atom.xml" rel="self"/>
-  <link href="http://house9.github.io/"/>
-  <updated>2013-09-24T19:13:32-07:00</updated>
-  <id>http://house9.github.io/</id>
+  <link href="http://jessehouse.com/blog/categories/sql/atom.xml" rel="self"/>
+  <link href="http://jessehouse.com/"/>
+  <updated>2013-10-19T11:32:02-07:00</updated>
+  <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Get list of MSSQL jobs that are currently running]]></title>
-    <link href="http://house9.github.io/blog/2009/08/04/get-list-of-mssql-jobs-that-are/"/>
+    <link href="http://jessehouse.com/blog/2009/08/04/get-list-of-mssql-jobs-that-are/"/>
     <updated>2009-08-04T00:00:00-07:00</updated>
-    <id>http://house9.github.io/blog/2009/08/04/get-list-of-mssql-jobs-that-are</id>
+    <id>http://jessehouse.com/blog/2009/08/04/get-list-of-mssql-jobs-that-are</id>
     <content type="html"><![CDATA[<div class='post'>
 The following sql statement will return information about the currently executing MSSQL jobs.<div>Run it against the msdb database</div><div><br /></div><div><div><span class="Apple-style-span"   style="font-family:Arial;font-size:100%;"><span class="Apple-style-span"  style=" white-space: pre;font-size:13px;"><br /></span></span></div></div><br /><script src="http://gist.github.com/161536.js"></script><br /><div><br />Resources<br /><ul><li><a href="http://msdn.microsoft.com/en-us/library/ms186722.aspx">MSDN: sp_help_job</a></li><li><a href="http://www.sqlteam.com/article/controlling-jobs-in-transact-sql">Controlling Jobs in Transact-SQL</a></li></ul></div></div>
 
@@ -26,9 +26,9 @@ The following sql statement will return information about the currently executin
   
   <entry>
     <title type="html"><![CDATA[Get Filenames and Database names from MSSQL]]></title>
-    <link href="http://house9.github.io/blog/2009/03/26/get-filenames-and-database-names-from/"/>
+    <link href="http://jessehouse.com/blog/2009/03/26/get-filenames-and-database-names-from/"/>
     <updated>2009-03-26T00:00:00-07:00</updated>
-    <id>http://house9.github.io/blog/2009/03/26/get-filenames-and-database-names-from</id>
+    <id>http://jessehouse.com/blog/2009/03/26/get-filenames-and-database-names-from</id>
     <content type="html"><![CDATA[<div class='post'>
 I was doing some clean up on one of our database servers; we have many databases created with backup/restore for testing purposes I was checking for the largest ldf files and making sure those databases were in simple mode and then shirking the data files, there were a few files I could not match to the databases because the mdf and ldf file names were different from the actual database file name - found the following queries using a few google searches<div><br /></div><br /><div><br /><script src="http://gist.github.com/86181.js"></script><br /></div><br /><div><br /><script src="http://gist.github.com/86182.js"></script><br /></div></div>
 
@@ -37,9 +37,9 @@ I was doing some clean up on one of our database servers; we have many databases
   
   <entry>
     <title type="html"><![CDATA[MSSQL drop and re-add constraints]]></title>
-    <link href="http://house9.github.io/blog/2008/05/18/mssql-drop-and-re-add-constraints/"/>
+    <link href="http://jessehouse.com/blog/2008/05/18/mssql-drop-and-re-add-constraints/"/>
     <updated>2008-05-18T00:00:00-07:00</updated>
-    <id>http://house9.github.io/blog/2008/05/18/mssql-drop-and-re-add-constraints</id>
+    <id>http://jessehouse.com/blog/2008/05/18/mssql-drop-and-re-add-constraints</id>
     <content type="html"><![CDATA[<div class='post'>
 One of the guys at work hooked me up with this code - quite useful if you want to do a bunch of data inserts but don't want to worry about the order you apply the inserts because of foreign key constraints<br /><br /><span style="font-weight:bold;">Before performing data actions:</span><br /><pre>-- generate these and run<br />SELECT<br />'ALTER TABLE ' + so.NAME + ' NOCHECK CONSTRAINT ALL'<br />FROM sysobjects so<br />WHERE xtype = 'u'<br /></pre><br /><span style="font-weight:bold;">After performing data actions:</span><br /><pre>-- generate these and run<br />SELECT<br />'ALTER TABLE ' + so.NAME + ' CHECK CONSTRAINT ALL'<br />FROM sysobjects so<br />WHERE xtype = 'u'<br /></pre><br />Thanks to ET for this code bit!</div>
 
