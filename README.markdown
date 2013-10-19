@@ -1,3 +1,15 @@
+# Notes
+
+on source branch modify files as needed, then preview locally
+
+`rake generate` and `rake preview`
+
+push code updates to blog: `rake deploy`
+
+push source updates to source branch `git push`
+
+write new posts - `rake new_post["title"]`
+
 ## What is Octopress?
 
 Octopress is [Jekyll](https://github.com/mojombo/jekyll) blogging at its finest.
