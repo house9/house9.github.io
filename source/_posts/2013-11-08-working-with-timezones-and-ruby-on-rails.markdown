@@ -155,6 +155,10 @@ Unlike an Event, the Article does not have its own concept of timezone, so this 
 However, if we want to query entities that are timezone aware we may have to leverage some of the database's timezone capabilities. Compare the two examples below. Depending on the current users timezone, the events timezone, and the time of day, they could return different results.
 
 
+TODO: this would work for created_at, updated_at
+but when dealing with start_at, end_at we need to use the event.time_zone ????
+TODO: put the yesterday example first, re-think other example
+
 ```
 Event.where("start_at > ?", Time.zone.now).count
 # => SELECT COUNT(*) FROM "events" WHERE (start_at > '2013-11-08 19:46:45')
