@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "Working with Timezones and Ruby on Rails"
+title: "Ruby on Rails: Timezones"
 date: 2013-11-08 10:03
 comments: true
 categories: rails
 ---
 
-This article attempts to outline some basic guidelines to follow when making your Ruby on Rails application timezone enabled. Ruby on Rails has great support for timezones, but getting it working correctly can be tricky. Following the techniques below should save you some headache.
+This article outlines some basic guidelines to follow when when working with timezones in Ruby on Rails applications. Ruby on Rails has great support for timezones, but getting it working correctly can be tricky. Following the techniques below should save you some headache.
 
 * Application Settings - use the default UTC settings
 * Set each request to the logged on users timezone
@@ -19,7 +19,7 @@ This article attempts to outline some basic guidelines to follow when making you
 
 Sample code can be found at: [https://github.com/house9/sample_timez](https://github.com/house9/sample_timez)
 
-The sample code has user profiles with timezone settings, an event model, and a work schedule model. It comes with a small set of sample data as well. To set it up locally, follow the [README](https://github.com/house9/sample_timez/blob/master/README.md) instructions.
+The sample includes user profiles with timezone settings, an event model, and a work schedule model. It comes with a small set of sample data as well. To set it up locally, follow the [README](https://github.com/house9/sample_timez/blob/master/README.md) instructions.
 
 ## Application Settings
 
@@ -150,58 +150,49 @@ Rails will handle most of this automatically if you don't use raw sql. For examp
 articles = Article.where("published_at > ?", Time.zone.now)
 ```
 
-Unlike an Event, the Article does not have its own concept of timezone, so this should work seamlessly. ActiveRecord will do the proper conversions.
-
-However, if we want to query entities that are timezone aware we may have to leverage some of the database's timezone capabilities. Compare the two examples below. Depending on the current users timezone, the events timezone, and the time of day, they could return different results.
-
-
-TODO: this would work for created_at, updated_at
-but when dealing with start_at, end_at we need to use the event.time_zone ????
-TODO: put the yesterday example first, re-think other example
+If you are filtering datetime data by the day be careful, the below queries are from the sample application logged in as a user with `(GMT+06:00) Astana` timezone
 
 ```
-Event.where("start_at > ?", Time.zone.now).count
-# => SELECT COUNT(*) FROM "events" WHERE (start_at > '2013-11-08 19:46:45')
-#    count is 5
-
-user_time_zone = Time.zone.now.strftime("%Z")
-Event.where("timezone(?, start_at) > ?", user_time_zone, Time.zone.now).count
-# => SELECT COUNT(*) FROM "events" WHERE (timezone('FJST', start_at) > '2013-11-08 19:46:45')
-#    count is 6
+# WARNING: do not do this
+# events created yesterday
+yesterday = Date.current - 1.day
+Event.where("DATE(created_at) = ?", yesterday)
+# => SELECT "events".* FROM "events" WHERE (DATE(created_at) = '2013-11-14')
+# => 0 records
 ```
 
-The above is postgres only. Use ['timezone' or 'AT TIME ZONE'](http://www.postgresql.org/docs/9.3/static/functions-datetime.html#FUNCTIONS-DATETIME-ZONECONVERT). If you are not using postgres, check your database documentation for an equivalent function.
-
-The next two examples show data created 'yesterday'. The first will work some of the time, but could be off at certain times of the day. The second is more involved but should return correct results.
+the proper way
 
 ```
-Event.where("DATE(created_at) = ?", Date.current.yesterday).count
-# => SELECT COUNT(*) FROM "events" WHERE (DATE(created_at) = '2013-11-08')
-#    count is 2
-```
-
-Here we use the user's timezone for accurate results:
-
-```
+# events created yesterday
 start_at = (Date.current - 1.day).beginning_of_day
 end_at = start_at.end_of_day
-user_time_zone = Time.zone.now.strftime("%Z")
-
-Event.where("timezone(?, created_at) BETWEEN ? AND ?", user_time_zone, start_at, end_at).count
-# => SELECT COUNT(*) FROM "events" WHERE (timezone('FJST', created_at) BETWEEN '2013-11-01 11:00:00' AND '2013-11-08 10:59:59')
-#    count is 9
+@events_from_yesterday = Event.where("created_at BETWEEN ? AND ?", start_at, end_at)
+# => SELECT "events".* FROM "events" WHERE (created_at BETWEEN '2013-11-13 18:00:00' AND '2013-11-14 17:59:59')
+# => 12 records
 ```
-
-Variations of the above examples exist in the `HomeController` (see sample application). It might be worth experimenting with different datasets and user / entity timezone settings. Timezones are very confusing.
 
 > This is not an issue when filtering on date columns (only datetime).
 
 
 ```
 # rails will do it for us, Date.current is timezone aware
-User.where("birthday_on = ?", Date.current)
-# but do NOT do this 
-User.where("birthday_on = ?", Date.today)
+Meeting.where("scheduled_on = ?", Date.current)
+# but do NOT do this, will not work correctly at certain times of the day
+Meeting.where("scheduled_on = ?", Date.today)
+```
+
+In some situations you might need to query for data based on a specific timezone
+
+```
+@corp_office = OpenStruct.new({ time_zone: "Eastern Time (US & Canada)" })
+
+Time.use_zone(@corp_office.time_zone) do
+  start_at = Date.current.beginning_of_day
+  end_at = start_at.end_of_day
+  @events_scheduled_today = Event.where("start_at BETWEEN ? AND ?", start_at, end_at).order(:start_at)
+end
+# => SELECT "events".* FROM "events" WHERE (start_at BETWEEN '2013-11-13 05:00:00' AND '2013-11-14 04:59:59') ORDER BY "events"."start_at" ASC
 ```
 
 ## Conclusion
@@ -226,6 +217,7 @@ ActiveSupport::TimeZone.us_zones
 * Stackoverflow: [Timezone confusion](http://stackoverflow.com/questions/19664652/timezone-confusion-in-ruby-on-rails-4-0-postgres)
 * Stackoverflow: [More timezone confusion](http://stackoverflow.com/questions/17818329/rails-3-timezone-confusions/17840938#17840938
 )
+* Postgresql: [AT TIME ZONE](http://www.postgresql.org/docs/9.3/static/functions-datetime.html#FUNCTIONS-DATETIME-ZONECONVERT)
 * [datetime_select preselects wrong times upon edit](https://github.com/rails/rails/issues/9610)
 
 ```
