@@ -6,7 +6,7 @@ comments: true
 categories: rails
 ---
 
-This article outlines some basic guidelines to follow when when working with timezones in Ruby on Rails applications. Ruby on Rails has great support for timezones, but getting it working correctly can be tricky. Following the techniques below should save you some headache.
+This article outlines some basic guidelines to follow when working with timezones in Ruby on Rails applications. Ruby on Rails has great support for timezones, but getting it working correctly can be tricky. Following the techniques below should save you some headache.
 
 * Application Settings - use the default UTC settings
 * Set each request to the logged on users timezone
