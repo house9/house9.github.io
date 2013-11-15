@@ -32,7 +32,7 @@ Rails uses the following defaults for a new application
 
 #### in rails console (default settings)
 
-```
+```ruby
 Time.zone.name
 # => "UTC"
 
@@ -42,7 +42,7 @@ ActiveRecord::Base.default_timezone
 
 Both *can be* overriden in your application configuration file (config/application.rb) - *don't do it!*
 
-```
+```ruby
 # Do NOT do this!!!
 config.time_zone = 'Central Time (US & Canada)'
 config.active_record.default_timezone = :local
@@ -54,7 +54,7 @@ How you determine the 'current users' timezone will differ from application to a
 
 Use an `around_filter` or combo of `before_filter` and `after_filter` to set each request's timezone in the `ApplicationController`. If we don't have a current user it will default to UTC.
 
-```
+```ruby
 class ApplicationController < ActionController::Base
   # ...
   around_filter :user_time_zone, if: :current_user
@@ -78,7 +78,7 @@ On the homepage of the sample application there are numerous examples, also chec
 
 Basic example:
  
-```
+```ruby
 I18n.localize(current_user.created_at)
 ```
 
@@ -93,7 +93,7 @@ In the sample application we have an Event model and a WorkSchedule model. Each 
 
 `in_time_zone` example: WorkSchedule overrides the start_at and end_at model attributes, therefore no special handling is needed in the views (of course you still need to use I18n.localize).
 
-```
+```ruby
 class WorkSchedule < ActiveRecord::Base
   def start_at
     super.in_time_zone(time_zone) if super && time_zone
@@ -124,7 +124,7 @@ There is odd behavior with Time.use_zone when doing in-memory sorting in ruby (`
 
 Sometimes you want to override saving data. Let's say my profile is set up with 'Pacific' timezone, but I am creating an event that will occur in New York ('Eastern' timezone). I do *not* want rails to convert the times to 'Pacific'. We can reset the current threads timezone to the events timezone before the create and update actions execute. 
 
-```
+```ruby
 class EventsController < ApplicationController
   before_action :set_event_time_zone, only: [:create, :update]
 
@@ -146,13 +146,13 @@ Alternatively this could be done using `Time.use_zone` blocks in the create and 
 
 Rails will handle most of this automatically if you don't use raw sql. For example:
 
-```
+```ruby
 articles = Article.where("published_at > ?", Time.zone.now)
 ```
 
 If you are filtering datetime data by the day be careful, the below queries are from the sample application logged in as a user with `(GMT+06:00) Astana` timezone
 
-```
+```ruby
 # WARNING: do not do this
 # events created yesterday
 yesterday = Date.current - 1.day
@@ -163,7 +163,7 @@ Event.where("DATE(created_at) = ?", yesterday)
 
 the proper way
 
-```
+```ruby
 # events created yesterday
 start_at = (Date.current - 1.day).beginning_of_day
 end_at = start_at.end_of_day
@@ -175,7 +175,7 @@ end_at = start_at.end_of_day
 > This is not an issue when filtering on date columns (only datetime).
 
 
-```
+```ruby
 # rails will do it for us, Date.current is timezone aware
 Meeting.where("scheduled_on = ?", Date.current)
 # but do NOT do this, will not work correctly at certain times of the day
@@ -184,7 +184,7 @@ Meeting.where("scheduled_on = ?", Date.today)
 
 In some situations you might need to query for data based on a specific timezone
 
-```
+```ruby
 @corp_office = OpenStruct.new({ time_zone: "Eastern Time (US & Canada)" })
 
 Time.use_zone(@corp_office.time_zone) do
@@ -226,4 +226,3 @@ Good naming conventions for date and datetime (your milage may vary)
 datetime: should end in _at (created_at, updated_at, start_at, end_at)
     date: should end in _on (start_on, end_on, work_on)
 ```
-
