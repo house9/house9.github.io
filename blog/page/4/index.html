@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Sometimes you want to use robocopy from nant, a sql job or another build tool, robocopy will return 2 during a successful run, this gets&nbsp; &hellip;">
+  <meta name="description" content="Package up assets into a gem for use in rails 3.1 applications. Example uses javascript files, but the same should work for images and css.I &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/06/16/rails-31-asset-gem/">rails 3.1 asset gem</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-16T00:00:00-07:00" pubdate data-updated="true">Jun 16<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Package up assets into a gem for use in rails 3.1 applications. Example uses javascript files, but the same should work for images and css.<br /><br /><div>I recommend you click the HD link on the player and view it on <a href="http://vimeo.com/25206879">Vimeo</a> in full screen mode, this embed version is not so crisp.</div><br /><div align="center"><iframe frameborder="0" height="450" src="http://player.vimeo.com/video/25206879?byline=0&amp;portrait=0" width="800"></iframe></div><br /><div><b>Resources</b></div><div><ul><li><a href="http://railscasts.com/episodes/245-new-gem-with-bundler">http://railscasts.com/episodes/245-new-gem-with-bundler</a></li><li><a href="http://edgeapi.rubyonrails.org/classes/Rails/Engine.html">http://edgeapi.rubyonrails.org/classes/Rails/Engine.html</a></li><li><a href="http://ryanbigg.com/2011/06/a-potential-use-for-asset-pipelining/">http://ryanbigg.com/2011/06/a-potential-use-for-asset-pipelining/</a></li></ul></div></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -420,43 +457,6 @@ Had this on my desktop, notes to set up&nbsp;Ubuntu install rails 3 environment<
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/09/notes-teamcity-setup-on-ubuntu/">Notes - TeamCity setup on Ubuntu</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-09T00:00:00-07:00" pubdate data-updated="true">Apr 9<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Notes from setting up TeamCity on Ubuntu<br /><br /><pre>TeamCity on Ubuntu<br />==================================================================<br />Go to http://www.jetbrains.com/teamcity/download/ and download the linux distribution<br /><br />set JAVA_HOME : update .bashrc add the following lines<br />--------------------------<br />export JAVA_HOME=/usr/lib/jvm/java-1.6.0-openjdk/bin/java<br />export PATH=$PATH:/usr/lib/jvm/java-1.6.0-openjdk/bin<br /><br />tar xfz TeamCity-6.0.3.tar.gz<br />put extracted TeamCity directory under ~/TeamCity<br /><br />open terminal and run bin/runAll.sh start from the ~/TeamCity directory<br /><br />install tcWebHook plugin<br />==================================================================<br />http://tcplugins.sourceforge.net/files/tcWebHooks<br />- http://sourceforge.net/apps/trac/tcplugins/wiki/TcWebHooks<br /><br />create directory at ~/.BuildServer/plugins - tcWebHooks<br />put the jar file in that directory<br />restart the teamcity server<br />there should be a new tab 'web hooks' on the build results, not in the admin section<br /><br /></pre></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -472,6 +472,10 @@ Notes from setting up TeamCity on Ubuntu<br /><br /><pre>TeamCity on Ubuntu<br /
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/09/25/the-cure-for-ibs/">The Cure for IBS</a>
@@ -491,10 +495,6 @@ Notes from setting up TeamCity on Ubuntu<br /><br /><pre>TeamCity on Ubuntu<br /
     
       <li class="post">
         <a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and puppet postgres 9.2 on ubuntu</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/01/vagrantfile-for-setting-up-multiple/">Vagrantfile for setting up multiple machines with chef configuration</a>
       </li>
     
   </ul>

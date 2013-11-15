@@ -4,7 +4,7 @@
   <title><![CDATA[house9]]></title>
   <link href="http://jessehouse.com/atom.xml" rel="self"/>
   <link href="http://jessehouse.com/"/>
-  <updated>2013-10-19T11:32:02-07:00</updated>
+  <updated>2013-11-14T16:41:10-08:00</updated>
   <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
@@ -12,6 +12,325 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby on Rails: Timezones]]></title>
+    <link href="http://jessehouse.com/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/"/>
+    <updated>2013-11-15T10:03:00-08:00</updated>
+    <id>http://jessehouse.com/blog/2013/11/15/working-with-timezones-and-ruby-on-rails</id>
+    <content type="html"><![CDATA[<p>This article outlines some basic guidelines to follow when when working with timezones in Ruby on Rails applications. Ruby on Rails has great support for timezones, but getting it working correctly can be tricky. Following the techniques below should save you some headache.</p>
+
+<ul>
+<li>Application Settings &ndash; use the default UTC settings</li>
+<li>Set each request to the logged on users timezone</li>
+<li>Display times and dates using the I18n view helpers</li>
+<li>Override user timezone when displaying time aware entity</li>
+<li>Override user timezone when saving time aware entity</li>
+<li>Filter data based on the users timezone</li>
+</ul>
+
+
+<blockquote><p>Is it &lsquo;time zone&rsquo;, &lsquo;timezone&rsquo; or &lsquo;time-zone&rsquo;? Both styles end up being used in rails code base <code>config.time_zone</code> and <code>config.active_record.default_timezone</code>. I use timezone in this article and time_zone in the sample code base. Read more on <a href="http://english.stackexchange.com/questions/3934/time-zone-vs-timezone">stackexchange</a>.</p></blockquote>
+
+<p>Sample code can be found at: <a href="https://github.com/house9/sample_timez">https://github.com/house9/sample_timez</a></p>
+
+<p>The sample includes user profiles with timezone settings, an event model, and a work schedule model. It comes with a small set of sample data as well. To set it up locally, follow the <a href="https://github.com/house9/sample_timez/blob/master/README.md">README</a> instructions.</p>
+
+<h2>Application Settings</h2>
+
+<p>Rails uses the following defaults for a new application</p>
+
+<ul>
+<li>Application assumes it is running in UTC</li>
+<li>Database assumes it is storing data in UTC</li>
+</ul>
+
+
+<blockquote><p>I recommend you keep these defaults!</p></blockquote>
+
+<h4>in rails console (default settings)</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Time</span><span class="o">.</span><span class="n">zone</span><span class="o">.</span><span class="n">name</span>
+</span><span class='line'><span class="c1"># =&gt; &quot;UTC&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span><span class="o">.</span><span class="n">default_timezone</span>
+</span><span class='line'><span class="c1"># =&gt; :utc</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Both <em>can be</em> overriden in your application configuration file (config/application.rb) &ndash; <em>don&rsquo;t do it!</em></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Do NOT do this!!!</span>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">time_zone</span> <span class="o">=</span> <span class="s1">&#39;Central Time (US &amp; Canada)&#39;</span>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">active_record</span><span class="o">.</span><span class="n">default_timezone</span> <span class="o">=</span> <span class="ss">:local</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<h2>Set the timezone for each request</h2>
+
+<p>How you determine the &lsquo;current users&rsquo; timezone will differ from application to application. In the sample code we are storing the value on the user model in a time_zone field. The sample application uses the techniques from this <a href="http://railscasts.com/episodes/106-time-zones-revised">RailsCast</a> episode. Alternatively you may  want to set it based on the client&rsquo;s browser setting.</p>
+
+<p>Use an <code>around_filter</code> or combo of <code>before_filter</code> and <code>after_filter</code> to set each request&rsquo;s timezone in the <code>ApplicationController</code>. If we don&rsquo;t have a current user it will default to UTC.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">ApplicationController</span> <span class="o">&lt;</span> <span class="ss">ActionController</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="c1"># ...</span>
+</span><span class='line'>  <span class="n">around_filter</span> <span class="ss">:user_time_zone</span><span class="p">,</span> <span class="k">if</span><span class="p">:</span> <span class="ss">:current_user</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kp">private</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">user_time_zone</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">Time</span><span class="o">.</span><span class="n">use_zone</span><span class="p">(</span><span class="n">current_user</span><span class="o">.</span><span class="n">time_zone</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Display times and dates using the I18n view helpers</h2>
+
+<p>The <code>I18n</code> helpers are timezone aware. Aside from rendering the datetimes in the logged on users locale format, they will convert the stored UTC times to the current threads timezone.</p>
+
+<ul>
+<li><a href="http://guides.rubyonrails.org/i18n.html#adding-date-time-formats">http://guides.rubyonrails.org/i18n.html#adding-date-time-formats</a></li>
+<li><a href="https://github.com/svenfuchs/rails-i18n/tree/master/rails/locale">https://github.com/svenfuchs/rails-i18n/tree/master/rails/locale</a></li>
+</ul>
+
+
+<p>On the homepage of the sample application there are numerous examples, also check out the <code>config/locales/en.yml</code> file.</p>
+
+<p>Basic example:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">I18n</span><span class="o">.</span><span class="n">localize</span><span class="p">(</span><span class="n">current_user</span><span class="o">.</span><span class="n">created_at</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>Beware: I18n.localize does not handle nil values. You will need to guard against nils for nullable columns.</p></blockquote>
+
+<h2>Override the display of dates</h2>
+
+<p>In the sample application we have an Event model and a WorkSchedule model. Each model has its own timezone. Events are based on where the event will actually occur. In this case displaying the dates in the users timezone makes no sense at all, so we must override the display. There are a few techniques that can be employed:</p>
+
+<ul>
+<li><a href="http://api.rubyonrails.org/classes/DateTime.html#method-i-in_time_zone">in_time_zone</a> method (see work schedule in the sample application)</li>
+<li><a href="http://api.rubyonrails.org/classes/Time.html#method-c-use_zone">Time.use_zone</a> blocks (see events in the sample application)</li>
+</ul>
+
+
+<p><code>in_time_zone</code> example: WorkSchedule overrides the start_at and end_at model attributes, therefore no special handling is needed in the views (of course you still need to use I18n.localize).</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">WorkSchedule</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">start_at</span>
+</span><span class='line'>    <span class="k">super</span><span class="o">.</span><span class="n">in_time_zone</span><span class="p">(</span><span class="n">time_zone</span><span class="p">)</span> <span class="k">if</span> <span class="k">super</span> <span class="o">&amp;&amp;</span> <span class="n">time_zone</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">end_at</span>
+</span><span class='line'>    <span class="k">super</span><span class="o">.</span><span class="n">in_time_zone</span><span class="p">(</span><span class="n">time_zone</span><span class="p">)</span> <span class="k">if</span> <span class="k">super</span> <span class="o">&amp;&amp;</span> <span class="n">time_zone</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>Time.use_zone</code> example: The Event model does <em>not</em> override start_at or end_at attributes, but uses Time.use_zone blocks in the views.</p>
+
+<pre><code>&lt;!-- displayed times in the events timezone --&gt;
+&lt;% Time.use_zone(@event.time_zone) do %&gt;
+  &lt;%= l(@event.start_at) %&gt;
+  &lt;%= l(@event.end_at) %&gt;
+&lt;% end %&gt;
+&lt;!-- now back to the logged on users timezone --&gt;
+&lt;p&gt;
+  Created at &lt;%= l(@event.created_at) %&gt;
+  Updated at &lt;%= l(@event.updated_at) %&gt;
+&lt;/p&gt;
+</code></pre>
+
+<p>There is odd behavior with Time.use_zone when doing in-memory sorting in ruby (<code>sort_by</code>). See the <code>HomeController</code> in the sample application. Ordered attributes do not convert in the use_zone block. I am not sure if this a bug or by design.</p>
+
+<h2>Override timezone when saving data</h2>
+
+<p>Sometimes you want to override saving data. Let&rsquo;s say my profile is set up with &lsquo;Pacific&rsquo; timezone, but I am creating an event that will occur in New York (&lsquo;Eastern&rsquo; timezone). I do <em>not</em> want rails to convert the times to &lsquo;Pacific&rsquo;. We can reset the current threads timezone to the events timezone before the create and update actions execute.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">EventsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</span><span class='line'>  <span class="n">before_action</span> <span class="ss">:set_event_time_zone</span><span class="p">,</span> <span class="ss">only</span><span class="p">:</span> <span class="o">[</span><span class="ss">:create</span><span class="p">,</span> <span class="ss">:update</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># ... all action code (unchanged)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kp">private</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">set_event_time_zone</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">params</span><span class="o">[</span><span class="ss">:event</span><span class="o">]</span>
+</span><span class='line'>      <span class="no">Time</span><span class="o">.</span><span class="n">zone</span> <span class="o">=</span> <span class="n">params</span><span class="o">[</span><span class="ss">:event</span><span class="o">][</span><span class="ss">:time_zone</span><span class="o">]</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Alternatively this could be done using <code>Time.use_zone</code> blocks in the create and update actions.</p>
+
+<h2>Filter data based on the users timezone</h2>
+
+<p>Rails will handle most of this automatically if you don&rsquo;t use raw sql. For example:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">articles</span> <span class="o">=</span> <span class="no">Article</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s2">&quot;published_at &gt; ?&quot;</span><span class="p">,</span> <span class="no">Time</span><span class="o">.</span><span class="n">zone</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you are filtering datetime data by the day be careful, the below queries are from the sample application logged in as a user with <code>(GMT+06:00) Astana</code> timezone</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># WARNING: do not do this</span>
+</span><span class='line'><span class="c1"># events created yesterday</span>
+</span><span class='line'><span class="n">yesterday</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">current</span> <span class="o">-</span> <span class="mi">1</span><span class="o">.</span><span class="n">day</span>
+</span><span class='line'><span class="no">Event</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s2">&quot;DATE(created_at) = ?&quot;</span><span class="p">,</span> <span class="n">yesterday</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># =&gt; SELECT &quot;events&quot;.* FROM &quot;events&quot; WHERE (DATE(created_at) = &#39;2013-11-14&#39;)</span>
+</span><span class='line'><span class="c1"># =&gt; 0 records</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>the proper way</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># events created yesterday</span>
+</span><span class='line'><span class="n">start_at</span> <span class="o">=</span> <span class="p">(</span><span class="no">Date</span><span class="o">.</span><span class="n">current</span> <span class="o">-</span> <span class="mi">1</span><span class="o">.</span><span class="n">day</span><span class="p">)</span><span class="o">.</span><span class="n">beginning_of_day</span>
+</span><span class='line'><span class="n">end_at</span> <span class="o">=</span> <span class="n">start_at</span><span class="o">.</span><span class="n">end_of_day</span>
+</span><span class='line'><span class="vi">@events_from_yesterday</span> <span class="o">=</span> <span class="no">Event</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s2">&quot;created_at BETWEEN ? AND ?&quot;</span><span class="p">,</span> <span class="n">start_at</span><span class="p">,</span> <span class="n">end_at</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># =&gt; SELECT &quot;events&quot;.* FROM &quot;events&quot; WHERE (created_at BETWEEN &#39;2013-11-13 18:00:00&#39; AND &#39;2013-11-14 17:59:59&#39;)</span>
+</span><span class='line'><span class="c1"># =&gt; 12 records</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>This is not an issue when filtering on date columns (only datetime).</p></blockquote>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># rails will do it for us, Date.current is timezone aware</span>
+</span><span class='line'><span class="no">Meeting</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s2">&quot;scheduled_on = ?&quot;</span><span class="p">,</span> <span class="no">Date</span><span class="o">.</span><span class="n">current</span><span class="p">)</span>
+</span><span class='line'><span class="c1"># but do NOT do this, will not work correctly at certain times of the day</span>
+</span><span class='line'><span class="no">Meeting</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s2">&quot;scheduled_on = ?&quot;</span><span class="p">,</span> <span class="no">Date</span><span class="o">.</span><span class="n">today</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In some situations you might need to query for data based on a specific timezone</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="vi">@corp_office</span> <span class="o">=</span> <span class="no">OpenStruct</span><span class="o">.</span><span class="n">new</span><span class="p">({</span> <span class="n">time_zone</span><span class="p">:</span> <span class="s2">&quot;Eastern Time (US &amp; Canada)&quot;</span> <span class="p">})</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Time</span><span class="o">.</span><span class="n">use_zone</span><span class="p">(</span><span class="vi">@corp_office</span><span class="o">.</span><span class="n">time_zone</span><span class="p">)</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">start_at</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">beginning_of_day</span>
+</span><span class='line'>  <span class="n">end_at</span> <span class="o">=</span> <span class="n">start_at</span><span class="o">.</span><span class="n">end_of_day</span>
+</span><span class='line'>  <span class="vi">@events_scheduled_today</span> <span class="o">=</span> <span class="no">Event</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="s2">&quot;start_at BETWEEN ? AND ?&quot;</span><span class="p">,</span> <span class="n">start_at</span><span class="p">,</span> <span class="n">end_at</span><span class="p">)</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="ss">:start_at</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1"># =&gt; SELECT &quot;events&quot;.* FROM &quot;events&quot; WHERE (start_at BETWEEN &#39;2013-11-13 05:00:00&#39; AND &#39;2013-11-14 04:59:59&#39;) ORDER BY &quot;events&quot;.&quot;start_at&quot; ASC</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Conclusion</h2>
+
+<p>I hope you found this article helpful. All feedback is welcome &ndash; I am sure I have left out some key information or just plain got it wrong.</p>
+
+<p>Additional Reading: <a href="http://www.elabs.se/blog/36-working-with-time-zones-in-ruby-on-rails">http://www.elabs.se/blog/36-working-with-time-zones-in-ruby-on-rails</a></p>
+
+<h2>ETC&hellip; (links and resources)</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">rake</span> <span class="ss">time</span><span class="p">:</span><span class="ss">zones</span><span class="p">:</span><span class="n">all</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="ss">ActiveSupport</span><span class="p">:</span><span class="ss">:TimeZone</span><span class="o">.</span><span class="n">zones_map</span>
+</span><span class='line'><span class="ss">ActiveSupport</span><span class="p">:</span><span class="ss">:TimeZone</span><span class="o">.</span><span class="n">us_zones</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>API: <a href="http://api.rubyonrails.org/classes/DateTime.html">DateTime</a></li>
+<li>API: <a href="http://api.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html#method-i-time_zone_select">time_zone_select</a></li>
+<li>Stackoverflow: <a href="http://stackoverflow.com/questions/19664652/timezone-confusion-in-ruby-on-rails-4-0-postgres">Timezone confusion</a></li>
+<li>Stackoverflow: <a href="http://stackoverflow.com/questions/17818329/rails-3-timezone-confusions/17840938#17840938">More timezone confusion</a></li>
+<li>Postgresql: <a href="http://www.postgresql.org/docs/9.3/static/functions-datetime.html#FUNCTIONS-DATETIME-ZONECONVERT">AT TIME ZONE</a></li>
+<li><a href="https://github.com/rails/rails/issues/9610">datetime_select preselects wrong times upon edit</a></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Good</span> <span class="n">naming</span> <span class="n">conventions</span> <span class="k">for</span> <span class="n">date</span> <span class="ow">and</span> <span class="n">datetime</span> <span class="p">(</span><span class="n">your</span> <span class="n">milage</span> <span class="n">may</span> <span class="n">vary</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="ss">datetime</span><span class="p">:</span> <span class="n">should</span> <span class="k">end</span> <span class="k">in</span> <span class="n">_at</span> <span class="p">(</span><span class="n">created_at</span><span class="p">,</span> <span class="n">updated_at</span><span class="p">,</span> <span class="n">start_at</span><span class="p">,</span> <span class="n">end_at</span><span class="p">)</span>
+</span><span class='line'>    <span class="ss">date</span><span class="p">:</span> <span class="n">should</span> <span class="k">end</span> <span class="k">in</span> <span class="n">_on</span> <span class="p">(</span><span class="n">start_on</span><span class="p">,</span> <span class="n">end_on</span><span class="p">,</span> <span class="n">work_on</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[The Cure for IBS]]></title>
@@ -341,16 +660,6 @@ Using psql from the command line you can terminate all connections to a database
     <id>http://jessehouse.com/blog/2012/04/29/postgres-random-useful-things</id>
     <content type="html"><![CDATA[<div class='post'>
 Run sql statements from the command line, use the -c flag<br /><script src="https://gist.github.com/2552568.js?file=postgres_sql_command.sql.sh"></script><br /><br />create a random value<br /><script src="https://gist.github.com/2552573.js?file=postgres.random_value.sql"></script><br /><br />crazy updates using&nbsp;regexp_matches<br /><script src="https://gist.github.com/2552587.js?file=postgres.regexp_matches.sql"></script><br /><br /></div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Git Workflow]]></title>
-    <link href="http://jessehouse.com/blog/2012/02/03/git-workflow/"/>
-    <updated>2012-02-03T00:00:00-08:00</updated>
-    <id>http://jessehouse.com/blog/2012/02/03/git-workflow</id>
-    <content type="html"><![CDATA[<div class='post'>
-This is the current git workflow we are using at work, your mileage may vary:<br /><br /><script src="https://gist.github.com/1734394.js?file=git-workflow.rb"></script><br /><noscript>Your reader does not support javascript - see https://gist.github.com/1734394.js?file=git-workflow.rb</noscript><br /><br /><b>Resources</b><br /><ul><li><a href="http://cheat.errtheblog.com/s/git">http://cheat.errtheblog.com/s/git</a>&nbsp;</li><li><a href="http://yanpritzker.com/gitbook.html#Keeping+a+topic+branch+in+sync+with+its+parent">http://yanpritzker.com/gitbook.html#Keeping+a+topic+branch+in+sync+with+its+parent</a>&nbsp;</li><li><a href="http://yanpritzker.com/gitbook.html#One+branch+per+bug">http://yanpritzker.com/gitbook.html#One+branch+per+bug</a>&nbsp;</li><li><a href="http://gitready.com/beginner/2009/02/02/push-and-delete-branches.html">http://gitready.com/beginner/2009/02/02/push-and-delete-branches.html</a>&nbsp;</li><li><a href="http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html">http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html</a>&nbsp;</li><li><a href="http://sleeplessgeek.blogspot.com/2011/03/using-git-cherry-pick.html">http://sleeplessgeek.blogspot.com/2011/03/using-git-cherry-pick.html</a>&nbsp;</li></ul></div>
 ]]></content>
   </entry>
   
