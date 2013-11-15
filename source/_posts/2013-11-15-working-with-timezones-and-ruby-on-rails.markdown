@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Ruby on Rails: Timezones"
-date: 2013-11-08 10:03
+date: 2013-11-15 10:03
 comments: true
 categories: rails
 ---
