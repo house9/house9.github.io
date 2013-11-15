@@ -4,7 +4,7 @@
   <title><![CDATA[house9]]></title>
   <link href="http://jessehouse.com/atom.xml" rel="self"/>
   <link href="http://jessehouse.com/"/>
-  <updated>2013-11-14T16:41:10-08:00</updated>
+  <updated>2013-11-14T16:43:03-08:00</updated>
   <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
@@ -18,7 +18,7 @@
     <link href="http://jessehouse.com/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/"/>
     <updated>2013-11-15T10:03:00-08:00</updated>
     <id>http://jessehouse.com/blog/2013/11/15/working-with-timezones-and-ruby-on-rails</id>
-    <content type="html"><![CDATA[<p>This article outlines some basic guidelines to follow when when working with timezones in Ruby on Rails applications. Ruby on Rails has great support for timezones, but getting it working correctly can be tricky. Following the techniques below should save you some headache.</p>
+    <content type="html"><![CDATA[<p>This article outlines some basic guidelines to follow when working with timezones in Ruby on Rails applications. Ruby on Rails has great support for timezones, but getting it working correctly can be tricky. Following the techniques below should save you some headache.</p>
 
 <ul>
 <li>Application Settings &ndash; use the default UTC settings</li>
