@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="so off and on the last month I have messed around with bits of rails stuff; reading books, coding associations, migrations, and installing plugins &hellip;">
+  <meta name="description" content="I am starting to learn Ruby and Rails (just for fun) - took awhile to find a good example of creating an object at runtime given a string &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,43 +65,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2007/09/21/first-rails-project/">First Rails Project</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-09-21T00:00:00-07:00" pubdate data-updated="true">Sep 21<span>st</span>, 2007</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-so off and on the last month I have messed around with bits of rails stuff; reading books, coding associations, migrations, and installing plugins - oh yeah! ActiveScaffold is very sweet! finally got the integration with FCKeditor and the calendar control working as well; so now I am ready to actually build a web site.<br /><br />a few years back I built a site for my wife&#8217;s cycling team. It is a pretty simple site but with data driven content, this seems like a good project to convert over to rails as it will give me a little bit of everything. So here we go&#8230;<br /><br /><strong><span style="font-size:130%;">Day 1 - 2007.09.21 2:00pm</span></strong><br /><br />rails nor_cal_velo, add it to svn, create a blank database on mysql, then onto the migrations; already had the database tables pencil sketched on paper, similar to what I had before in the previous site but this time a little simpler as I will be using ActiveRecord (of course) and not stored procedures&#8230;<br /><br />4 hours later: migrations and db created, active scaffold hooked in and up and running for a single controller; but got side tracked trying to push before_create_save event down into a controller base class as I do not wish to duplicate the same code for every controller.<br />Posted to active_scaffold groups, got to be a way around this<br /><a href="http://groups.google.com/group/activescaffold/browse_thread/thread/58bc7fae33b62a57">http://groups.google.com/group/activescaffold/browse_thread/thread/58bc7fae33b62a57</a><br /><br />going to do some html / css stuff for awhile and get the layout section taken care of then onto more active scaffold controllers<br /><br /><strong><span style="font-size:130%;">Day 2 - 2007.09.22</span></strong><br />spent a few hours tweaking css overrides for active scaffold and figured out the issue with the controller base class see the thread above for the solution. Still have a small glitch with overrides of the Delete function, I am setting the is_active flag to false instead of actually deleting the record, everything works great except the ajax code actually removes the record from the visible list of records, if you refresh the page the inactivated record reappears and is marked as is_active = false as it should be<br /><br /><strong><span style="font-size:130%;">Side Tracked</span></strong><br />Ok, got side tracked messing around with rails and some fun ajax stuff, my first rails project has changed to something much smaller in scope; I&#8217;ll be back on this project at some point though as long as the day job doesn&#8217;t consume me&#8230;</div>
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -452,6 +415,43 @@ I have recently started using <a href="http://www.openqa.org/selenium/">Selenium
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/02/19/2007-tour-of-california-stage-1/">2007 Tour of California - Stage 1</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-02-19T00:00:00-08:00" pubdate data-updated="true">Feb 19<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+2007 Tour of California - Stage 1<br />Coming over Coleman Valley<br /><br /><div align="center"><br />The pack coming up towards the KOM, 4 riders going off the front<br /><a title="Photo Sharing" href="http://www.flickr.com/photos/house9/396020973/"><img height="160" alt="Tour of California 2007 - Coleman Valley" src="http://farm1.static.flickr.com/90/396020973_73142785a3_m.jpg" width="240" /></a><br /><br />Basso leading the rest of the pack<br /><a title="2007 Tour of California" href="http://www.flickr.com/photos/house9/396020976/"><img height="500" alt="Tour of California 2007 - Coleman Valley" src="http://farm1.static.flickr.com/185/396020976_cca8927b54.jpg" width="333" /></a> </div><div align="center"></div><div align="center"></div></div>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/19/">&larr; Older</a>
@@ -467,10 +467,6 @@ I have recently started using <a href="http://www.openqa.org/selenium/">Selenium
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2014/02/07/testing/">testing</a>
-      </li>
     
       <li class="post">
         <a href="/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/">Magick::ImageMagickError: WriteBlob Failed</a>
@@ -490,6 +486,10 @@ I have recently started using <a href="http://www.openqa.org/selenium/">Selenium
     
       <li class="post">
         <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: supply_drop)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e chef cookbook</a>
       </li>
     
   </ul>

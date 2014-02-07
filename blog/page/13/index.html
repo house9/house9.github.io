@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="A really fast bike ride or is it a race? you chooseThe schedule for 2009 Grasshopper Adventure Series is out!2009-02-28 Old Caz2009-03-07 Chileno &hellip;">
+  <meta name="description" content="Well the best binoculars for birding are probably Swarovski or Zeiss, but both of these are very expensive and if you want to get really close to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,43 +65,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/01/21/2009-grasshopper-adventure-series/">2009 Grasshopper Adventure Series</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-01-21T00:00:00-08:00" pubdate data-updated="true">Jan 21<span>st</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-A really fast bike ride or is it a race? you choose<div><br /></div><div>The schedule for 2009 Grasshopper Adventure Series is out!</div><div><ul><li>2009-02-28 Old Caz</li><li>2009-03-07 Chileno Valley</li><li>2009-04-11 Lake Sonoma </li><li>2009-05-09 King Ridge </li></ul></div><div>this year there is actually an entry fee - times they are achanging</div><div>read more <a href="http://www.grasshopperadventureseries.blogspot.com/">here</a> </div><div><br /></div></div>
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -470,6 +433,51 @@ Hi, I&#8217;m with ProjectLocker, and we have hosted Subversion, Trac, and soon 
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/10/18/actionviewtemplateerror-uninitialized/">ActionView::TemplateError uninitialized constant</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-10-18T00:00:00-07:00" pubdate data-updated="true">Oct 18<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<span style="font-style: italic;">ActionView::TemplateError (uninitialized constant ActionView::Base::CompiledTemplates::Literals) on line #10 of &#8230;</span><br /><br />I just made a silly mistake which was generating this error; I have a Literals class in my Ruby on Rails application that has some strings stored as constants, everything was working great until I put this code on a server (Linux) didn&#8217;t have any issues on the mac or windows machines before deploying<br /><br />turned out to be so simple&#8230;<br />I originally named the file Literals.rb which defined the class Literals<br /><br /><span style="font-weight: bold;">the fix:</span> rename Literals.rb to literals.rb<br /><br />- doh!</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Anonymous</div>
+<div class='content'>
+Thanks a lot for this hint. I named a class KursTeilnahme (capital T) and got the same error. For Kursteilnahme everything is okay.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/14/">&larr; Older</a>
@@ -485,10 +493,6 @@ Hi, I&#8217;m with ProjectLocker, and we have hosted Subversion, Trac, and soon 
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2014/02/07/testing/">testing</a>
-      </li>
     
       <li class="post">
         <a href="/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/">Magick::ImageMagickError: WriteBlob Failed</a>
@@ -508,6 +512,10 @@ Hi, I&#8217;m with ProjectLocker, and we have hosted Subversion, Trac, and soon 
     
       <li class="post">
         <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: supply_drop)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e chef cookbook</a>
       </li>
     
   </ul>
