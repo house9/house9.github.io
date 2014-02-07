@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Both of these look like pretty sweet adjustable height desks; - Geek Desk electronic and runs $750 to $800or - Airtouch uses air and no electronics &hellip;">
+  <meta name="description" content="Just switched to a different Blogger Template - much wider and mo better!Also consolidated my posting, I had 20+ code samples on another blog. Used &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,88 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/19/updated-look/">Updated Look!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-19T00:00:00-07:00" pubdate data-updated="true">Aug 19<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Just switched to a different Blogger Template - much wider and mo better!<br /><br />Also consolidated my posting, I had 20+ code samples on another blog. Used the Blogger <a href="http://www.google.com/support/blogger/bin/answer.py?hl=en&amp;answer=97416">import / export tool</a>&nbsp;which was pretty seamless; needed to move a few code blocks over to <a href="http://gist.github.com/">gists</a> to get proper formatting but that was it!</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/18/valid-vs-errorsany-in-rails/">valid? vs errors.any? in rails</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-18T00:00:00-07:00" pubdate data-updated="true">Aug 18<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Recently got bit by checking valid? in some rails code, thought I would share.<div><br /></div><div>In this situation I was manually adding to the errors collection of an ActiveRecord object and then calling valid? to see if the object was ok; this is not the normal style of validation on ActiveRecord objects, if I had been playing by the rules valid? would have done what I needed; it would check the current state of my objects attributes and &#8216;re-validate&#8217; the object.</div><div><br /></div><div>This screen shot of an irb console session shows the issue I was running into</div><br /><br /><a href="http://www.flickr.com/photos/house9/4904826045/" title="valid-v-errors-any by House9, on Flickr"><img src="http://farm5.static.flickr.com/4099/4904826045_aa14a62090_b.jpg" width="883" height="573" alt="valid-v-errors-any" /></a><br /><br /><div>Taking a look at the source code for valid? it becomes obvious why the manually added errors get cleared, just not what I expected to happen</div><br /><br /><a href="http://www.flickr.com/photos/house9/4905416116/" title="valid-source by House9, on Flickr"><img src="http://farm5.static.flickr.com/4096/4905416116_9983051ffb_b.jpg" width="855" height="373" alt="valid-source" /></a></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Vladimir A. Rybas</div>
+<div class='content'>
+wow. thanks!</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -380,80 +462,6 @@ Don&#8217;t bother installing <a href="http://www.gimp.org/">GIMP</a> using <a h
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/03/23/sorting-rails-view-with-willpaginate/">sorting rails view with will_paginate plugin</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-23T00:00:00-07:00" pubdate data-updated="true">Mar 23<span>rd</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-This solution for sorting data on rails index actions does NOT use ajax. Sometimes sorting with ajax is nice but often it is not actually as user friendly; breaking the browser back button, etc&#8230;<div><br /></div><div>Disclaimer 1: this code is probably using all kinds of ruby anti-patterns :) - but it is a very simple implementation and so I just went with it&#8230;</div><div><br /></div><div>Disclaimer 2: the title of the post might be a little miss leading as you can use this with or without the <a href="http://wiki.github.com/mislav/will_paginate/">will_paginate</a> plugin. In my case I am using it with the <a href="http://wiki.github.com/mislav/will_paginate/">will_paginate</a> plugin - and I highly recommend it!</div><div><br /></div><div>put this file in your rails lib directory /lib/sort_index.rb</div><div><script src="http://gist.github.com/341278.js?file=sort_index.rb"></script></div><div><br /></div><div>in your controller code, set up the SortIndex::Config (you can have more than one if you have multiple actions that need to support sorting</div><div><script src="http://gist.github.com/341290.js?file=sort_index_controller_usage.rb"></script></div><div><br /></div><div>then in your view code render your table headers using the sort object</div><div><script src="http://gist.github.com/341295.js?file=sort_index_view_usage.html.erb"></script></div><div><br /></div><div>Does not support the following:</div><div><ul><li>additional attributes on the anchor tags</li><li>additional attributes on the table header tags</li><li>additional query string parameters - might add this later, would be nice for search results</li></ul></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/03/15/digg-style-css-for-willpaginate-plugin/">Digg style css for will_paginate plugin</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-15T00:00:00-07:00" pubdate data-updated="true">Mar 15<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Just started using the <a href="http://github.com/mislav/will_paginate">will_paginate</a> plugin for my rails application. I wanted a Flickr or Digg style applied to the paging controls, did not find anything that came &#8216;out 0f the box&#8217;. After a few google searches I came across this <a href="http://workingwithrails.com/railsplugin/4765-will-paginate">link</a> which had an example - apparently from an older version of the README file.<div><br /></div><div>here is that css for reference</div><div><script src="http://gist.github.com/333019.js?file=Digg+style+css+for+will_paginate"></script></div><div><br /></div><div>.</div></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/9/">&larr; Older</a>
@@ -471,6 +479,14 @@ Just started using the <a href="http://github.com/mislav/will_paginate">will_pag
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/07/testing/">testing</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/">Magick::ImageMagickError: WriteBlob Failed</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a>
       </li>
     
@@ -484,14 +500,6 @@ Just started using the <a href="http://github.com/mislav/will_paginate">will_pag
     
       <li class="post">
         <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: supply_drop)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e chef cookbook</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and puppet postgres 9.2 on ubuntu</a>
       </li>
     
   </ul>
@@ -536,7 +544,7 @@ Just started using the <a href="http://github.com/mislav/will_paginate">will_pag
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Jesse House -
+  Copyright &copy; 2014 - Jesse House -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

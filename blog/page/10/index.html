@@ -9,7 +9,9 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="This might be helpful to someone? I was receiving &#8216;App Failed To Respond (HTTP 502) Bad Gateway&#8217; errors when deploying my application on &hellip;">
+  <meta name="description" content="
+nothing else to say really, imeem was a great serviceI&#8217;ve never liked myspace
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +67,80 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/12/09/imeem-acquired-by-myspace-bummer/">imeem acquired by myspace - bummer</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-09T00:00:00-08:00" pubdate data-updated="true">Dec 9<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+nothing else to say really, imeem was a great service<div><br /></div><div>I&#8217;ve never liked myspace</div><div><br /></div><div><br /></div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/11/12/heroku-sending-email-with-gmail/">Heroku - sending email with Gmail</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-12T00:00:00-08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<p>I have been working on deploying a <a href="http://guides.rubyonrails.org/">Rails</a> application to <a href="http://heroku.com/">Heroku</a>. A couple of gotchas I ran into when following this post &#8221;<a href="http://blog.heroku.com/archives/2009/11/9/tech_sending_email_with_gmail/">Sending email with Gmail</a>&#8221;</p><ul><li>Don&#8217;t use a dollar sign ($) in your password </li><li>this can work locally if you put single quotes around the value, but on the heroku server it saved the entire string but at runtime would truncate it at the dollar sign</li><li>for example using the password &#8217;<em>left-side$right-side</em>&#8217; </li><li>heroku config:add GMAIL_SMTP_PASSWORD=left-side$right-side</li><li>heroku config returns > GMAIL_SMTP_PASSWORD=left-side$right-side</li><li>heroku console </li><li>type ENV[&#8216;GMAIL_SMTP_PASSWORD&#8217;] returns > left-side</li></ul><p>Heroku is running Ruby 1.8.6, locally I am running Ruby 1.8.7, I made a small hack to the plugin to avoid errors in development mode</p><p>./vendor/plugins/gmail_smtp/init.rb<br />changed the first line to<br />require &#8216;smtp_tls&#8217; if RUBY_VERSION < "1.8.7" </p><p>tls is already handled in 1.8.7 and this code must have been creating some type of conflict</p></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -375,80 +451,6 @@ The following sql statement will return information about the currently executin
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/07/18/replace-keyboard-on-sony-vaio-laptop/">replace keyboard on Sony Vaio laptop PCG-K23 (PCG-9RLF)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-07-18T00:00:00-07:00" pubdate data-updated="true">Jul 18<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-just replaced the keyboard on my sisters Sony Vaio laptop - on the bottom is says it is a PCG-9RLF, but then it also says it is a PCG-K23? anyhow I had a hard time finding anything on the web, then I finally stumbled on this page which helped alot<br /><blockquote><a href="http://www.laptoprepair101.com/laptop/2007/08/30/removing-replacing-laptop-keyboard/">http://www.laptoprepair101.com/laptop/2007/08/30/removing-replacing-laptop-keyboard/</a></blockquote><ul><li>You don&#8217;t need to loosen any screws on the bottom - I thought this would be needed and ended up wasting a bit of time going in the wrong direction.</li><li>At the top of the keyboard is a plate that you need to pry up, there are 4 slots you can stick a flat screw driver under (you can&#8217;t see them unless you press the keys down), this plate is also part of the screen hinge and the power cord that goes to the screen is attached so be CAREFUL!</li><li>Then there are 3 screws that hold the keyboard in place, loosen those</li><li>The keyboard will hinge up from the bottom</li><li>Then you need to disconnect the cable that goes to the motherboard</li><li>I ended up pulling this out without much effort</li><li>but then it was really hard to get the new one back in</li><li>turns out the slot has an open / closed &#8216;mode&#8217;, using a small screw driver I was able to get it to open up</li><li>Then just put everything back, turned out to be relatively easy in the end, I am definitely not an expert when it comes to computer hardware but so far this has been a success!</li></ul><div><br /></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/06/27/spain/">Spain</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-06-27T00:00:00-07:00" pubdate data-updated="true">Jun 27<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-<p>We just returned from 2 weeks in Spain (<a href="http://en.wikipedia.org/wiki/Catalonia">Catalonia</a> really). One of the best vacations ever! Great food, great beaches and great history and culture!</p><p>below are some links to hotels we stayed at, might be of use to someone?</p><ul><li><a href="http://house9.blogspot.com/2009/06/hotel-front-maritim-barcelona-spain.html">Hotel Front Maritim, Barcelona<br /></a></li><li><a href="http://house9.blogspot.com/2009/06/medplaya-aparthotel-esmeraldas-tossa-de.html">Medplaya Aparthotel Esmeraldas, Tossa de Mar</a></li><li><a href="http://house9.blogspot.com/2009/06/hotel-costabella-sercotel-girona-spain.html">Hotel Costabella, Girona</a></li><li><a href="http://house9.blogspot.com/2009/06/husa-imperial-tarraco-tarragona-spain.html">Husa Imperial Tarraco, Tarragona</a></li><li><a href="http://house9.blogspot.com/2009/06/frontair-congress-barcelona-spain.html">Frontair Congress, Barcelona</a><br /></li></ul><p></p></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/11/">&larr; Older</a>
@@ -466,6 +468,14 @@ just replaced the keyboard on my sisters Sony Vaio laptop - on the bottom is say
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/07/testing/">testing</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/">Magick::ImageMagickError: WriteBlob Failed</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a>
       </li>
     
@@ -479,14 +489,6 @@ just replaced the keyboard on my sisters Sony Vaio laptop - on the bottom is say
     
       <li class="post">
         <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: supply_drop)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e chef cookbook</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and puppet postgres 9.2 on ubuntu</a>
       </li>
     
   </ul>
@@ -531,7 +533,7 @@ just replaced the keyboard on my sisters Sony Vaio laptop - on the bottom is say
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Jesse House -
+  Copyright &copy; 2014 - Jesse House -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

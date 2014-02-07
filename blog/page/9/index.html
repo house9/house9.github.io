@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="The exclude-dir option works nicely, I was previously was using &#8211;exclude and it would include some sub-dir .svn filesegrep &#8211;exclude-dir &hellip;">
+  <meta name="description" content="This solution for sorting data on rails index actions does NOT use ajax. Sometimes sorting with ajax is nice but often it is not actually as user &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,80 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/03/23/sorting-rails-view-with-willpaginate/">sorting rails view with will_paginate plugin</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-23T00:00:00-07:00" pubdate data-updated="true">Mar 23<span>rd</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+This solution for sorting data on rails index actions does NOT use ajax. Sometimes sorting with ajax is nice but often it is not actually as user friendly; breaking the browser back button, etc&#8230;<div><br /></div><div>Disclaimer 1: this code is probably using all kinds of ruby anti-patterns :) - but it is a very simple implementation and so I just went with it&#8230;</div><div><br /></div><div>Disclaimer 2: the title of the post might be a little miss leading as you can use this with or without the <a href="http://wiki.github.com/mislav/will_paginate/">will_paginate</a> plugin. In my case I am using it with the <a href="http://wiki.github.com/mislav/will_paginate/">will_paginate</a> plugin - and I highly recommend it!</div><div><br /></div><div>put this file in your rails lib directory /lib/sort_index.rb</div><div><script src="http://gist.github.com/341278.js?file=sort_index.rb"></script></div><div><br /></div><div>in your controller code, set up the SortIndex::Config (you can have more than one if you have multiple actions that need to support sorting</div><div><script src="http://gist.github.com/341290.js?file=sort_index_controller_usage.rb"></script></div><div><br /></div><div>then in your view code render your table headers using the sort object</div><div><script src="http://gist.github.com/341295.js?file=sort_index_view_usage.html.erb"></script></div><div><br /></div><div>Does not support the following:</div><div><ul><li>additional attributes on the anchor tags</li><li>additional attributes on the table header tags</li><li>additional query string parameters - might add this later, would be nice for search results</li></ul></div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/03/15/digg-style-css-for-willpaginate-plugin/">Digg style css for will_paginate plugin</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-15T00:00:00-07:00" pubdate data-updated="true">Mar 15<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Just started using the <a href="http://github.com/mislav/will_paginate">will_paginate</a> plugin for my rails application. I wanted a Flickr or Digg style applied to the paging controls, did not find anything that came &#8216;out 0f the box&#8217;. After a few google searches I came across this <a href="http://workingwithrails.com/railsplugin/4765-will-paginate">link</a> which had an example - apparently from an older version of the README file.<div><br /></div><div>here is that css for reference</div><div><script src="http://gist.github.com/333019.js?file=Digg+style+css+for+will_paginate"></script></div><div><br /></div><div>.</div></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -388,80 +462,6 @@ I needed to generate a sign up button - this site is so much easier than opening
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/12/09/imeem-acquired-by-myspace-bummer/">imeem acquired by myspace - bummer</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-09T00:00:00-08:00" pubdate data-updated="true">Dec 9<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-nothing else to say really, imeem was a great service<div><br /></div><div>I&#8217;ve never liked myspace</div><div><br /></div><div><br /></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/11/12/heroku-sending-email-with-gmail/">Heroku - sending email with Gmail</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-12T00:00:00-08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-<p>I have been working on deploying a <a href="http://guides.rubyonrails.org/">Rails</a> application to <a href="http://heroku.com/">Heroku</a>. A couple of gotchas I ran into when following this post &#8221;<a href="http://blog.heroku.com/archives/2009/11/9/tech_sending_email_with_gmail/">Sending email with Gmail</a>&#8221;</p><ul><li>Don&#8217;t use a dollar sign ($) in your password </li><li>this can work locally if you put single quotes around the value, but on the heroku server it saved the entire string but at runtime would truncate it at the dollar sign</li><li>for example using the password &#8217;<em>left-side$right-side</em>&#8217; </li><li>heroku config:add GMAIL_SMTP_PASSWORD=left-side$right-side</li><li>heroku config returns > GMAIL_SMTP_PASSWORD=left-side$right-side</li><li>heroku console </li><li>type ENV[&#8216;GMAIL_SMTP_PASSWORD&#8217;] returns > left-side</li></ul><p>Heroku is running Ruby 1.8.6, locally I am running Ruby 1.8.7, I made a small hack to the plugin to avoid errors in development mode</p><p>./vendor/plugins/gmail_smtp/init.rb<br />changed the first line to<br />require &#8216;smtp_tls&#8217; if RUBY_VERSION < "1.8.7" </p><p>tls is already handled in 1.8.7 and this code must have been creating some type of conflict</p></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/10/">&larr; Older</a>
@@ -479,6 +479,14 @@ nothing else to say really, imeem was a great service<div><br /></div><div>I&#82
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/07/testing/">testing</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/">Magick::ImageMagickError: WriteBlob Failed</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a>
       </li>
     
@@ -492,14 +500,6 @@ nothing else to say really, imeem was a great service<div><br /></div><div>I&#82
     
       <li class="post">
         <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: supply_drop)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e chef cookbook</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and puppet postgres 9.2 on ubuntu</a>
       </li>
     
   </ul>
@@ -544,7 +544,7 @@ nothing else to say really, imeem was a great service<div><br /></div><div>I&#82
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Jesse House -
+  Copyright &copy; 2014 - Jesse House -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

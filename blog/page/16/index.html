@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="The vincent-vega database change management project has been consolidated into the Tarantino project. code is available at http://code.google.com/p/ &hellip;">
+  <meta name="description" content="This code sample is a nant script that deletes the CommonAssembly.cs file (linked to all projects)uses the nant asminfo task to recreate the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,93 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/04/20/nant-build-with-tfs-changeset-as/">NAnt build with TFS changeset as revision number</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-04-20T00:00:00-07:00" pubdate data-updated="true">Apr 20<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+This code sample is a <a href="http://nant.sourceforge.net/">nant</a> script that <br /><ul><li>deletes the CommonAssembly.cs file (linked to all projects)</li><li>uses the nant <a href="http://nant.sourceforge.net/release/latest/help/tasks/asminfo.html">asminfo</a> task to recreate the CommonAssembly.cs file, but after we query TFS for the changeset (revision) number which is used in the version number</li><li>build the solution in release mode using the ide.exe (there are other - better ways, but this one works)</li><li>xcopy files to C:\temp\{app} and clean up all the source files</li></ul><br />basically I just put together a few bits that I found on other blogs (should have saved the urls - doh!), most were related to using svn for source control and then I added in the code block for the c# stuff to query TFS.<br /><br />A quick note about the linked CommonAssembly.cs file, visual studio has an option when you are adding an existing file to a project to select &#8216;linked&#8217;, click the arrow on the &#8216;Add&#8217; button when you select your existing file<br /><br />what this script does not do - get latest from TFS, I usually do that part manually or from ccnet<br /><br /><script src="http://gist.github.com/538649.js?file=nant-tfs-changeset-to-revision.xml"></script><br /><br />the c# bit that goes in the nant script block above<br />NOTE: see <a href="http://house9.blogspot.com/2009/04/update-nant-build-with-tfs-changeset-as.html">updated version</a> of this code block<br /><br /><script src="http://gist.github.com/538657.js?file=nant-tfs-changeset-to-revision.cs"></script><br /><br />nant is awesome!</div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>juho</div>
+<div class='content'>
+Seems that this solution doesn&#39;t work with TFS2010, but thanks for the idea, I&#39;ll use it as a base for my project :)</div>
+</div>
+<div class='comment'>
+<div class='author'>Mahendra Mavani</div>
+<div class='content'>
+I was looking for this solution, since long. Thanks for providing this sample. It works great on my project</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/04/20/firefox-and-multiple-cookies-for-same/">FireFox and multiple cookies for the same site</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-04-20T00:00:00-07:00" pubdate data-updated="true">Apr 20<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I like FireFox but still use IE most of the time; one of the main reasons is during web application development I need to login to the same web application as different users at the same time, switching back and forth between each user account. IE makes it easy just open a new instance for each individual user account.<br /><br />In the past I tried to find a solution for FireFox, but always came up short. Well today I did a google search and came up with two different ones!<br /><br />both are FireFox extensions<br /><ul><li><a href="http://www.nektra.com/oss/firefox/extensions/cookiepie/">CookiePie</a></li><li><a href="https://addons.mozilla.org/en-US/firefox/addon/3255">CookieSwap</a></li></ul><p>after a quik spin with both I am liking CookieSwap better</p><p>With CookiePie you right click on the individual tab to toggle seperate cookie sessions on or off; just didn&#8217;t have good luck using it the way I would do stuff with IE</p><p>With CookieSwap you right click in the lower right hand status bar area of FireFox and can toggle between named profiles (default is Profile1, Profile2, Profile3) - this worked right out of the box as I would expect!</p><p> </p></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -406,88 +493,6 @@ Random Coding Links - #1<br />wanted to keep track of these somewhere<br /><br /
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2007/12/15/personal-web-page-revisited/">Personal Web Page Revisited</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-12-15T00:00:00-08:00" pubdate data-updated="true">Dec 15<span>th</span>, 2007</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Ok, it has been 5 years since I have updated my personal webpage, once again it is just a 1 page web site; lean and mean ~:P<br /><br />It might load a bit slow; I am using some of the libraries from <a href="http://www.extjs.com/">Ext JS</a> - a few hundred K in css, images and js to load in, should cache in the browser after the first hit, their UI widgets are just too cool.<br /><br />anyhow here it is - <a href="http://www.jessehouse.com/">http://www.jessehouse.com/</a></div>
-<h2>Comments</h2>
-<div class='comments'>
-<div class='comment'>
-<div class='author'>cbetancourt</div>
-<div class='content'>
-Move your &lt;script&gt; tags to the bottom of the page, right before &lt;/html&gt; and you will see a speed improvement.</div>
-</div>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2007/12/08/mysql-migration-toolkit/">mysql migration toolkit</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-12-08T00:00:00-08:00" pubdate data-updated="true">Dec 8<span>th</span>, 2007</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-I am using the <a href="http://www.mysql.com/products/tools/migration-toolkit/">mysql migration toolkit</a> to transfer a database from MSSQL 2005 over to MySQL database. Ran into an issue with the port, by default the tool wants to use 1433 (MSSQL 2000 default), but it looks like 2005 uses a default port of 1434 (well it is more complicated then that <a href="http://technet.microsoft.com/en-us/library/ms165724.aspx">http://technet.microsoft.com/en-us/library/ms165724.aspx</a>) - you can use the stored procedure xp_readerrorlog to verify the port your database is listening on - one of the rows in the text column of the result should be something like &#8217;<em><span style="color:#006600;">Server is listening on [ 127.0.0.1 <ipv4>1434].</span></em>&#8217;<br /><br />anyhow after changing the port number everything else was smooth sailing, yeah right&#8230;<br />once I got to the reverse engineer stage then this java stack came up, looks like it still doesn&#8217;t like the connection string, even though I have already authenticated with it?<br /><blockquote><br /><span style="font-size:78%;">Initializing JDBC driver &#8230;<br />Driver class MS SQL JDBC Driver<br />Opening connection &#8230;<br />Connection jdbc:jtds:sqlserver://127.0.0.1:1434/databasename;user=sa;password=;charset=utf-8;<br />Initializing JDBC driver &#8230;<br />Driver class MS SQL JDBC Driver<br />Opening connection &#8230;<br />Connection jdbc:jtds:sqlserver://127.0.0.1:1434/databasename;user=sa;password=;charset=utf-8;<br />The schema could not be reverse engineered (error: 0).<br />ReverseEngineeringMssql.reverseEngineer :I/O Error: Connection reset<br />Details:<br />net.sourceforge.jtds.jdbc.TdsCore.nextToken(TdsCore.java:2277)<br />net.sourceforge.jtds.jdbc.TdsCore.login(TdsCore.java:599)<br />net.sourceforge.jtds.jdbc.ConnectionJDBC2.<init>(ConnectionJDBC2.java:331)net.sourceforge.jtds.jdbc.ConnectionJDBC3.<init>(ConnectionJDBC3.java:50)<br />net.sourceforge.jtds.jdbc.Driver.connect(Driver.java:178)<br />java.sql.DriverManager.getConnection(Unknown Source)<br />java.sql.DriverManager.getConnection(Unknown Source)com.mysql.grt.modules.ReverseEngineeringGeneric.establishConnection(ReverseEngineeringGeneric.java:141)com.mysql.grt.modules.ReverseEngineeringGeneric.getVersion(ReverseEngineeringGeneric.java:161)com.mysql.grt.modules.ReverseEngineeringMssql.reverseEngineer(ReverseEngineeringMssql.java:164)sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br />sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)<br />sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)<br />java.lang.reflect.Method.invoke(Unknown Source)<br />com.mysql.grt.Grt.callModuleFunction(Unknown Source)</span></blockquote><br /><p>ok, so close the migration tool reopen and go through the same process, exact same behaviour, clicking the back button brings me to the original screen where the MSSQL connection information was entered, everything is as it was, try to connect again and this time another java stack trace, the important part was this line - &#8217;<em><span style="color:#006600;">I/O Error: DB server closed connection.</span>&#8217; - </em>Weird</p><p>a google search led me here - <a href="http://bugs.mysql.com/bug.php?id=20674">http://bugs.mysql.com/bug.php?id=20674</a><br />Using the &#8216;SQL Server Configuration Manager&#8217; I had to set the &#8216;SQL Server 2005 Network Configuration&#8217; -> &#8216;Protocols for MSSQLSERVER&#8217; -> TCP/IP to Enabled</p><p>doing this set my default port back to 1433 (actually that is the one I used, xp_readerrorlog shows the database listening on both 1433 and 1434), so re-connecting with the migration tool and using the 1433 default port worked and I was on my way&#8230;</p><p>so every table fails to migrate except 2? well I guess the migration tool could be better, lucky for me I only had 12 tables going here, I had to update the migration code for all of these tables</p><blockquote><p><em>`is_active` TINYINT NOT NULL DEFAULT (1),</em><br />had to be changed to<br /><em>`is_active` TINYINT NOT NULL DEFAULT 1,<br /></em></p></blockquote><br /><p>yes removing the () from the default value - now that sure is a pain. It was only occuring on types of tinyint - these were coming from MSSQL bit datatypes, could be an issue only in that one case?</p></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/17/">&larr; Older</a>
@@ -505,6 +510,14 @@ I am using the <a href="http://www.mysql.com/products/tools/migration-toolkit/">
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/07/testing/">testing</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/">Magick::ImageMagickError: WriteBlob Failed</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a>
       </li>
     
@@ -518,14 +531,6 @@ I am using the <a href="http://www.mysql.com/products/tools/migration-toolkit/">
     
       <li class="post">
         <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: supply_drop)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e chef cookbook</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and puppet postgres 9.2 on ubuntu</a>
       </li>
     
   </ul>
@@ -570,7 +575,7 @@ I am using the <a href="http://www.mysql.com/products/tools/migration-toolkit/">
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Jesse House -
+  Copyright &copy; 2014 - Jesse House -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

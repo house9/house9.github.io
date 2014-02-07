@@ -9,7 +9,8 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="This article outlines some basic guidelines to follow when working with timezones in Ruby on Rails applications. Ruby on Rails has great support for &hellip;">
+  <meta name="description" content="
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +66,121 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/07/testing/">testing</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-07T09:38:00-08:00" pubdate data-updated="true">Feb 7<span>th</span>, 2014</time>
+        
+         | <a href="/blog/2014/02/07/testing/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/">Magick::ImageMagickError: WriteBlob Failed</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-07T08:55:00-08:00" pubdate data-updated="true">Feb 7<span>th</span>, 2014</time>
+        
+         | <a href="/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I am using <a href="https://github.com/topfunky/gruff">gruff</a> to generate line charts in a rails project, putting together a quick proof of concept:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Chart</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">generate_line_graph</span>
+</span><span class='line'>    <span class="n">g</span> <span class="o">=</span> <span class="ss">Gruff</span><span class="p">:</span><span class="ss">:Line</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">g</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="ss">:testing</span><span class="p">,</span> <span class="o">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">g</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;tmp/line.png&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I quickly ran into the following exception:</p>
+
+<pre>
+Magick::ImageMagickError: WriteBlob Failed `/Users/ME/projects/CLIENT/code/RAILS_APP/tmp/line.png' @ error/png.c/MagickPNGErrorHandler/1804
+  from /Users/ME/.rvm/gems/ruby-2.1.0/gems/gruff-0.5.1/lib/gruff/base.rb:425:in `write'
+  from /Users/ME/.rvm/gems/ruby-2.1.0/gems/gruff-0.5.1/lib/gruff/base.rb:425:in `write'
+  from /Users/ME/projects/CLIENT/code/RAILS_APP/app/models/reports/chart.rb:36:in `generate_line_graph'
+  from (irb):16
+  from /Users/ME/.rvm/gems/ruby-2.1.0/gems/railties-3.2.16/lib/rails/commands/console.rb:47:in `start'
+  from /Users/ME/.rvm/gems/ruby-2.1.0/gems/railties-3.2.16/lib/rails/commands/console.rb:8:in `start'
+  from /Users/ME/.rvm/gems/ruby-2.1.0/gems/railties-3.2.16/lib/rails/commands.rb:41:in `<top (required)>'
+  from script/rails:6:in `require'
+  from script/rails:6:in `main'
+</pre>
+
+
+<p><strong>The issue:</strong> the error is raised when writing to the tmp directory, changing to another directory and it worked as expected?</p>
+
+<p><code>g.write("public/line.png")</code> and <code>g.write("public/tmp/line.png")</code> both worked</p>
+
+<p>Turns out this was a simple <em>mistake on my part</em>, I just provisioned a new machine and cloned the project repo &ndash; I did not have a <em>tmp</em> directory in my project yet, it would be nice if the error message could have just told me so.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -794,88 +910,6 @@ Just got an email from <a href="https://www.hipchat.com/">HipChat</a> - now free
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/02/23/ruby-on-rails-continuous-integration-ci/">Ruby on Rails continuous integration (CI) with Jenkins the easy way with Chef and Knife</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-02-23T00:00:00-08:00" pubdate data-updated="true">Feb 23<span>rd</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Do you need a CI build setup for your Ruby on Rails app?<br /><br />Here are some <a href="http://www.opscode.com/chef/">chef</a> / <a href="http://matschaffer.github.com/knife-solo/">knife solo</a> scripts that will deploy a <a href="http://jenkins-ci.org/">Jenkins</a> server to run your <a href="http://www.martinfowler.com/articles/continuousIntegration.html">CI build</a> - you could be up and running in less than 1/2 an hour<br /><br /><a href="https://github.com/house9/ci_chef_jenkins_rails"><b>https://github.com/house9/ci_chef_jenkins_rails</b></a><br /><br />Check out the README for details<br /><br /><br /></div>
-<h2>Comments</h2>
-<div class='comments'>
-<div class='comment'>
-<div class='author'>patcon</div>
-<div class='content'>
-You might want to look into Pivotal Labs&#39; ciborg project &#8211; sounds like it&#39;s just what you&#39;re looking for :)<br /><br />https://github.com/pivotal/ciborg</div>
-</div>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/02/23/random-tricks-you-can-do-with-rails/">> random tricks you can do with Rails</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-02-23T00:00:00-08:00" pubdate data-updated="true">Feb 23<span>rd</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-There are bunch of really good nuggets in this presentation:<br /><br /><ul><li><a href="http://www.confreaks.com/videos/889-railsconf2012-ten-things-you-didn-t-know-rails-could-do">http://www.confreaks.com/videos/889-railsconf2012-ten-things-you-didn-t-know-rails-could-do</a>&nbsp;</li><li><a href="https://speakerdeck.com/jeg2/10-things-you-didnt-know-rails-could-do">https://speakerdeck.com/jeg2/10-things-you-didnt-know-rails-could-do</a></li></ul><div><br /></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -891,6 +925,14 @@ There are bunch of really good nuggets in this presentation:<br /><br /><ul><li>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/07/testing/">testing</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/">Magick::ImageMagickError: WriteBlob Failed</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a>
       </li>
     
@@ -904,14 +946,6 @@ There are bunch of really good nuggets in this presentation:<br /><br /><ul><li>
     
       <li class="post">
         <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: supply_drop)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e chef cookbook</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and puppet postgres 9.2 on ubuntu</a>
       </li>
     
   </ul>
@@ -956,7 +990,7 @@ There are bunch of really good nuggets in this presentation:<br /><br /><ul><li>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Jesse House -
+  Copyright &copy; 2014 - Jesse House -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

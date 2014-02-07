@@ -4,7 +4,7 @@
   <title><![CDATA[house9]]></title>
   <link href="http://jessehouse.com/atom.xml" rel="self"/>
   <link href="http://jessehouse.com/"/>
-  <updated>2013-11-14T16:43:03-08:00</updated>
+  <updated>2014-02-07T09:56:04-08:00</updated>
   <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
@@ -12,6 +12,63 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[testing]]></title>
+    <link href="http://jessehouse.com/blog/2014/02/07/testing/"/>
+    <updated>2014-02-07T09:38:00-08:00</updated>
+    <id>http://jessehouse.com/blog/2014/02/07/testing</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Magick::ImageMagickError: WriteBlob Failed]]></title>
+    <link href="http://jessehouse.com/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/"/>
+    <updated>2014-02-07T08:55:00-08:00</updated>
+    <id>http://jessehouse.com/blog/2014/02/07/magick-imagemagickerror-writeblob-failed</id>
+    <content type="html"><![CDATA[<p>I am using <a href="https://github.com/topfunky/gruff">gruff</a> to generate line charts in a rails project, putting together a quick proof of concept:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Chart</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">generate_line_graph</span>
+</span><span class='line'>    <span class="n">g</span> <span class="o">=</span> <span class="ss">Gruff</span><span class="p">:</span><span class="ss">:Line</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">g</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="ss">:testing</span><span class="p">,</span> <span class="o">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">g</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;tmp/line.png&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I quickly ran into the following exception:</p>
+
+<pre>
+Magick::ImageMagickError: WriteBlob Failed `/Users/ME/projects/CLIENT/code/RAILS_APP/tmp/line.png' @ error/png.c/MagickPNGErrorHandler/1804
+  from /Users/ME/.rvm/gems/ruby-2.1.0/gems/gruff-0.5.1/lib/gruff/base.rb:425:in `write'
+  from /Users/ME/.rvm/gems/ruby-2.1.0/gems/gruff-0.5.1/lib/gruff/base.rb:425:in `write'
+  from /Users/ME/projects/CLIENT/code/RAILS_APP/app/models/reports/chart.rb:36:in `generate_line_graph'
+  from (irb):16
+  from /Users/ME/.rvm/gems/ruby-2.1.0/gems/railties-3.2.16/lib/rails/commands/console.rb:47:in `start'
+  from /Users/ME/.rvm/gems/ruby-2.1.0/gems/railties-3.2.16/lib/rails/commands/console.rb:8:in `start'
+  from /Users/ME/.rvm/gems/ruby-2.1.0/gems/railties-3.2.16/lib/rails/commands.rb:41:in `<top (required)>'
+  from script/rails:6:in `require'
+  from script/rails:6:in `main'
+</pre>
+
+
+<p><strong>The issue:</strong> the error is raised when writing to the tmp directory, changing to another directory and it worked as expected?</p>
+
+<p><code>g.write("public/line.png")</code> and <code>g.write("public/tmp/line.png")</code> both worked</p>
+
+<p>Turns out this was a simple <em>mistake on my part</em>, I just provisioned a new machine and cloned the project repo &ndash; I did not have a <em>tmp</em> directory in my project yet, it would be nice if the error message could have just told me so.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ruby on Rails: Timezones]]></title>
@@ -640,26 +697,6 @@ Unofficial Twitter Bootstrap Documentation<br /><a href="http://unofficial-twitt
     <id>http://jessehouse.com/blog/2012/07/01/rails-activerecord-createdby-and</id>
     <content type="html"><![CDATA[<div class='post'>
 <br />Often your application will want to track who created and updated your data.<br />On a previous rails 2 project I used a plugin called <a href="https://github.com/delynn/userstamp">userstamp</a> which worked well, but until recently it did not support rails 3+<br /><br />I didn&#8217;t find any other gems out there at the time, so I put together the clerk gem,<br />you can install it as a gem in your rails 3+ applications by adding&nbsp;<i style="background-color: #eeeeee;">gem &#8216;clerk&#8217;</i> to your Gemfile, see the <a href="https://github.com/house9/clerk/blob/master/README.md">README</a> on github for details<br /><br />NOTE: the current version relies on your database tables having columns named created_by_id and updated_by_id and the gem does not support any custom configuration.<br /><br /><br /><ul><li><a href="https://github.com/house9/clerk">https://github.com/house9/clerk</a></li><li><a href="http://rubygems.org/gems/clerk">http://rubygems.org/gems/clerk</a>&nbsp;</li></ul><br /></div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[postgres: terminate all database connections]]></title>
-    <link href="http://jessehouse.com/blog/2012/04/29/postgres-terminate-all-database/"/>
-    <updated>2012-04-29T00:00:00-07:00</updated>
-    <id>http://jessehouse.com/blog/2012/04/29/postgres-terminate-all-database</id>
-    <content type="html"><![CDATA[<div class='post'>
-Using psql from the command line you can terminate all connections to a database<br /><div><br /></div><div><script src="https://gist.github.com/2552481.js?file=postgres_disconnect.sql.sh"></script></div>Comes in handy when you want to do things like restore your staging or development database<br /><br /><script src="https://gist.github.com/2552493.js?file=postgres_rebuild.sql.sh"></script>  <br /><div><b>Resources</b><br /><br /><ul><li><a href="http://www.postgresql.org/docs/9.1/static/reference-client.html">http://www.postgresql.org/docs/9.1/static/reference-client.html</a>&nbsp;</li><li><a href="http://blog.gahooa.com/2010/11/03/how-to-force-drop-a-postgresql-database-by-killing-off-connection-processes/">http://blog.gahooa.com/2010/11/03/how-to-force-drop-a-postgresql-database-by-killing-off-connection-processes/</a>&nbsp;</li></ul></div></div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[postgres: random useful things]]></title>
-    <link href="http://jessehouse.com/blog/2012/04/29/postgres-random-useful-things/"/>
-    <updated>2012-04-29T00:00:00-07:00</updated>
-    <id>http://jessehouse.com/blog/2012/04/29/postgres-random-useful-things</id>
-    <content type="html"><![CDATA[<div class='post'>
-Run sql statements from the command line, use the -c flag<br /><script src="https://gist.github.com/2552568.js?file=postgres_sql_command.sql.sh"></script><br /><br />create a random value<br /><script src="https://gist.github.com/2552573.js?file=postgres.random_value.sql"></script><br /><br />crazy updates using&nbsp;regexp_matches<br /><script src="https://gist.github.com/2552587.js?file=postgres.regexp_matches.sql"></script><br /><br /></div>
 ]]></content>
   </entry>
   

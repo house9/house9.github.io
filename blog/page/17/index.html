@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="I am sure most people have heard of these cars by now?http://www.teslamotors.com/Changing Perceptions We needed to change perceptions of electric &hellip;">
+  <meta name="description" content="Ok, it has been 5 years since I have updated my personal webpage, once again it is just a 1 page web site; lean and mean ~:PIt might load a bit slow &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,88 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/12/15/personal-web-page-revisited/">Personal Web Page Revisited</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-12-15T00:00:00-08:00" pubdate data-updated="true">Dec 15<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Ok, it has been 5 years since I have updated my personal webpage, once again it is just a 1 page web site; lean and mean ~:P<br /><br />It might load a bit slow; I am using some of the libraries from <a href="http://www.extjs.com/">Ext JS</a> - a few hundred K in css, images and js to load in, should cache in the browser after the first hit, their UI widgets are just too cool.<br /><br />anyhow here it is - <a href="http://www.jessehouse.com/">http://www.jessehouse.com/</a></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>cbetancourt</div>
+<div class='content'>
+Move your &lt;script&gt; tags to the bottom of the page, right before &lt;/html&gt; and you will see a speed improvement.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/12/08/mysql-migration-toolkit/">mysql migration toolkit</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-12-08T00:00:00-08:00" pubdate data-updated="true">Dec 8<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I am using the <a href="http://www.mysql.com/products/tools/migration-toolkit/">mysql migration toolkit</a> to transfer a database from MSSQL 2005 over to MySQL database. Ran into an issue with the port, by default the tool wants to use 1433 (MSSQL 2000 default), but it looks like 2005 uses a default port of 1434 (well it is more complicated then that <a href="http://technet.microsoft.com/en-us/library/ms165724.aspx">http://technet.microsoft.com/en-us/library/ms165724.aspx</a>) - you can use the stored procedure xp_readerrorlog to verify the port your database is listening on - one of the rows in the text column of the result should be something like &#8217;<em><span style="color:#006600;">Server is listening on [ 127.0.0.1 <ipv4>1434].</span></em>&#8217;<br /><br />anyhow after changing the port number everything else was smooth sailing, yeah right&#8230;<br />once I got to the reverse engineer stage then this java stack came up, looks like it still doesn&#8217;t like the connection string, even though I have already authenticated with it?<br /><blockquote><br /><span style="font-size:78%;">Initializing JDBC driver &#8230;<br />Driver class MS SQL JDBC Driver<br />Opening connection &#8230;<br />Connection jdbc:jtds:sqlserver://127.0.0.1:1434/databasename;user=sa;password=;charset=utf-8;<br />Initializing JDBC driver &#8230;<br />Driver class MS SQL JDBC Driver<br />Opening connection &#8230;<br />Connection jdbc:jtds:sqlserver://127.0.0.1:1434/databasename;user=sa;password=;charset=utf-8;<br />The schema could not be reverse engineered (error: 0).<br />ReverseEngineeringMssql.reverseEngineer :I/O Error: Connection reset<br />Details:<br />net.sourceforge.jtds.jdbc.TdsCore.nextToken(TdsCore.java:2277)<br />net.sourceforge.jtds.jdbc.TdsCore.login(TdsCore.java:599)<br />net.sourceforge.jtds.jdbc.ConnectionJDBC2.<init>(ConnectionJDBC2.java:331)net.sourceforge.jtds.jdbc.ConnectionJDBC3.<init>(ConnectionJDBC3.java:50)<br />net.sourceforge.jtds.jdbc.Driver.connect(Driver.java:178)<br />java.sql.DriverManager.getConnection(Unknown Source)<br />java.sql.DriverManager.getConnection(Unknown Source)com.mysql.grt.modules.ReverseEngineeringGeneric.establishConnection(ReverseEngineeringGeneric.java:141)com.mysql.grt.modules.ReverseEngineeringGeneric.getVersion(ReverseEngineeringGeneric.java:161)com.mysql.grt.modules.ReverseEngineeringMssql.reverseEngineer(ReverseEngineeringMssql.java:164)sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br />sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)<br />sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)<br />java.lang.reflect.Method.invoke(Unknown Source)<br />com.mysql.grt.Grt.callModuleFunction(Unknown Source)</span></blockquote><br /><p>ok, so close the migration tool reopen and go through the same process, exact same behaviour, clicking the back button brings me to the original screen where the MSSQL connection information was entered, everything is as it was, try to connect again and this time another java stack trace, the important part was this line - &#8217;<em><span style="color:#006600;">I/O Error: DB server closed connection.</span>&#8217; - </em>Weird</p><p>a google search led me here - <a href="http://bugs.mysql.com/bug.php?id=20674">http://bugs.mysql.com/bug.php?id=20674</a><br />Using the &#8216;SQL Server Configuration Manager&#8217; I had to set the &#8216;SQL Server 2005 Network Configuration&#8217; -> &#8216;Protocols for MSSQLSERVER&#8217; -> TCP/IP to Enabled</p><p>doing this set my default port back to 1433 (actually that is the one I used, xp_readerrorlog shows the database listening on both 1433 and 1434), so re-connecting with the migration tool and using the 1433 default port worked and I was on my way&#8230;</p><p>so every table fails to migrate except 2? well I guess the migration tool could be better, lucky for me I only had 12 tables going here, I had to update the migration code for all of these tables</p><blockquote><p><em>`is_active` TINYINT NOT NULL DEFAULT (1),</em><br />had to be changed to<br /><em>`is_active` TINYINT NOT NULL DEFAULT 1,<br /></em></p></blockquote><br /><p>yes removing the () from the default value - now that sure is a pain. It was only occuring on types of tinyint - these were coming from MSSQL bit datatypes, could be an issue only in that one case?</p></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -362,88 +444,6 @@ We have been using TFS (Microsoft Team Foundation System) at work for Source Con
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2007/09/21/first-rails-project/">First Rails Project</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-09-21T00:00:00-07:00" pubdate data-updated="true">Sep 21<span>st</span>, 2007</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-so off and on the last month I have messed around with bits of rails stuff; reading books, coding associations, migrations, and installing plugins - oh yeah! ActiveScaffold is very sweet! finally got the integration with FCKeditor and the calendar control working as well; so now I am ready to actually build a web site.<br /><br />a few years back I built a site for my wife&#8217;s cycling team. It is a pretty simple site but with data driven content, this seems like a good project to convert over to rails as it will give me a little bit of everything. So here we go&#8230;<br /><br /><strong><span style="font-size:130%;">Day 1 - 2007.09.21 2:00pm</span></strong><br /><br />rails nor_cal_velo, add it to svn, create a blank database on mysql, then onto the migrations; already had the database tables pencil sketched on paper, similar to what I had before in the previous site but this time a little simpler as I will be using ActiveRecord (of course) and not stored procedures&#8230;<br /><br />4 hours later: migrations and db created, active scaffold hooked in and up and running for a single controller; but got side tracked trying to push before_create_save event down into a controller base class as I do not wish to duplicate the same code for every controller.<br />Posted to active_scaffold groups, got to be a way around this<br /><a href="http://groups.google.com/group/activescaffold/browse_thread/thread/58bc7fae33b62a57">http://groups.google.com/group/activescaffold/browse_thread/thread/58bc7fae33b62a57</a><br /><br />going to do some html / css stuff for awhile and get the layout section taken care of then onto more active scaffold controllers<br /><br /><strong><span style="font-size:130%;">Day 2 - 2007.09.22</span></strong><br />spent a few hours tweaking css overrides for active scaffold and figured out the issue with the controller base class see the thread above for the solution. Still have a small glitch with overrides of the Delete function, I am setting the is_active flag to false instead of actually deleting the record, everything works great except the ajax code actually removes the record from the visible list of records, if you refresh the page the inactivated record reappears and is marked as is_active = false as it should be<br /><br /><strong><span style="font-size:130%;">Side Tracked</span></strong><br />Ok, got side tracked messing around with rails and some fun ajax stuff, my first rails project has changed to something much smaller in scope; I&#8217;ll be back on this project at some point though as long as the day job doesn&#8217;t consume me&#8230;</div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2007/09/01/ruby-notes-part-1-dynamic-object/">Ruby Notes - part 1 - dynamic object creation</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-09-01T00:00:00-07:00" pubdate data-updated="true">Sep 1<span>st</span>, 2007</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-I am starting to learn Ruby and Rails (just for fun) - took awhile to find a good example of creating an object at runtime given a string representing the objects name; finally came across this post <a href="http://www.ruby-forum.com/topic/96222">http://www.ruby-forum.com/topic/96222</a>;<br /><br />in theses 2 examples - given an ActiveRecord object &#8216;Project&#8217; and a database table named &#8216;projects&#8217;, invoke the Project and execute some methods on it<br /><blockquote style="BORDER-RIGHT: 1px dashed; PADDING-RIGHT: 5px; BORDER-TOP: 1px dashed; PADDING-LEFT: 5px; BACKGROUND: #ffffff; LEFT: 65px; PADDING-BOTTOM: 5px; BORDER-LEFT: 1px dashed; WIDTH: 360px; PADDING-TOP: 5px; BORDER-BOTTOM: 1px dashed; POSITION: relative"><p style="BACKGROUND: #ffffff; WIDTH: 100%"><em><span style="color:#009900;"># using eval</span></em><br /><span style="color:#993399;">def</span> test_dynamic_invoke_with_eval<br /><span style="color:#ffffff;">__</span>object_name = <span style="color:#3333ff;">&#8220;Project&#8221;</span><br /><span style="color:#ffffff;">__</span>o = eval(object_name)<br /><br /><span style="color:#ffffff;">__</span>p <span style="color:#3333ff;">&#8220;object name is &#8216;&#8221;</span> + o.to_s + <span style="color:#3333ff;">&#8221;&#8217;&#8221;<br /></span><span style="color:#ffffff;">__</span>p <span style="color:#3333ff;">&#8220;object table name is &#8216;&#8221;</span> + o.table_name + <span style="color:#3333ff;">&#8221;&#8217;&#8221;<br /></span><span style="color:#993399;">end</span><br /><br /></p></blockquote><br /><br /><blockquote style="BORDER-RIGHT: 1px dashed; PADDING-RIGHT: 5px; BORDER-TOP: 1px dashed; PADDING-LEFT: 5px; BACKGROUND: #ffffff; LEFT: 65px; PADDING-BOTTOM: 5px; BORDER-LEFT: 1px dashed; WIDTH: 360px; PADDING-TOP: 5px; BORDER-BOTTOM: 1px dashed; POSITION: relative"><p style="BACKGROUND: #ffffff; WIDTH: 100%"><em><span style="color:#009900;"># using Object.const_get</span></em><br /><span style="color:#993399;">def</span> test_dynamic_invoke_with_object_const_get<br /><span style="color:#ffffff;">__</span>object_name = <span style="color:#3333ff;">&#8220;Project&#8221;</span><br /><span style="color:#ffffff;">__</span>o = Object.const_get(object_name)<br /><br /><span style="color:#ffffff;">__</span>p <span style="color:#3333ff;">&#8220;object name is &#8216;&#8221;</span> + o.to_s + <span style="color:#3333ff;">&#8221;&#8217;&#8221;<br /></span><span style="color:#ffffff;">__</span>p <span style="color:#3333ff;">&#8220;object table name is &#8216;&#8221;</span> + o.table_name + <span style="color:#3333ff;">&#8221;&#8217;&#8221;<br /></span><span style="color:#993399;">end</span></p></blockquote><br /><br />Check the ruby forum link above as well - the last entry posted by <em>&#8216;unknown (Guest)&#8217;</em>; this is probably the true ruby way to do it? extend the String object with a helper method so you can turn any string into an object? code from that post<br /><blockquote style="BORDER-RIGHT: 1px dashed; PADDING-RIGHT: 5px; BORDER-TOP: 1px dashed; PADDING-LEFT: 5px; BACKGROUND: #ffffff; LEFT: 65px; PADDING-BOTTOM: 5px; BORDER-LEFT: 1px dashed; WIDTH: 360px; PADDING-TOP: 5px; BORDER-BOTTOM: 1px dashed; POSITION: relative"><p style="BACKGROUND: #ffffff; WIDTH: 100%"><em><span style="color:#009900;"># extend String</span></em><br /><span style="color:#993399;">class</span> String<br /><span style="color:#993399;"><span style="color:#ffffff;">__</span>def </span>to_class<br /><span style="color:#ffffff;">_</span><span style="color:#ffffff;">__</span>Object.const_get(<span style="color:#3333ff;">self</span>)<br /><span style="color:#ffffff;">__</span><span style="color:#993399;">end</span><span style="color:#ffffff;">__</span><span style="color:#3333ff;"><br /></span><span style="color:#993399;">end</span></p></blockquote></div>
-<h2>Comments</h2>
-<div class='comments'>
-<div class='comment'>
-<div class='author'>Ahmed</div>
-<div class='content'>
-Thank you very much for this article! It helped me creating an array from a string that represents nested arrays inside it (tree) without the need to parse the string to identify braces.<br><br>Best,<br>Ahmed Nabhan</div>
-</div>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/18/">&larr; Older</a>
@@ -461,6 +461,14 @@ Thank you very much for this article! It helped me creating an array from a stri
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/07/testing/">testing</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/">Magick::ImageMagickError: WriteBlob Failed</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a>
       </li>
     
@@ -474,14 +482,6 @@ Thank you very much for this article! It helped me creating an array from a stri
     
       <li class="post">
         <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: supply_drop)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e chef cookbook</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and puppet postgres 9.2 on ubuntu</a>
       </li>
     
   </ul>
@@ -526,7 +526,7 @@ Thank you very much for this article! It helped me creating an array from a stri
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Jesse House -
+  Copyright &copy; 2014 - Jesse House -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

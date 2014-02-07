@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="I constantly find myself looking these up, saving this link for future referencehttps://github.com/rails/jquery-ujs/wiki/ajaxcontains all of the &hellip;">
+  <meta name="description" content="Do you need a CI build setup for your Ruby on Rails app?Here are some chef / knife solo scripts that will deploy a Jenkins server to run your CI &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,88 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/02/23/ruby-on-rails-continuous-integration-ci/">Ruby on Rails continuous integration (CI) with Jenkins the easy way with Chef and Knife</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-23T00:00:00-08:00" pubdate data-updated="true">Feb 23<span>rd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Do you need a CI build setup for your Ruby on Rails app?<br /><br />Here are some <a href="http://www.opscode.com/chef/">chef</a> / <a href="http://matschaffer.github.com/knife-solo/">knife solo</a> scripts that will deploy a <a href="http://jenkins-ci.org/">Jenkins</a> server to run your <a href="http://www.martinfowler.com/articles/continuousIntegration.html">CI build</a> - you could be up and running in less than 1/2 an hour<br /><br /><a href="https://github.com/house9/ci_chef_jenkins_rails"><b>https://github.com/house9/ci_chef_jenkins_rails</b></a><br /><br />Check out the README for details<br /><br /><br /></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>patcon</div>
+<div class='content'>
+You might want to look into Pivotal Labs&#39; ciborg project &#8211; sounds like it&#39;s just what you&#39;re looking for :)<br /><br />https://github.com/pivotal/ciborg</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/02/23/random-tricks-you-can-do-with-rails/">> random tricks you can do with Rails</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-23T00:00:00-08:00" pubdate data-updated="true">Feb 23<span>rd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+There are bunch of really good nuggets in this presentation:<br /><br /><ul><li><a href="http://www.confreaks.com/videos/889-railsconf2012-ten-things-you-didn-t-know-rails-could-do">http://www.confreaks.com/videos/889-railsconf2012-ten-things-you-didn-t-know-rails-could-do</a>&nbsp;</li><li><a href="https://speakerdeck.com/jeg2/10-things-you-didnt-know-rails-could-do">https://speakerdeck.com/jeg2/10-things-you-didnt-know-rails-could-do</a></li></ul><div><br /></div></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -378,80 +460,6 @@ Unofficial Twitter Bootstrap Documentation<br /><a href="http://unofficial-twitt
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/04/29/postgres-terminate-all-database/">postgres: terminate all database connections</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-29T00:00:00-07:00" pubdate data-updated="true">Apr 29<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Using psql from the command line you can terminate all connections to a database<br /><div><br /></div><div><script src="https://gist.github.com/2552481.js?file=postgres_disconnect.sql.sh"></script></div>Comes in handy when you want to do things like restore your staging or development database<br /><br /><script src="https://gist.github.com/2552493.js?file=postgres_rebuild.sql.sh"></script>  <br /><div><b>Resources</b><br /><br /><ul><li><a href="http://www.postgresql.org/docs/9.1/static/reference-client.html">http://www.postgresql.org/docs/9.1/static/reference-client.html</a>&nbsp;</li><li><a href="http://blog.gahooa.com/2010/11/03/how-to-force-drop-a-postgresql-database-by-killing-off-connection-processes/">http://blog.gahooa.com/2010/11/03/how-to-force-drop-a-postgresql-database-by-killing-off-connection-processes/</a>&nbsp;</li></ul></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/04/29/postgres-random-useful-things/">postgres: random useful things</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-29T00:00:00-07:00" pubdate data-updated="true">Apr 29<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Run sql statements from the command line, use the -c flag<br /><script src="https://gist.github.com/2552568.js?file=postgres_sql_command.sql.sh"></script><br /><br />create a random value<br /><script src="https://gist.github.com/2552573.js?file=postgres.random_value.sql"></script><br /><br />crazy updates using&nbsp;regexp_matches<br /><script src="https://gist.github.com/2552587.js?file=postgres.regexp_matches.sql"></script><br /><br /></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -469,6 +477,14 @@ Run sql statements from the command line, use the -c flag<br /><script src="http
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/07/testing/">testing</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/">Magick::ImageMagickError: WriteBlob Failed</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a>
       </li>
     
@@ -482,14 +498,6 @@ Run sql statements from the command line, use the -c flag<br /><script src="http
     
       <li class="post">
         <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: supply_drop)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e chef cookbook</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and puppet postgres 9.2 on ubuntu</a>
       </li>
     
   </ul>
@@ -534,7 +542,7 @@ Run sql statements from the command line, use the -c flag<br /><script src="http
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Jesse House -
+  Copyright &copy; 2014 - Jesse House -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

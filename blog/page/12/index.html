@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="this is a small revision to a previous post NAnt build with TFS changeset as revision numberapparently there is a limitation on the size of the &hellip;">
+  <meta name="description" content="Well I just wasted a bit of time but learned something in the end. When working with the rails form helper collection_select you might be interested &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,103 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/04/12/rails-collectionselect-to-prompt-or/">rails collection_select to prompt or include_blank?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-12T00:00:00-07:00" pubdate data-updated="true">Apr 12<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Well I just wasted a bit of time but learned something in the end. When working with the rails form helper <a href="http://api.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html#M001593">collection_select</a> you might be interested in the difference between the prompt option and include_blank? option<div><br /></div><div>include_blank will always create an option tag, prompt will only create an option tag when creating a new record - in most cases I prefer include_blank</div><div><br /></div><div>both take either a boolean or a string, if true is passed then include_blank will create an option with no display text and prompt defaults to the display text of &#8216;Please Select&#8217;</div><div><pre style="font-size:large">collection_select(:product,<br />  :category_id,<br />  Category.all,    <br />  :id,    <br />  :title,    <br />  {:prompt => true}<br />)<br /><br />collection_select(:product,    <br />  :category_id,    <br />  Category.all,    <br />  :id,    <br />  :title,    <br />  {:include_blank => 'Please Select'}<br />)</pre></div><div>both of these result in the same html, but the first one will not include the &#8216;Please Select&#8217; option when you return to edit the previously created Product</div><div><br /></div><div>See also</div><div><ul><li><a href="http://api.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html">http://api.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html</a><a href="http://shiningthrough.co.uk/Select+helper+methods+in+Ruby+on+Rails"></a></li><li><a href="http://shiningthrough.co.uk/Select+helper+methods+in+Ruby+on+Rails">Select helper methods in Ruby on Rails</a></li></ul><div><br /></div></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Tarnschaf</div>
+<div class='content'>
+Thank you!</div>
+</div>
+<div class='comment'>
+<div class='author'>Eric Jones</div>
+<div class='content'>
+Thank you!  I was trying to figure out why I couldn&#39;t get the prompt to show up, now I know why.  I was editing an existing record.</div>
+</div>
+<div class='comment'>
+<div class='author'>Julien</div>
+<div class='content'>
+Thank you!! I was scratching my head to find how i could force &quot;prompt&quot; message in collection_select!</div>
+</div>
+<div class='comment'>
+<div class='author'>danieltsadok</div>
+<div class='content'>
+Thanks - I was wondering what the difference was&#8230;</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/04/11/accesskey-attribute-on-select-tag-is/">accesskey attribute on the select tag is not valid?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-11T00:00:00-07:00" pubdate data-updated="true">Apr 11<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Was just running some validation on a html form and it failed with the following error<br /><div>&#8221;<span class="Apple-style-span" style="font-style: italic;">Invalid markup: line 68: Attribute &#8220;accesskey&#8221; exists, but can not be used for this element.</span>&#8221;</div><br /><div>From <a href="http://www.w3.org/TR/html401/interact/forms.html#adef-accesskey">w3c</a> spec - &#8221;<span class="Apple-style-span" style="font-style: italic;">The following elements support the accesskey attribute: A, AREA, BUTTON, INPUT, LABEL, and LEGEND, and TEXTAREA.</span>&#8221;</div><br /><div>I have no idea why input and textarea would be supported but not select? this seems like a mistake? At least there is an easy work around - apply the accesskey attribute to the label tag that references the select menu.</div></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -383,80 +480,6 @@ just had the same problem.<br /><br />was trying to highlight a table row that h
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/01/21/2009-grasshopper-adventure-series/">2009 Grasshopper Adventure Series</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-01-21T00:00:00-08:00" pubdate data-updated="true">Jan 21<span>st</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-A really fast bike ride or is it a race? you choose<div><br /></div><div>The schedule for 2009 Grasshopper Adventure Series is out!</div><div><ul><li>2009-02-28 Old Caz</li><li>2009-03-07 Chileno Valley</li><li>2009-04-11 Lake Sonoma </li><li>2009-05-09 King Ridge </li></ul></div><div>this year there is actually an entry fee - times they are achanging</div><div>read more <a href="http://www.grasshopperadventureseries.blogspot.com/">here</a> </div><div><br /></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/01/17/best-binoculars-for-birding/">Best binoculars for birding</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-01-17T00:00:00-08:00" pubdate data-updated="true">Jan 17<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Well the best binoculars for birding are probably <a href="http://www.swarovskioptik.at/index.php?l=us&amp;css=&amp;nID=x434b769e932b90.44843491&amp;c=produkte">Swarovski</a> or <a href="http://www.zeiss.com/C1256BCF0020BE5F/allBySubject/7C0C4CE74A32E9ED852571CB00499727">Zeiss</a>, but both of these are very expensive and if you want to get really close to the same quality but for a third of the price I highly recommend Savannah Phase-Coated Waterproof Binoculars from <a href="http://www.telescope.com/">Orion</a>. The Savannah comes in at less then $400 vs over $1000. <div><br /><div><br /><a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://www.telescope.com/control/category/~category_id=binocular_birding/~pcategory=binoculars"><img style="display:block; margin:0px auto 10px; text-align:center;cursor:pointer; cursor:hand;width: 177px; height: 150px;" src="http://2.bp.blogspot.com/_vmq8pP42BnQ/SXIb3Rdw1mI/AAAAAAAABEA/vbGS8Qr5KQY/s400/28323432-177x150-0-0.jpg" border="0" alt="" id="BLOGGER_PHOTO_ID_5292323148508747362" /></a><br /></div><div>Don&#8217;t get me wrong, a good friend of mine has a pair of Swarovski and they are excellent! The key difference is in low light conditions the Swarovski do out perform the Orions but for most of the birding I do the Orions do the job and do it well. I have been using the <a href="http://www.amazon.com/Orion-Savannah-Phase-Coated-Waterproof-Binoculars/dp/B0000XMRIK">10x50</a> for over 4 years now and they are great for birding from the car, a smaller pair would be more ideal for hiking or other on the move activities.</div><div><ul><li><a href="http://www.telescope.com/control/product/~category_id=binocular_birding/~pcategory=binoculars/~product_id=09382">Savannah 8x32 Phase-Coated, WP Binoculars</a><br /></li><li><a href="http://www.telescope.com/control/product/~category_id=binocular_birding/~pcategory=binoculars/~product_id=09377">Savannah 8x42 Waterproof Binoculars</a></li></ul><div>Not sure why they name those two models differently they are both Phase-Coated and waterproof - they are the exactly the same just different size. Also, looking around on Orions site I do not see the 10x50 available anymore (one pair left over at Amazon)? hopefully they have not discontinued those. There is the <a href="http://www.telescope.com/control/product/~product_id=09385">Savannah Porro 10x50</a> but I am not familiar with that model, it appears to be less expensive and might be great buy for the money?</div></div></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/13/">&larr; Older</a>
@@ -474,6 +497,14 @@ Well the best binoculars for birding are probably <a href="http://www.swarovsk
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/02/07/testing/">testing</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/">Magick::ImageMagickError: WriteBlob Failed</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a>
       </li>
     
@@ -487,14 +518,6 @@ Well the best binoculars for birding are probably <a href="http://www.swarovsk
     
       <li class="post">
         <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: supply_drop)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e chef cookbook</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and puppet postgres 9.2 on ubuntu</a>
       </li>
     
   </ul>
@@ -539,7 +562,7 @@ Well the best binoculars for birding are probably <a href="http://www.swarovsk
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Jesse House -
+  Copyright &copy; 2014 - Jesse House -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
