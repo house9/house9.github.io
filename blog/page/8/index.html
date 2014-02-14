@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Recently got bit by checking valid? in some rails code, thought I would share.In this situation I was manually adding to the errors collection of an &hellip;">
+  <meta name="description" content="Just switched to a different Blogger Template - much wider and mo better!Also consolidated my posting, I had 20+ code samples on another blog. Used &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/19/updated-look/">Updated Look!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-19T00:00:00-07:00" pubdate data-updated="true">Aug 19<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Just switched to a different Blogger Template - much wider and mo better!<br /><br />Also consolidated my posting, I had 20+ code samples on another blog. Used the Blogger <a href="http://www.google.com/support/blogger/bin/answer.py?hl=en&amp;answer=97416">import / export tool</a>&nbsp;which was pretty seamless; needed to move a few code blocks over to <a href="http://gist.github.com/">gists</a> to get proper formatting but that was it!</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -425,43 +462,6 @@ Don&#8217;t bother installing <a href="http://www.gimp.org/">GIMP</a> using <a h
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/03/23/sorting-rails-view-with-willpaginate/">sorting rails view with will_paginate plugin</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-23T00:00:00-07:00" pubdate data-updated="true">Mar 23<span>rd</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-This solution for sorting data on rails index actions does NOT use ajax. Sometimes sorting with ajax is nice but often it is not actually as user friendly; breaking the browser back button, etc&#8230;<div><br /></div><div>Disclaimer 1: this code is probably using all kinds of ruby anti-patterns :) - but it is a very simple implementation and so I just went with it&#8230;</div><div><br /></div><div>Disclaimer 2: the title of the post might be a little miss leading as you can use this with or without the <a href="http://wiki.github.com/mislav/will_paginate/">will_paginate</a> plugin. In my case I am using it with the <a href="http://wiki.github.com/mislav/will_paginate/">will_paginate</a> plugin - and I highly recommend it!</div><div><br /></div><div>put this file in your rails lib directory /lib/sort_index.rb</div><div><script src="http://gist.github.com/341278.js?file=sort_index.rb"></script></div><div><br /></div><div>in your controller code, set up the SortIndex::Config (you can have more than one if you have multiple actions that need to support sorting</div><div><script src="http://gist.github.com/341290.js?file=sort_index_controller_usage.rb"></script></div><div><br /></div><div>then in your view code render your table headers using the sort object</div><div><script src="http://gist.github.com/341295.js?file=sort_index_view_usage.html.erb"></script></div><div><br /></div><div>Does not support the following:</div><div><ul><li>additional attributes on the anchor tags</li><li>additional attributes on the table header tags</li><li>additional query string parameters - might add this later, would be nice for search results</li></ul></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/9/">&larr; Older</a>
@@ -477,6 +477,10 @@ This solution for sorting data on rails index actions does NOT use ajax. Sometim
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/stub-paperclip-s3-uploads-in-rspec/">stub paperclip s3 uploads in rspec</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/">Magick::ImageMagickError: WriteBlob Failed</a>
@@ -496,10 +500,6 @@ This solution for sorting data on rails index actions does NOT use ajax. Sometim
     
       <li class="post">
         <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: supply_drop)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e chef cookbook</a>
       </li>
     
   </ul>

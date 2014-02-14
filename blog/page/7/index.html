@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="This week I needed to automatically size the height of an iframe to the height of its contents. After a bunch of Google searches I came across this &hellip;">
+  <meta name="description" content="I&#8217;ve been taking a look at asp.net mvc 3 beta with razor view templates.some of the examples on the net are from previous releases and things &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,51 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/10/29/best-overload-for-rendersection-does/">The best overload for &#8216;RenderSection&#8217; does not have a parameter named &#8216;optional&#8217;</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-29T00:00:00-07:00" pubdate data-updated="true">Oct 29<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I&#8217;ve been taking a look at <a href="http://www.microsoft.com/downloads/en/details.aspx?FamilyID=0abac7a3-b302-4644-bd43-febf300b2c51&amp;displaylang=en">asp.net mvc 3 beta</a> with razor view templates.<br /><div><br /></div><div>some of the examples on the net are from previous releases and things have changed; one that I came across was the RenderSection method which can be used in layout (master) files</div><div><br /></div><blockquote><span class="Apple-style-span" style="font-family: 'Courier New', Courier, monospace;">@RenderSection(&#8220;Header&#8221;, optional:true)</span></blockquote>will throw an exception<br /><br /><blockquote><span class="Apple-style-span" style="background-color: yellow;"><i>The best overload for &#8216;RenderSection&#8217; does not have a parameter named &#8216;optional&#8217;</i></span></blockquote>the newer syntax for rendering an optional section appears to be<br /><br /><blockquote><span class="Apple-style-span" style="font-family: 'Courier New', Courier, monospace;">@RenderSection(&#8220;Header&#8221;, false)&nbsp;</span></blockquote></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>giddy</div>
+<div class='content'>
+The parameter name has been renamed to required actually =P</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -615,43 +660,6 @@ Get up and running with rails 3 release candidate on ruby 1.9.2<br /><br />First
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/08/19/updated-look/">Updated Look!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-19T00:00:00-07:00" pubdate data-updated="true">Aug 19<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Just switched to a different Blogger Template - much wider and mo better!<br /><br />Also consolidated my posting, I had 20+ code samples on another blog. Used the Blogger <a href="http://www.google.com/support/blogger/bin/answer.py?hl=en&amp;answer=97416">import / export tool</a>&nbsp;which was pretty seamless; needed to move a few code blocks over to <a href="http://gist.github.com/">gists</a> to get proper formatting but that was it!</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/8/">&larr; Older</a>
@@ -667,6 +675,10 @@ Just switched to a different Blogger Template - much wider and mo better!<br /><
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/stub-paperclip-s3-uploads-in-rspec/">stub paperclip s3 uploads in rspec</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/">Magick::ImageMagickError: WriteBlob Failed</a>
@@ -686,10 +698,6 @@ Just switched to a different Blogger Template - much wider and mo better!<br /><
     
       <li class="post">
         <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: supply_drop)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e chef cookbook</a>
       </li>
     
   </ul>

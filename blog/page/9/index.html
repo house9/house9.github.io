@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Just started using the will_paginate plugin for my rails application. I wanted a Flickr or Digg style applied to the paging controls, did not find &hellip;">
+  <meta name="description" content="This solution for sorting data on rails index actions does NOT use ajax. Sometimes sorting with ajax is nice but often it is not actually as user &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/03/23/sorting-rails-view-with-willpaginate/">sorting rails view with will_paginate plugin</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-23T00:00:00-07:00" pubdate data-updated="true">Mar 23<span>rd</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+This solution for sorting data on rails index actions does NOT use ajax. Sometimes sorting with ajax is nice but often it is not actually as user friendly; breaking the browser back button, etc&#8230;<div><br /></div><div>Disclaimer 1: this code is probably using all kinds of ruby anti-patterns :) - but it is a very simple implementation and so I just went with it&#8230;</div><div><br /></div><div>Disclaimer 2: the title of the post might be a little miss leading as you can use this with or without the <a href="http://wiki.github.com/mislav/will_paginate/">will_paginate</a> plugin. In my case I am using it with the <a href="http://wiki.github.com/mislav/will_paginate/">will_paginate</a> plugin - and I highly recommend it!</div><div><br /></div><div>put this file in your rails lib directory /lib/sort_index.rb</div><div><script src="http://gist.github.com/341278.js?file=sort_index.rb"></script></div><div><br /></div><div>in your controller code, set up the SortIndex::Config (you can have more than one if you have multiple actions that need to support sorting</div><div><script src="http://gist.github.com/341290.js?file=sort_index_controller_usage.rb"></script></div><div><br /></div><div>then in your view code render your table headers using the sort object</div><div><script src="http://gist.github.com/341295.js?file=sort_index_view_usage.html.erb"></script></div><div><br /></div><div>Does not support the following:</div><div><ul><li>additional attributes on the anchor tags</li><li>additional attributes on the table header tags</li><li>additional query string parameters - might add this later, would be nice for search results</li></ul></div></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -425,43 +462,6 @@ I needed to generate a sign up button - this site is so much easier than opening
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/12/09/imeem-acquired-by-myspace-bummer/">imeem acquired by myspace - bummer</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-09T00:00:00-08:00" pubdate data-updated="true">Dec 9<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-nothing else to say really, imeem was a great service<div><br /></div><div>I&#8217;ve never liked myspace</div><div><br /></div><div><br /></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/10/">&larr; Older</a>
@@ -477,6 +477,10 @@ nothing else to say really, imeem was a great service<div><br /></div><div>I&#82
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/stub-paperclip-s3-uploads-in-rspec/">stub paperclip s3 uploads in rspec</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/">Magick::ImageMagickError: WriteBlob Failed</a>
@@ -496,10 +500,6 @@ nothing else to say really, imeem was a great service<div><br /></div><div>I&#82
     
       <li class="post">
         <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: supply_drop)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e chef cookbook</a>
       </li>
     
   </ul>
