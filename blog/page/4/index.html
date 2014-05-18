@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Oak Park resident Julie Bass now faces serious charges for setting up a vegetable garden in her front yard.Help her out sign the petition here: http &hellip;">
+  <meta name="description" content="I just uploaded a sample application that uses guard, coffee-script and a rake task to enable use of coffee-script with a rails 2.3 or 3.0 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/08/22/coffeescript-with-rails-23-and-rails-30/">CoffeeScript with Rails 2.3 and Rails 3.0</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-22T00:00:00-07:00" pubdate data-updated="true">Aug 22<span>nd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I just uploaded a sample application that uses guard, coffee-script and a rake task to enable use of coffee-script with a rails 2.3 or 3.0 application. Check out the README file on github for details.<br /><br /><a href="https://github.com/house9/with_coffee">https://github.com/house9/with_coffee</a><br /><br /><br /></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -458,43 +495,6 @@ So what caused that &#39;No exports&#39; exception and what fixed it? Having the
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/22/fixing-aspnet-mvc-authorizeattribute/">Fixing asp.net MVC AuthorizeAttribute</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-22T00:00:00-07:00" pubdate data-updated="true">Apr 22<span>nd</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-With very little code we can fix asp.net MVC AuthorizeAttribute<br />What problems does it have? <strong>Too much redirection</strong>.<br /><br /><ul><li>When making ajax calls a HTTP 401 (Unauthorized) would be better than a redirection</li><li>If I am already logged in but access a secure resource (controller / action) redirecting to the login page is far from ideal, an access denied view makes more sense</li></ul><div>When is the built in redirection appropriate? When making standard HTTP request and the user is not authenticated.</div><div><br /></div><div>it turns out it is&nbsp;relatively&nbsp;easy to fix these issues</div><div><ul><li>inherit AuthorizeAttribute</li><li>override&nbsp;HandleUnauthorizedRequest</li></ul></div><div>#1: Ajax request should not return redirection / html response</div><div><br /></div><div>if the user cannot authorize an action and the request is made via ajax we don&#8217;t want 200 or 302 response codes</div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-1vMk4_AhaKg/TbGZafGuVHI/AAAAAAAAC10/IPvdbbfA-AQ/s1600/200.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://3.bp.blogspot.com/-1vMk4_AhaKg/TbGZafGuVHI/AAAAAAAAC10/IPvdbbfA-AQ/s1600/200.png" /></a></div><div><br /></div><div>we do want&nbsp;401 Unauthorized, but we have to settle for a 403&nbsp;Forbidden</div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-X05Vh4FqOcA/TbGZkKkHk5I/AAAAAAAAC14/S_Efpn5ZTFU/s1600/403.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://1.bp.blogspot.com/-X05Vh4FqOcA/TbGZkKkHk5I/AAAAAAAAC14/S_Efpn5ZTFU/s1600/403.png" /></a></div><div><br /></div><div>The code to fix this</div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-eqaE-lHvRKo/TbGZ8ktgViI/AAAAAAAAC18/61UvrRd6iSc/s1600/cod-403.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://3.bp.blogspot.com/-eqaE-lHvRKo/TbGZ8ktgViI/AAAAAAAAC18/61UvrRd6iSc/s1600/cod-403.png" /></a></div><div><br /></div><div>#2: Authenticated users should not redirect to the login page, they should get an Access Denied page</div><div>The code to fix this</div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-Rw2pqIKL5_U/TbGahZTmGLI/AAAAAAAAC2A/TnRnnwCVQ_o/s1600/access-denied-redirect.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://1.bp.blogspot.com/-Rw2pqIKL5_U/TbGahZTmGLI/AAAAAAAAC2A/TnRnnwCVQ_o/s1600/access-denied-redirect.png" /></a></div><div><br /></div><div>Turns out very little code is needed - but seems like some of this should just be built in? Using the 401 response won&#8217;t work because the asp mvc framework must be picking that up later on and forcing the redirection to the login page, the 403 is not ideal but it is effective.</div><div><br /></div><div>The code for our class - AuthorizeFor</div><div><script src="https://gist.github.com/936865.js?file=AuthorizeForAttribute.cs"></script><br /><noscript>&amp;amp;amp;lt;br /&amp;amp;amp;gt; // view full gist at https://gist.github.com/936865.js?file=AuthorizeForAttribute.cs&amp;amp;amp;lt;br /&amp;amp;amp;gt; public class AuthorizeForAttribute : AuthorizeAttribute&amp;amp;amp;lt;br /&amp;amp;amp;gt; {&amp;amp;amp;lt;br /&amp;amp;amp;gt; protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)&amp;amp;amp;lt;br /&amp;amp;amp;gt; {&amp;amp;amp;lt;br /&amp;amp;amp;gt; if(filterContext.HttpContext.Request.IsAjaxRequest())&amp;amp;amp;lt;br /&amp;amp;amp;gt; {&amp;amp;amp;lt;br /&amp;amp;amp;gt; // filterContext.Result = new HttpStatusCodeResult(401, &#8220;Unauthorized&#8221;);&amp;amp;amp;lt;br /&amp;amp;amp;gt; filterContext.Result = new HttpStatusCodeResult(403, &#8220;Forbidden&#8221;);&amp;amp;amp;lt;br /&amp;amp;amp;gt; }&amp;amp;amp;lt;br /&amp;amp;amp;gt; else if(filterContext.HttpContext.User.Identity.IsAuthenticated)&amp;amp;amp;lt;br /&amp;amp;amp;gt; {&amp;amp;amp;lt;br /&amp;amp;amp;gt; filterContext.Result = new RedirectResult(&#8220;~/Error/AccessDenied?For=&#8221; + filterContext.HttpContext.Request.Url);                    &amp;amp;amp;lt;br /&amp;amp;amp;gt; }&amp;amp;amp;lt;br /&amp;amp;amp;gt; else&amp;amp;amp;lt;br /&amp;amp;amp;gt; {&amp;amp;amp;lt;br /&amp;amp;amp;gt; base.HandleUnauthorizedRequest(filterContext);                &amp;amp;amp;lt;br /&amp;amp;amp;gt; }&amp;amp;amp;lt;br /&amp;amp;amp;gt; }&amp;amp;amp;lt;br /&amp;amp;amp;gt; }&amp;amp;amp;lt;br /&amp;amp;amp;gt; </noscript></div><div><br /></div><div>Usage of our AuthorizeFor attribute</div><div><script src="https://gist.github.com/936875.js?file=AuthorizeForAttribute-Usage.cs"></script><br /><noscript>&amp;amp;amp;lt;br /&amp;amp;amp;gt; // view full gist at https://gist.github.com/936875.js?file=AuthorizeForAttribute-Usage.cs&amp;amp;amp;lt;br /&amp;amp;amp;gt; [AuthorizeFor]&amp;amp;amp;lt;br /&amp;amp;amp;gt; public ActionResult Index()&amp;amp;amp;lt;br /&amp;amp;amp;gt; {&amp;amp;amp;lt;br /&amp;amp;amp;gt; // &#8230;.&amp;amp;amp;lt;br /&amp;amp;amp;gt; &amp;amp;amp;lt;br /&amp;amp;amp;gt; [AuthorizeFor(Roles = &#8220;Create, View&#8221;)]&amp;amp;amp;lt;br /&amp;amp;amp;gt; public ActionResult Create()&amp;amp;amp;lt;br /&amp;amp;amp;gt; {&amp;amp;amp;lt;br /&amp;amp;amp;gt; // &#8230;.&amp;amp;amp;lt;br /&amp;amp;amp;gt; &amp;amp;amp;lt;br /&amp;amp;amp;gt; [HttpPost]&amp;amp;amp;lt;br /&amp;amp;amp;gt; [AuthorizeFor(Roles = &#8220;Create&#8221;)]&amp;amp;amp;lt;br /&amp;amp;amp;gt; public ActionResult Create(ViewModel.Foo foo)&amp;amp;amp;lt;br /&amp;amp;amp;gt; {&amp;amp;amp;lt;br /&amp;amp;amp;gt; // &#8230;.&amp;amp;amp;lt;br /&amp;amp;amp;gt; </noscript></div><div><br /></div><div>Resources</div><div><ul><li><a href="http://msdn.microsoft.com/en-us/library/system.web.mvc.authorizeattribute.aspx">MSDN AuthorizeAttribute</a></li><li><a href="http://stackoverflow.com/questions/5519393/c-mvc-how-to-override-configured-authentication-redirect">Stack Overflow</a> post about the 401 403 issue</li></ul><div><br /></div></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -510,6 +510,10 @@ With very little code we can fix asp.net MVC AuthorizeAttribute<br />What proble
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/02/13/stub-paperclip-s3-uploads-in-rspec/">stub paperclip s3 uploads in rspec</a>
@@ -529,10 +533,6 @@ With very little code we can fix asp.net MVC AuthorizeAttribute<br />What proble
     
       <li class="post">
         <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: supply_drop)</a>
       </li>
     
   </ul>

@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Ok, it has been 5 years since I have updated my personal webpage, once again it is just a 1 page web site; lean and mean ~:PIt might load a bit slow &hellip;">
+  <meta name="description" content="Random Coding Links - #1wanted to keep track of these somewhereContinuous Integration: From Theory to PracticeMVC Contrib Google Chart APIASP.NET &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/12/15/random-coding-links-1/">Random Coding Links - #1</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-12-15T00:00:00-08:00" pubdate data-updated="true">Dec 15<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Random Coding Links - #1<br />wanted to keep track of these somewhere<br /><br /><ul><li><a href="http://dotnet.org.za/cjlotz/archive/2007/12/03/continuous-integration-from-theory-to-practice.aspx">Continuous Integration: From Theory to Practice</a></li><li><a class="NoUnderline" id="ctl00_ctl00_WideContent_ProjectTitleControl1_ProjectTitleLink" href="http://www.codeplex.com/MVCContrib">MVC Contrib</a> </li><li><a href="http://code.google.com/apis/chart/">Google Chart API</a></li><li><a href="http://forums.asp.net/1146.aspx">ASP.NET MVC Forum</a></li><li><a href="http://blog.wekeroad.com/category/mvc/">Rob Conery on MVC</a></li></ul></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -407,43 +444,6 @@ Check out - <a href="http://www.assembla.com/">http://www.assembla.com/</a><br /
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2007/09/27/tfs-and-pain/">TFS and the pain</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-09-27T00:00:00-07:00" pubdate data-updated="true">Sep 27<span>th</span>, 2007</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-We have been using TFS (Microsoft Team Foundation System) at work for Source Control for a few months now; we&#8217;ve run into numerous issues none of which I am going to get into now; this post is really just some notes for my future reference.<br /><br />if you get into real trouble with TFS the following steps should almost definitely get you back to a fresh place<br /><ul><li>Start -> Programs -> Visual Studio 2005 Tools -> command line</li><li>tf workspaces </li><li>- this will show you your workspace name; probably the same as your machine</li><li>tf workspaces /remove:* </li><li>- this will remove local system cache of TFS</li><li>tf workspace /delete /server:{<span style="color:#3333ff;">servername</span>} {<span style="color:#ff0000;">workspacename</span>}</li><li>- this will remove from the server</li><li>- it will prompt you to verify - type in y</li><li>tf workspace /new /server:{<span style="color:#3333ff;">servername</span>} {<span style="color:#ff0000;">newworkspacename</span>}</li><li>- this will launch the GUI to map the server to your local system</li><li>- server = $/</li><li>- local = C:\TFS</li><li>cd C:\TFS</li><li>tf get </li><li>- pull down all the files</li></ul><p>This maps the root of the TFS server to C:\TFS, you may of course want it mapped to another location on your drive.</p><p>Check out tf command on <a href="http://msdn2.microsoft.com/en-us/library/z51z7zy0(VS.80).aspx">msdn</a></p></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/18/">&larr; Older</a>
@@ -459,6 +459,10 @@ We have been using TFS (Microsoft Team Foundation System) at work for Source Con
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/02/13/stub-paperclip-s3-uploads-in-rspec/">stub paperclip s3 uploads in rspec</a>
@@ -478,10 +482,6 @@ We have been using TFS (Microsoft Team Foundation System) at work for Source Con
     
       <li class="post">
         <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: supply_drop)</a>
       </li>
     
   </ul>

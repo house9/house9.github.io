@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="This solution for sorting data on rails index actions does NOT use ajax. Sometimes sorting with ajax is nice but often it is not actually as user &hellip;">
+  <meta name="description" content="Don&#8217;t bother installing GIMP using MacPorts; I started this process and it ran for over an hour before I stopped the install. It has alot of &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/04/14/gimp-install-on-mac/">GIMP install on MAC</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-14T00:00:00-07:00" pubdate data-updated="true">Apr 14<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Don&#8217;t bother installing <a href="http://www.gimp.org/">GIMP</a> using <a href="http://www.macports.org/">MacPorts</a>; I started this process and it ran for over an hour before I stopped the install. It has alot of dependencies and MacPorts was busy installing all of them.<br /><br />Just go to <a href="http://gimp.lisanet.de/Website/Download.html">http://gimp.lisanet.de/Website/Download.html</a> and download the package for your OS version<br /><br />around 75mb download but installed in minutes :)</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -425,43 +462,6 @@ I needed to generate a sign up button - this site is so much easier than opening
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/01/06/ruby-http-get-with-nethttp/">Ruby Http Get with Net::HTTP</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-01-06T00:00:00-08:00" pubdate data-updated="true">Jan 6<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-<script src="http://gist.github.com/270459.js"></script><br />Resources<br /><ul><li><a href="http://ruby-doc.org/stdlib/libdoc/net/http/rdoc/classes/Net/HTTP.html">Net::HTTP ruby docs</a></li><li><a href="http://stackoverflow.com/questions/1252210/parametrized-get-request-in-ruby">Stackoverflow post</a></li></ul><br /><br /><div style="display:none"><br />require &#8216;net/http&#8217;<br />require &#8216;uri&#8217;<br /><br />def get_html_content(requested_url)<br />url = URI.parse(requested_url)<br />full_path = (url.query.blank?) ? url.path : &#8220;#{url.path}?#{url.query}&#8221;<br />the_request = Net::HTTP::Get.new(full_path)<br /><br />the_response = Net::HTTP.start(url.host, url.port) { |http|<br />http.request(the_request)<br />}<br /><br />raise &#8220;Response was not 200, response was #{the_response.code}&#8221; if the_response.code != &#8220;200&#8221;<br />return the_response.body       <br />end   <br /><br /># this will fail with ArgumentError: HTTP request path is empty<br />s = get_html_content(&#8220;http://www.google.com&#8221;)<br /># these should be fine<br />s = get_html_content(&#8220;http://www.google.com/&#8221;) <br />s = get_html_content(&#8220;http://github.com/search?q=http&#8221;)<br /># above code does not handle redirects but raises exception for non-200 <br />s = get_html_content(&#8220;http://www.yahoo.com/&#8221;) # http 302<br /></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/10/">&larr; Older</a>
@@ -477,6 +477,10 @@ I needed to generate a sign up button - this site is so much easier than opening
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/02/13/stub-paperclip-s3-uploads-in-rspec/">stub paperclip s3 uploads in rspec</a>
@@ -496,10 +500,6 @@ I needed to generate a sign up button - this site is so much easier than opening
     
       <li class="post">
         <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: supply_drop)</a>
       </li>
     
   </ul>

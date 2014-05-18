@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Visual Studio Solutions have the &#8220;Add New Solution Folder&#8221; option.I don&#8217;t know about you but this makes me think it is going to &hellip;">
+  <meta name="description" content="MSTest generates trx (xml) files which can be viewed in Visual Studio. But often you will be executing MSTest from the command line via your &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,56 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/03/11/mstest-output-result-to-html/">MSTest output result to HTML</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-11T00:00:00-08:00" pubdate data-updated="true">Mar 11<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<a href="http://msdn.microsoft.com/en-us/library/ms182489(v=vs.80).aspx">MSTest</a> generates trx (xml) files which can be viewed in Visual Studio. But often you will be executing MSTest from the command line via your Continuous Integration (CI) server and you will want to view them in an html format outside Visual Studio.<br /><br /><a href="http://trx2html.codeplex.com/">trx2html</a> to the rescue!<br /><br /><ul><li>download the zip file here -&nbsp;<a href="http://trx2html.codeplex.com/">http://trx2html.codeplex.com/</a></li><li>unzip and put the files somewhere</li><ul><li>I choose C:\Program Files (x86)\trx2html</li></ul><li>execute it from the command line&nbsp;</li></ul><div><br /></div><div><pre><span class="Apple-style-span" style="color: #38761d;"># in YourTestProject\bin\Release</span><br /><span class="Apple-style-span" style="color: #444444;">"C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\mstest.exe"</span> <span class="Apple-style-span" style="color: #0b5394;">/testcontainer:</span>YourTestProject.dll <span class="Apple-style-span" style="color: #0b5394;">/resultsfile:</span>TestResult.trx<br /><br /><span class="Apple-style-span" style="color: #444444;">"C:\Program Files (x86)\trx2html\0.6\trx2html.exe"</span> TestResult.trx<br /><span class="Apple-style-span" style="color: #38761d;"># outputs TestResult.trx.htm</span><br /></pre></div><div><br /></div><div><br /></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+Try running it from the directory that your trx file is in<br /><br />&gt; cd DIRECTORY_WIHT_TRX_FILE<br /><br />&gt; &quot;D:\share\TRX2HTML_A\0.6\trx2html.exe&quot; TRX_FILE_NAME</div>
+</div>
+<div class='comment'>
+<div class='author'>Atul Mhetre</div>
+<div class='content'>
+Hi,<br /><br />I am having problem in converting trx file into HTML file.<br /><br />I navigate to trx2htm.exe in command prompt and used command as - D:\share\TRX2HTML_A\0.6&gt;cd D:\share\TRX2HTML_A\0.6<br /><br />D:\share\TRX2HTML_A\0.6&gt;trx2html atul.mhetre_NTPC01395 2013-01-22 15_05_51.trx<br />trx2html.exe<br />  Create HTML reports of VSTS TestRuns. (c)rido&#39;08<br />version:0.6.0.2798<br /><br />Usage: trx2html .trx<br /><br />D:\share\TRX2HTML_A\0.6&gt;<br /><br />So I am getting output as -<br /><br />trx2html.exe<br />  Create HTML reports of VSTS TestRuns. (c)rido&#39;08<br />version:0.6.0.2798<br /><br />Usage: trx2html .trx<br /><br />And no html file is generating. Please help.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -415,43 +465,6 @@ Sometimes Ruby blows my mind, I needed to get the start date and end date of the
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/10/29/remote-desktop-mac-osx-to-ubuntu/">Remote desktop mac OSX to Ubuntu</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-10-29T00:00:00-07:00" pubdate data-updated="true">Oct 29<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-There is a good program (free) for remote connections between mac OSX and <a href="http://www.ubuntu.com/">Ubuntu</a>. It is called&nbsp;<a href="http://sourceforge.net/projects/cotvnc/">Chicken of the VNC</a>&nbsp;- in my case I needed to remote into an Ubuntu (9.04) desktop from my mac.<br /><br />First step - allow remote access on the Ubuntu machine<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/_vmq8pP42BnQ/TMtEx7LMHOI/AAAAAAAACyo/Bf6NsdQJYOY/s1600/blog-cvnc-01.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="400" src="http://1.bp.blogspot.com/_vmq8pP42BnQ/TMtEx7LMHOI/AAAAAAAACyo/Bf6NsdQJYOY/s400/blog-cvnc-01.png" width="380" /></a></div><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/_vmq8pP42BnQ/TMtEyCAzGzI/AAAAAAAACys/X1WGq2_VY08/s1600/blog-cvnc-01.2.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="355" src="http://1.bp.blogspot.com/_vmq8pP42BnQ/TMtEyCAzGzI/AAAAAAAACys/X1WGq2_VY08/s400/blog-cvnc-01.2.png" width="400" /></a></div><br />Install Chicken of the VNC<br /><br /><ul><li>download from&nbsp;<a href="http://sourceforge.net/projects/cotvnc/">http://sourceforge.net/projects/cotvnc/</a></li><li>install the dmg file</li><li>then drag the Chicken into your Applications folder</li></ul><br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/_vmq8pP42BnQ/TMtEy0IvLjI/AAAAAAAACyw/WbWopHr_EVQ/s1600/blog-cvnc-02.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="337" src="http://1.bp.blogspot.com/_vmq8pP42BnQ/TMtEy0IvLjI/AAAAAAAACyw/WbWopHr_EVQ/s640/blog-cvnc-02.png" width="640" /></a></div><br />Then open the program and type in the IP address of the machine you wish to connect to.<br />Done - you are now remoted!<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/_vmq8pP42BnQ/TMtEzyqVO6I/AAAAAAAACy0/D5YAplc3UcY/s1600/blog-cvnc-03.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="300" src="http://2.bp.blogspot.com/_vmq8pP42BnQ/TMtEzyqVO6I/AAAAAAAACy0/D5YAplc3UcY/s400/blog-cvnc-03.png" width="400" /></a></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -467,6 +480,10 @@ There is a good program (free) for remote connections between mac OSX and <a hre
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/02/13/stub-paperclip-s3-uploads-in-rspec/">stub paperclip s3 uploads in rspec</a>
@@ -486,10 +503,6 @@ There is a good program (free) for remote connections between mac OSX and <a hre
     
       <li class="post">
         <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: supply_drop)</a>
       </li>
     
   </ul>

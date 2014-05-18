@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="just replaced the keyboard on my sisters Sony Vaio laptop - on the bottom is says it is a PCG-9RLF, but then it also says it is a PCG-K23? anyhow I &hellip;">
+  <meta name="description" content="The following sql statement will return information about the currently executing MSSQL jobs.Run it against the msdb databaseResourcesMSDN: &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/08/04/get-list-of-mssql-jobs-that-are/">Get list of MSSQL jobs that are currently running</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-08-04T00:00:00-07:00" pubdate data-updated="true">Aug 4<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+The following sql statement will return information about the currently executing MSSQL jobs.<div>Run it against the msdb database</div><div><br /></div><div><div><span class="Apple-style-span"   style="font-family:Arial;font-size:100%;"><span class="Apple-style-span"  style=" white-space: pre;font-size:13px;"><br /></span></span></div></div><br /><script src="http://gist.github.com/161536.js"></script><br /><div><br />Resources<br /><ul><li><a href="http://msdn.microsoft.com/en-us/library/ms186722.aspx">MSDN: sp_help_job</a></li><li><a href="http://www.sqlteam.com/article/controlling-jobs-in-transact-sql">Controlling Jobs in Transact-SQL</a></li></ul></div></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -399,43 +436,6 @@ here is a bash script I put together to launch my rails development environment,
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/04/25/strange-behavior-with-rails/">Strange behavior with Rails find_or_initialize_by_id and Postgresql</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-04-25T00:00:00-07:00" pubdate data-updated="true">Apr 25<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-The following code sample worked as I would expect when using MySql database - when the :widget_id is 0 it creates a new record with an id of 1; but after switching to Postgresql it was inserting a record into the database with an id of 0 (zero)?<div><br /></div><div><script src="http://gist.github.com/101669.js"></script></div><br /><div><span class="Apple-style-span" style="font-weight: bold;">Note:</span> params[:widget_id] does have a value of 0 (zero) when I want to generate a new record vs an actual value when doing an edit. This is a non-standard rails form, I did not experience any issues with a standard new/create view/action scenario.</div><div><br /></div><div><br /></div><div><br /></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/12/">&larr; Older</a>
@@ -451,6 +451,10 @@ The following code sample worked as I would expect when using MySql database - w
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/02/13/stub-paperclip-s3-uploads-in-rspec/">stub paperclip s3 uploads in rspec</a>
@@ -470,10 +474,6 @@ The following code sample worked as I would expect when using MySql database - w
     
       <li class="post">
         <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: supply_drop)</a>
       </li>
     
   </ul>

@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="I was searching around stackoverflow trying to figure how to stub out s3 uploads with paperclip when running unit tests; came across a few that &hellip;">
+  <meta name="description" content="Expected undefined to equal 7. We recently started using Protractor for end to end testing of an angular application. Protractor returns promises &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,148 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-17T19:54:00-07:00" pubdate data-updated="true">May 17<span>th</span>, 2014</time>
+        
+         | <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote><p>Expected undefined to equal 7.</p></blockquote>
+
+<p>We recently started using <a href="https://github.com/angular/protractor">Protractor</a> for end to end testing of an angular application. Protractor returns promises when locating elements on the page, in some cases you may need to do your assertions inside of callback functions.</p>
+
+<p>For example:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// this works just fine</span>
+</span><span class='line'><span class="nx">expect</span><span class="p">(</span><span class="nx">element</span><span class="p">(</span><span class="nx">by</span><span class="p">.</span><span class="nx">id</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)).</span><span class="nx">getText</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">&#39;x@x.com&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// this will fail</span>
+</span><span class='line'><span class="nx">expect</span><span class="p">(</span><span class="nx">element</span><span class="p">(</span><span class="nx">by</span><span class="p">.</span><span class="nx">id</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)).</span><span class="nx">getText</span><span class="p">().</span><span class="nx">length</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// getText retuns a promise and not a string, instead...</span>
+</span><span class='line'><span class="nx">element</span><span class="p">(</span><span class="nx">by</span><span class="p">.</span><span class="nx">id</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)).</span><span class="nx">getText</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">expect</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can use the elementexplorer to debug your locators, but be aware that even non-matched elements will return an &lsquo;Element Finder&rsquo; object.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">node</span> <span class="nx">node_modules</span><span class="o">/</span><span class="nx">protractor</span><span class="o">/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">elementexplorer</span><span class="p">.</span><span class="nx">js</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">Getting</span> <span class="nx">page</span> <span class="nx">at</span><span class="o">:</span> <span class="nx">about</span><span class="o">:</span><span class="nx">blank</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;http://www.angularjs.org&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="kc">null</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="nx">element</span><span class="p">(</span><span class="nx">by</span><span class="p">.</span><span class="nx">model</span><span class="p">(</span><span class="s1">&#39;xxxx&#39;</span><span class="p">))</span>
+</span><span class='line'><span class="p">{</span> <span class="nx">click</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">sendKeys</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">getTagName</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">getCssValue</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">getAttribute</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">getText</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">getSize</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">getLocation</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">isEnabled</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">isSelected</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">submit</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">clear</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">isDisplayed</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">getOuterHtml</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">getInnerHtml</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">toWireValue</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">findElements</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">isElementPresent</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">evaluate</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">findElement</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">find</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">isPresent</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">element</span><span class="o">:</span> <span class="p">{</span> <span class="p">[</span><span class="nb">Function</span><span class="p">]</span> <span class="nx">all</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">]</span> <span class="p">},</span>
+</span><span class='line'>  <span class="s1">&#39;$&#39;</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="s1">&#39;$$&#39;</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">]</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>However, invoking one of the methods on an unmatched element will raise a <code>NoSuchElementError</code>.</p>
+
+<p>Resources:</p>
+
+<ul>
+<li><a href="https://github.com/angular/protractor/blob/master/docs/api.md">https://github.com/angular/protractor/blob/master/docs/api.md</a></li>
+<li><a href="http://www.youtube.com/watch?v=aQipuiTcn3U">http://www.youtube.com/watch?v=aQipuiTcn3U</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -911,43 +1053,6 @@ Example Vagrantfile below for setting up multiple virtual machines and using che
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/03/21/hipchat-is-now-free/">HipChat is now free!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-21T00:00:00-07:00" pubdate data-updated="true">Mar 21<span>st</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Just got an email from <a href="https://www.hipchat.com/">HipChat</a> - now free for small groups - awesome!<br /><br /><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-5_HhmM8Ilx8/UUs5raR5bHI/AAAAAAAAC7A/IJ_-ooOZJhY/s1600/hipchat.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://3.bp.blogspot.com/-5_HhmM8Ilx8/UUs5raR5bHI/AAAAAAAAC7A/IJ_-ooOZJhY/s1600/hipchat.png" /></a></div><br /></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -961,6 +1066,10 @@ Just got an email from <a href="https://www.hipchat.com/">HipChat</a> - now free
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/02/13/stub-paperclip-s3-uploads-in-rspec/">stub paperclip s3 uploads in rspec</a>
@@ -980,10 +1089,6 @@ Just got an email from <a href="https://www.hipchat.com/">HipChat</a> - now free
     
       <li class="post">
         <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: supply_drop)</a>
       </li>
     
   </ul>

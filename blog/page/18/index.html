@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="so off and on the last month I have messed around with bits of rails stuff; reading books, coding associations, migrations, and installing plugins &hellip;">
+  <meta name="description" content="We have been using TFS (Microsoft Team Foundation System) at work for Source Control for a few months now; we&#8217;ve run into numerous issues none &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/09/27/tfs-and-pain/">TFS and the pain</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-09-27T00:00:00-07:00" pubdate data-updated="true">Sep 27<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+We have been using TFS (Microsoft Team Foundation System) at work for Source Control for a few months now; we&#8217;ve run into numerous issues none of which I am going to get into now; this post is really just some notes for my future reference.<br /><br />if you get into real trouble with TFS the following steps should almost definitely get you back to a fresh place<br /><ul><li>Start -> Programs -> Visual Studio 2005 Tools -> command line</li><li>tf workspaces </li><li>- this will show you your workspace name; probably the same as your machine</li><li>tf workspaces /remove:* </li><li>- this will remove local system cache of TFS</li><li>tf workspace /delete /server:{<span style="color:#3333ff;">servername</span>} {<span style="color:#ff0000;">workspacename</span>}</li><li>- this will remove from the server</li><li>- it will prompt you to verify - type in y</li><li>tf workspace /new /server:{<span style="color:#3333ff;">servername</span>} {<span style="color:#ff0000;">newworkspacename</span>}</li><li>- this will launch the GUI to map the server to your local system</li><li>- server = $/</li><li>- local = C:\TFS</li><li>cd C:\TFS</li><li>tf get </li><li>- pull down all the files</li></ul><p>This maps the root of the TFS server to C:\TFS, you may of course want it mapped to another location on your drive.</p><p>Check out tf command on <a href="http://msdn2.microsoft.com/en-us/library/z51z7zy0(VS.80).aspx">msdn</a></p></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -415,43 +452,6 @@ I have recently started using <a href="http://www.openqa.org/selenium/">Selenium
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2007/02/27/2007-grasshopper-1-old-caz-results/">2007 Grasshopper #1 - Old Caz Results</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-02-27T00:00:00-08:00" pubdate data-updated="true">Feb 27<span>th</span>, 2007</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-2007 Grasshopper Adventure Series #1 - Old Caz - Results are now up!<br /><br />Check them out <a href="http://www.norcalvelo.com/race/racing.aspx?LoadXmlDocument1=information%5cgrasshopper_results_2007_race_1.xls&LoadXmlDocument2=information%5cgrasshopper_results_2007_race_1_info.xml&amp;LoadXmlDocument3=information%5cgrasshopper_results_2007_race_1_sponsors.xml">here</a><br /><br />Also pics <a href="http://www.flickr.com/photos/7124108@N07/sets/72157594559393077/">here</a><br /><br />And the blog - <a href="http://www.grasshopperadventureseries.blogspot.com">http://www.grasshopperadventureseries.blogspot.com</a></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/19/">&larr; Older</a>
@@ -467,6 +467,10 @@ I have recently started using <a href="http://www.openqa.org/selenium/">Selenium
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/02/13/stub-paperclip-s3-uploads-in-rspec/">stub paperclip s3 uploads in rspec</a>
@@ -486,10 +490,6 @@ I have recently started using <a href="http://www.openqa.org/selenium/">Selenium
     
       <li class="post">
         <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: supply_drop)</a>
       </li>
     
   </ul>

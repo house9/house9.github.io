@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: angular | house9]]></title>
+  <link href="http://jessehouse.com/blog/categories/angular/atom.xml" rel="self"/>
+  <link href="http://jessehouse.com/"/>
+  <updated>2014-05-17T20:43:16-07:00</updated>
+  <id>http://jessehouse.com/</id>
+  <author>
+    <name><![CDATA[Jesse House]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Protractor - promises all the way down]]></title>
+    <link href="http://jessehouse.com/blog/2014/05/17/protractor-promises-all-the-way-down/"/>
+    <updated>2014-05-17T19:54:00-07:00</updated>
+    <id>http://jessehouse.com/blog/2014/05/17/protractor-promises-all-the-way-down</id>
+    <content type="html"><![CDATA[<blockquote><p>Expected undefined to equal 7.</p></blockquote>
+
+<p>We recently started using <a href="https://github.com/angular/protractor">Protractor</a> for end to end testing of an angular application. Protractor returns promises when locating elements on the page, in some cases you may need to do your assertions inside of callback functions.</p>
+
+<p>For example:</p>
+
+<p>```javascript
+// this works just fine
+expect(element(by.id(&lsquo;email&rsquo;)).getText()).toEqual(&lsquo;<a href="&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#58;&#120;&#64;&#x78;&#46;&#x63;&#111;&#x6d;">&#x78;&#64;&#x78;&#x2e;&#x63;&#x6f;&#x6d;</a>&rsquo;);</p>
+
+<p>// this will fail
+expect(element(by.id(&lsquo;email&rsquo;)).getText().length).toEqual(7);</p>
+
+<p>// getText retuns a promise and not a string, instead&hellip;
+element(by.id(&lsquo;email&rsquo;)).getText().then(function (data) {
+  expect(data.length).toEqual(7);
+});</p>
+
+<p>```</p>
+
+<p>You can use the elementexplorer to debug your locators, but be aware that even non-matched elements will return an &lsquo;Element Finder&rsquo; object.</p>
+
+<p>```javascript
+node node_modules/protractor/bin/elementexplorer.js</p>
+
+<p>Getting page at: about:blank</p>
+
+<blockquote><p>browser.get(&lsquo;<a href="http://www.angularjs.org">http://www.angularjs.org</a>&rsquo;);
+null
+element(by.model(&lsquo;xxxx&rsquo;))
+{ click: [Function],
+  sendKeys: [Function],
+  getTagName: [Function],
+  getCssValue: [Function],
+  getAttribute: [Function],
+  getText: [Function],
+  getSize: [Function],
+  getLocation: [Function],
+  isEnabled: [Function],
+  isSelected: [Function],
+  submit: [Function],
+  clear: [Function],
+  isDisplayed: [Function],
+  getOuterHtml: [Function],
+  getInnerHtml: [Function],
+  toWireValue: [Function],
+  findElements: [Function],
+  isElementPresent: [Function],
+  evaluate: [Function],
+  findElement: [Function],
+  find: [Function],
+  isPresent: [Function],
+  element: { [Function] all: [Function] },
+  &lsquo;$&rsquo;: [Function],
+  &lsquo;$$&rsquo;: [Function] }
+```</p></blockquote>
+
+<p>However, invoking one of the methods on an unmatched element will raise a <code>NoSuchElementError</code>.</p>
+
+<p>Resources:</p>
+
+<ul>
+<li><a href="https://github.com/angular/protractor/blob/master/docs/api.md">https://github.com/angular/protractor/blob/master/docs/api.md</a></li>
+<li><a href="http://www.youtube.com/watch?v=aQipuiTcn3U">http://www.youtube.com/watch?v=aQipuiTcn3U</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

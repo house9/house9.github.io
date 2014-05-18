@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Just switched to a different Blogger Template - much wider and mo better!Also consolidated my posting, I had 20+ code samples on another blog. Used &hellip;">
+  <meta name="description" content="Get up and running with rails 3 release candidate on ruby 1.9.2First step install rvm (ruby version manager)&nbsp;- note that rvm does not work on &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/20/ruby-192-and-rails-3rc-with-rvm/">ruby 1.9.2 and rails 3rc with rvm</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-20T00:00:00-07:00" pubdate data-updated="true">Aug 20<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Get up and running with rails 3 release candidate on ruby 1.9.2<br /><br />First step install <a href="http://rvm.beginrescueend.com/">rvm (ruby version manager)</a>&nbsp;- note that rvm does not work on windows, for windows try&nbsp;<a href="http://github.com/vertiginous/pik/">pik</a><br /><br />You will need to wait between each step as installation times will vary<br /><br /><span class="Apple-style-span" style="color: #274e13;"># install 1.9.2 using rvm</span><br /><span class="Apple-style-span" style="background-color: #444444;"><span class="Apple-style-span" style="color: #f3f3f3;">&nbsp;rvm install 1.9.2 &nbsp;</span></span><br /><span class="Apple-style-span" style="color: #274e13;"># this installed the official release 1.9.2-p0</span><br /><br /><span class="Apple-style-span" style="color: #274e13;"># switch to 1.9.2</span><br /><span class="Apple-style-span" style="background-color: #444444;"><span class="Apple-style-span" style="color: #f3f3f3;">&nbsp;rvm 1.9.2&nbsp;</span></span><br /><span class="Apple-style-span" style="color: #274e13;"># gem install rails rc</span><br /><span class="Apple-style-span" style="background-color: #444444;"><span class="Apple-style-span" style="color: #f3f3f3;">&nbsp;gem install rails &#8211;pre&nbsp;</span></span><br /><div><span class="Apple-style-span" style="color: #274e13;"><br /></span></div><div><span class="Apple-style-span" style="color: #274e13;"># create a new rails app, in this case &#8216;sample-r3&#8217;, this differs from older versions of rails; new is a required arg&nbsp;</span></div><span class="Apple-style-span" style="background-color: #444444;"><span class="Apple-style-span" style="color: #f3f3f3;">&nbsp;rails new sample-r3&nbsp;</span></span><br /><span class="Apple-style-span" style="color: #274e13;"># navigate to the root of your new rails app</span><br /><span class="Apple-style-span" style="background-color: #444444;"><span class="Apple-style-span" style="color: #f3f3f3;">&nbsp;cd sample-r3&nbsp;</span></span><br /><span class="Apple-style-span" style="color: #274e13;"># install the app dependencies - in this case sqlite3, see Gemfile in the root dir</span><br /><span class="Apple-style-span" style="background-color: #444444;"><span class="Apple-style-span" style="color: #f3f3f3;">&nbsp;bundle install&nbsp;</span></span><br /><div><br /></div><div><span class="Apple-style-span" style="color: #274e13;"># generate a user scaffold, note g is shortcut for generate</span></div><div><div><span class="Apple-style-span" style="background-color: #444444;"><span class="Apple-style-span" style="color: #f3f3f3;">&nbsp;rails g scaffold User name:string email:string&nbsp;</span></span></div><div><span class="Apple-style-span" style="color: #274e13;"># create the database table users</span></div><div><span class="Apple-style-span" style="background-color: #444444;"><span class="Apple-style-span" style="color: #f3f3f3;">&nbsp;rake db:migrate&nbsp;</span></span></div><div><span class="Apple-style-span" style="color: #274e13;"># start up the rails server, note s is shortcut for server</span></div><div><span class="Apple-style-span" style="background-color: #444444;"><span class="Apple-style-span" style="color: #f3f3f3;">&nbsp;rails s&nbsp;</span></span></div></div><div><br /></div><div>Browse to http://localhost:3000/users and we are up and running and yes the scaffold pages still have the same old look and feel</div><br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/_vmq8pP42BnQ/TG69P81pQGI/AAAAAAAACwE/bg2WC5ruy9w/s1600/rails3-scaffold-01.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="316" src="http://1.bp.blogspot.com/_vmq8pP42BnQ/TG69P81pQGI/AAAAAAAACwE/bg2WC5ruy9w/s640/rails3-scaffold-01.png" width="640" /></a></div><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/_vmq8pP42BnQ/TG69RpI5fFI/AAAAAAAACwM/oxfKgmXN0Cs/s1600/rails3-scaffold-02.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="360" src="http://4.bp.blogspot.com/_vmq8pP42BnQ/TG69RpI5fFI/AAAAAAAACwM/oxfKgmXN0Cs/s640/rails3-scaffold-02.png" width="640" /></a></div><br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/_vmq8pP42BnQ/TG69S8z2W5I/AAAAAAAACwU/_hfjTK-1hHo/s1600/rails3-scaffold-03.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="360" src="http://2.bp.blogspot.com/_vmq8pP42BnQ/TG69S8z2W5I/AAAAAAAACwU/_hfjTK-1hHo/s640/rails3-scaffold-03.png" width="640" /></a></div><br />In the past I have tried installing and running rails3 beta and rc on different versions of ruby and ran into some serious difficulties; but it has been painless on the official release of ruby 1.9.2<br /><br />As a final step we want to add a .rvmrc file to the root of the rails project, this will force rvm to load the correct ruby version when we are in this directory. This can be quite handy, if we were on a different version of ruby running &#8216;rails s&#8217; would create a new rails app directory named &#8216;s&#8217; instead of running the server; from the terminal run<br /><br /><span class="Apple-style-span" style="color: #f3f3f3;"><span class="Apple-style-span" style="background-color: #444444;">&nbsp;echo &#8220;rvm 1.9.2&#8221; &gt; .rvmrc&nbsp;</span></span><br /><br />I learned about the .rvmrc file from <a href="http://cre8ivethought.com/blog/2010/08/18/the-rvmrc-file/">this post</a></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -425,43 +462,6 @@ Need to find real estate comps? <a href="http://www.redfin.com/">www.redfin.com<
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/04/14/gimp-install-on-mac/">GIMP install on MAC</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-04-14T00:00:00-07:00" pubdate data-updated="true">Apr 14<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Don&#8217;t bother installing <a href="http://www.gimp.org/">GIMP</a> using <a href="http://www.macports.org/">MacPorts</a>; I started this process and it ran for over an hour before I stopped the install. It has alot of dependencies and MacPorts was busy installing all of them.<br /><br />Just go to <a href="http://gimp.lisanet.de/Website/Download.html">http://gimp.lisanet.de/Website/Download.html</a> and download the package for your OS version<br /><br />around 75mb download but installed in minutes :)</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/9/">&larr; Older</a>
@@ -477,6 +477,10 @@ Don&#8217;t bother installing <a href="http://www.gimp.org/">GIMP</a> using <a h
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/02/13/stub-paperclip-s3-uploads-in-rspec/">stub paperclip s3 uploads in rspec</a>
@@ -496,10 +500,6 @@ Don&#8217;t bother installing <a href="http://www.gimp.org/">GIMP</a> using <a h
     
       <li class="post">
         <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: supply_drop)</a>
       </li>
     
   </ul>

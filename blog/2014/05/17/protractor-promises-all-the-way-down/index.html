@@ -1,0 +1,378 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Protractor - promises all the way down - house9</title>
+  <meta name="author" content="Jesse House">
+
+  
+  <meta name="description" content="Expected undefined to equal 7. We recently started using Protractor for end to end testing of an angular application. Protractor returns promises &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://jessehouse.com/blog/2014/05/17/protractor-promises-all-the-way-down">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="house9" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">house9</a></h1>
+  
+    <h2>random code and what not</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:jessehouse.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Protractor - promises all the way down</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-17T19:54:00-07:00" pubdate data-updated="true">May 17<span>th</span>, 2014</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><blockquote><p>Expected undefined to equal 7.</p></blockquote>
+
+<p>We recently started using <a href="https://github.com/angular/protractor">Protractor</a> for end to end testing of an angular application. Protractor returns promises when locating elements on the page, in some cases you may need to do your assertions inside of callback functions.</p>
+
+<p>For example:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// this works just fine</span>
+</span><span class='line'><span class="nx">expect</span><span class="p">(</span><span class="nx">element</span><span class="p">(</span><span class="nx">by</span><span class="p">.</span><span class="nx">id</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)).</span><span class="nx">getText</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">&#39;x@x.com&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// this will fail</span>
+</span><span class='line'><span class="nx">expect</span><span class="p">(</span><span class="nx">element</span><span class="p">(</span><span class="nx">by</span><span class="p">.</span><span class="nx">id</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)).</span><span class="nx">getText</span><span class="p">().</span><span class="nx">length</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// getText retuns a promise and not a string, instead...</span>
+</span><span class='line'><span class="nx">element</span><span class="p">(</span><span class="nx">by</span><span class="p">.</span><span class="nx">id</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)).</span><span class="nx">getText</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">expect</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You can use the elementexplorer to debug your locators, but be aware that even non-matched elements will return an &lsquo;Element Finder&rsquo; object.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">node</span> <span class="nx">node_modules</span><span class="o">/</span><span class="nx">protractor</span><span class="o">/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">elementexplorer</span><span class="p">.</span><span class="nx">js</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">Getting</span> <span class="nx">page</span> <span class="nx">at</span><span class="o">:</span> <span class="nx">about</span><span class="o">:</span><span class="nx">blank</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;http://www.angularjs.org&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="kc">null</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="nx">element</span><span class="p">(</span><span class="nx">by</span><span class="p">.</span><span class="nx">model</span><span class="p">(</span><span class="s1">&#39;xxxx&#39;</span><span class="p">))</span>
+</span><span class='line'><span class="p">{</span> <span class="nx">click</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">sendKeys</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">getTagName</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">getCssValue</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">getAttribute</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">getText</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">getSize</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">getLocation</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">isEnabled</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">isSelected</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">submit</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">clear</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">isDisplayed</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">getOuterHtml</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">getInnerHtml</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">toWireValue</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">findElements</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">isElementPresent</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">evaluate</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">findElement</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">find</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">isPresent</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">element</span><span class="o">:</span> <span class="p">{</span> <span class="p">[</span><span class="nb">Function</span><span class="p">]</span> <span class="nx">all</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">]</span> <span class="p">},</span>
+</span><span class='line'>  <span class="s1">&#39;$&#39;</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
+</span><span class='line'>  <span class="s1">&#39;$$&#39;</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">]</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>However, invoking one of the methods on an unmatched element will raise a <code>NoSuchElementError</code>.</p>
+
+<p>Resources:</p>
+
+<ul>
+<li><a href="https://github.com/angular/protractor/blob/master/docs/api.md">https://github.com/angular/protractor/blob/master/docs/api.md</a></li>
+<li><a href="http://www.youtube.com/watch?v=aQipuiTcn3U">http://www.youtube.com/watch?v=aQipuiTcn3U</a></li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jesse House</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-17T19:54:00-07:00" pubdate data-updated="true">May 17<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/angular/'>angular</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://jessehouse.com/blog/2014/05/17/protractor-promises-all-the-way-down/" data-via="" data-counturl="http://jessehouse.com/blog/2014/05/17/protractor-promises-all-the-way-down/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/02/13/stub-paperclip-s3-uploads-in-rspec/" title="Previous Post: stub paperclip s3 uploads in rspec">&laquo; stub paperclip s3 uploads in rspec</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/13/stub-paperclip-s3-uploads-in-rspec/">stub paperclip s3 uploads in rspec</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/">Magick::ImageMagickError: WriteBlob Failed</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/09/25/the-cure-for-ibs/">The Cure for IBS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/house9">@house9</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'house9',
+            count: 6,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Jesse House -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'house9';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://jessehouse.com/blog/2014/05/17/protractor-promises-all-the-way-down/';
+        var disqus_url = 'http://jessehouse.com/blog/2014/05/17/protractor-promises-all-the-way-down/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
