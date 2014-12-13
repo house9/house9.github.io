@@ -3,7 +3,7 @@ layout: post
 title: "Magick::ImageMagickError: WriteBlob Failed"
 date: 2014-02-07 08:55
 comments: true
-categories: 
+categories: ruby
 ---
 
 I am using [gruff](https://github.com/topfunky/gruff) to generate line charts in a rails project, putting together a quick proof of concept:
@@ -33,7 +33,7 @@ Magick::ImageMagickError: WriteBlob Failed `/Users/ME/projects/CLIENT/code/RAILS
   from script/rails:6:in `main'
 </pre>
 
-**The issue:** the error is raised when writing to the tmp directory, changing to another directory and it worked as expected? 
+**The issue:** the error is raised when writing to the tmp directory, changing to another directory and it worked as expected?
 
 `g.write("public/line.png")` and `g.write("public/tmp/line.png")` both worked
 
