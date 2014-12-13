@@ -4,7 +4,7 @@ on source branch modify files as needed, then preview locally
 
 `rake generate` and `rake preview`
 
-push code updates to blog: `rake deploy`
+push code updates to blog: `rake deploy`, NOTE: run `mkdir _deploy` if publishing from a recently creaeted repo.
 
 push source updates to source branch `git push`
 
