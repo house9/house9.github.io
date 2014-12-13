@@ -3,17 +3,17 @@ layout: post
 title: "stub paperclip s3 uploads in rspec"
 date: 2014-02-13 14:22
 comments: true
-categories: 
+categories: rails
 ---
 
 I was searching around stackoverflow trying to figure how to stub out s3 uploads with paperclip when running unit tests; came across a few that looked promising, along the lines of:
 
 ```ruby
 Model.any_instance.stubs(:save_attached_files).returns(true)
-``` 
+```
 
 But that was not working with [paperclip](https://github.com/thoughtbot/paperclip) version 4, a quick look at the stacktrace reveled the method I wanted to mock.
- 
+
 <pre>
 Failure/Error: report.save
 AWS::S3::Errors::InvalidAccessKeyId:
