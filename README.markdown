@@ -4,7 +4,14 @@ on source branch modify files as needed, then preview locally
 
 `rake generate` and `rake preview`
 
-push code updates to blog: `rake deploy`, NOTE: run `mkdir _deploy` if publishing from a recently creaeted repo.
+push code updates to blog: `rake deploy`.
+
+NOTE: if publishing from an alternate machine for the first time
+
+* `git checkout source`
+* `git clone git@github.com:house9/house9.github.io.git _deploy/`
+* `bundle exec rake generate`
+* `bundle exec rake deploy`
 
 push source updates to source branch `git push`
 
