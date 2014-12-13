@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="here is a bash script I put together to launch my rails development environment, i got tired of opening multiple terminal windows and cd to the &hellip;">
+  <meta name="description" content="yeah - you DO want to run gmail over https; I am surprised this is not the default and I am surprised I did not already have this setting turned on. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/05/30/secure-your-gmail/">Secure your Gmail</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-30T00:00:00-07:00" pubdate data-updated="true">May 30<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+yeah - you DO want to run <a href="http://www.gmail.com">gmail</a> over <a href="http://en.wikipedia.org/wiki/Https">https</a>; I am surprised this is not the default and I am surprised I did not already have this setting turned on.<br /><br />In gmail click the settings link in the upper right hand corner<br /><a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://3.bp.blogspot.com/_vmq8pP42BnQ/SiHapiCp12I/AAAAAAAABE8/E9FNerefa3Y/s1600-h/gmail_settings.png"><img style="margin: 0px auto 10px; display: block; text-align: center; cursor: pointer; width: 375px; height: 299px;" src="http://3.bp.blogspot.com/_vmq8pP42BnQ/SiHapiCp12I/AAAAAAAABE8/E9FNerefa3Y/s400/gmail_settings.png" alt="" id="BLOGGER_PHOTO_ID_5341791040085546850" border="0" /></a><br /><br />Then scroll to the bottom and select &#8216;Always use https&#8217; in the Browser connection section<br /><a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://1.bp.blogspot.com/_vmq8pP42BnQ/SiHat9vG5mI/AAAAAAAABFE/y6CRlJjRAaI/s1600-h/gmail_https_setting.png"><img style="margin: 0px auto 10px; display: block; text-align: center; cursor: pointer; width: 400px; height: 124px;" src="http://1.bp.blogspot.com/_vmq8pP42BnQ/SiHat9vG5mI/AAAAAAAABFE/y6CRlJjRAaI/s400/gmail_https_setting.png" alt="" id="BLOGGER_PHOTO_ID_5341791116239234658" border="0" /></a>This came up while I was watching a great screen cast &#8217;<a href="http://scotland-on-rails.s3.amazonaws.com/2B07_RoryMcCune-SOR.mp4">Security - What rails will and won&#8217;t do for you</a>&#8217;, it was from &#8217;<a href="http://www.rubyinside.com/scotland-on-rails-presentations-now-online-27-awesome-videos-1799.html">Scotland On Rails Presentations</a>&#8217;, there are 27 different presentations and all downloadable</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -430,56 +467,6 @@ I was doing some clean up on one of our database servers; we have many databases
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/03/02/jqueryui-effect-error-with-google/">jqueryUI effect error with Google Chrome and Safari</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-03-02T00:00:00-08:00" pubdate data-updated="true">Mar 2<span>nd</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-<div>Ran into a strange issue using <a href="http://jqueryui.com/">jqueryUI</a> <a href="http://jqueryui.com/demos/effects_general/#highlight">highlight effect</a>, the issue only occurred with <a href="http://webkit.org/">Webkit</a> browsers (Google Chrome and Safari) and only when I was manipulating the background property of the element that was being highlighted.</div><div><br />Using a slightly modified version of the <a href="http://jqueryui.com/demos/effects_general/highlight.html">demo</a>. I tweak the background image before applying the highlight effect</div><pre><br />$("#highlight").click(function() {<br />  $(this).css("background", "url(some_image.png) no-repeat");<br />  $(this).effect("highlight");<br />});<br /></pre><div>This resulted in the highlight appearing but not going away. Then checking it in the debugger the following javascript error was being generated - <span class="Apple-style-span" style="font-style: italic;"><span class="Apple-style-span" style="font-weight: bold;">&#8220;Uncaught TypeError: Cannot read property &#8216;0&#8217; of undefined,&#8221;</span></span> Changing the background manipulation to the following fixed the issue.</div><pre><br />$(this).css("background-image", "url(some_image.png)");<br />$(this).css("background-repeat", "no-repeat");<br />$(this).effect("highlight");<br /></pre><br /><div>Update 2009-03-06: You also need to make sure that if there is an existing style on the element being highlighted it is using the more verbose style tags of background-image and background-repeat or the same error will be encountered</div></div>
-<h2>Comments</h2>
-<div class='comments'>
-<div class='comment'>
-<div class='author'>Wesley</div>
-<div class='content'>
-Thank you for your post. This has solved a similar jQueryUI problem for me on Chrome. I&#39;m also aware now that it may be safer to use verbose background styles when dealing with Chrome and jQuery.</div>
-</div>
-<div class='comment'>
-<div class='author'>Tim Stevens</div>
-<div class='content'>
-just had the same problem.<br /><br />was trying to highlight a table row that had been newly created.<br /><br />solved the problem by highlighting each child cell instead<br /><i><br />//tbody is the body of a table with a header and a footer. I just want to highlight the first row<br />//I use row.find rather than row.children in case there are embedded tables<br /><br />tbody.find(&quot;tr:first&quot;).find(&quot;td&quot;).effect(&quot;highlight&quot;, {}, 1000);<br /></i><br /><br />This didn&#39;t exhibit the same behaviour as just highlighting the row.</div>
-</div>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/13/">&larr; Older</a>
@@ -495,6 +482,10 @@ just had the same problem.<br /><br />was trying to highlight a table row that h
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/12/12/rubocop-for-staging-files/">rubocop script for your modified files</a>
@@ -514,10 +505,6 @@ just had the same problem.<br /><br />was trying to highlight a table row that h
     
       <li class="post">
         <a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/09/25/the-cure-for-ibs/">The Cure for IBS</a>
       </li>
     
   </ul>

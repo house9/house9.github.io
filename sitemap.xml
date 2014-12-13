@@ -774,15 +774,15 @@
     </url>
     <url>
         <loc>http://jessehouse.com/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/</loc>
-        <lastmod>2014-12-13T09:50:16-08:00</lastmod>
+        <lastmod>2014-12-13T11:26:44-08:00</lastmod>
     </url>
     <url>
         <loc>http://jessehouse.com/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/</loc>
-        <lastmod>2014-12-13T09:50:16-08:00</lastmod>
+        <lastmod>2014-12-13T10:34:04-08:00</lastmod>
     </url>
     <url>
         <loc>http://jessehouse.com/blog/2014/02/13/stub-paperclip-s3-uploads-in-rspec/</loc>
-        <lastmod>2014-12-13T09:50:16-08:00</lastmod>
+        <lastmod>2014-12-13T11:47:34-08:00</lastmod>
     </url>
     <url>
         <loc>http://jessehouse.com/blog/2014/05/17/protractor-promises-all-the-way-down/</loc>
@@ -793,12 +793,16 @@
         <lastmod>2014-12-13T09:50:16-08:00</lastmod>
     </url>
     <url>
+        <loc>http://jessehouse.com/blog/2014/12/13/rails-timezones-javascript-and-moment-js/</loc>
+        <lastmod>2014-12-13T11:57:59-08:00</lastmod>
+    </url>
+    <url>
         <loc>http://jessehouse.com/blog/archives/</loc>
-        <lastmod>2014-12-13T09:50:16-08:00</lastmod>
+        <lastmod>2014-12-13T11:57:59-08:00</lastmod>
     </url>
     <url>
         <loc>http://jessehouse.com/</loc>
-        <lastmod>2014-12-13T09:50:16-08:00</lastmod>
+        <lastmod>2014-12-13T11:57:59-08:00</lastmod>
     </url>
     <url>
         <loc>http://jessehouse.com/robots.txt</loc>

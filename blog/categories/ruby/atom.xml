@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ruby | house9]]></title>
   <link href="http://jessehouse.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://jessehouse.com/"/>
-  <updated>2014-12-13T10:09:36-08:00</updated>
+  <updated>2014-12-13T12:01:47-08:00</updated>
   <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
@@ -29,6 +29,50 @@ git diff --name-only --cached | xargs rubocop -a
 </code></p>
 
 <p>Don&rsquo;t forget to <code>git add .</code> after rubocop finds/fixes any code style violations in your staged files.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Magick::ImageMagickError: WriteBlob Failed]]></title>
+    <link href="http://jessehouse.com/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/"/>
+    <updated>2014-02-07T08:55:00-08:00</updated>
+    <id>http://jessehouse.com/blog/2014/02/07/magick-imagemagickerror-writeblob-failed</id>
+    <content type="html"><![CDATA[<p>I am using <a href="https://github.com/topfunky/gruff">gruff</a> to generate line charts in a rails project, putting together a quick proof of concept:</p>
+
+<p>```ruby
+class Chart
+  def generate_line_graph</p>
+
+<pre><code>g = Gruff::Line.new(400)
+g.data(:testing, [5, 0, 25, 10)
+g.write("tmp/line.png")
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>I quickly ran into the following exception:</p>
+
+<pre>
+Magick::ImageMagickError: WriteBlob Failed `/Users/ME/projects/CLIENT/code/RAILS_APP/tmp/line.png' @ error/png.c/MagickPNGErrorHandler/1804
+  from /Users/ME/.rvm/gems/ruby-2.1.0/gems/gruff-0.5.1/lib/gruff/base.rb:425:in `write'
+  from /Users/ME/.rvm/gems/ruby-2.1.0/gems/gruff-0.5.1/lib/gruff/base.rb:425:in `write'
+  from /Users/ME/projects/CLIENT/code/RAILS_APP/app/models/reports/chart.rb:36:in `generate_line_graph'
+  from (irb):16
+  from /Users/ME/.rvm/gems/ruby-2.1.0/gems/railties-3.2.16/lib/rails/commands/console.rb:47:in `start'
+  from /Users/ME/.rvm/gems/ruby-2.1.0/gems/railties-3.2.16/lib/rails/commands/console.rb:8:in `start'
+  from /Users/ME/.rvm/gems/ruby-2.1.0/gems/railties-3.2.16/lib/rails/commands.rb:41:in `<top (required)>'
+  from script/rails:6:in `require'
+  from script/rails:6:in `main'
+</pre>
+
+
+<p><strong>The issue:</strong> the error is raised when writing to the tmp directory, changing to another directory and it worked as expected?</p>
+
+<p><code>g.write("public/line.png")</code> and <code>g.write("public/tmp/line.png")</code> both worked</p>
+
+<p>Turns out this was a simple <em>mistake on my part</em>, I just provisioned a new machine and cloned the project repo &ndash; I did not have a <em>tmp</em> directory in my project yet, it would be nice if the error message could have just told me so.</p>
 ]]></content>
   </entry>
   
@@ -88,17 +132,6 @@ Sometimes Ruby blows my mind, I needed to get the start date and end date of the
     <id>http://jessehouse.com/blog/2010/01/06/ruby-regex-to-remove-script-tags</id>
     <content type="html"><![CDATA[<div class='post'>
 <script src="http://gist.github.com/270463.js"></script><br />Resources<br /><ul><li><a href="http://rubular.com/">Rubular</a></li><li><a href="http://jamesmckay.net/2008/05/how-to-match-any-character-including-newlines-in-a-javascript-regular-expression/">Match any character in RegEx</a></li><li><a href="http://ruby-doc.org/core/classes/String.html#M000817">Ruby String gsub</a></li></ul></div>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ruby Http Get with Net::HTTP]]></title>
-    <link href="http://jessehouse.com/blog/2010/01/06/ruby-http-get-with-nethttp/"/>
-    <updated>2010-01-06T00:00:00-08:00</updated>
-    <id>http://jessehouse.com/blog/2010/01/06/ruby-http-get-with-nethttp</id>
-    <content type="html"><![CDATA[<div class='post'>
-<script src="http://gist.github.com/270459.js"></script><br />Resources<br /><ul><li><a href="http://ruby-doc.org/stdlib/libdoc/net/http/rdoc/classes/Net/HTTP.html">Net::HTTP ruby docs</a></li><li><a href="http://stackoverflow.com/questions/1252210/parametrized-get-request-in-ruby">Stackoverflow post</a></li></ul><br /><br /><div style="display:none"><br />require 'net/http'<br />require 'uri'<br /><br />def get_html_content(requested_url)<br />url = URI.parse(requested_url)<br />full_path = (url.query.blank?) ? url.path : "#{url.path}?#{url.query}"<br />the_request = Net::HTTP::Get.new(full_path)<br /><br />the_response = Net::HTTP.start(url.host, url.port) { |http|<br />http.request(the_request)<br />}<br /><br />raise "Response was not 200, response was #{the_response.code}" if the_response.code != "200"<br />return the_response.body       <br />end   <br /><br /># this will fail with ArgumentError: HTTP request path is empty<br />s = get_html_content("http://www.google.com")<br /># these should be fine<br />s = get_html_content("http://www.google.com/") <br />s = get_html_content("http://github.com/search?q=http")<br /># above code does not handle redirects but raises exception for non-200 <br />s = get_html_content("http://www.yahoo.com/") # http 302<br /></div></div>
 
 ]]></content>
   </entry>

@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Get really dynamic with Simple.Data and MongoDBtook me awhile to figure out the proper way to establish a connection with Simple.Data.MongoDBGIST: &hellip;">
+  <meta name="description" content="I went to check on the price of DSL, I&#8217;ve been a long time Comcast customer and getting tired of the high cost. So I went to check it out on &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/05/08/at-site-has-some-serious-issues/">AT&T site has some serious issues</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-08T00:00:00-07:00" pubdate data-updated="true">May 8<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I went to check on the price of DSL, I&#8217;ve been a long time Comcast customer and getting tired of the high cost. So I went to check it out on AT&amp;T - all I can say is WTF?<br /><br />Select &#8216;DSL without phone&#8217;, but then my choices are everything except what I am looking for?<br />I think they need to go back and do some more QA<br /><br /><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-ZymXl9H1l-E/TcdYStjrkEI/AAAAAAAAC2I/QcdIFalooBs/s1600/att-broke-01.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="256" src="http://3.bp.blogspot.com/-ZymXl9H1l-E/TcdYStjrkEI/AAAAAAAAC2I/QcdIFalooBs/s640/att-broke-01.png" width="640" /></a></div><br /><div class="separator" style="clear: both; text-align: center;"></div>Now I get to choose my phone service - WTF: I selected &#8216;without phone service&#8217; for a reason<br /><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-ADbiWwP4HuY/TcdYS4AqcHI/AAAAAAAAC2M/OHKfX6PSLg4/s1600/att-broke-02.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://4.bp.blogspot.com/-ADbiWwP4HuY/TcdYS4AqcHI/AAAAAAAAC2M/OHKfX6PSLg4/s1600/att-broke-02.png" /></a></div></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -441,43 +478,6 @@ I really don&#8217;t like cmd.exe, it is difficult to work with. PowerShell ISE 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/03/15/asp-mvc-jquery-from-cdn-with-fallback/">asp mvc jquery from cdn with fallback to localhost</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-15T00:00:00-07:00" pubdate data-updated="true">Mar 15<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Paul Irish has some nice code for loading jquery from cdn but then falling back to localhost if it cannot be loaded from cdn. Check it out <a href="http://paulirish.com/2010/the-protocol-relative-url/">here</a>.<br /><br />For asp mvc you usually also want jquery.valdiater and possibly unobtrusive validation as well. Here is an html helper to generate html mark up that handles loading these via cdn with fallback<br /><br />The helper<br /><script src="https://gist.github.com/871851.js?file=cdn-with-fallback.cs"></script><br /><noscript><br />using System;<br />using System.Web.Mvc;<br />using System.Web.Mvc.Html;<br />using System.Web.Routing;<br /><br />public static class HtmlHelperExtensions<br />{<br />    /// <summary><br />    /// render script tag to include javascript file from cdn, but fallback to local if cannot be loaded<br />    /// </summary><br />    /// <param name="helper"></param>    /// <param name="cdnPath">start with // to handle either http or https</param>    /// <param name="localPath">start with ~/</param>    /// <param name="javascriptCondition">javascript condition, if true then your browser will load the local file</param>    /// <returns><br />    ///    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script><br />    ///    <script>!window.jQuery && document.write(unescape('%3Cscript src="/Scripts/jquery-1.4.4.min.js"%3E%3C/script%3E'))</script><br />    /// </returns><br />    /// <seealso cref="http://paulirish.com/2010/the-protocol-relative-url/"/><br />    public static MvcHtmlString JavascriptIncludeFromCdnWithFallback(this HtmlHelper helper, string cdnPath, string localPath, string javascriptCondition)<br />    {<br />        var urlHelper = new UrlHelper(helper.ViewContext.RequestContext);<br />        var cdnBuilder = new TagBuilder(&#8220;script&#8221;);<br />        var localBuilder = new TagBuilder(&#8220;script&#8221;);<br /><br />        // src for cdn resource<br />        cdnBuilder.Attributes.Add(&#8220;src&#8221;, cdnPath);<br />        // js to build a local script tag if needed<br />        localBuilder.InnerHtml = String.Format<br />        (<br />            &#8220;{0} && document.write(unescape(&#8216;%3Cscript src=&#34;{1}&#34;%3E%3C/script%3E&#8217;))&#8221;,<br />            javascriptCondition,<br />            urlHelper.Content(localPath)<br />        );<br />        // return markup<br />        var built = String.Format(&#8220;{0}\n\t{1}&#8221;, cdnBuilder.ToString(TagRenderMode.Normal), localBuilder.ToString(TagRenderMode.Normal));<br />        return MvcHtmlString.Create(built);<br />    }<br />}<br /></noscript><br /><br />Usage, most likely from your layout file<br /><script src="https://gist.github.com/871856.js?file=cdn-with-fallback.cshtml"></script><br /><noscript><br />@Html.JavascriptIncludeFromCdnWithFallback(<br />    &#8220;//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js&#8221;,<br />    &#8220;~/Scripts/lib/jquery/jquery-1.4.4.min.js&#8221;, <br />    &#8220;!window.jQuery&#8221;<br />)<br /><br />@Html.JavascriptIncludeFromCdnWithFallback(<br />    &#8220;//ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js&#8221;,<br />    &#8220;~/Scripts/lib/jquery/jquery.validate.min.js&#8221;, <br />    &#8220;!window.jQuery.validator&#8221;<br />)<br /><br />@Html.JavascriptIncludeFromCdnWithFallback(<br />    &#8220;//ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.validate.unobtrusive.min.js&#8221;,<br />    &#8220;~/Scripts/lib/jquery/jquery.validate.unobtrusive.min.js&#8221;, <br />    &#8220;!window.jQuery.validator.unobtrusive&#8221;<br />)<br /></noscript><br /><br />And the rendered html<br /><script src="https://gist.github.com/871857.js?file=cdn-with-fallback-rendered.html"></script><br /><noscript><br /><script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script><br /><script>!window.jQuery && document.write(unescape('%3Cscript src="/Scripts/lib/jquery/jquery-1.4.4.min.js"%3E%3C/script%3E'))</script><br /><br /><script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script><br /><script>!window.jQuery.validator && document.write(unescape('%3Cscript src="/Scripts/lib/jquery/jquery.validate.min.js"%3E%3C/script%3E'))</script><br /><br /><script src="//ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.validate.unobtrusive.min.js"></script><br /><script>!window.jQuery.validator.unobtrusive && document.write(unescape('%3Cscript src="/Scripts/lib/jquery/jquery.validate.unobtrusive.min.js"%3E%3C/script%3E'))</script><br /></noscript></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/6/">&larr; Older</a>
@@ -493,6 +493,10 @@ Paul Irish has some nice code for loading jquery from cdn but then falling back 
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/12/12/rubocop-for-staging-files/">rubocop script for your modified files</a>
@@ -512,10 +516,6 @@ Paul Irish has some nice code for loading jquery from cdn but then falling back 
     
       <li class="post">
         <a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/09/25/the-cure-for-ibs/">The Cure for IBS</a>
       </li>
     
   </ul>

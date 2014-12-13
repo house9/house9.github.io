@@ -4,7 +4,7 @@
   <title><![CDATA[house9]]></title>
   <link href="http://jessehouse.com/atom.xml" rel="self"/>
   <link href="http://jessehouse.com/"/>
-  <updated>2014-12-13T10:09:36-08:00</updated>
+  <updated>2014-12-13T12:01:47-08:00</updated>
   <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
@@ -12,6 +12,77 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Rails, timezones, javascript and moment.js]]></title>
+    <link href="http://jessehouse.com/blog/2014/12/13/rails-timezones-javascript-and-moment-js/"/>
+    <updated>2014-12-13T10:33:00-08:00</updated>
+    <id>http://jessehouse.com/blog/2014/12/13/rails-timezones-javascript-and-moment-js</id>
+    <content type="html"><![CDATA[<p>So you need to display some datetimes in your new ember.js/angular/backbone UI and the times must be displayed for a timezone which is different from the logged on user.</p>
+
+<p>Let us say we have an <code>Event</code> class in our rails application with the following attributes:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">create_table</span> <span class="ss">:events</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:event_name</span><span class="p">,</span> <span class="ss">null</span><span class="p">:</span> <span class="kp">false</span>
+</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">text</span> <span class="ss">:description</span>
+</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">datetime</span> <span class="ss">:start_at</span><span class="p">,</span> <span class="ss">null</span><span class="p">:</span> <span class="kp">false</span>
+</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:time_zone</span><span class="p">,</span> <span class="ss">null</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="s1">&#39;UTC&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Rails uses the timezone format: <code>Eastern Time (US &amp; Canada)</code></p>
+
+<p>Javascript (and therefore the <a href="http://momentjs.com/timezone/">moment-timezone</a> library) use the format: <code>America/New_York</code></p>
+
+<p>Rails can easily convert this for you and return the proper js format in your json:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Event</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="c1"># ...</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">time_zone_mapping</span>
+</span><span class='line'>    <span class="c1"># time_zone =&gt; Eastern Time (US &amp; Canada)</span>
+</span><span class='line'>    <span class="ss">ActiveSupport</span><span class="p">:</span><span class="ss">:TimeZone</span><span class="o">::</span><span class="no">MAPPING</span><span class="o">[</span><span class="nb">self</span><span class="o">.</span><span class="n">time_zone</span><span class="o">]</span> <span class="c1"># =&gt; America/New_York</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and with <a href="http://momentjs.com/">moment.js</a> and <a href="http://momentjs.com/timezone/">moment-timezone</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// where &#39;event&#39; is the js representation of your rails model</span>
+</span><span class='line'><span class="nx">moment</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">startAt</span><span class="p">).</span><span class="nx">tz</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">timeZoneMapping</span><span class="p">).</span><span class="nx">format</span><span class="p">(</span><span class="s1">&#39;dddd, MMMM Do YYYY h:mm a z&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You will want to ensure that all json is being rendered with <code>UTC</code> as the configured timezone in rails,
+i.e. <code>config.time_zone = 'UTC'</code> in your application config and/or <code>Time.zone = 'UTC'</code> in your api controller.</p>
+
+<p>See also</p>
+
+<ul>
+<li><a href="http://jessehouse.com/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a></li>
+<li><a href="http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html">ActiveSupport::TimeZone</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[rubocop script for your modified files]]></title>
@@ -157,8 +228,6 @@ Note it uses the autofix rubocop option, optionally you could run it on non-stag
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p></p>
-
 <p>But that was not working with <a href="https://github.com/thoughtbot/paperclip">paperclip</a> version 4, a quick look at the stacktrace reveled the method I wanted to mock.</p>
 
 <pre>
@@ -301,8 +370,6 @@ Magick::ImageMagickError: WriteBlob Failed `/Users/ME/projects/CLIENT/code/RAILS
 </span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">active_record</span><span class="o">.</span><span class="n">default_timezone</span> <span class="o">=</span> <span class="ss">:local</span>
 </span></code></pre></td></tr></table></div></figure>
 
-
-<p></p>
 
 <h2>Set the timezone for each request</h2>
 
@@ -557,6 +624,8 @@ Magick::ImageMagickError: WriteBlob Failed `/Users/ME/projects/CLIENT/code/RAILS
 </span><span class='line'>    <span class="ss">date</span><span class="p">:</span> <span class="n">should</span> <span class="k">end</span> <span class="k">in</span> <span class="n">_on</span> <span class="p">(</span><span class="n">start_on</span><span class="p">,</span> <span class="n">end_on</span><span class="p">,</span> <span class="n">work_on</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<p>See also: <a href="http://jessehouse.com/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a></p>
 ]]></content>
   </entry>
   
@@ -838,16 +907,6 @@ Might be useful to others, delete a bunch of git tags - remote and locally<br />
 git tag -l | grep &quot;^\d&quot; | sed &#39;s/^/git push origin :/&#39; | sh<br />git tag -l | grep &quot;^\d&quot; | sed &#39;s/^/git tag -d /&#39; | sh</div>
 </div>
 </div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[414 Request-URI Too Large]]></title>
-    <link href="http://jessehouse.com/blog/2012/09/05/414-request-uri-too-large/"/>
-    <updated>2012-09-05T00:00:00-07:00</updated>
-    <id>http://jessehouse.com/blog/2012/09/05/414-request-uri-too-large</id>
-    <content type="html"><![CDATA[<div class='post'>
-<br />How to configure nginx to accept larger querystring requests<br /><br />Increase the &#8217;<i>large_client_header_buffers</i>&#8217;<br /><br />This is located in the &#8217;<i>http</i>&#8217; section of the configuration<br /><br /><b>Example:</b><br /><div><blockquote class="tr_bq">&nbsp; &nbsp; http {<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # override to allow long query string<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; large_client_header_buffers 8 512k;<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#8230;<br />&nbsp; &nbsp; }</blockquote><br /><b>Resources</b><br /><br /><ul><li><a href="http://stackoverflow.com/questions/1067334/how-to-set-the-allowed-url-length-for-a-nginx-request-error-code-414-uri-too">http://stackoverflow.com/questions/1067334/how-to-set-the-allowed-url-length-for-a-nginx-request-error-code-414-uri-too</a>&nbsp;</li><li><a href="http://nginx.2469901.n2.nabble.com/Nginx-returning-414-even-when-large-client-header-buffers-is-set-td7451517.html">http://nginx.2469901.n2.nabble.com/Nginx-returning-414-even-when-large-client-header-buffers-is-set-td7451517.html</a></li><li><a href="http://wiki.nginx.org/NginxHttpCoreModule#large_client_header_buffers">http://wiki.nginx.org/NginxHttpCoreModule#large_client_header_buffers</a>&nbsp;</li></ul></div><div><br /></div><div><br /></div><div><br /></div></div>
 ]]></content>
   </entry>
   

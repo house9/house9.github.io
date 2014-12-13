@@ -9,9 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="
-Obama for president, yeah I think this guy should be presidenthttp://www.youtube.com/watch?v=_9OhVMHIuO4
-">
+  <meta name="description" content="This turns out to be pretty straight forward, but was not obviousRake::Task['task_name'].executeA rake task to rebuild the development databasedesc &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -67,6 +65,56 @@ Obama for president, yeah I think this guy should be presidenthttp://www.youtube
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/11/01/calling-rake-tasks-from-another-rake/">Calling rake tasks from another rake task</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-11-01T00:00:00-07:00" pubdate data-updated="true">Nov 1<span>st</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+This turns out to be pretty straight forward, but was not obvious<br /><br /><pre>Rake::Task['task_name'].execute<br /></pre><br />A rake task to rebuild the development database<br /><pre>desc 'drop, create and rebuild development db'<br />task(:rebuild_development_db) do<br />  puts "drop the db"<br />  Rake::Task['db:drop'].execute <br />  puts "create the db"<br />  Rake::Task['db:create'].execute<br />  puts "run the migrations"<br />  Rake::Task['db:migrate'].execute<br />  # do other stuff...<br />end<br /></pre><br />Resources<br /><ul><li><a href="http://www.railsenvy.com/2007/6/11/ruby-on-rails-rake-tutorial">http://www.railsenvy.com/2007/6/11/ruby-on-rails-rake-tutorial</a></li><li><a href="http://pastie.org/153991">Pastie code sample Rake calling Rake</a><br /></li></ul></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+Also if the task you are calling takes args you can pass them in a hash to the execute method<br><br>some_value = &quot;testing&quot;<br>Rake::Task[&quot;your_task&quot;].execute({:some_param =&gt; some_value})<br><br>read more about rake args<br>http://dev.nuclearrooster.com/2009/01/05/rake-task-with-arguments/</div>
+</div>
+<div class='comment'>
+<div class='author'>Anonymous</div>
+<div class='content'>
+Awesome! Thanks!</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -430,43 +478,6 @@ Buy.com and Google checkout doesn&#8217;t work - I don&#8217;t think I&#8217;ll 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/08/02/coral-tree-inn-cairns-australia/">Coral Tree Inn Cairns Australia</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-08-02T00:00:00-07:00" pubdate data-updated="true">Aug 2<span>nd</span>, 2008</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-<p>Coral Tree Inn Cairns Australia</p><p>166-172 Grafton St Cairns North, QLD 4870, Australia<br /><a href="http://www.coraltreeinn.com.au/">http://www.coraltreeinn.com.au/</a></p><p><br /><iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?hl=en&amp;q=172+Grafton+St+cairns+australia&amp;ie=UTF8&amp;ll=-16.907631,145.775099&amp;spn=0.008396,0.013304&amp;z=14&amp;iwloc=addr&amp;output=embed&amp;s=AARTsJqKgqq4EIbg1Nid5vNk-SvX1xCN5Q"></iframe><br /><small><a href="http://maps.google.com/maps?hl=en&amp;q=172+Grafton+St+cairns+australia&amp;ie=UTF8&amp;ll=-16.907631,145.775099&amp;spn=0.008396,0.013304&amp;z=14&amp;iwloc=addr&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small><br /></p>This place is affordable and served its purpose for our two days in Cairns, nothing special <br /><img src="http://lh5.ggpht.com/jesse.house/SIeqSVwMMqI/AAAAAAAAAqw/Vo5mo2kiHvs/s400/IMG_0669.JPG" style="margin: 0px auto 10px; display: block; text-align: center;" /><br /><img src="http://lh5.ggpht.com/jesse.house/SIeqSxM6ObI/AAAAAAAAAq4/GnlnspJq_jc/s400/IMG_0670.JPG" style="margin: 0px auto 10px; display: block; text-align: center;" /><br /><img src="http://lh6.ggpht.com/jesse.house/SIeqYsQY89I/AAAAAAAAArw/jYyP-zmdzSY/s400/IMG_0679.JPG" style="margin: 0px auto 10px; display: block; text-align: center;" /></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/15/">&larr; Older</a>
@@ -482,6 +493,10 @@ Buy.com and Google checkout doesn&#8217;t work - I don&#8217;t think I&#8217;ll 
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/12/12/rubocop-for-staging-files/">rubocop script for your modified files</a>
@@ -501,10 +516,6 @@ Buy.com and Google checkout doesn&#8217;t work - I don&#8217;t think I&#8217;ll 
     
       <li class="post">
         <a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/09/25/the-cure-for-ibs/">The Cure for IBS</a>
       </li>
     
   </ul>

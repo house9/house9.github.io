@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Sometimes Ruby blows my mind, I needed to get the start date and end date of the previous month. Guess what Ruby just happens to have methods to &hellip;">
+  <meta name="description" content="I did a few Google searches for &#8221;c# automapper datatable to list&#8221; but nothing good showed up right away, maybe this post will help &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,51 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/11/16/automapper-datatable-to-list/">Automapper Datatable to List</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-16T00:00:00-08:00" pubdate data-updated="true">Nov 16<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I did a few Google searches for &#8221;<a href="http://www.google.com/search?q=c%23+automapper+datatable+to+list">c# automapper datatable to list</a>&#8221; but nothing good showed up right away, maybe this post will help someone in the future?<br /><br />The solution showed up on <a href="http://stackoverflow.com/">stackoverflow</a> here is the link<br /><br /><a href="http://stackoverflow.com/questions/2429194/automapper-mapping-ienumerable-to-datareader-issue">http://stackoverflow.com/questions/2429194/automapper-mapping-ienumerable-to-datareader-issue</a><br /><br />and here is a code snippet<br /><br /><script src="https://gist.github.com/701974.js?file=automapper-datatable-to-list.cs"></script><br /><noscript><br />System.Data.DataTable people = GetPeopleData();<br /><br />AutoMapper.Mapper.Reset();<br />AutoMapper.Mapper.CreateMap&lt;IDataReader, Person&gt;();<br /><br />var results = AutoMapper.Mapper.Map&lt;IDataReader, IList&lt;Person&gt;&gt;(people.CreateDataReader());<br /></noscript><br />Note that we are actually mapping IDataReader to a list, and DataTable has convenience method to do that for us &#8216;CreateDataReader&#8217;<br /><br /><br /><ul><li><a href="http://automapper.codeplex.com/">Automapper</a></li></ul></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>happyapostate</div>
+<div class='content'>
+Thanks House9.  I&#39;ve added an extension method to DataTable using your code, and it works fine.  Now I just call ToList with the appropriate type for the records and away we go.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -623,43 +668,6 @@ Awesome!<br /><br />does not seem like NBC or NFL is doing a lot to advertise th
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/09/04/2010-us-open-live-high-quality-stream/">2010 US Open live high quality stream</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-09-04T00:00:00-07:00" pubdate data-updated="true">Sep 4<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-US Open has their high quality stream going again this year!<br /><br /><a href="http://www.usopen.org/en_US/interactive/video/live.html?promo=slamtracker">http://www.usopen.org/en_US/interactive/video/live.html?promo=slamtracker</a><br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/_vmq8pP42BnQ/TIKlAr19LXI/AAAAAAAACws/4sfOFZPi09A/s1600/us-open.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="486" src="http://4.bp.blogspot.com/_vmq8pP42BnQ/TIKlAr19LXI/AAAAAAAACws/4sfOFZPi09A/s640/us-open.png" width="640" /></a></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/8/">&larr; Older</a>
@@ -675,6 +683,10 @@ US Open has their high quality stream going again this year!<br /><br /><a href=
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/12/12/rubocop-for-staging-files/">rubocop script for your modified files</a>
@@ -694,10 +706,6 @@ US Open has their high quality stream going again this year!<br /><br /><a href=
     
       <li class="post">
         <a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/09/25/the-cure-for-ibs/">The Cure for IBS</a>
       </li>
     
   </ul>

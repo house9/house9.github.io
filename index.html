@@ -9,8 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Our CI server is setup to run rubocop (ruby linter) after every checkin.
-On my local development machine I prefer to lint files that have recently &hellip;">
+  <meta name="description" content="So you need to display some datetimes in your new ember.js/angular/backbone UI and the times must be displayed for a timezone which is different from &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +65,106 @@ On my local development machine I prefer to lint files that have recently &helli
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-12-13T10:33:00-08:00" pubdate data-updated="true">Dec 13<span>th</span>, 2014</time>
+        
+         | <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>So you need to display some datetimes in your new ember.js/angular/backbone UI and the times must be displayed for a timezone which is different from the logged on user.</p>
+
+<p>Let us say we have an <code>Event</code> class in our rails application with the following attributes:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">create_table</span> <span class="ss">:events</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:event_name</span><span class="p">,</span> <span class="ss">null</span><span class="p">:</span> <span class="kp">false</span>
+</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">text</span> <span class="ss">:description</span>
+</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">datetime</span> <span class="ss">:start_at</span><span class="p">,</span> <span class="ss">null</span><span class="p">:</span> <span class="kp">false</span>
+</span><span class='line'>  <span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:time_zone</span><span class="p">,</span> <span class="ss">null</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="s1">&#39;UTC&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Rails uses the timezone format: <code>Eastern Time (US &amp; Canada)</code></p>
+
+<p>Javascript (and therefore the <a href="http://momentjs.com/timezone/">moment-timezone</a> library) use the format: <code>America/New_York</code></p>
+
+<p>Rails can easily convert this for you and return the proper js format in your json:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Event</span> <span class="o">&lt;</span> <span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span>
+</span><span class='line'>  <span class="c1"># ...</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">time_zone_mapping</span>
+</span><span class='line'>    <span class="c1"># time_zone =&gt; Eastern Time (US &amp; Canada)</span>
+</span><span class='line'>    <span class="ss">ActiveSupport</span><span class="p">:</span><span class="ss">:TimeZone</span><span class="o">::</span><span class="no">MAPPING</span><span class="o">[</span><span class="nb">self</span><span class="o">.</span><span class="n">time_zone</span><span class="o">]</span> <span class="c1"># =&gt; America/New_York</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and with <a href="http://momentjs.com/">moment.js</a> and <a href="http://momentjs.com/timezone/">moment-timezone</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// where &#39;event&#39; is the js representation of your rails model</span>
+</span><span class='line'><span class="nx">moment</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">startAt</span><span class="p">).</span><span class="nx">tz</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">timeZoneMapping</span><span class="p">).</span><span class="nx">format</span><span class="p">(</span><span class="s1">&#39;dddd, MMMM Do YYYY h:mm a z&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You will want to ensure that all json is being rendered with <code>UTC</code> as the configured timezone in rails,
+i.e. <code>config.time_zone = 'UTC'</code> in your application config and/or <code>Time.zone = 'UTC'</code> in your api controller.</p>
+
+<p>See also</p>
+
+<ul>
+<li><a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a></li>
+<li><a href="http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html">ActiveSupport::TimeZone</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -294,8 +393,6 @@ Note it uses the autofix rubocop option, optionally you could run it on non-stag
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p></p>
-
 <p>But that was not working with <a href="https://github.com/thoughtbot/paperclip">paperclip</a> version 4, a quick look at the stacktrace reveled the method I wanted to mock.</p>
 
 <pre>
@@ -496,8 +593,6 @@ Magick::ImageMagickError: WriteBlob Failed `/Users/ME/projects/CLIENT/code/RAILS
 </span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">active_record</span><span class="o">.</span><span class="n">default_timezone</span> <span class="o">=</span> <span class="ss">:local</span>
 </span></code></pre></td></tr></table></div></figure>
 
-
-<p></p>
 
 <h2>Set the timezone for each request</h2>
 
@@ -752,6 +847,8 @@ Magick::ImageMagickError: WriteBlob Failed `/Users/ME/projects/CLIENT/code/RAILS
 </span><span class='line'>    <span class="ss">date</span><span class="p">:</span> <span class="n">should</span> <span class="k">end</span> <span class="k">in</span> <span class="n">_on</span> <span class="p">(</span><span class="n">start_on</span><span class="p">,</span> <span class="n">end_on</span><span class="p">,</span> <span class="n">work_on</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<p>See also: <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a></p>
 </div>
   
   
@@ -1028,43 +1125,6 @@ Similar to <a href="http://matschaffer.github.io/knife-solo/">knife-solo</a> for
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/06/11/vagrant-and-puppet-postgres-92-on-ubuntu/">Vagrant and puppet postgres 9.2 on ubuntu</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-06-11T00:00:00-07:00" pubdate data-updated="true">Jun 11<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Some vagrant configuration to install postgres 9.2 using puppet<br /><br /><script src="https://gist.github.com/house9/5762219.js"></script><noscript>see https://gist.github.com/house9/5762219.js</noscript><br /><script src="https://gist.github.com/house9/5762236.js"></script><noscript>see https://gist.github.com/house9/5762236.js</noscript><br /><b>Resources</b><br /><br /><ul><li><a href="https://forge.puppetlabs.com/puppetlabs/postgresql">https://forge.puppetlabs.com/puppetlabs/postgresql</a></li><li><a href="https://github.com/puppetlabs/puppetlabs-postgresql">https://github.com/puppetlabs/puppetlabs-postgresql</a></li></ul></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1078,6 +1138,10 @@ Some vagrant configuration to install postgres 9.2 using puppet<br /><br /><scri
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/12/12/rubocop-for-staging-files/">rubocop script for your modified files</a>
@@ -1097,10 +1161,6 @@ Some vagrant configuration to install postgres 9.2 using puppet<br /><br /><scri
     
       <li class="post">
         <a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/09/25/the-cure-for-ibs/">The Cure for IBS</a>
       </li>
     
   </ul>

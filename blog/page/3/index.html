@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Unofficial Twitter Bootstrap Documentationhttp://unofficial-twitter-bootstrap-documentation.com/The current project I am working on is running &hellip;">
+  <meta name="description" content="How to configure nginx to accept larger querystring requestsIncrease the &#8217;large_client_header_buffers&#8217;This is located in the &#8217;http &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/09/05/414-request-uri-too-large/">414 Request-URI Too Large</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-05T00:00:00-07:00" pubdate data-updated="true">Sep 5<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<br />How to configure nginx to accept larger querystring requests<br /><br />Increase the &#8217;<i>large_client_header_buffers</i>&#8217;<br /><br />This is located in the &#8217;<i>http</i>&#8217; section of the configuration<br /><br /><b>Example:</b><br /><div><blockquote class="tr_bq">&nbsp; &nbsp; http {<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # override to allow long query string<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; large_client_header_buffers 8 512k;<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#8230;<br />&nbsp; &nbsp; }</blockquote><br /><b>Resources</b><br /><br /><ul><li><a href="http://stackoverflow.com/questions/1067334/how-to-set-the-allowed-url-length-for-a-nginx-request-error-code-414-uri-too">http://stackoverflow.com/questions/1067334/how-to-set-the-allowed-url-length-for-a-nginx-request-error-code-414-uri-too</a>&nbsp;</li><li><a href="http://nginx.2469901.n2.nabble.com/Nginx-returning-414-even-when-large-client-header-buffers-is-set-td7451517.html">http://nginx.2469901.n2.nabble.com/Nginx-returning-414-even-when-large-client-header-buffers-is-set-td7451517.html</a></li><li><a href="http://wiki.nginx.org/NginxHttpCoreModule#large_client_header_buffers">http://wiki.nginx.org/NginxHttpCoreModule#large_client_header_buffers</a>&nbsp;</li></ul></div><div><br /></div><div><br /></div><div><br /></div></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -399,66 +436,6 @@ The content for this post is all from a gist, hopefully someone finds it useful<
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/10/15/generating-barcodes-with-ruby-and-rails/">Generating barcodes with ruby and rails</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-15T00:00:00-07:00" pubdate data-updated="true">Oct 15<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Recently I had to convert some functionality from an old MS Access system to a Ruby on Rails application.&nbsp;The Access system generated a report that included a barcode; they were using a barcode font installed on the&nbsp;machine running access. I figured generating the barcode server side in the web app was going to be much nicer than installing barcode fonts on the client browsers. And since this is Ruby, I figured&#8230;<br /><blockquote><i><span class="Apple-style-span" style="font-size: large;">There must be a gem for that&nbsp;</span></i></blockquote>Sure enough, the barby gem. It allows you to output your barcode as png, gif, svg, pdf, etc&#8230;<br /><br />In my case I generated png barcodes and included image references to those in my view files.<br /><br />Sample code<br /><br /><script src="https://gist.github.com/1289751.js?file=using_barby_to_generate_barcodes_with_ruby.rb"></script><br /><noscript><br /># Gemfile, run bundle install after adding<br />gem &#8216;barby&#8217;<br />gem &#8216;chunky_png&#8217;<br /><br /># some code to generate the png file using 3 of 9 barcode style<br />require &#8216;barby&#8217;<br />require &#8216;barby/barcode/code_39&#8217;<br />require &#8216;barby/outputter/png_outputter&#8217;<br /><br />barcode_value = &#8220;099999333&#8221;<br />full_path = &#8220;/somewhere/barcode_#{barcode_value}.png&#8221;<br />barcode = Barby::Code39.new(barcode_value)<br />File.open(full_path, &#8216;w&#8217;) { |f| f.write barcode.to_png(:margin => 3, :xdim => 2, :height => 55) }<br /></noscript><br /><br />There is no pixel setting, it uses some other type of unit to determine size; using the xdim, margin and height options&nbsp;you can tweak the size, but I found that it was not very precise - <i>for my use case it was good enough.</i><br /><br />The generated barcode does not include the value, it is just the image which can be scanned using a&nbsp;barcode scanner, but it would be nice if there was an option to include the value below that. This is somewhat trivial to add in your view using html.<br /><br />Overall I was really pleased with this gem!<br /><br />Resources<br /><ul><li><a href="http://toretore.eu/barby/">http://toretore.eu/barby/</a></li><li><a href="https://github.com/toretore/barby">https://github.com/toretore/barby</a></li><li><a href="http://barby.rubyforge.org/rdoc/">http://barby.rubyforge.org/rdoc/</a></li><li><a href="http://groups.google.com/group/ruby-barby">http://groups.google.com/group/ruby-barby</a></li></ul></div>
-<h2>Comments</h2>
-<div class='comments'>
-<div class='comment'>
-<div class='author'>House 9</div>
-<div class='content'>
-As far as i know the gem does not support that feature. You need to add that text to your pdf, html, etc&#8230; Might want to check the google groups link above for additional help</div>
-</div>
-<div class='comment'>
-<div class='author'>Icaro</div>
-<div class='content'>
-Perfect, thanks. How can i display the value at the bottom of the same image?</div>
-</div>
-<div class='comment'>
-<div class='author'>House 9</div>
-<div class='content'>
-Try setting your path to &quot;#{Rails.root}/public/barcodes&quot;</div>
-</div>
-<div class='comment'>
-<div class='author'>Icaro</div>
-<div class='content'>
-Im getting <br />No such file or directory - /public/barcodes/barcode_BARBY.png<br /><br />Is there anyway to not to create the png and then display it from public resources? like streaming each time i call a coupon for instance?.<br /><br />Thanks</div>
-</div>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -474,6 +451,10 @@ Im getting <br />No such file or directory - /public/barcodes/barcode_BARBY.png<
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/12/12/rubocop-for-staging-files/">rubocop script for your modified files</a>
@@ -493,10 +474,6 @@ Im getting <br />No such file or directory - /public/barcodes/barcode_BARBY.png<
     
       <li class="post">
         <a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/09/25/the-cure-for-ibs/">The Cure for IBS</a>
       </li>
     
   </ul>

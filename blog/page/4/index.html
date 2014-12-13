@@ -9,9 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="
-Check it out here -&nbsp;http://snfallaccess.nbcsports.com/
-">
+  <meta name="description" content="Recently I had to convert some functionality from an old MS Access system to a Ruby on Rails application.&nbsp;The Access system generated a report &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -67,6 +65,66 @@ Check it out here -&nbsp;http://snfallaccess.nbcsports.com/
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/10/15/generating-barcodes-with-ruby-and-rails/">Generating barcodes with ruby and rails</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-15T00:00:00-07:00" pubdate data-updated="true">Oct 15<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Recently I had to convert some functionality from an old MS Access system to a Ruby on Rails application.&nbsp;The Access system generated a report that included a barcode; they were using a barcode font installed on the&nbsp;machine running access. I figured generating the barcode server side in the web app was going to be much nicer than installing barcode fonts on the client browsers. And since this is Ruby, I figured&#8230;<br /><blockquote><i><span class="Apple-style-span" style="font-size: large;">There must be a gem for that&nbsp;</span></i></blockquote>Sure enough, the barby gem. It allows you to output your barcode as png, gif, svg, pdf, etc&#8230;<br /><br />In my case I generated png barcodes and included image references to those in my view files.<br /><br />Sample code<br /><br /><script src="https://gist.github.com/1289751.js?file=using_barby_to_generate_barcodes_with_ruby.rb"></script><br /><noscript><br /># Gemfile, run bundle install after adding<br />gem &#8216;barby&#8217;<br />gem &#8216;chunky_png&#8217;<br /><br /># some code to generate the png file using 3 of 9 barcode style<br />require &#8216;barby&#8217;<br />require &#8216;barby/barcode/code_39&#8217;<br />require &#8216;barby/outputter/png_outputter&#8217;<br /><br />barcode_value = &#8220;099999333&#8221;<br />full_path = &#8220;/somewhere/barcode_#{barcode_value}.png&#8221;<br />barcode = Barby::Code39.new(barcode_value)<br />File.open(full_path, &#8216;w&#8217;) { |f| f.write barcode.to_png(:margin => 3, :xdim => 2, :height => 55) }<br /></noscript><br /><br />There is no pixel setting, it uses some other type of unit to determine size; using the xdim, margin and height options&nbsp;you can tweak the size, but I found that it was not very precise - <i>for my use case it was good enough.</i><br /><br />The generated barcode does not include the value, it is just the image which can be scanned using a&nbsp;barcode scanner, but it would be nice if there was an option to include the value below that. This is somewhat trivial to add in your view using html.<br /><br />Overall I was really pleased with this gem!<br /><br />Resources<br /><ul><li><a href="http://toretore.eu/barby/">http://toretore.eu/barby/</a></li><li><a href="https://github.com/toretore/barby">https://github.com/toretore/barby</a></li><li><a href="http://barby.rubyforge.org/rdoc/">http://barby.rubyforge.org/rdoc/</a></li><li><a href="http://groups.google.com/group/ruby-barby">http://groups.google.com/group/ruby-barby</a></li></ul></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+As far as i know the gem does not support that feature. You need to add that text to your pdf, html, etc&#8230; Might want to check the google groups link above for additional help</div>
+</div>
+<div class='comment'>
+<div class='author'>Icaro</div>
+<div class='content'>
+Perfect, thanks. How can i display the value at the bottom of the same image?</div>
+</div>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+Try setting your path to &quot;#{Rails.root}/public/barcodes&quot;</div>
+</div>
+<div class='comment'>
+<div class='author'>Icaro</div>
+<div class='content'>
+Im getting <br />No such file or directory - /public/barcodes/barcode_BARBY.png<br /><br />Is there anyway to not to create the png and then display it from public resources? like streaming each time i call a coupon for instance?.<br /><br />Thanks</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -447,43 +505,6 @@ if your ISP supports <a href="http://espn.go.com/espn3/index/_/sport/tennis">ESP
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/05/08/at-site-has-some-serious-issues/">AT&T site has some serious issues</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-08T00:00:00-07:00" pubdate data-updated="true">May 8<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-I went to check on the price of DSL, I&#8217;ve been a long time Comcast customer and getting tired of the high cost. So I went to check it out on AT&amp;T - all I can say is WTF?<br /><br />Select &#8216;DSL without phone&#8217;, but then my choices are everything except what I am looking for?<br />I think they need to go back and do some more QA<br /><br /><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-ZymXl9H1l-E/TcdYStjrkEI/AAAAAAAAC2I/QcdIFalooBs/s1600/att-broke-01.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="256" src="http://3.bp.blogspot.com/-ZymXl9H1l-E/TcdYStjrkEI/AAAAAAAAC2I/QcdIFalooBs/s640/att-broke-01.png" width="640" /></a></div><br /><div class="separator" style="clear: both; text-align: center;"></div>Now I get to choose my phone service - WTF: I selected &#8216;without phone service&#8217; for a reason<br /><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-ADbiWwP4HuY/TcdYS4AqcHI/AAAAAAAAC2M/OHKfX6PSLg4/s1600/att-broke-02.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://4.bp.blogspot.com/-ADbiWwP4HuY/TcdYS4AqcHI/AAAAAAAAC2M/OHKfX6PSLg4/s1600/att-broke-02.png" /></a></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -499,6 +520,10 @@ I went to check on the price of DSL, I&#8217;ve been a long time Comcast custome
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/12/12/rubocop-for-staging-files/">rubocop script for your modified files</a>
@@ -518,10 +543,6 @@ I went to check on the price of DSL, I&#8217;ve been a long time Comcast custome
     
       <li class="post">
         <a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/09/25/the-cure-for-ibs/">The Cure for IBS</a>
       </li>
     
   </ul>
