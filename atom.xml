@@ -4,7 +4,7 @@
   <title><![CDATA[house9]]></title>
   <link href="http://jessehouse.com/atom.xml" rel="self"/>
   <link href="http://jessehouse.com/"/>
-  <updated>2014-05-17T20:43:16-07:00</updated>
+  <updated>2014-12-13T10:09:36-08:00</updated>
   <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[rubocop script for your modified files]]></title>
+    <link href="http://jessehouse.com/blog/2014/12/12/rubocop-for-staging-files/"/>
+    <updated>2014-12-12T16:08:00-08:00</updated>
+    <id>http://jessehouse.com/blog/2014/12/12/rubocop-for-staging-files</id>
+    <content type="html"><![CDATA[<p>Our CI server is setup to run <a href="https://github.com/bbatsov/rubocop">rubocop</a> (ruby linter) after every checkin.
+On my local development machine I prefer to lint files that have recently changed and not the entire code base.</p>
+
+<p>Add this code to a shell script and it will lint all files that have been staged.
+Note it uses the autofix rubocop option, optionally you could run it on non-staged files without the autofix flag.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git diff --name-only --cached | xargs rubocop -a</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Don&rsquo;t forget to <code>git add .</code> after rubocop finds/fixes any code style violations in your staged files.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Protractor - promises all the way down]]></title>
@@ -829,16 +848,6 @@ git tag -l | grep &quot;^\d&quot; | sed &#39;s/^/git push origin :/&#39; | sh<br
     <id>http://jessehouse.com/blog/2012/09/05/414-request-uri-too-large</id>
     <content type="html"><![CDATA[<div class='post'>
 <br />How to configure nginx to accept larger querystring requests<br /><br />Increase the &#8217;<i>large_client_header_buffers</i>&#8217;<br /><br />This is located in the &#8217;<i>http</i>&#8217; section of the configuration<br /><br /><b>Example:</b><br /><div><blockquote class="tr_bq">&nbsp; &nbsp; http {<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # override to allow long query string<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; large_client_header_buffers 8 512k;<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &#8230;<br />&nbsp; &nbsp; }</blockquote><br /><b>Resources</b><br /><br /><ul><li><a href="http://stackoverflow.com/questions/1067334/how-to-set-the-allowed-url-length-for-a-nginx-request-error-code-414-uri-too">http://stackoverflow.com/questions/1067334/how-to-set-the-allowed-url-length-for-a-nginx-request-error-code-414-uri-too</a>&nbsp;</li><li><a href="http://nginx.2469901.n2.nabble.com/Nginx-returning-414-even-when-large-client-header-buffers-is-set-td7451517.html">http://nginx.2469901.n2.nabble.com/Nginx-returning-414-even-when-large-client-header-buffers-is-set-td7451517.html</a></li><li><a href="http://wiki.nginx.org/NginxHttpCoreModule#large_client_header_buffers">http://wiki.nginx.org/NginxHttpCoreModule#large_client_header_buffers</a>&nbsp;</li></ul></div><div><br /></div><div><br /></div><div><br /></div></div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Unofficial Twitter Bootstrap Documentation]]></title>
-    <link href="http://jessehouse.com/blog/2012/08/25/unofficial-twitter-bootstrap/"/>
-    <updated>2012-08-25T00:00:00-07:00</updated>
-    <id>http://jessehouse.com/blog/2012/08/25/unofficial-twitter-bootstrap</id>
-    <content type="html"><![CDATA[<div class='post'>
-Unofficial Twitter Bootstrap Documentation<br /><a href="http://unofficial-twitter-bootstrap-documentation.com/">http://unofficial-twitter-bootstrap-documentation.com/</a><br /><br />The current project I am working on is running bootstrap 2.0.2 and after the release of 2.1.0 the online documentation for 2.0.x was gone.<br /><br />I went ahead and compiled the archive docs from the bootstrap github repo into a single site - hopefully others find it useful.<br /><br /></div>
 ]]></content>
   </entry>
   

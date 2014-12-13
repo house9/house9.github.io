@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ruby | house9]]></title>
   <link href="http://jessehouse.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://jessehouse.com/"/>
-  <updated>2014-05-17T20:43:16-07:00</updated>
+  <updated>2014-12-13T10:09:36-08:00</updated>
   <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[rubocop script for your modified files]]></title>
+    <link href="http://jessehouse.com/blog/2014/12/12/rubocop-for-staging-files/"/>
+    <updated>2014-12-12T16:08:00-08:00</updated>
+    <id>http://jessehouse.com/blog/2014/12/12/rubocop-for-staging-files</id>
+    <content type="html"><![CDATA[<p>Our CI server is setup to run <a href="https://github.com/bbatsov/rubocop">rubocop</a> (ruby linter) after every checkin.
+On my local development machine I prefer to lint files that have recently changed and not the entire code base.</p>
+
+<p>Add this code to a shell script and it will lint all files that have been staged.
+Note it uses the autofix rubocop option, optionally you could run it on non-staged files without the autofix flag.</p>
+
+<p><code>
+git diff --name-only --cached | xargs rubocop -a
+</code></p>
+
+<p>Don&rsquo;t forget to <code>git add .</code> after rubocop finds/fixes any code style violations in your staged files.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Generating barcodes with ruby and rails]]></title>
@@ -80,17 +99,6 @@ Sometimes Ruby blows my mind, I needed to get the start date and end date of the
     <id>http://jessehouse.com/blog/2010/01/06/ruby-http-get-with-nethttp</id>
     <content type="html"><![CDATA[<div class='post'>
 <script src="http://gist.github.com/270459.js"></script><br />Resources<br /><ul><li><a href="http://ruby-doc.org/stdlib/libdoc/net/http/rdoc/classes/Net/HTTP.html">Net::HTTP ruby docs</a></li><li><a href="http://stackoverflow.com/questions/1252210/parametrized-get-request-in-ruby">Stackoverflow post</a></li></ul><br /><br /><div style="display:none"><br />require 'net/http'<br />require 'uri'<br /><br />def get_html_content(requested_url)<br />url = URI.parse(requested_url)<br />full_path = (url.query.blank?) ? url.path : "#{url.path}?#{url.query}"<br />the_request = Net::HTTP::Get.new(full_path)<br /><br />the_response = Net::HTTP.start(url.host, url.port) { |http|<br />http.request(the_request)<br />}<br /><br />raise "Response was not 200, response was #{the_response.code}" if the_response.code != "200"<br />return the_response.body       <br />end   <br /><br /># this will fail with ArgumentError: HTTP request path is empty<br />s = get_html_content("http://www.google.com")<br /># these should be fine<br />s = get_html_content("http://www.google.com/") <br />s = get_html_content("http://github.com/search?q=http")<br /># above code does not handle redirects but raises exception for non-200 <br />s = get_html_content("http://www.yahoo.com/") # http 302<br /></div></div>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA['Testing is Overrated' on InfoQ]]></title>
-    <link href="http://jessehouse.com/blog/2009/01/07/testing-is-overrated-on-infoq/"/>
-    <updated>2009-01-07T00:00:00-08:00</updated>
-    <id>http://jessehouse.com/blog/2009/01/07/testing-is-overrated-on-infoq</id>
-    <content type="html"><![CDATA[<div class='post'>
-This is a good presentation<br /><a href="http://www.infoq.com/presentations/francl-testing-overrated">http://www.infoq.com/presentations/francl-testing-overrated</a><br /><br />just over 22 minutes and worth the watch; I had to take a screen capture of one of the slides about doing code reviews, just too funny<br /><br /><a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://3.bp.blogspot.com/_vmq8pP42BnQ/SWTQFqkiD0I/AAAAAAAABDU/oxwPNBVYaSk/s1600-h/code_review.png"><img style="margin: 0px auto 10px; display: block; text-align: center; cursor: pointer; width: 400px; height: 288px;" src="http://3.bp.blogspot.com/_vmq8pP42BnQ/SWTQFqkiD0I/AAAAAAAABDU/oxwPNBVYaSk/s400/code_review.png" alt="" id="BLOGGER_PHOTO_ID_5288580658185244482" border="0" /></a></div>
 
 ]]></content>
   </entry>

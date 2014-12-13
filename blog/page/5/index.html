@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="With very little code we can fix asp.net MVC AuthorizeAttributeWhat problems does it have? Too much redirection.When making ajax calls a HTTP 401 ( &hellip;">
+  <meta name="description" content="Get really dynamic with Simple.Data and MongoDBtook me awhile to figure out the proper way to establish a connection with Simple.Data.MongoDBGIST: &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,56 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/05/03/simpledata-and-mongodb/">Simple.Data and MongoDB</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-03T00:00:00-07:00" pubdate data-updated="true">May 3<span>rd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Get really dynamic with Simple.Data and MongoDB<br /><br />took me awhile to figure out the proper way to establish a connection with Simple.Data.MongoDB<br /><br /><script src="https://gist.github.com/954461.js?file=Simple.Data.MongoDB.openMongo.cs"></script><br /><noscript><br />GIST: https://gist.github.com/954461<br />using Simple.Data;<br />using Simple.Data.MongoDB;<br /><br />// connect<br />dynamic db = Database.Opener.OpenMongo(&#8220;mongodb://localhost:27017/myDB&#8221;);<br /><br />// insert<br />dynamic user = new ExpandoObject();<br />user.FirstName = &#8220;Joe&#8221;;<br />user.LastName = &#8220;Smith&#8221;;<br />user.Email = &#8220;jsmith@test.com&#8221;;<br /><br />db.Users.Insert(user);<br /><br />// find<br />dynamic existingUser = db.Users.FindByEmail(&#8220;jsmith@test.com&#8221;);<br /></noscript><br /><br />Resources<br /><br /><ul><li>MongoDB <a href="http://www.mongodb.org/downloads">download</a></li><li><a href="https://github.com/markrendle/Simple.Data/wiki">Simple.Data</a></li><li><a href="https://github.com/craiggwilson/Simple.Data.MongoDB">Simple.Data.MongoDB</a></li><li><a href="http://www.mongodb.org/display/DOCS/CSharp+Language+Center">Mongo and C#</a></li></ul><div>You can install all of the dlls using <a href="http://www.nuget.org">Nuget</a>, search for Simple.Data.MongoDB and install that package it will bring in the rest<br /></div><br /><div>Some of the errors I received on my journey</div><div><br /></div><div>From Simple.Data</div><blockquote><span class="Apple-style-span" style="background-color: yellow;">Message=No valid exports were found that match the constraint &#8216;((exportDefinition.ContractName == &#8220;Ado&#8221;) AndAlso (exportDefinition.Metadata.ContainsKey(&#8220;ExportTypeIdentity&#8221;) AndAlso &#8220;Simple.Data.Adapter&#8221;.Equals(exportDefinition.Metadata.get_Item(&#8220;ExportTypeIdentity&#8221;))))&#8217;, invalid exports may have been rejected.</span></blockquote>And from mongo driver when my connection string was not in the correct format, I was using the wrong port<br /><blockquote><span class="Apple-style-span" style="background-color: yellow;">Message=No connection could be made because the target machine actively refused it 127.0.0.1:</span></blockquote></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+honestly - I can&#39;t remember :(<br /><br />it might have been use of var vs dynamic<br /><br />// works<br />dynamic db = Database.Opener.OpenMongo(&#8230;<br /><br />// errors ???<br />var db = Database.Opener.OpenMongo(&#8230;<br /><br />I haven&#39;t done any c# in a few months and only spent a few days with simple.data at the time I posted this<br /><br />I would contact the authors on github if this doesn&#39;t help</div>
+</div>
+<div class='comment'>
+<div class='author'>David</div>
+<div class='content'>
+So what caused that &#39;No exports&#39; exception and what fixed it? Having the same thing but cannot figure out what to do to resolve it.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -428,43 +478,6 @@ Paul Irish has some nice code for loading jquery from cdn but then falling back 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/03/14/powershell-script-to-generate-todo/">Powershell script to generate a TODO report</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-14T00:00:00-07:00" pubdate data-updated="true">Mar 14<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-You can use this from your CI build process, help keep the code base clean. I am a big fan of the TODO: comment, but you don&#8217;t want too many building up in the code base at some point you either need &#8216;TO DO IT&#8217; or else forget about it.<br /><br /><script src="https://gist.github.com/869367.js?file=TODO-Report.ps1"></script><br /><noscript><br />$fileName = &#8220;_2-DO_log.txt&#8221;<br />$max = 20<br />$encoding = &#8220;ASCII&#8221;<br /><br /># remove previous file if exists<br />if(Test-Path $fileName) { Remove-Item $fileName }<br /><br /># dump 2-do report to the file system<br />Get-ChildItem –rec –include *.config,*.cs,*.js,*.cshtml,*.css,*.aspx | <br />where { $_ -notmatch &#8216;lib&#8217; } | <br />where { $_ -notmatch &#8216;Test&#8217; } | <br />select-string TODO | <br />out-string -width 4096 | <br />out-file $fileName -encoding $encoding<br /><br /># get the line count of the report<br />$content = Get-Content .\$fileName<br />$count = $content.Count.ToString()<br /># Write-Host &#8220;Total count is $count&#8221;<br /><br /># verify we don&#8217;t have too many entries<br />if($content.Count -gt $max) <br />{ <br />$message = &#8220;TO DO comment count has been exceeded. Max Allowed is $max but found $count for the entire solution, excluding lib files and Test projects&#8221;<br /># prepend the message before the data<br />$message | out-file $fileName -encoding $encoding <br />$content | add-content $fileName<br />Throw [system.Exception]($message) <br />}<br /></noscript><br /><br />the above script is excluding all files found under lib or Test directories, and selecting only a subset of file types. Modify to your needs</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/6/">&larr; Older</a>
@@ -480,6 +493,10 @@ You can use this from your CI build process, help keep the code base clean. I am
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/12/12/rubocop-for-staging-files/">rubocop script for your modified files</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a>
@@ -499,10 +516,6 @@ You can use this from your CI build process, help keep the code base clean. I am
     
       <li class="post">
         <a href="/blog/2013/09/25/the-cure-for-ibs/">The Cure for IBS</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
       </li>
     
   </ul>

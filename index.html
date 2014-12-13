@@ -9,7 +9,8 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Expected undefined to equal 7. We recently started using Protractor for end to end testing of an angular application. Protractor returns promises &hellip;">
+  <meta name="description" content="Our CI server is setup to run rubocop (ruby linter) after every checkin.
+On my local development machine I prefer to lint files that have recently &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +66,54 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/12/rubocop-for-staging-files/">rubocop script for your modified files</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-12-12T16:08:00-08:00" pubdate data-updated="true">Dec 12<span>th</span>, 2014</time>
+        
+         | <a href="/blog/2014/12/12/rubocop-for-staging-files/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Our CI server is setup to run <a href="https://github.com/bbatsov/rubocop">rubocop</a> (ruby linter) after every checkin.
+On my local development machine I prefer to lint files that have recently changed and not the entire code base.</p>
+
+<p>Add this code to a shell script and it will lint all files that have been staged.
+Note it uses the autofix rubocop option, optionally you could run it on non-staged files without the autofix flag.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git diff --name-only --cached | xargs rubocop -a</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Don&rsquo;t forget to <code>git add .</code> after rubocop finds/fixes any code style violations in your staged files.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1016,43 +1065,6 @@ Some vagrant configuration to install postgres 9.2 using puppet<br /><br /><scri
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/06/01/vagrantfile-for-setting-up-multiple/">Vagrantfile for setting up multiple machines with chef configuration</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-06-01T00:00:00-07:00" pubdate data-updated="true">Jun 1<span>st</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Example Vagrantfile below for setting up multiple virtual machines and using chef to provision them<br /><br /><br /><script src="https://gist.github.com/house9/5690784.js"></script><noscript>Your reader does not support javascript - please view configuration here - https://gist.github.com/house9/5690784#file-vagrantfile-multibox-chef-rb  </noscript><br />Resources<br /><br /><ul><li><a href="http://docs.vagrantup.com/v2/multi-machine/index.html">http://docs.vagrantup.com/v2/multi-machine/index.html</a>&nbsp;</li><li><a href="http://jbbarth.com/posts/2011-03-20-vagrant-provisioning-with-chefsolo.html">http://jbbarth.com/posts/2011-03-20-vagrant-provisioning-with-chefsolo.html</a>&nbsp;</li></ul></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1066,6 +1078,10 @@ Example Vagrantfile below for setting up multiple virtual machines and using che
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/12/12/rubocop-for-staging-files/">rubocop script for your modified files</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a>
@@ -1085,10 +1101,6 @@ Example Vagrantfile below for setting up multiple virtual machines and using che
     
       <li class="post">
         <a href="/blog/2013/09/25/the-cure-for-ibs/">The Cure for IBS</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
       </li>
     
   </ul>

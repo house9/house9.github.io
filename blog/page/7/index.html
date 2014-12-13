@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="There is a good program (free) for remote connections between mac OSX and Ubuntu. It is called&nbsp;Chicken of the VNC&nbsp;- in my case I needed to &hellip;">
+  <meta name="description" content="Sometimes Ruby blows my mind, I needed to get the start date and end date of the previous month. Guess what Ruby just happens to have methods to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/11/05/get-date-of-beginning-and-end-of-month/">Get the date of the beginning and end of a month using Ruby</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-05T00:00:00-07:00" pubdate data-updated="true">Nov 5<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Sometimes Ruby blows my mind, I needed to get the start date and end date of the previous month. Guess what Ruby just happens to have methods to handle this -&nbsp;beginning_of_month, end_of_month, there is even beginning_of_quarter and end_of_quarter if you need them!<br /><br /><br /><script src="https://gist.github.com/665048.js?file=cool%20date%20functions%20in%20ruby"></script><br /><br /><noscript><br /><pre>last_month = Date.today.last_month # =&gt; Tue, 05 Oct 2010 <br /><br />last_month.beginning_of_month # =&gt; Fri, 01 Oct 2010 <br />last_month.end_of_month # =&gt; Sun, 31 Oct 2010<br /><br />last_month.beginning_of_quarter # =&gt; Fri, 01 Oct 2010<br />last_month.end_of_quarter # =&gt; Fri, 31 Dec 2010<br /></pre></noscript></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -623,43 +660,6 @@ US Open has their high quality stream going again this year!<br /><br /><a href=
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/09/03/you-have-got-to-be-kidding/">You have got to be kidding</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-09-03T00:00:00-07:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-<span class="Apple-style-span" style="font-family: Arial; font-size: small;"><span class="Apple-style-span" style="font-size: 13px;">Just did a search and ended up on msdn </span></span><br /><span class="Apple-style-span" style="font-family: Arial; font-size: small;"><span class="Apple-style-span" style="font-size: 13px;"><br /></span></span><br /><span class="Apple-style-span" style="font-family: Arial; font-size: small;"><span class="Apple-style-span" style="font-size: 13px;">I use Google Chrome for most of my web browsing - the msdn site pops up this &#8216;Ad&#8217; to &#8216;upgrade&#8217; to IE 8 - LOL!!!</span></span><br /><span class="Apple-style-span" style="font-family: Arial; font-size: small;"><span class="Apple-style-span" style="font-size: 13px;"><br /></span></span><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/_vmq8pP42BnQ/TIE3UjILqqI/AAAAAAAACwk/NPgiphXb9bQ/s1600/upgrade-ie-lol.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="188" src="http://1.bp.blogspot.com/_vmq8pP42BnQ/TIE3UjILqqI/AAAAAAAACwk/NPgiphXb9bQ/s640/upgrade-ie-lol.png" width="640" /></a></div><span class="Apple-style-span" style="font-family: Arial; font-size: small;"><span class="Apple-style-span" style="font-size: 13px;"><br /></span></span></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/8/">&larr; Older</a>
@@ -675,6 +675,10 @@ US Open has their high quality stream going again this year!<br /><br /><a href=
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/12/12/rubocop-for-staging-files/">rubocop script for your modified files</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a>
@@ -694,10 +698,6 @@ US Open has their high quality stream going again this year!<br /><br /><a href=
     
       <li class="post">
         <a href="/blog/2013/09/25/the-cure-for-ibs/">The Cure for IBS</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/09/24/octopress-test/">Octopress Test</a>
       </li>
     
   </ul>
