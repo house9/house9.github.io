@@ -46,7 +46,7 @@ Both *can be* overriden in your application configuration file (config/applicati
 # Do NOT do this!!!
 config.time_zone = 'Central Time (US & Canada)'
 config.active_record.default_timezone = :local
-``` 
+```
 
 ## Set the timezone for each request
 
@@ -74,10 +74,10 @@ The `I18n` helpers are timezone aware. Aside from rendering the datetimes in the
 * [http://guides.rubyonrails.org/i18n.html#adding-date-time-formats](http://guides.rubyonrails.org/i18n.html#adding-date-time-formats)
 * [https://github.com/svenfuchs/rails-i18n/tree/master/rails/locale](https://github.com/svenfuchs/rails-i18n/tree/master/rails/locale)
 
-On the homepage of the sample application there are numerous examples, also check out the `config/locales/en.yml` file. 
+On the homepage of the sample application there are numerous examples, also check out the `config/locales/en.yml` file.
 
 Basic example:
- 
+
 ```ruby
 I18n.localize(current_user.created_at)
 ```
@@ -119,10 +119,10 @@ end
     </p>
 
 There is odd behavior with Time.use_zone when doing in-memory sorting in ruby (`sort_by`). See the `HomeController` in the sample application. Ordered attributes do not convert in the use_zone block. I am not sure if this a bug or by design.
-    
+
 ## Override timezone when saving data
 
-Sometimes you want to override saving data. Let's say my profile is set up with 'Pacific' timezone, but I am creating an event that will occur in New York ('Eastern' timezone). I do *not* want rails to convert the times to 'Pacific'. We can reset the current threads timezone to the events timezone before the create and update actions execute. 
+Sometimes you want to override saving data. Let's say my profile is set up with 'Pacific' timezone, but I am creating an event that will occur in New York ('Eastern' timezone). I do *not* want rails to convert the times to 'Pacific'. We can reset the current threads timezone to the events timezone before the create and update actions execute.
 
 ```ruby
 class EventsController < ApplicationController
@@ -226,3 +226,5 @@ Good naming conventions for date and datetime (your milage may vary)
 datetime: should end in _at (created_at, updated_at, start_at, end_at)
     date: should end in _on (start_on, end_on, work_on)
 ```
+
+See also: [Rails, timezones, javascript and moment.js](/blog/2014/12/13/rails-timezones-javascript-and-moment-js/)
