@@ -9,7 +9,22 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="So you need to display some datetimes in your new ember.js/angular/backbone UI and the times must be displayed for a timezone which is different from &hellip;">
+  <meta name="description" content="The following IAM policy can be used to upload SSL certificates to AWS for use by cloudfront or ELB. 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+{ "Version &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +80,266 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/08/aws-iam-policy-for-uploading-ssl-certificates/">AWS IAM policy for uploading SSL certificates</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-02-08T10:04:00-08:00" pubdate data-updated="true">Feb 8<span>th</span>, 2015</time>
+        
+         | <a href="/blog/2015/02/08/aws-iam-policy-for-uploading-ssl-certificates/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The following <a href="http://aws.amazon.com/iam/">IAM</a> policy can be used to upload SSL certificates to <a href="http://aws.amazon.com/">AWS</a> for use by <a href="http://aws.amazon.com/cloudfront/">cloudfront</a> or <a href="http://aws.amazon.com/elasticloadbalancing/">ELB</a>.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  "Version": "2012-10-17",
+</span><span class='line'>  "Statement": [
+</span><span class='line'>    {
+</span><span class='line'>      "Effect": "Allow",
+</span><span class='line'>      "Action": [
+</span><span class='line'>        "iam:DeleteServerCertificate",
+</span><span class='line'>        "iam:UploadServerCertificate",
+</span><span class='line'>        "iam:ListServerCertificates",
+</span><span class='line'>        "iam:GetServerCertificate"
+</span><span class='line'>      ],
+</span><span class='line'>      "Resource": "*"
+</span><span class='line'>    }
+</span><span class='line'>  ]
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This policy gives full access to certificate management and nothing else.</p>
+
+<h2>Resources</h2>
+
+<ul>
+<li><a href="https://bryce.fisher-fleig.org/blog/setting-up-ssl-on-aws-cloudfront-and-s3/">https://bryce.fisher-fleig.org/blog/setting-up-ssl-on-aws-cloudfront-and-s3/</a></li>
+<li><a href="https://www.tiredpixel.com/2014/09/01/secure-static-websites-using-aws-s3-ssl-aws-cloudfront-and-aws-route-53/">https://www.tiredpixel.com/2014/09/01/secure-static-websites-using-aws-s3-ssl-aws-cloudfront-and-aws-route-53/</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/03/rbenv-and-your-user-account-isnt-allowed-to-install-to-the-system-rubygems/">rbenv and Your user account isn&#8217;t allowed to install to the system Rubygems</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-02-03T09:54:00-08:00" pubdate data-updated="true">Feb 3<span>rd</span>, 2015</time>
+        
+         | <a href="/blog/2015/02/03/rbenv-and-your-user-account-isnt-allowed-to-install-to-the-system-rubygems/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This happened to me after re-installing my OS and using a fresh install of <a href="https://github.com/sstephenson/rbenv">rbenv</a>. I cloned my application repository and went to execute a <code>bundle install</code> and received the following error:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Fetching source index from http://rubygems.org/
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>Your user account isn't allowed to install to the system Rubygems.
+</span><span class='line'>You can cancel this installation and run:
+</span><span class='line'>
+</span><span class='line'>    bundle install --path vendor/bundle
+</span><span class='line'>
+</span><span class='line'>to install the gems into ./vendor/bundle/, or you can enter your password
+</span><span class='line'>and install the bundled gems to Rubygems using sudo.
+</span><span class='line'>
+</span><span class='line'>Password:</span></code></pre></td></tr></table></div></figure>
+
+
+<p>What? rbenv should not be prompting me to use sudo, it was trying to install gems on the system version of ruby. Running <code>rbenv local</code> returned <code>2.1.4</code> as expected, what the heck was going on?</p>
+
+<p><code>gem list | grep bundler</code> returned nothing &ndash; doh! I didn&rsquo;t have bundler installed via rbenv so it was falling back to the system ruby. I was not expecting it to use a different version of bundler.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rbenv local
+</span><span class='line'>gem install bundler
+</span><span class='line'>rbenv rehash
+</span><span class='line'>bundle</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And all was right with the world again!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/02/setup-mac-os-x-for-rails-development/">Setup Mac OS X for rails development</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-02-02T09:33:00-08:00" pubdate data-updated="true">Feb 2<span>nd</span>, 2015</time>
+        
+         | <a href="/blog/2015/02/02/setup-mac-os-x-for-rails-development/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Whenever I get new machine or re-install my OS I like to use pivotals <a href="https://github.com/pivotal-sprout/sprout-wrap">sprout-wrap</a> for the setup. I have been through the process many times and finally documented it back in October.</p>
+
+<p>From the app store install XCode</p>
+
+<ul>
+<li>open XCode and accept the terms, then close app</li>
+<li>from the terminal run: <code>xcode-select --install</code></li>
+<li>copy ssh keys from old machine via airdrop</li>
+<li>then install sprout-wrap dependencies using the built in version of Ruby that ships with Mac OS X:</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo gem install soloist
+</span><span class='line'>sudo gem install bundler
+</span><span class='line'>mkdir installs
+</span><span class='line'>cd installs
+</span><span class='line'>git clone https://github.com/pivotal-sprout/sprout-wrap.git
+</span><span class='line'>cd sprout-wrap
+</span><span class='line'>sudo bundle</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Modify the <code>soloistrc</code> file if desired; for me that means adding &lsquo;sourcetree&rsquo;, &lsquo;hipchat&rsquo; and a few others to the casks section.</p>
+
+<p>The full list of available casks are here: <a href="https://github.com/pivotal-sprout/sprout-osx-apps/tree/master/recipes">https://github.com/pivotal-sprout/sprout-osx-apps/tree/master/recipes</a></p>
+
+<p>You probably want to change the &lsquo;Energy Saver&rsquo; settings to never while the installs are running.</p>
+
+<p><code>bundle exec soloist</code></p>
+
+<p>Enter your password after prompted and then watch the magic happen&hellip;</p>
+
+<p>A few hours later, after sprout-wrap is done; time for a few more &lsquo;manual&rsquo; installs</p>
+
+<ul>
+<li><a href="https://github.com/carlhuda/janus">janus</a> for vim configuration (i dont&#8217; use vim much but occasionally pair with people who do)</li>
+<li>Clone personal dotfiles</li>
+<li>install some firefox add ons</li>
+<li>For chrome once I login to Google all of my add ons will auto install</li>
+<li>Install <a href="http://www.sublimetext.com/3">SublimeText3</a> and <a href="https://packagecontrol.io/installation">Package Control</a>
+
+<ul>
+<li>If you prefer SublimeText2 it is available as a cask and can be installed via soloist</li>
+</ul>
+</li>
+</ul>
+
+
+<blockquote><p>then Encrypt your hard drive using FileVault2</p></blockquote>
+
+<p>Done! :)</p>
+
+<hr />
+
+<p><em>NOTE: if you install sprout-wrap with defaults it will configure many os-x settings which you may or may not like; I personally do like them, especially the &lsquo;Fast Key Repeat Rate&rsquo;.</em></p>
+
+<p>This post originally appeared on the private discussion board <a href="http://parley.rubyrogues.com/">Ruby Rogues Parley</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -203,7 +478,7 @@ On my local development machine I prefer to lint files that have recently change
 Note it uses the autofix rubocop option, optionally you could run it on non-staged files without the autofix flag.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git diff --name-only --cached | xargs rubocop -a</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git diff --name-only --cached | grep '\.rb' | xargs rubocop -a</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Don&rsquo;t forget to <code>git add .</code> after rubocop finds/fixes any code style violations in your staged files.</p>
@@ -960,171 +1235,6 @@ Magick::ImageMagickError: WriteBlob Failed `/Users/ME/projects/CLIENT/code/RAILS
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/09/24/octopress-test/">Octopress Test</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-09-24T14:06:00-07:00" pubdate data-updated="true">Sep 24<span>th</span>, 2013</time>
-        
-         | <a href="/blog/2013/09/24/octopress-test/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>My first post using Octopress!</p>
-
-<p>Followed the fine documenation here: <a href="http://octopress.org/docs/">http://octopress.org/docs/</a> to get up and running.</p>
-
-<p>And used this script <a href="https://gist.github.com/juniorz/1564581">https://gist.github.com/juniorz/1564581</a> to import all of my old posts from blogger. It failed to import a few posts but overall worked great!</p>
-
-<p>I do have various formatting issues on older posts, will need to revisit those in the future&hellip;</p>
-
-<p>Authoring with markdown is so much better and no need for embedded gist: ya!</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="s2">&quot;Hello Octopress&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hello Octopress&quot;</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: supply_drop)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-06T00:00:00-07:00" pubdate data-updated="true">Jul 6<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Similar to <a href="http://matschaffer.github.io/knife-solo/">knife-solo</a> for use with <a href="http://www.opscode.com/chef/">chef</a>, <a href="https://github.com/pitluga/supply_drop">supply_drop</a> allows you to provision servers using <a href="https://puppetlabs.com/">puppet</a> without the need for a puppet master server. It uses <a href="https://github.com/capistrano/capistrano">capistrano</a> for executing commands on the remote server. I put together a working sample set of puppet and supply_drop deployment scripts for&nbsp;provisioning&nbsp;a postgres server.<br /><br /><blockquote class="tr_bq">See the github repo at &nbsp;<a href="https://github.com/house9/puppet-solo-hello-world">https://github.com/house9/puppet-solo-hello-world</a></blockquote><br /><b>Resources</b><br /><br /><ul><li><a href="http://www.confreaks.com/videos/2479-railsconf2013-devops-for-the-rubyist-soul">http://www.confreaks.com/videos/2479-railsconf2013-devops-for-the-rubyist-soul</a></li><li><a href="https://speakerdeck.com/jtdowney/devops-for-the-rubyist-soul-at-rubynation-2013">https://speakerdeck.com/jtdowney/devops-for-the-rubyist-soul-at-rubynation-2013</a></li></ul><br /><br /><br /></div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e chef cookbook</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-06-24T00:00:00-07:00" pubdate data-updated="true">Jun 24<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Postgres has various backup and restore options</p>
-
-<ul>
-<li><a href="http://www.postgresql.org/docs/9.2/static/backup.html">http://www.postgresql.org/docs/9.2/static/backup.html</a></li>
-</ul>
-
-
-<p>Do you have a recovery plan in case your Postgres server crashes &ndash; your daily pg_dump is probably not going to cut it.</p>
-
-<p>Postgres uses Write-Ahead Logging (WAL)</p>
-
-<blockquote><p>Write-Ahead Logging (WAL) is a standard method for ensuring data integrity. A detailed description can be found in most (if not all) books about transaction processing. Briefly, WAL&rsquo;s central concept is that changes to data files (where tables and indexes reside) must be written only after those changes have been logged, that is, after log records describing the changes have been flushed to permanent storage. If we follow this procedure, we do not need to flush data pages to disk on every transaction commit, because we know that in the event of a crash we will be able to recover the database using the log: any changes that have not been applied to the data pages can be redone from the log records. (This is roll-forward recovery, also known as REDO.)</p></blockquote>
-
-<ul>
-<li>from <a href="http://www.postgresql.org/docs/9.2/static/wal-intro.html">http://www.postgresql.org/docs/9.2/static/wal-intro.html</a></li>
-</ul>
-
-
-<p>Setting up Continuous Archiving and Point-in-Time Recovery (PITR) for your Postgres WAL files is very complex, lucky for us the WAL-e project has simplified this process greatly. WAL-e has utilities for sending all WAL files to an AWS S3 bucket as the log files are being generated. More Information, see:</p>
-
-<ul>
-<li><a href="http://www.postgresql.org/docs/9.2/static/continuous-archiving.html">http://www.postgresql.org/docs/9.2/static/continuous-archiving.html</a></li>
-<li><a href="https://github.com/wal-e/wal-e">https://github.com/wal-e/wal-e</a></li>
-</ul>
-
-
-<p>Recently I put together a chef cookbook which installs WAL-e on a Postgres instance, see:</p>
-
-<ul>
-<li><a href="https://github.com/house9/wal-e-cookbook">https://github.com/house9/wal-e-cookbook</a></li>
-<li><a href="https://github.com/house9/use_wal_e">https://github.com/house9/use_wal_e</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1140,6 +1250,18 @@ Similar to <a href="http://matschaffer.github.io/knife-solo/">knife-solo</a> for
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/08/aws-iam-policy-for-uploading-ssl-certificates/">AWS IAM policy for uploading SSL certificates</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/03/rbenv-and-your-user-account-isnt-allowed-to-install-to-the-system-rubygems/">rbenv and Your user account isn&#8217;t allowed to install to the system Rubygems</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/02/setup-mac-os-x-for-rails-development/">Setup Mac OS X for rails development</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a>
       </li>
     
@@ -1149,18 +1271,6 @@ Similar to <a href="http://matschaffer.github.io/knife-solo/">knife-solo</a> for
     
       <li class="post">
         <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/13/stub-paperclip-s3-uploads-in-rspec/">stub paperclip s3 uploads in rspec</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/">Magick::ImageMagickError: WriteBlob Failed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a>
       </li>
     
   </ul>
@@ -1205,7 +1315,7 @@ Similar to <a href="http://matschaffer.github.io/knife-solo/">knife-solo</a> for
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Jesse House -
+  Copyright &copy; 2015 - Jesse House -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

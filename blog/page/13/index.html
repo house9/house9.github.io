@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Ran into a strange issue using jqueryUI highlight effect, the issue only occurred with Webkit browsers (Google Chrome and Safari) and only when I &hellip;">
+  <meta name="description" content="At work we use TFS for source control and NAnt for building our application, yesterday our NAnt build started failing with the following error &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,117 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/04/09/file-version-is-not-in-normal/">&#8216;file version&#8217; is not in the normal &#8216;major.minor.build.revision&#8217; format</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-09T00:00:00-07:00" pubdate data-updated="true">Apr 9<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+At work we use TFS for source control and NAnt for building our application, yesterday our NAnt build started failing with the following error message &#8221;<span style="font-style: italic;">Assembly generation The version &#8216;2.7.1.65559&#8217; specified for the &#8216;file version&#8217; is not in the normal &#8216;major.minor.build.revision&#8217; format</span>&#8221;<br /><br />After a quick Google search it turns out that each segment in a .net assembly cannot be larger then 65534. We use the TFS changeset for the <span style="font-style: italic;">revision </span>segment but this will no longer work for us as we are now beyond changeset 65534 - doh! As a work around we are now using only the last 4 digits of the changeset, so instead of 2.7.1.65559 we are using the version 2.7.1.5559<br /><br />this required a small change to the Nant build script<br /><ul><li>the update is <a href="http://house9.blogspot.com/2009/04/update-nant-build-with-tfs-changeset-as.html">here</a></li><li>and the original is <a href="http://house9.blogspot.com/2008/04/nant-build-with-tfs-changeset-as.html">here</a></li></ul>this version constraint is documented <a href="http://msdn.microsoft.com/en-us/library/system.reflection.assemblyversionattribute.aspx">here</a></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/03/26/get-filenames-and-database-names-from/">Get Filenames and Database names from MSSQL</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-26T00:00:00-07:00" pubdate data-updated="true">Mar 26<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I was doing some clean up on one of our database servers; we have many databases created with backup/restore for testing purposes I was checking for the largest ldf files and making sure those databases were in simple mode and then shirking the data files, there were a few files I could not match to the databases because the mdf and ldf file names were different from the actual database file name - found the following queries using a few google searches<div><br /></div><br /><div><br /><script src="http://gist.github.com/86181.js"></script><br /></div><br /><div><br /><script src="http://gist.github.com/86182.js"></script><br /></div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/03/12/acephalix/">Acephalix</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-03-12T00:00:00-07:00" pubdate data-updated="true">Mar 12<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<div><br />My brothers latest band - <a href="http://www.myspace.com/acephalix">Acephalix</a><br /></div><br /><div style="width:300px;"><object width="300" height="110"><param value="http://media.imeem.com/m/o0DR7bpUS2/aus=false/" name="movie"/><param value="transparent" name="wmode"/><embed width="300" src="http://media.imeem.com/m/o0DR7bpUS2/aus=false/" height="110" wmode="transparent" type="application/x-shockwave-flash"></embed></object><div style="background-color:#E6E6E6;padding:1px;"><div style="float:left;padding:4px 4px 0 0;"><a href="http://www.imeem.com/"><img border="0"   src="http://www.imeem.com/embedsearch/E6E6E6/"/></a></div><form action="http://www.imeem.com/embedsearch/" style="margin:0;padding:0;" method="post"><input name="EmbedSearchBox" type="text"/><input style="font-size:12px;" value="Search" type="submit"/><div style="padding-top:3px;"><a href="http://www.imeem.com/ads/banneradclick.ashx?ep=0&ek=o0DR7bpUS2" rel="nofollow"><img border="0" src="http://www.imeem.com/ads/bannerad/152/10/"/></a><a href="http://www.imeem.com/ads/banneradclick.ashx?ep=1&ek=o0DR7bpUS2" rel="nofollow"><img border="0" src="http://www.imeem.com/ads/bannerad/153/10/"/></a><a href="http://www.imeem.com/ads/banneradclick.ashx?ep=2&ek=o0DR7bpUS2" rel="nofollow"><img border="0" src="http://www.imeem.com/ads/bannerad/154/10/"/></a><a href="http://www.imeem.com/ads/banneradclick.ashx?ep=3&ek=o0DR7bpUS2" rel="nofollow"><img border="0" src="http://www.imeem.com/ads/bannerad/155/10/o0DR7bpUS2/"/></a></div></form></div></div><br/><a href="http://www.imeem.com/people/5f1mPD_/music/alqGD3-f/acephalix-track-1/">Track 1 - Acephalix</a></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -338,125 +449,6 @@ This is a good presentation<br /><a href="http://www.infoq.com/presentations/fra
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/01/07/coding-cheat-sheets/">Coding Cheat Sheets</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-01-07T00:00:00-08:00" pubdate data-updated="true">Jan 7<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-<div>This is for personal reference: some links to helpful Cheat Sheets for coding</div><div><ul><li><a href="http://colorcharge.com/wp-content/uploads/2007/12/jquery12_colorcharge.png">jquery 1.2 (posted 2007-12-23)</a><br /></li><li><a href="http://www.gscottolson.com/weblog/2008/01/11/jquery-cheat-sheet/">jquery 1.2 (posted 2008-01-11)</a></li><li><a href="http://www.scribd.com/doc/12959555/Jquery-13-Cheatsheet">jquery 1.3 (posted 2009-03-10)</a></li><li><a href="http://www.addedbytes.com/cheat-sheets/subversion-cheat-sheet/">subversion (posted 2008-08-07)</a></li><li><a href="http://insites.ingenesis.net/wp-content/uploads/2007/04/mysql-reference-sheet.pdf">mysql (posted 2007-04-??)</a></li><li>To be continued&#8230;</li></ul><div><br /></div><div>Check out this is a <a href="http://www.webappers.com/2008/11/05/best-cheat-sheets-for-web-developers/">great post</a> - tons of links to good stuff</div></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/12/30/dilbert-share-point-web-part/">Dilbert Share Point Web Part</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-12-30T00:00:00-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2008</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-I have a love hate relationship with <a href="http://www.microsoft.com/sharepoint/prodinfo/what.mspx">Microsoft Share Point</a>. It has really good integration with <a href="http://office.microsoft.com/">Office products</a> but also has a lot of irritating &#8216;features&#8217;. Anyhow I knew there had to be a web part out there to get the latest <a href="http://www.dilbert.com/">Dilbert</a> comic strip and after a quick <a href="http://www.google.com/search?q=dilbert+share+point+web+part">Google search</a> I found it!<br /><br /><a href="http://www.nogeekleftbehind.com/2007/11/21/download-daily-dilbert-web-part-for-sharepoint/">http://www.nogeekleftbehind.com/2007/11/21/download-daily-dilbert-web-part-for-sharepoint/</a><br /><br />no share point portal is complete without it!</div>
-<h2>Comments</h2>
-<div class='comments'>
-<div class='comment'>
-<div class='author'>CoUgar</div>
-<div class='content'>
-super :) thanks for the link</div>
-</div>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2008/12/06/rails-21-and-22-documentation/">Rails 2.1 and 2.2 documentation</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-12-06T00:00:00-08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2008</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-This post is for personal reference, I keep losing track of the url to this great resource. Ruby on Rails guides at <a href="http://guides.rails.info/">http://guides.rails.info/</a> I think this site launched when rails 2.1 came out, it is still a work in progress but is an extremely valuable resource covering everything from &#8216;getting started&#8217;, active record associations, security, debugging, the new 2.2 Rails Internationalization API and more.<br /><br />Ruby on Rails guides at <a href="http://guides.rails.info/">http://guides.rails.info/</a></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/14/">&larr; Older</a>
@@ -474,6 +466,18 @@ This post is for personal reference, I keep losing track of the url to this grea
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/08/aws-iam-policy-for-uploading-ssl-certificates/">AWS IAM policy for uploading SSL certificates</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/03/rbenv-and-your-user-account-isnt-allowed-to-install-to-the-system-rubygems/">rbenv and Your user account isn&#8217;t allowed to install to the system Rubygems</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/02/setup-mac-os-x-for-rails-development/">Setup Mac OS X for rails development</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a>
       </li>
     
@@ -483,18 +487,6 @@ This post is for personal reference, I keep losing track of the url to this grea
     
       <li class="post">
         <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/13/stub-paperclip-s3-uploads-in-rspec/">stub paperclip s3 uploads in rspec</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/">Magick::ImageMagickError: WriteBlob Failed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a>
       </li>
     
   </ul>
@@ -539,7 +531,7 @@ This post is for personal reference, I keep losing track of the url to this grea
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Jesse House -
+  Copyright &copy; 2015 - Jesse House -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

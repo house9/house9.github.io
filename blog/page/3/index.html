@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="How to configure nginx to accept larger querystring requestsIncrease the &#8217;large_client_header_buffers&#8217;This is located in the &#8217;http &hellip;">
+  <meta name="description" content="It has never been easier than with Semaphore - Hosted Continuous Integrationhttps://semaphoreapp.com/How easy is itadd semaphore ssh key to your &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,125 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/03/setting-up-ci-build-continuous/">Setting up a C.I. build (Continuous Integration) for a Ruby on Rails application</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-03T00:00:00-07:00" pubdate data-updated="true">Nov 3<span>rd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<br />It has never been easier than with Semaphore - Hosted Continuous Integration<br /><br /><ul><li><a href="https://semaphoreapp.com/">https://semaphoreapp.com/</a></li></ul><br />How easy is it<br /><br /><ul><li>add semaphore ssh key to your github repo</li><li>then semaphore automatically determines your ruby version, database, etc&#8230;</li><li>you can tweak the build steps later, the defaults are pretty good</li></ul><br />It will automatically detect new branches!!! That means zero setup when the new branch is added<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-HqVYteyXvQk/UJVdSqJnYOI/AAAAAAAAC6U/AU4oP3tZ2D8/s1600/semaphoreapp-01.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="348" src="http://4.bp.blogspot.com/-HqVYteyXvQk/UJVdSqJnYOI/AAAAAAAAC6U/AU4oP3tZ2D8/s640/semaphoreapp-01.png" width="640" /></a></div><br /><br />It is not <a href="https://semaphoreapp.com/pricing">cheap</a>, for personal side projects it might not make sense?<br />But well worth the money if you are doing paid development<br /></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/03/git-log-formatting/">Git Log Formatting </a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-03T00:00:00-07:00" pubdate data-updated="true">Nov 3<span>rd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+The git log command is great and has tons of good information, but the output doesn&#8217;t give you that nice &#8216;overview&#8217; of the commit history, too much detail on too many lines<br /><br />I&#8217;ve been using the following in my .gitconfig file<br /><blockquote class="tr_bq"><span style="background-color: #cccccc;">l = log -20 &#8211;format=&#8217;%h %ad %d %an: %s&#8217; &#8211;date=short</span></blockquote>typing &#8217;<i style="background-color: #cccccc;">git l</i>&#8217; renders the following output:<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-0GRyv-72haA/UJVYQ96clhI/AAAAAAAAC58/Lptn1WKW9dA/s1600/git-l-01.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="297" src="http://2.bp.blogspot.com/-0GRyv-72haA/UJVYQ96clhI/AAAAAAAAC58/Lptn1WKW9dA/s640/git-l-01.png" width="640" /></a></div><br /><br />Last night I watched the <a href="https://www.destroyallsoftware.com/">Destroy All Software</a> &#8221;<a href="https://www.destroyallsoftware.com/screencasts/catalog/pretty-git-logs">PRETTY GIT LOGS</a>&#8221; screencast which takes &#8217;<i style="background-color: #cccccc;">git l</i>&#8217; to the next level<br /><br /><ul><li><a href="https://www.destroyallsoftware.com/screencasts/catalog/pretty-git-logs">https://www.destroyallsoftware.com/screencasts/catalog/pretty-git-logs</a></li><li><a href="https://github.com/garybernhardt/dotfiles/blob/master/.gitconfig">https://github.com/garybernhardt/dotfiles/blob/master/.gitconfig</a></li><li><a href="https://github.com/garybernhardt/dotfiles/blob/master/.githelpers">https://github.com/garybernhardt/dotfiles/blob/master/.githelpers</a></li></ul><div><div>now &#8217;<i style="background-color: #cccccc;">git l</i>&#8217; renders</div><div><br /></div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-Rgt39G9fGfg/UJVYWh9U0lI/AAAAAAAAC6E/3nxcaZO7Keo/s1600/git-l-02.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="242" src="http://1.bp.blogspot.com/-Rgt39G9fGfg/UJVYWh9U0lI/AAAAAAAAC6E/3nxcaZO7Keo/s640/git-l-02.png" width="640" /></a></div><div><br /></div><div>&nbsp; &nbsp;</div></div></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/31/helper-script-to-delete-git-tags/">Helper script to delete git tags locally and remote</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-31T00:00:00-07:00" pubdate data-updated="true">Oct 31<span>st</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Might be useful to others, delete a bunch of git tags - remote and locally<br /><br /><br /><script src="https://gist.github.com/3989586.js?file=build-and-execute-multiple-git-commands.sh"></script><noscript>Your reader does not render gists; view code here -  <a href="https://gist.github.com/3989586.js?file=build-and-execute-multiple-git-commands.sh">https://gist.github.com/3989586.js?file=build-and-execute-multiple-git-commands.sh</a></noscript><br /><b>Resources</b><br /><br /><ul><li><a href="http://nathanhoad.net/how-to-delete-a-remote-git-tag">http://nathanhoad.net/how-to-delete-a-remote-git-tag</a>&nbsp;</li><li><a href="http://www.linuxquestions.org/questions/programming-9/bash-read-every-line-in-the-files-and-use-the-line-as-parameters-as-another-program-246291/">http://www.linuxquestions.org/questions/programming-9/bash-read-every-line-in-the-files-and-use-the-line-as-parameters-as-another-program-246291/</a></li><li><a href="http://stackoverflow.com/questions/1605232/use-bash-to-read-a-file-and-then-execute-a-command-from-the-words-extracted">http://stackoverflow.com/questions/1605232/use-bash-to-read-a-file-and-then-execute-a-command-from-the-words-extracted</a></li></ul></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Arnaud Frugier</div>
+<div class='content'>
+git tag -l | grep &quot;^\d&quot; | sed &#39;s/^/git push origin :/&#39; | sh<br />git tag -l | grep &quot;^\d&quot; | sed &#39;s/^/git tag -d /&#39; | sh</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -325,117 +444,6 @@ Very useful<br /><br /><span style="background-color: whitesmoke; color: #333333
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/12/02/get-table-and-column-information-in/">Get table and column information in postgres</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-12-02T00:00:00-08:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Use the information_schema catalog - <a href="http://www.postgresql.org/docs/9.1/static/information-schema.html">http://www.postgresql.org/docs/9.1/static/information-schema.html</a><br /><br />Get table and columns from the public schema<br /><br /><script src="https://gist.github.com/1423507.js?file=select_table_and_columns_from_postgres.sql"></script><br /><noscript><br />select <br />  tables.table_name, <br />  columns.column_name<br /><br />from information_schema.tables<br />inner join information_schema.columns <br />on information_schema.columns.table_name = information_schema.tables.table_name<br /><br />where tables.table_schema = &#8216;public&#8217;<br />and tables.table_type = &#8216;BASE TABLE&#8217;<br /><br />order by tables.table_name, columns.column_name;<br /></noscript><br /><br />This can be useful, maybe you want to auto generate some text that creates foreign keys based on a naming convention - for instance let&#8217;s say we have a ruby/rails method called make_fk_unless_exists<br /><br /><script src="https://gist.github.com/1423533.js?file=create_fk_script_postgres.sql"></script><br /><noscript><br />select <br />  tables.table_name, <br />  columns.column_name,<br />  (&#8216;make_fk_unless_exists :&#8217; || tables.table_name || &#8216;, :&#8217; || columns.column_name || &#8216;, :&#8217; || REPLACE(columns.column_name, &#8216;_id&#8217;, &#8216;s&#8217;)) as code<br /> <br />from information_schema.tables<br />inner join information_schema.columns <br />on information_schema.columns.table_name = information_schema.tables.table_name<br /><br />where tables.table_schema = &#8216;public&#8217;<br />and columns.column_name LIKE &#8216;%id&#8217;<br />and columns.column_name <> &#8216;id&#8217;<br />and tables.table_type = &#8216;BASE TABLE&#8217;<br /><br />order by tables.table_name, columns.column_name;<br /></noscript><br /><br />The &#8216;code&#8217; column would render something like<br /><br /><blockquote class="tr_bq"><i>make_fk_unless_exists :projects, :milestone_id, :milestones</i><br /><i>make_fk_unless_exists :tasks, :project_id, :projects</i><br /><i>&#8230;</i><br /></blockquote><br /><br /></div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/11/12/sample-routes-and-links-with-rails-3-in/">Sample Routes and Links with Rails 3 in the console</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-11-12T00:00:00-08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-The content for this post is all from a gist, hopefully someone finds it useful<br /><br /><script src="https://gist.github.com/1361290.js?file=routes_link_to_in_rails_console.rb"></script><br /><noscript><br />Your reader does not support script, view the gist here<br />https://gist.github.com/1361290<br /></noscript><br /><br /><b>Resources</b><br /><br /><br /><ul><li><a href="http://stackoverflow.com/questions/2778074/recognize-routes-in-rails-console-session">http://stackoverflow.com/questions/2778074/recognize-routes-in-rails-console-session</a></li></ul></div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/11/09/postgres-get-number-of-days-in-interval/">Postgres: get the number of days in an interval</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-11-09T00:00:00-08:00" pubdate data-updated="true">Nov 9<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-<blockquote><span class="Apple-style-span" style="color: #38761d;">&#8211; seconds / 60 = minutes / 60 = hours / 24 = days </span><br /><span class="Apple-style-span" style="color: blue;">select</span> (((EXTRACT(EPOCH <span class="Apple-style-span" style="color: blue;">FROM</span> INTERVAL &#8217;<span class="Apple-style-span" style="color: #38761d;">2 years</span>&#8217;) / 60) / 60) / 24)::integer <span class="Apple-style-span" style="color: blue;">as</span> number_of_days&nbsp;</blockquote><br />good resource -&nbsp;<a href="http://stackoverflow.com/questions/952493/how-do-i-convert-an-interval-into-a-number-of-hours-with-postgres">http://stackoverflow.com/questions/952493/how-do-i-convert-an-interval-into-a-number-of-hours-with-postgres</a></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -453,6 +461,18 @@ The content for this post is all from a gist, hopefully someone finds it useful<
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/08/aws-iam-policy-for-uploading-ssl-certificates/">AWS IAM policy for uploading SSL certificates</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/03/rbenv-and-your-user-account-isnt-allowed-to-install-to-the-system-rubygems/">rbenv and Your user account isn&#8217;t allowed to install to the system Rubygems</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/02/setup-mac-os-x-for-rails-development/">Setup Mac OS X for rails development</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a>
       </li>
     
@@ -462,18 +482,6 @@ The content for this post is all from a gist, hopefully someone finds it useful<
     
       <li class="post">
         <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/13/stub-paperclip-s3-uploads-in-rspec/">stub paperclip s3 uploads in rspec</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/">Magick::ImageMagickError: WriteBlob Failed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a>
       </li>
     
   </ul>
@@ -518,7 +526,7 @@ The content for this post is all from a gist, hopefully someone finds it useful<
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Jesse House -
+  Copyright &copy; 2015 - Jesse House -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

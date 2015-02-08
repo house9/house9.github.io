@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Paul Irish has some nice code for loading jquery from cdn but then falling back to localhost if it cannot be loaded from cdn. Check it out here.For &hellip;">
+  <meta name="description" content="I am running a host Windows 7 machine with a Guest Windows Server 2008 RC2. The guest machine is hosted inside of VirtualBox. It appears that this &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,138 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/07/ping-guest-os-from-host-os-with/">Ping Guest OS from Host OS with VirtualBox</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-07T00:00:00-07:00" pubdate data-updated="true">Apr 7<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I am running a host Windows 7 machine with a Guest Windows Server 2008 RC2. The guest machine is hosted inside of <a href="http://www.virtualbox.org/">VirtualBox</a>. It appears that this issue can occur with any number of OS host or guest machines.<br /><br />From the guest machine I could access the internet and access the host machine, but I could not ping or access the guest machine from the host. Turns out there is a network setting that needs to be changed.<br /><br />On the guests &#8216;container&#8217; go to Devices &gt; Network Adapters<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-3wcZuLntxu0/TZ3UqMsu66I/AAAAAAAAC0Q/7rAucnEe0ts/s1600/virtualbox-host-ping-guest-01.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="388" src="http://4.bp.blogspot.com/-3wcZuLntxu0/TZ3UqMsu66I/AAAAAAAAC0Q/7rAucnEe0ts/s640/virtualbox-host-ping-guest-01.png" width="640" /></a></div><br />Then change &#8216;Attached to&#8217; from &#8216;NAT&#8217; to &#8216;Bridged Adapter&#8217;<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-9l70Yl2d02s/TZ3U2_-I1vI/AAAAAAAAC0U/0SrzQDCS9J8/s1600/virtualbox-host-ping-guest-02.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="368" src="http://1.bp.blogspot.com/-9l70Yl2d02s/TZ3U2_-I1vI/AAAAAAAAC0U/0SrzQDCS9J8/s640/virtualbox-host-ping-guest-02.png" width="640" /></a></div><br />at that point you should be good to go<br /><br />Resources<br /><br /><ul><li>virtualbox forums: <a href="http://forums.virtualbox.org/viewtopic.php?f=6&amp;t=15792&amp;sid=96a654bdcb88ff0b628c108663f681ce&amp;start=15">Host can&#8217;t ping guest in Different OS ??</a></li></ul></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Diego Rafael Flores Gonzales</div>
+<div class='content'>
+I did that, they are in the same network but I can&#39;t ping from either side, What do I have to do?  the other comments says to change the setting from public to private HOW?</div>
+</div>
+<div class='comment'>
+<div class='author'>Darren Helsby</div>
+<div class='content'>
+Thanks for your post.  I was having the same problem between a Win 7 Pro host and a Win 8 Customer Preview guest and solved it using your method.<br /><br />The only extra thing I had to do was change the guest network setting from a public network to private and now I can ping both ways.</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/03/29/rows-and-columns-with-css/">Rows and Columns with CSS</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-29T00:00:00-07:00" pubdate data-updated="true">Mar 29<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+here is a code snippet for creating rows and columns with css - I guess you could say this is a table?<br /><br /><script src="https://gist.github.com/892551.js?file=css-rows-and-columns.html"></script><br /><noscript><br />your reader does not support script includes, please <br /><a href="https://gist.github.com/raw/892551/38b499f9f5ee783a85cbd82966ee9b2fd5a56e90/css-rows-and-columns.html">View the Gist</a>.<br /></noscript><br /><br />Resources<br /><br /><ul><li><a href="http://www.webmasterworld.com/css/3896320.htm">webmaster world css forum</a></li></ul></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>W.RAZI.EU</div>
+<div class='content'>
+Hi, is it possible to have the left column width fixed, 300px for example and right to stretch across the page?</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/03/29/add-tfexe-and-other-net-command-line/">Add tf.exe and other .net command line tools to your powershell path</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-29T00:00:00-07:00" pubdate data-updated="true">Mar 29<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I really don&#8217;t like cmd.exe, it is difficult to work with. PowerShell ISE is much nicer and the bonus is you can run non powershell programs from this environment as well.<br /><br />I needed to run some TFS commands, adding the ide directory to the path is easy<br /><blockquote><span class="Apple-style-span" style="background-color: yellow;">$env:path += &#8220;;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE&#8221;</span></blockquote>another directory you might want to add if you are messing about with IIS7<br /><br /><blockquote><span class="Apple-style-span" style="background-color: yellow;">$env:path += &#8220;;C:\Windows\System32\inetsrv&#8221;&nbsp;</span></blockquote>now you can do things like recycle all of the AppPools on your machine<br /><br /><blockquote>appcmd list apppool /xml | appcmd recycle apppool /in</blockquote></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -338,125 +470,6 @@ I&#8217;ve been intrigued with the idea of CQRS for some time; ever since I watc
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/02/21/osha-safety-software/">OSHA Safety Software</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-21T00:00:00-08:00" pubdate data-updated="true">Feb 21<span>st</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-I&#8217;ve been working on this project off and on for quite sometime. If you are a small to mid size business in California and you need Safety Documents and&nbsp;Safety Management Software check out <a href="http://www.safetysanity.com/">www.safetysanity.com</a>.<br /><br />Use this code to save $100 off the setup fees<br /><blockquote><span class="Apple-style-span" style="background-color: yellow;">2011-SAVE-100</span></blockquote>We&#8217;ve simplified the process of creating a Safety Program; starting with Safety Document creation through managing Employee Training, Equipment Inspections and Accident Reporting.<br /><blockquote><a href="http://www.safetysanity.com/">www.safetysanity.com</a></blockquote>Our software application &nbsp;generates a Safety Program which is compliant with Cal/OSHA regulations. Every business in California is required by law to not only have a Safety Program, but also prove that they are following their program. Safety Sanity makes it easy! Learn more at <a href="http://www.safetysanity.com/">www.safetysanity.com</a>.</div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/02/20/libre-office-real-open-office/">LibreOffice - the real Open Office</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-20T00:00:00-08:00" pubdate data-updated="true">Feb 20<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-LibreOffice -&nbsp;<a href="http://www.libreoffice.org/">http://www.libreoffice.org/</a><br /><blockquote><i>LibreOffice is the free power-packed Open Source personal productivity suite for Windows, Macintosh and Linux</i></blockquote>this is basically Open Office, but without the Oracle factor</div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/11/17/asp-mvc-razor-templates-with-nested/">ASP MVC Razor templates with nested layout and sections</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-17T00:00:00-08:00" pubdate data-updated="true">Nov 17<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Using ASP MVC 3 with Razor views.<br /><br />Ran into an issue with nested layouts and wanting to render a section in a top level layout, but define it in the view which uses a &#8216;child&#8217; layout (master) page. This was generating a runtime error of:<br /><br /><blockquote><span class="Apple-style-span" style="background-color: yellow;">The following sections have been defined but have not been rendered for the layout page&#8230;</span>&nbsp;</blockquote><br />I posted some code to the asp.net forum and github. A nice workaround was supplied by &#8216;Imran Baloch&#8217;<br /><br /><br /><ul><li><a href="https://github.com/house9/SampleAspMvc3NestedLayoutSectionIssue">Sample code at github</a></li><li><a href="http://forums.asp.net/p/1623650/4170485.aspx">Forum Post over at asp.net forums</a></li></ul></div>
-<h2>Comments</h2>
-<div class='comments'>
-<div class='comment'>
-<div class='author'>billy.braga</div>
-<div class='content'>
-I had the same problem. Seems when you have three levels of layouts, the intermediate one must render all sections of the child, even if the top most parent will do so.</div>
-</div>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -474,6 +487,18 @@ I had the same problem. Seems when you have three levels of layouts, the interme
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/08/aws-iam-policy-for-uploading-ssl-certificates/">AWS IAM policy for uploading SSL certificates</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/03/rbenv-and-your-user-account-isnt-allowed-to-install-to-the-system-rubygems/">rbenv and Your user account isn&#8217;t allowed to install to the system Rubygems</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/02/setup-mac-os-x-for-rails-development/">Setup Mac OS X for rails development</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a>
       </li>
     
@@ -483,18 +508,6 @@ I had the same problem. Seems when you have three levels of layouts, the interme
     
       <li class="post">
         <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/13/stub-paperclip-s3-uploads-in-rspec/">stub paperclip s3 uploads in rspec</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/">Magick::ImageMagickError: WriteBlob Failed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a>
       </li>
     
   </ul>
@@ -539,7 +552,7 @@ I had the same problem. Seems when you have three levels of layouts, the interme
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Jesse House -
+  Copyright &copy; 2015 - Jesse House -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

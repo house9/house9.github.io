@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: AWS | house9]]></title>
+  <link href="http://jessehouse.com/blog/categories/aws/atom.xml" rel="self"/>
+  <link href="http://jessehouse.com/"/>
+  <updated>2015-02-08T10:16:47-08:00</updated>
+  <id>http://jessehouse.com/</id>
+  <author>
+    <name><![CDATA[Jesse House]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[AWS IAM policy for uploading SSL certificates]]></title>
+    <link href="http://jessehouse.com/blog/2015/02/08/aws-iam-policy-for-uploading-ssl-certificates/"/>
+    <updated>2015-02-08T10:04:00-08:00</updated>
+    <id>http://jessehouse.com/blog/2015/02/08/aws-iam-policy-for-uploading-ssl-certificates</id>
+    <content type="html"><![CDATA[<p>The following <a href="http://aws.amazon.com/iam/">IAM</a> policy can be used to upload SSL certificates to <a href="http://aws.amazon.com/">AWS</a> for use by <a href="http://aws.amazon.com/cloudfront/">cloudfront</a> or <a href="http://aws.amazon.com/elasticloadbalancing/">ELB</a>.</p>
+
+<p>```
+{
+  &ldquo;Version&rdquo;: &ldquo;2012-10-17&rdquo;,
+  &ldquo;Statement&rdquo;: [</p>
+
+<pre><code>{
+  "Effect": "Allow",
+  "Action": [
+    "iam:DeleteServerCertificate",
+    "iam:UploadServerCertificate",
+    "iam:ListServerCertificates",
+    "iam:GetServerCertificate"
+  ],
+  "Resource": "*"
+}
+</code></pre>
+
+<p>  ]
+}
+```</p>
+
+<p>This policy gives full access to certificate management and nothing else.</p>
+
+<h2>Resources</h2>
+
+<ul>
+<li><a href="https://bryce.fisher-fleig.org/blog/setting-up-ssl-on-aws-cloudfront-and-s3/">https://bryce.fisher-fleig.org/blog/setting-up-ssl-on-aws-cloudfront-and-s3/</a></li>
+<li><a href="https://www.tiredpixel.com/2014/09/01/secure-static-websites-using-aws-s3-ssl-aws-cloudfront-and-aws-route-53/">https://www.tiredpixel.com/2014/09/01/secure-static-websites-using-aws-s3-ssl-aws-cloudfront-and-aws-route-53/</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

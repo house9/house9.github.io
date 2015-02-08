@@ -9,9 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="
-I needed to generate a sign up button - this site is so much easier than opening photoshophttp://cooltext.com/Thanks cooltext!
-">
+  <meta name="description" content="Came across a nasty issue using rails send_data with IE. Everything worked fine until the pages were running under SSL / HTTPS. Turns out the issue &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -67,6 +65,143 @@ I needed to generate a sign up button - this site is so much easier than opening
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/02/17/rails-senddata-fails-on-ie-when-ssl/">rails send_data fails on IE when SSL enabled</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-17T00:00:00-08:00" pubdate data-updated="true">Feb 17<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Came across a nasty issue using rails <a href="http://api.rubyonrails.org/classes/ActionController/Streaming.html#M000422">send_data</a> with IE. Everything worked fine until the pages were running under SSL / HTTPS. Turns out the issue is with file download over SSL when the <a href="http://www.metatags.info/meta_http_equiv_cache_control">Cache-Control</a> and <a href="http://www.metatags.info/meta_http_equiv_pragma">Pragma</a> html headers are set to no-cache.<div><br /></div><div>The error message from IE</div><div><blockquote>Internet Explorer was unable to open this site. The requested site is either unavailable or cannot be found. Please try again later.</blockquote><div>The fix&#8230;</div><div><blockquote># before calling send_data<br />response.headers.delete(&#8220;Pragma&#8221;)<br />response.headers.delete(&#8216;Cache-Control&#8217;)</blockquote></div><div>This issue is not restricted to rails, any server side code that sets no-cache is subject to the same issue. Glad I was able to find this <a href="http://groups.google.com/group/rubyonrails-talk/browse_thread/thread/ef85d2af990f6c31/c500d6bce04dcc5f?lnk=gst&amp;q=815313#c500d6bce04dcc5f">post</a>.</div><div><br /></div><div>see also <a href="http://support.microsoft.com/kb/316431/">kb-316431</a></div></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Puneet Pandey</div>
+<div class='content'>
+Thanks Rafael, your post was really helpful, as we are giving IE-8 support to our Client&#39;s customers.<br /><br />- Puneet</div>
+</div>
+<div class='comment'>
+<div class='author'>Rafael Revi</div>
+<div class='content'>
+Thanks for posting this!!!!<br /><br />This is issue is gone in IE9. I replicated issue in IE7 and IE8.<br /><br />Thanks again</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/02/16/google-webmaster-tools-sitemapxml/">Google Webmaster Tools Sitemap.xml issues</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-16T00:00:00-08:00" pubdate data-updated="true">Feb 16<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<div>After uploading my <a href="http://www.sitemaps.org/">sitemap.xml</a> file to <a href="https://www.google.com/webmasters/tools/home">Google Webmaster Tools</a> I received the following error message and no additional error details were included:</div><div><br /></div><blockquote>Error: The last attempt at downloading the Sitemap failed. The details below are representative of the last successful download.</blockquote><div><br /></div><div>I searched around a bit and found a forum post where someone said they get this error &#8217;<i>sometimes</i>&#8217;, but after switching to use a gzip formatted sitemap.xml file the error went away</div><div><br /></div><div>on ubuntu</div><div><br /></div><div><blockquote>gzip ./sitemap.xml</blockquote></div><div><br /></div><div>compresses the file to ./sitemap.xml.gz and deletes the sitemap.xml file by default</div><div><br /></div><div>after uploading Google was able to process without issue</div><div><br /></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+Compared to having relevant content and good structure (i.e. h1, h2, proper use of title tag, etc&#8230;) it probably is not that important.<br /><br />But it can&#39;t hurt to include one and submit it to Google, Yahoo, Bing and Ask; it definitely won&#39;t hurt your page ranking.</div>
+</div>
+<div class='comment'>
+<div class='author'>robert</div>
+<div class='content'>
+But is sitemap.xml that important?<br />I do not think so.. Moreover this blog mentioned below will lay more light to what I want to say..<br />http://www.redalkemi.com/blog/sitemapxml-the-most-overrated-search-engine-indexing-factor/</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/01/26/install-older-version-of-rails-and/">install older version of rails and without the docs</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-26T00:00:00-08:00" pubdate data-updated="true">Jan 26<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I always forget these<div><br /></div><div><blockquote>sudo gem install &#8211;no-rdoc &#8211;no-ri &#8211;version 2.3.4 rails </blockquote></div></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -327,117 +462,6 @@ nothing else to say really, imeem was a great service<div><br /></div><div>I&#82
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/10/24/factory-girl-makes-rails-testing-so/">Factory Girl makes rails testing so much easier</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-10-24T00:00:00-07:00" pubdate data-updated="true">Oct 24<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-<p>Factory Girl makes rails testing so much easier. I watched a Railscasts on Factory Girl recently but had been putting off trying it out until last week. Glad I gave it a try - now I can say good-bye to fixtures and just write my tests!</p><ul><li><a href="http://thoughtbot.com/projects/factory_girl">Factory Girl</a></li><li><a href="http://railscasts.com/episodes/158-factories-not-fixtures">Railscast on Factory Girl</a></li></ul><p>Factory Girl is developed by <a href="http://thoughtbot.com/projects">thoughbot</a>; they have some great open source projects, check out <a href="http://thoughtbot.com/projects/shoulda">Shoulda</a> to make your rails testing even easier.</p></div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/10/17/convert-mkv-files-to-dvd-with-ubuntu/">convert mkv files to dvd with ubuntu</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-10-17T00:00:00-07:00" pubdate data-updated="true">Oct 17<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-<p>Turns out there is a great program for this - my guess is it works well with other formats such as avi, mpeg, etc&#8230;</p><p><a href="http://www.rastersoft.com/programas/devede.html">DeVeDe</a>, if you are running 9.04 (<a href="https://wiki.ubuntu.com/JauntyJackalope">jaunty</a>) or higher it is in the repositories</p><p>System -> Administration -> Synaptic Package Manager</p><p>enter &#8216;devede&#8217; in the search and then install</p></div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/09/02/procedure-spdroplogin-line-93-login-is/">Procedure sp_droplogin, Line 93 Login is aliased or mapped to a user in one or more database(s)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-09-02T00:00:00-07:00" pubdate data-updated="true">Sep 2<span>nd</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-<div>Trying to remove a MSSQL login from a database server, recieve the following eror<br /></div><br /><blockquote>Msg 15175, Level 16, State 1, Procedure sp_droplogin, Line 93<br />Login &#8216;qa&#8217; is aliased or mapped to a user in one or more database(s). Drop the user or alias before dropping the login.</blockquote><br /><div>Solution: run this command to determine what alias or groups the login is associated with and then remove those; might be nice if they just added this to the error message?<br /></div><div><br /></div><div><blockquote>sp_helpuser &#8216;qa&#8217;</blockquote></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/11/">&larr; Older</a>
@@ -455,6 +479,18 @@ nothing else to say really, imeem was a great service<div><br /></div><div>I&#82
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/08/aws-iam-policy-for-uploading-ssl-certificates/">AWS IAM policy for uploading SSL certificates</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/03/rbenv-and-your-user-account-isnt-allowed-to-install-to-the-system-rubygems/">rbenv and Your user account isn&#8217;t allowed to install to the system Rubygems</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/02/setup-mac-os-x-for-rails-development/">Setup Mac OS X for rails development</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a>
       </li>
     
@@ -464,18 +500,6 @@ nothing else to say really, imeem was a great service<div><br /></div><div>I&#82
     
       <li class="post">
         <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/13/stub-paperclip-s3-uploads-in-rspec/">stub paperclip s3 uploads in rspec</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/">Magick::ImageMagickError: WriteBlob Failed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a>
       </li>
     
   </ul>
@@ -520,7 +544,7 @@ nothing else to say really, imeem was a great service<div><br /></div><div>I&#82
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Jesse House -
+  Copyright &copy; 2015 - Jesse House -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

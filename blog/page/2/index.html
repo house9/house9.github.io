@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Some vagrant configuration to install postgres 9.2 using puppetsee https://gist.github.com/house9/5762219.jssee https://gist.github.com/house9/ &hellip;">
+  <meta name="description" content="My first post using Octopress! Followed the fine documenation here: http://octopress.org/docs/ to get up and running. And used this script https:// &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,171 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/09/24/octopress-test/">Octopress Test</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-24T14:06:00-07:00" pubdate data-updated="true">Sep 24<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/09/24/octopress-test/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>My first post using Octopress!</p>
+
+<p>Followed the fine documenation here: <a href="http://octopress.org/docs/">http://octopress.org/docs/</a> to get up and running.</p>
+
+<p>And used this script <a href="https://gist.github.com/juniorz/1564581">https://gist.github.com/juniorz/1564581</a> to import all of my old posts from blogger. It failed to import a few posts but overall worked great!</p>
+
+<p>I do have various formatting issues on older posts, will need to revisit those in the future&hellip;</p>
+
+<p>Authoring with markdown is so much better and no need for embedded gist: ya!</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="s2">&quot;Hello Octopress&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hello Octopress&quot;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/07/06/puppet-solo-aka-supplydrop/">Puppet Solo (AKA: supply_drop)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-06T00:00:00-07:00" pubdate data-updated="true">Jul 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Similar to <a href="http://matschaffer.github.io/knife-solo/">knife-solo</a> for use with <a href="http://www.opscode.com/chef/">chef</a>, <a href="https://github.com/pitluga/supply_drop">supply_drop</a> allows you to provision servers using <a href="https://puppetlabs.com/">puppet</a> without the need for a puppet master server. It uses <a href="https://github.com/capistrano/capistrano">capistrano</a> for executing commands on the remote server. I put together a working sample set of puppet and supply_drop deployment scripts for&nbsp;provisioning&nbsp;a postgres server.<br /><br /><blockquote class="tr_bq">See the github repo at &nbsp;<a href="https://github.com/house9/puppet-solo-hello-world">https://github.com/house9/puppet-solo-hello-world</a></blockquote><br /><b>Resources</b><br /><br /><ul><li><a href="http://www.confreaks.com/videos/2479-railsconf2013-devops-for-the-rubyist-soul">http://www.confreaks.com/videos/2479-railsconf2013-devops-for-the-rubyist-soul</a></li><li><a href="https://speakerdeck.com/jtdowney/devops-for-the-rubyist-soul-at-rubynation-2013">https://speakerdeck.com/jtdowney/devops-for-the-rubyist-soul-at-rubynation-2013</a></li></ul><br /><br /><br /></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/06/24/wal-e-chef-cookbook/">WAL-e chef cookbook</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-24T00:00:00-07:00" pubdate data-updated="true">Jun 24<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Postgres has various backup and restore options</p>
+
+<ul>
+<li><a href="http://www.postgresql.org/docs/9.2/static/backup.html">http://www.postgresql.org/docs/9.2/static/backup.html</a></li>
+</ul>
+
+
+<p>Do you have a recovery plan in case your Postgres server crashes &ndash; your daily pg_dump is probably not going to cut it.</p>
+
+<p>Postgres uses Write-Ahead Logging (WAL)</p>
+
+<blockquote><p>Write-Ahead Logging (WAL) is a standard method for ensuring data integrity. A detailed description can be found in most (if not all) books about transaction processing. Briefly, WAL&rsquo;s central concept is that changes to data files (where tables and indexes reside) must be written only after those changes have been logged, that is, after log records describing the changes have been flushed to permanent storage. If we follow this procedure, we do not need to flush data pages to disk on every transaction commit, because we know that in the event of a crash we will be able to recover the database using the log: any changes that have not been applied to the data pages can be redone from the log records. (This is roll-forward recovery, also known as REDO.)</p></blockquote>
+
+<ul>
+<li>from <a href="http://www.postgresql.org/docs/9.2/static/wal-intro.html">http://www.postgresql.org/docs/9.2/static/wal-intro.html</a></li>
+</ul>
+
+
+<p>Setting up Continuous Archiving and Point-in-Time Recovery (PITR) for your Postgres WAL files is very complex, lucky for us the WAL-e project has simplified this process greatly. WAL-e has utilities for sending all WAL files to an AWS S3 bucket as the log files are being generated. More Information, see:</p>
+
+<ul>
+<li><a href="http://www.postgresql.org/docs/9.2/static/continuous-archiving.html">http://www.postgresql.org/docs/9.2/static/continuous-archiving.html</a></li>
+<li><a href="https://github.com/wal-e/wal-e">https://github.com/wal-e/wal-e</a></li>
+</ul>
+
+
+<p>Recently I put together a chef cookbook which installs WAL-e on a Postgres instance, see:</p>
+
+<ul>
+<li><a href="https://github.com/house9/wal-e-cookbook">https://github.com/house9/wal-e-cookbook</a></li>
+<li><a href="https://github.com/house9/use_wal_e">https://github.com/house9/use_wal_e</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -341,125 +506,6 @@ It&#39;s like you opened my brain and looked right into my mind to see what I wa
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/03/setting-up-ci-build-continuous/">Setting up a C.I. build (Continuous Integration) for a Ruby on Rails application</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-03T00:00:00-07:00" pubdate data-updated="true">Nov 3<span>rd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-<br />It has never been easier than with Semaphore - Hosted Continuous Integration<br /><br /><ul><li><a href="https://semaphoreapp.com/">https://semaphoreapp.com/</a></li></ul><br />How easy is it<br /><br /><ul><li>add semaphore ssh key to your github repo</li><li>then semaphore automatically determines your ruby version, database, etc&#8230;</li><li>you can tweak the build steps later, the defaults are pretty good</li></ul><br />It will automatically detect new branches!!! That means zero setup when the new branch is added<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-HqVYteyXvQk/UJVdSqJnYOI/AAAAAAAAC6U/AU4oP3tZ2D8/s1600/semaphoreapp-01.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="348" src="http://4.bp.blogspot.com/-HqVYteyXvQk/UJVdSqJnYOI/AAAAAAAAC6U/AU4oP3tZ2D8/s640/semaphoreapp-01.png" width="640" /></a></div><br /><br />It is not <a href="https://semaphoreapp.com/pricing">cheap</a>, for personal side projects it might not make sense?<br />But well worth the money if you are doing paid development<br /></div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/03/git-log-formatting/">Git Log Formatting </a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-03T00:00:00-07:00" pubdate data-updated="true">Nov 3<span>rd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-The git log command is great and has tons of good information, but the output doesn&#8217;t give you that nice &#8216;overview&#8217; of the commit history, too much detail on too many lines<br /><br />I&#8217;ve been using the following in my .gitconfig file<br /><blockquote class="tr_bq"><span style="background-color: #cccccc;">l = log -20 &#8211;format=&#8217;%h %ad %d %an: %s&#8217; &#8211;date=short</span></blockquote>typing &#8217;<i style="background-color: #cccccc;">git l</i>&#8217; renders the following output:<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-0GRyv-72haA/UJVYQ96clhI/AAAAAAAAC58/Lptn1WKW9dA/s1600/git-l-01.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="297" src="http://2.bp.blogspot.com/-0GRyv-72haA/UJVYQ96clhI/AAAAAAAAC58/Lptn1WKW9dA/s640/git-l-01.png" width="640" /></a></div><br /><br />Last night I watched the <a href="https://www.destroyallsoftware.com/">Destroy All Software</a> &#8221;<a href="https://www.destroyallsoftware.com/screencasts/catalog/pretty-git-logs">PRETTY GIT LOGS</a>&#8221; screencast which takes &#8217;<i style="background-color: #cccccc;">git l</i>&#8217; to the next level<br /><br /><ul><li><a href="https://www.destroyallsoftware.com/screencasts/catalog/pretty-git-logs">https://www.destroyallsoftware.com/screencasts/catalog/pretty-git-logs</a></li><li><a href="https://github.com/garybernhardt/dotfiles/blob/master/.gitconfig">https://github.com/garybernhardt/dotfiles/blob/master/.gitconfig</a></li><li><a href="https://github.com/garybernhardt/dotfiles/blob/master/.githelpers">https://github.com/garybernhardt/dotfiles/blob/master/.githelpers</a></li></ul><div><div>now &#8217;<i style="background-color: #cccccc;">git l</i>&#8217; renders</div><div><br /></div><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-Rgt39G9fGfg/UJVYWh9U0lI/AAAAAAAAC6E/3nxcaZO7Keo/s1600/git-l-02.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="242" src="http://1.bp.blogspot.com/-Rgt39G9fGfg/UJVYWh9U0lI/AAAAAAAAC6E/3nxcaZO7Keo/s640/git-l-02.png" width="640" /></a></div><div><br /></div><div>&nbsp; &nbsp;</div></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/31/helper-script-to-delete-git-tags/">Helper script to delete git tags locally and remote</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-31T00:00:00-07:00" pubdate data-updated="true">Oct 31<span>st</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Might be useful to others, delete a bunch of git tags - remote and locally<br /><br /><br /><script src="https://gist.github.com/3989586.js?file=build-and-execute-multiple-git-commands.sh"></script><noscript>Your reader does not render gists; view code here -  <a href="https://gist.github.com/3989586.js?file=build-and-execute-multiple-git-commands.sh">https://gist.github.com/3989586.js?file=build-and-execute-multiple-git-commands.sh</a></noscript><br /><b>Resources</b><br /><br /><ul><li><a href="http://nathanhoad.net/how-to-delete-a-remote-git-tag">http://nathanhoad.net/how-to-delete-a-remote-git-tag</a>&nbsp;</li><li><a href="http://www.linuxquestions.org/questions/programming-9/bash-read-every-line-in-the-files-and-use-the-line-as-parameters-as-another-program-246291/">http://www.linuxquestions.org/questions/programming-9/bash-read-every-line-in-the-files-and-use-the-line-as-parameters-as-another-program-246291/</a></li><li><a href="http://stackoverflow.com/questions/1605232/use-bash-to-read-a-file-and-then-execute-a-command-from-the-words-extracted">http://stackoverflow.com/questions/1605232/use-bash-to-read-a-file-and-then-execute-a-command-from-the-words-extracted</a></li></ul></div>
-<h2>Comments</h2>
-<div class='comments'>
-<div class='comment'>
-<div class='author'>Arnaud Frugier</div>
-<div class='content'>
-git tag -l | grep &quot;^\d&quot; | sed &#39;s/^/git push origin :/&#39; | sh<br />git tag -l | grep &quot;^\d&quot; | sed &#39;s/^/git tag -d /&#39; | sh</div>
-</div>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -477,6 +523,18 @@ git tag -l | grep &quot;^\d&quot; | sed &#39;s/^/git push origin :/&#39; | sh<br
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/08/aws-iam-policy-for-uploading-ssl-certificates/">AWS IAM policy for uploading SSL certificates</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/03/rbenv-and-your-user-account-isnt-allowed-to-install-to-the-system-rubygems/">rbenv and Your user account isn&#8217;t allowed to install to the system Rubygems</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/02/setup-mac-os-x-for-rails-development/">Setup Mac OS X for rails development</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a>
       </li>
     
@@ -486,18 +544,6 @@ git tag -l | grep &quot;^\d&quot; | sed &#39;s/^/git push origin :/&#39; | sh<br
     
       <li class="post">
         <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/13/stub-paperclip-s3-uploads-in-rspec/">stub paperclip s3 uploads in rspec</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/">Magick::ImageMagickError: WriteBlob Failed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a>
       </li>
     
   </ul>
@@ -542,7 +588,7 @@ git tag -l | grep &quot;^\d&quot; | sed &#39;s/^/git push origin :/&#39; | sh<br
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Jesse House -
+  Copyright &copy; 2015 - Jesse House -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

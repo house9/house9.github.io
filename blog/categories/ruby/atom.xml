@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ruby | house9]]></title>
   <link href="http://jessehouse.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://jessehouse.com/"/>
-  <updated>2014-12-13T12:01:47-08:00</updated>
+  <updated>2015-02-08T10:16:47-08:00</updated>
   <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
@@ -12,6 +12,43 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[rbenv and Your user account isn't allowed to install to the system Rubygems]]></title>
+    <link href="http://jessehouse.com/blog/2015/02/03/rbenv-and-your-user-account-isnt-allowed-to-install-to-the-system-rubygems/"/>
+    <updated>2015-02-03T09:54:00-08:00</updated>
+    <id>http://jessehouse.com/blog/2015/02/03/rbenv-and-your-user-account-isnt-allowed-to-install-to-the-system-rubygems</id>
+    <content type="html"><![CDATA[<p>This happened to me after re-installing my OS and using a fresh install of <a href="https://github.com/sstephenson/rbenv">rbenv</a>. I cloned my application repository and went to execute a <code>bundle install</code> and received the following error:</p>
+
+<p>```
+Fetching source index from <a href="http://rubygems.org/">http://rubygems.org/</a></p>
+
+<p>Your user account isn&rsquo;t allowed to install to the system Rubygems.
+You can cancel this installation and run:</p>
+
+<pre><code>bundle install --path vendor/bundle
+</code></pre>
+
+<p>to install the gems into ./vendor/bundle/, or you can enter your password
+and install the bundled gems to Rubygems using sudo.</p>
+
+<p>Password:
+```</p>
+
+<p>What? rbenv should not be prompting me to use sudo, it was trying to install gems on the system version of ruby. Running <code>rbenv local</code> returned <code>2.1.4</code> as expected, what the heck was going on?</p>
+
+<p><code>gem list | grep bundler</code> returned nothing &ndash; doh! I didn&rsquo;t have bundler installed via rbenv so it was falling back to the system ruby. I was not expecting it to use a different version of bundler.</p>
+
+<p><code>
+rbenv local
+gem install bundler
+rbenv rehash
+bundle
+</code></p>
+
+<p>And all was right with the world again!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[rubocop script for your modified files]]></title>
@@ -25,7 +62,7 @@ On my local development machine I prefer to lint files that have recently change
 Note it uses the autofix rubocop option, optionally you could run it on non-staged files without the autofix flag.</p>
 
 <p><code>
-git diff --name-only --cached | xargs rubocop -a
+git diff --name-only --cached | grep '\.rb' | xargs rubocop -a
 </code></p>
 
 <p>Don&rsquo;t forget to <code>git add .</code> after rubocop finds/fixes any code style violations in your staged files.</p>
@@ -121,17 +158,6 @@ Im getting <br />No such file or directory - /public/barcodes/barcode_BARBY.png<
     <id>http://jessehouse.com/blog/2010/11/05/get-date-of-beginning-and-end-of-month</id>
     <content type="html"><![CDATA[<div class='post'>
 Sometimes Ruby blows my mind, I needed to get the start date and end date of the previous month. Guess what Ruby just happens to have methods to handle this -&nbsp;beginning_of_month, end_of_month, there is even beginning_of_quarter and end_of_quarter if you need them!<br /><br /><br /><script src="https://gist.github.com/665048.js?file=cool%20date%20functions%20in%20ruby"></script><br /><br /><noscript><br /><pre>last_month = Date.today.last_month # =&gt; Tue, 05 Oct 2010 <br /><br />last_month.beginning_of_month # =&gt; Fri, 01 Oct 2010 <br />last_month.end_of_month # =&gt; Sun, 31 Oct 2010<br /><br />last_month.beginning_of_quarter # =&gt; Fri, 01 Oct 2010<br />last_month.end_of_quarter # =&gt; Fri, 31 Dec 2010<br /></pre></noscript></div>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ruby Regex to remove script tags]]></title>
-    <link href="http://jessehouse.com/blog/2010/01/06/ruby-regex-to-remove-script-tags/"/>
-    <updated>2010-01-06T00:00:00-08:00</updated>
-    <id>http://jessehouse.com/blog/2010/01/06/ruby-regex-to-remove-script-tags</id>
-    <content type="html"><![CDATA[<div class='post'>
-<script src="http://gist.github.com/270463.js"></script><br />Resources<br /><ul><li><a href="http://rubular.com/">Rubular</a></li><li><a href="http://jamesmckay.net/2008/05/how-to-match-any-character-including-newlines-in-a-javascript-regular-expression/">Match any character in RegEx</a></li><li><a href="http://ruby-doc.org/core/classes/String.html#M000817">Ruby String gsub</a></li></ul></div>
 
 ]]></content>
   </entry>

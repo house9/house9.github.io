@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Recently I had to convert some functionality from an old MS Access system to a Ruby on Rails application.&nbsp;The Access system generated a report &hellip;">
+  <meta name="description" content="Use the information_schema catalog - http://www.postgresql.org/docs/9.1/static/information-schema.htmlGet table and columns from the public &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,117 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/12/02/get-table-and-column-information-in/">Get table and column information in postgres</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-02T00:00:00-08:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Use the information_schema catalog - <a href="http://www.postgresql.org/docs/9.1/static/information-schema.html">http://www.postgresql.org/docs/9.1/static/information-schema.html</a><br /><br />Get table and columns from the public schema<br /><br /><script src="https://gist.github.com/1423507.js?file=select_table_and_columns_from_postgres.sql"></script><br /><noscript><br />select <br />  tables.table_name, <br />  columns.column_name<br /><br />from information_schema.tables<br />inner join information_schema.columns <br />on information_schema.columns.table_name = information_schema.tables.table_name<br /><br />where tables.table_schema = &#8216;public&#8217;<br />and tables.table_type = &#8216;BASE TABLE&#8217;<br /><br />order by tables.table_name, columns.column_name;<br /></noscript><br /><br />This can be useful, maybe you want to auto generate some text that creates foreign keys based on a naming convention - for instance let&#8217;s say we have a ruby/rails method called make_fk_unless_exists<br /><br /><script src="https://gist.github.com/1423533.js?file=create_fk_script_postgres.sql"></script><br /><noscript><br />select <br />  tables.table_name, <br />  columns.column_name,<br />  (&#8216;make_fk_unless_exists :&#8217; || tables.table_name || &#8216;, :&#8217; || columns.column_name || &#8216;, :&#8217; || REPLACE(columns.column_name, &#8216;_id&#8217;, &#8216;s&#8217;)) as code<br /> <br />from information_schema.tables<br />inner join information_schema.columns <br />on information_schema.columns.table_name = information_schema.tables.table_name<br /><br />where tables.table_schema = &#8216;public&#8217;<br />and columns.column_name LIKE &#8216;%id&#8217;<br />and columns.column_name <> &#8216;id&#8217;<br />and tables.table_type = &#8216;BASE TABLE&#8217;<br /><br />order by tables.table_name, columns.column_name;<br /></noscript><br /><br />The &#8216;code&#8217; column would render something like<br /><br /><blockquote class="tr_bq"><i>make_fk_unless_exists :projects, :milestone_id, :milestones</i><br /><i>make_fk_unless_exists :tasks, :project_id, :projects</i><br /><i>&#8230;</i><br /></blockquote><br /><br /></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/11/12/sample-routes-and-links-with-rails-3-in/">Sample Routes and Links with Rails 3 in the console</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-12T00:00:00-08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+The content for this post is all from a gist, hopefully someone finds it useful<br /><br /><script src="https://gist.github.com/1361290.js?file=routes_link_to_in_rails_console.rb"></script><br /><noscript><br />Your reader does not support script, view the gist here<br />https://gist.github.com/1361290<br /></noscript><br /><br /><b>Resources</b><br /><br /><br /><ul><li><a href="http://stackoverflow.com/questions/2778074/recognize-routes-in-rails-console-session">http://stackoverflow.com/questions/2778074/recognize-routes-in-rails-console-session</a></li></ul></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/11/09/postgres-get-number-of-days-in-interval/">Postgres: get the number of days in an interval</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-09T00:00:00-08:00" pubdate data-updated="true">Nov 9<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<blockquote><span class="Apple-style-span" style="color: #38761d;">&#8211; seconds / 60 = minutes / 60 = hours / 24 = days </span><br /><span class="Apple-style-span" style="color: blue;">select</span> (((EXTRACT(EPOCH <span class="Apple-style-span" style="color: blue;">FROM</span> INTERVAL &#8217;<span class="Apple-style-span" style="color: #38761d;">2 years</span>&#8217;) / 60) / 60) / 24)::integer <span class="Apple-style-span" style="color: blue;">as</span> number_of_days&nbsp;</blockquote><br />good resource -&nbsp;<a href="http://stackoverflow.com/questions/952493/how-do-i-convert-an-interval-into-a-number-of-hours-with-postgres">http://stackoverflow.com/questions/952493/how-do-i-convert-an-interval-into-a-number-of-hours-with-postgres</a></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -386,125 +497,6 @@ Sometimes you want to use robocopy from nant, a sql job or another build tool, r
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/05/29/rails-31-javascript-execution/">rails 3.1 javascript execution</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-29T00:00:00-07:00" pubdate data-updated="true">May 29<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Looking at a few different ways to execute javascript in rails 3.1. By default all javascript is compiled into one file and embedded in anonymous functions which all execute on each page.<br /><br />We often want to be selective in how our javascript executes, based on controller and actions. We look at 3 different approaches<br /><br /><ul><li>use selectors based on form id</li><li>use selectors based on css classes on the body</li><li>namespaced javascript objects</li></ul><br /><div>if you know of any other approaches I would love to hear those as well<br /><br />I recommend you click the HD link on the player and view it on <a href="http://vimeo.com/24391448">Vimeo</a> in full screen mode, this embed version is not so crisp.</div><div><br /></div><div align="center"><iframe frameborder="0" height="450" src="http://player.vimeo.com/video/24391448?byline=0&amp;portrait=0" width="800"></iframe></div><div><br /><b>Resources</b></div><div><ul><li><a href="http://railscasts.com/episodes/265-rails-3-1-overview">http://railscasts.com/episodes/265-rails-3-1-overview</a>&nbsp;</li><li><a href="http://jashkenas.github.com/coffee-script/">http://jashkenas.github.com/coffee-script/</a></li><li><a href="http://coffeescriptcookbook.com/">http://coffeescriptcookbook.com/</a>&nbsp;</li><li><a href="http://stackoverflow.com/questions/6133235/rails-3-1-rc1-javascript-and-asset-pipeline">http://stackoverflow.com/questions/6133235/rails-3-1-rc1-javascript-and-asset-pipeline</a></li><li><a href="http://coffeescript-book.com/">http://coffeescript-book.com/</a></li></ul></div></div>
-<h2>Comments</h2>
-<div class='comments'>
-<div class='comment'>
-<div class='author'>Internet008</div>
-<div class='content'>
-great.<br /><br />I like third way.</div>
-</div>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/05/26/rails-31-asset-pipeline/">rails 3.1 asset pipeline</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-26T00:00:00-07:00" pubdate data-updated="true">May 26<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-a quick look at app, lib, vendor and gem assets for rails 3.1 rc1<br /><br />It is a pretty rough screen cast, but hopefully has some useful information for you<br /><br />I recommend you click the HD link on the player and view it on <a href="http://vimeo.com/24296483">Vimeo</a>&nbsp;in full screen mode, this embed version is not so crisp.<br /><br /><div align="center"><iframe frameborder="0" height="450" src="http://player.vimeo.com/video/24296483?byline=0&amp;portrait=0" width="800"></iframe></div><br />Resources:<br /><br /><ul><li><a href="http://weblog.rubyonrails.org/2011/5/22/rails-3-1-release-candidate">http://weblog.rubyonrails.org/2011/5/22/rails-3-1-release-candidate</a></li><li><a href="http://www.youtube.com/watch?v=cGdCI2HhfAU">http://www.youtube.com/watch?v=cGdCI2HhfAU</a></li><li><a href="http://railscasts.com/episodes/265-rails-3-1-overview">http://railscasts.com/episodes/265-rails-3-1-overview</a></li><li><a href="https://github.com/rails/jquery-rails">https://github.com/rails/jquery-rails</a></li><li><a href="https://github.com/rails/rails/issues/1223">https://github.com/rails/rails/issues/1223</a></li></ul><div><br /><b>UPDATE:</b> see &#8221;<a href="http://railsapps.github.com/rails-javascript-include-external.html">Unholy Rails: External Scripts, jQuery Plugins, and Page-Specific JavaScript</a>&#8221; for a detailed look at using the asset pipeline with rails.&nbsp;</div></div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/05/25/stream-tennis-2011-roland-garros/">Stream Tennis - 2011 Roland Garros</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-25T00:00:00-07:00" pubdate data-updated="true">May 25<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-if your ISP supports <a href="http://espn.go.com/espn3/index/_/sport/tennis">ESPN3</a> they have live and replay streams for 2011 <a href="http://www.rolandgarros.com/en_FR/index.html">Roland Garros</a><br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-nx63GPyk2vA/Td2XsnjWzMI/AAAAAAAAC2Q/Mc9m5DngLbo/s1600/espn3-paris.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="476" src="http://3.bp.blogspot.com/-nx63GPyk2vA/Td2XsnjWzMI/AAAAAAAAC2Q/Mc9m5DngLbo/s640/espn3-paris.png" width="640" /></a></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -522,6 +514,18 @@ if your ISP supports <a href="http://espn.go.com/espn3/index/_/sport/tennis">ESP
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/08/aws-iam-policy-for-uploading-ssl-certificates/">AWS IAM policy for uploading SSL certificates</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/03/rbenv-and-your-user-account-isnt-allowed-to-install-to-the-system-rubygems/">rbenv and Your user account isn&#8217;t allowed to install to the system Rubygems</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/02/setup-mac-os-x-for-rails-development/">Setup Mac OS X for rails development</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a>
       </li>
     
@@ -531,18 +535,6 @@ if your ISP supports <a href="http://espn.go.com/espn3/index/_/sport/tennis">ESP
     
       <li class="post">
         <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/13/stub-paperclip-s3-uploads-in-rspec/">stub paperclip s3 uploads in rspec</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/">Magick::ImageMagickError: WriteBlob Failed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a>
       </li>
     
   </ul>
@@ -587,7 +579,7 @@ if your ISP supports <a href="http://espn.go.com/espn3/index/_/sport/tennis">ESP
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Jesse House -
+  Copyright &copy; 2015 - Jesse House -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

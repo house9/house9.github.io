@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="I have done a few very small projects with rails; one of the really nice features with rails is database migrationsThere are a few ports of rails &hellip;">
+  <meta name="description" content="Just started using the SyntaxHighlighter on my code samples blog - here is some quick notes on what I had to do Download the SyntaxHighlighter &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,153 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/02/16/syntaxhighlighter-and-google-blogger/">SyntaxHighlighter and Google Blogger</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-02-16T00:00:00-08:00" pubdate data-updated="true">Feb 16<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Just started using the SyntaxHighlighter on my code samples blog - here is some quick notes on what I had to do <ul><br /><li>Download the SyntaxHighlighter javascript and css files from <a href="http://code.google.com/p/syntaxhighlighter/">http://code.google.com/p/syntaxhighlighter/</a><br /></li><li>Upload those to my googlepage website, if you don&#8217;t have one go to <a href="https://www.google.com/accounts/ManageAccount">https://www.google.com/accounts/ManageAccount</a> and click on the &#8216;Page Creator&#8217; link<br /></li><li>Edit the blog template -> Layout -> Edit Html</li><li>Add the references to the css and javascript files in the <em>head</em> section <li>Add the initialization javascript calls right before the <em>/body</em> tag at the end of the html template</li><li>see <a href="http://morten.lyhr.dk/2007/12/how-to-get-syntax-highlighting-in.html">http://morten.lyhr.dk/2007/12/how-to-get-syntax-highlighting-in.html</a></li><li>then use pre tags like this around your code <em>pre class=&#8221;c-sharp&#8221; name=&#8221;code&#8221;</em> <li>see <a href="http://code.google.com/p/syntaxhighlighter/wiki/Usage">http://code.google.com/p/syntaxhighlighter/wiki/Usage</a> </li></ul><p>One issue I ran into was that the google blogger automatically adds br tags where newlines appear in any content - makes the code pretty much unreadable, but the fix is well documented and easy to implement - <a href="http://code.google.com/p/syntaxhighlighter/wiki/BloggerMode">http://code.google.com/p/syntaxhighlighter/wiki/BloggerMode</a></p><p></p></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/02/16/rhinomocks-basics_16/">Rhino.Mocks - the basics</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-02-16T00:00:00-08:00" pubdate data-updated="true">Feb 16<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Started using Rhino.Mocks recently (Awesome!!!) - just wanted to list a few of the basics; the official Rhino Mocks Documentation is very good and available <a href="http://www.ayende.com/Wiki/(S(0asrslmlg1jh5355jtljowre))/Rhino+Mocks+Documentation.ashx">here</a>. These examples are a bit rough, they have not been compiled; there may be typos.<br /><br /><b>using</b><br /><pre>using Rhino.Mocks;</pre><br /><b>The mock repository</b><br /><pre>// use the mock repository to create the mocked objects<br />MockRepository mocks = new Rhino.Mocks.MockRepository();<br />// example<br />System.Object someObject = mocks.CreateMock<System.Object>();<br />// set up the behaviour you want from calls to your mocked object <br />Rhino.Mocks.Expect.Call(someObject.Equals(someParameter)).Return(false);<br />// then don't forget<br />mocks.ReplayAll();<br />// now do stuff that calls your mocked object Equals method<br />...<br /></pre><br /><b>Mock a call to the db</b><br /><pre>// create our mocked repository object - IProductRepository, the real one calls the db<br />IProductRepository repository = mocks.CreateMock<iproductrepository>();<br />// tell rhino.mocks when we call the method GetProduct with the argument 33 to return null<br />Rhino.Mocks.Expect.Call(repository.GetProduct(33)).Return(null);<br />// get the mocking ready<br />mocks.ReplayAll();<br />// pass our mock to our product service layer<br />ProductService service = new ProductService(repository);<br />// service.GetProduct makes a call to the mocked repository.GetProduct which will return null<br />IProduct product = service.GetProduct(33);<br />// should be null<br />Assert.IsNull(product);<br /></pre><br /><b>Ignore any arguments</b><br /><pre>// any call to GetProduct will return null no matter the value of the arg<br />Rhino.Mocks.Expect.Call(repository.GetProduct(null)).Return(null).IgnoreArguments();<br /></pre><br /><b>mock a method that returns void</b><br /><pre>IProduct product = new Product("003092", "Sierra Nevada", 6.49);<br />// this void call will handle our product 003092<br />Rhino.Mocks.Expect.Call(delegate { repository.Save(product); });<br />// this void call will handle any argument<br />Rhino.Mocks.Expect.Call(delegate { repository.Save(null); }).IgnoreArguments();<br /></pre><br /><b>Handle multiple calls to the same method</b><br /><pre>IProduct product = new Product("003092", "Sierra Nevada", 6.49);<br />// note the .Repeat.Any()<br />Rhino.Mocks.Expect.Call(repository.GetProduct("003092")).Return(product).Repeat.Any();<br />// send the mock to our product service object<br />ProductService service = new ProductService(repository);<br />// find by sku calls GetProduct on the mocked Product repository<br />IProduct beer = service.FindBySku("003092");<br />// find decent beer calls GetProduct on the mocked Product repository also<br />IProduct decentBeer = service.FindDecentBeer();<br /></pre><br /><b>Partial Mock</b><br /><pre>// create a partial mock with constructor args (our product repository again)<br />IProductService service = mocks.PartialMock<iproductservice>(repository);<br />// our test case data<br />IUser loggedOnUser = new User("John", "Doe", CustomerType.Gold);<br />// mock product service calls to GetLoggedOnUser<br />Rhino.Mocks.Expect.Call(service.GetLoggedOnUser()).Return(loggedOnUser);<br />// get the mocking ready<br />mocks.ReplayAll();<br />// now GetDiscount is not a mocked method but it does call the mocked GetLoggedOnUser method<br />decimal discount = service.GetDiscount();<br />// assert the result<br />Assert.AreSame(44.4M, discount, "Gold customer discount not correct?");<br />// NOTE: this will not work (compile) unless the mocked method GetLoggedOnUser is public<br /></pre></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+Had an issue with comment moderation<br>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-<br><br>New Day posted this about a month ago<br><br>For the Equals method I get the same error as ben.biddington. I am using .NET 2.0<br>The error occurs on the line with Expect.Call so it does not proceed any further down the test.<br><br>Error <br>&quot;Invalid call, the last call has been used or no call has been made (make sure that you are calling a virtual (C#) / Overridable (VB) method).&quot;</div>
+</div>
+<div class='comment'>
+<div class='author'>Anonymous</div>
+<div class='content'>
+IProduct product = new Product(&quot;003092&quot;, &quot;Sierra Nevada&quot;, 6.49);<br>  <br>Lär ju gå bra att instansiera ett interface, nötter&#8230;</div>
+</div>
+<div class='comment'>
+<div class='author'>Anonymous</div>
+<div class='content'>
+In 3.5 CreateMock is deprecated and should be changed to StrictMock.  Might want to try that,</div>
+</div>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+I have not tried it on 3.5 of .net but I believe it should work. Is it possible you are making multiple calls to the same mocked method? you might need a .Repeat.Any();</div>
+</div>
+<div class='comment'>
+<div class='author'>ben.biddington</div>
+<div class='content'>
+Hi, <br><br>Does you first example (The mock repository) work with v.3.5?<br><br>I get the error:<br><br>Invalid call, the last call has been used or no call has been made (make sure that you are calling a virtual (C#) / Overridable (VB) method).</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/02/16/rhinomocks-basics/">Rhino.Mocks basics</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-02-16T00:00:00-08:00" pubdate data-updated="true">Feb 16<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Rhino.Mocks basics - I just threw this together real quick; personal reference material<br /><a href="http://house9-code-samples.blogspot.com/2008/02/rhinomocks-basics.html">http://house9-code-samples.blogspot.com/2008/02/rhinomocks-basics.html</a><br /><br />The official Rhino Mocks Documentation is very good and available here<br /><a href="http://www.ayende.com/Wiki/(S(33lpuuuz4itdtnjwlncidy55))/Default.aspx?Page=Rhino+Mocks+Documentation">http://www.ayende.com/Wiki/(S(33lpuuuz4itdtnjwlncidy55))/Default.aspx?Page=Rhino+Mocks+Documentation</a></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Lee</div>
+<div class='content'>
+Excellent little reference. BOOKMARK! thanks</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -341,117 +488,6 @@ Crazy day of birding<br /><br />The first real cold days have hit - crispy and c
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2007/11/04/tfs-without-visual-stuido/">TFS without Visual Stuido</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-11-04T00:00:00-07:00" pubdate data-updated="true">Nov 4<span>th</span>, 2007</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-you can actually install Team Foundation System source control without installing the entire Visual Studio IDE, why you would want to do this I am not sure, but we had some QA peoples who needed access to the source control system, seemed like it would be easier for them not to need to go through the VS IDE just to access the files.<br /><br />anyhow if you install TFS Source Control Explorer, everything should work ok from the command line, only one registry hack was required - found this on msdn forum somewhere but forgot to bookmark it<br /><br /><span style="font-family:verdana;font-size:85%;"><span style="color:#990000;">HKEY_CURRENT_USER\Software\Microsoft\VisualStudio\8.0\TeamFoundation\Servers </span><br /></span><br />add a new String Value with the key being the name of your TFS server and the value the uri for the TFS server i.e. MySourceControl=http://mysourcecontrol:8080<br /><br />or better yet forget all this and save your self a big headache and just use <a href="http://subversion.tigris.org/">Subversion</a> - it works better and it is free</div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2007/10/21/tic-tac-toe-on-rails/">Tic Tac Toe on Rails</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-10-21T00:00:00-07:00" pubdate data-updated="true">Oct 21<span>st</span>, 2007</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Ok I finally completed my first rails project. Tic Tac Toe on Rails, you can check it out at <a href="http://www.tictactoeonrails.com/">http://www.tictactoeonrails.com/</a>. It was a good reminder for me of how long it takes to really get up to speed on new technologies, Rails is really cool but it is definitely not a silver bullet for building web applications, when you get right down to it building software is hard work no matter which technology you choose to use.</div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2007/10/18/rails-rjs-and-newline-characters/">Rails RJS and newline characters</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-10-18T00:00:00-07:00" pubdate data-updated="true">Oct 18<span>th</span>, 2007</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-ok this one really got me, I was generating a javascript alert from the server via an rjs file, i.e.<br /><br /><blockquote style="BORDER-RIGHT: 1px dashed; PADDING-RIGHT: 5px; BORDER-TOP: 1px dashed; PADDING-LEFT: 5px; BACKGROUND: #ffffff; LEFT: 65px; PADDING-BOTTOM: 5px; BORDER-LEFT: 1px dashed; WIDTH: 360px; PADDING-TOP: 5px; BORDER-BOTTOM: 1px dashed; POSITION: relative"><p style="BACKGROUND: #ffffff; WIDTH: 100%"><em><span style="color:#009900;"># rjs render a javascript alert on the client</span></em><br /><span style="color:#3333ff;">page<span style="color:#000000;">.alert</span> &#8217;<span style="color:#990000;">Errors\nError 1\nError 2</span>&#8217;</span></p></blockquote>and it kept on printing my error message as Errors<span style="color:#ff0000;">\n</span>Error message 1<span style="color:#ff0000;">\n</span>Error message2 - note that the newline characters were being escaped and rendered literally<br /><br />I found this <a href="http://www.agmweb.ca/blog/andy/1937/">informative post</a> which lead me to change my code from using single quotes to using double quotes - nasty.<br /><br /><blockquote style="BORDER-RIGHT: 1px dashed; PADDING-RIGHT: 5px; BORDER-TOP: 1px dashed; PADDING-LEFT: 5px; BACKGROUND: #ffffff; LEFT: 65px; PADDING-BOTTOM: 5px; BORDER-LEFT: 1px dashed; WIDTH: 460px; PADDING-TOP: 5px; BORDER-BOTTOM: 1px dashed; POSITION: relative"><p style="BACKGROUND: #ffffff; WIDTH: 100%; HEIGHT: 54px"><em><span style="color:#009900;"># this one will output the newlines in the javascript alert message</span></em><br /><span style="color:#3333ff;">page<span style="color:#000000;">.alert</span> &#8221;<span style="color:#990000;">Errors\nError 1\nError 2&#8221;</span></span></p></blockquote><br /><br />here is the final code, looping through each error on the model object (product in this case) and outputing a newline on the javascript alert for each error<br /><br /><br /><blockquote style="BORDER-RIGHT: 1px dashed; PADDING-RIGHT: 5px; BORDER-TOP: 1px dashed; PADDING-LEFT: 5px; BACKGROUND: #ffffff; LEFT: 65px; PADDING-BOTTOM: 5px; BORDER-LEFT: 1px dashed; WIDTH: 481px; PADDING-TOP: 5px; BORDER-BOTTOM: 1px dashed; POSITION: relative; HEIGHT: 301px"><p><em><span style="color:#009900;"># rjs file</span></em><br /><span style="color:#3333ff;">page</span>.alert <span style="color:#3333ff;">&#8220;</span><span style="color:#cc0000;">#{get_message_for_show_server_error}</span><span style="color:#3333ff;">&#8221;</span><br /></p><p><em><span style="color:#009900;"># helper file<br /></span></em><span style="color:#993399;">def</span> get_message_for_show_server_error<br /><span style="color:#ffffff;">__</span>s = &#8221;<span style="color:#cc0000;">Errors </span>&#8220;<br /><span style="color:#ffffff;">__</span><span style="color:#3333ff;">@product</span>.errors.full_messages.each <span style="color:#993399;">do</span> error<br /><span style="color:#ffffff;">____</span>s = s + &#8221;<span style="color:#cc0000;">\n</span>&#8221; + error.to_s<br /><span style="color:#993399;"><span style="color:#ffffff;">__</span>end</span></p><p><span style="color:#3333ff;"><span style="color:#ffffff;">__</span>return</span> s<br /><span style="color:#993399;">end</span><br /><br /></p><p style="BACKGROUND: #ffffff; WIDTH: 100%"></p></blockquote><br /><p></p><p></p></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/18/">&larr; Older</a>
@@ -469,6 +505,18 @@ ok this one really got me, I was generating a javascript alert from the server v
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/08/aws-iam-policy-for-uploading-ssl-certificates/">AWS IAM policy for uploading SSL certificates</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/03/rbenv-and-your-user-account-isnt-allowed-to-install-to-the-system-rubygems/">rbenv and Your user account isn&#8217;t allowed to install to the system Rubygems</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/02/setup-mac-os-x-for-rails-development/">Setup Mac OS X for rails development</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a>
       </li>
     
@@ -478,18 +526,6 @@ ok this one really got me, I was generating a javascript alert from the server v
     
       <li class="post">
         <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/13/stub-paperclip-s3-uploads-in-rspec/">stub paperclip s3 uploads in rspec</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/">Magick::ImageMagickError: WriteBlob Failed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a>
       </li>
     
   </ul>
@@ -534,7 +570,7 @@ ok this one really got me, I was generating a javascript alert from the server v
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Jesse House -
+  Copyright &copy; 2015 - Jesse House -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

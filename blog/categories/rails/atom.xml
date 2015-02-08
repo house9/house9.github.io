@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rails | house9]]></title>
   <link href="http://jessehouse.com/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://jessehouse.com/"/>
-  <updated>2014-12-13T12:01:47-08:00</updated>
+  <updated>2015-02-08T10:16:47-08:00</updated>
   <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
@@ -12,6 +12,71 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Setup Mac OS X for rails development]]></title>
+    <link href="http://jessehouse.com/blog/2015/02/02/setup-mac-os-x-for-rails-development/"/>
+    <updated>2015-02-02T09:33:00-08:00</updated>
+    <id>http://jessehouse.com/blog/2015/02/02/setup-mac-os-x-for-rails-development</id>
+    <content type="html"><![CDATA[<p>Whenever I get new machine or re-install my OS I like to use pivotals <a href="https://github.com/pivotal-sprout/sprout-wrap">sprout-wrap</a> for the setup. I have been through the process many times and finally documented it back in October.</p>
+
+<p>From the app store install XCode</p>
+
+<ul>
+<li>open XCode and accept the terms, then close app</li>
+<li>from the terminal run: <code>xcode-select --install</code></li>
+<li>copy ssh keys from old machine via airdrop</li>
+<li>then install sprout-wrap dependencies using the built in version of Ruby that ships with Mac OS X:</li>
+</ul>
+
+
+<p><code>
+sudo gem install soloist
+sudo gem install bundler
+mkdir installs
+cd installs
+git clone https://github.com/pivotal-sprout/sprout-wrap.git
+cd sprout-wrap
+sudo bundle
+</code></p>
+
+<p>Modify the <code>soloistrc</code> file if desired; for me that means adding &lsquo;sourcetree&rsquo;, &lsquo;hipchat&rsquo; and a few others to the casks section.</p>
+
+<p>The full list of available casks are here: <a href="https://github.com/pivotal-sprout/sprout-osx-apps/tree/master/recipes">https://github.com/pivotal-sprout/sprout-osx-apps/tree/master/recipes</a></p>
+
+<p>You probably want to change the &lsquo;Energy Saver&rsquo; settings to never while the installs are running.</p>
+
+<p><code>bundle exec soloist</code></p>
+
+<p>Enter your password after prompted and then watch the magic happen&hellip;</p>
+
+<p>A few hours later, after sprout-wrap is done; time for a few more &lsquo;manual&rsquo; installs</p>
+
+<ul>
+<li><a href="https://github.com/carlhuda/janus">janus</a> for vim configuration (i dont' use vim much but occasionally pair with people who do)</li>
+<li>Clone personal dotfiles</li>
+<li>install some firefox add ons</li>
+<li>For chrome once I login to Google all of my add ons will auto install</li>
+<li>Install <a href="http://www.sublimetext.com/3">SublimeText3</a> and <a href="https://packagecontrol.io/installation">Package Control</a>
+
+<ul>
+<li>If you prefer SublimeText2 it is available as a cask and can be installed via soloist</li>
+</ul>
+</li>
+</ul>
+
+
+<blockquote><p>then Encrypt your hard drive using FileVault2</p></blockquote>
+
+<p>Done! :)</p>
+
+<hr />
+
+<p><em>NOTE: if you install sprout-wrap with defaults it will configure many os-x settings which you may or may not like; I personally do like them, especially the &lsquo;Fast Key Repeat Rate&rsquo;.</em></p>
+
+<p>This post originally appeared on the private discussion board <a href="http://parley.rubyrogues.com/">Ruby Rogues Parley</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Rails, timezones, javascript and moment.js]]></title>
@@ -413,17 +478,6 @@ Do you need a CI build setup for your Ruby on Rails app?<br /><br />Here are som
 You might want to look into Pivotal Labs&#39; ciborg project -- sounds like it&#39;s just what you&#39;re looking for :)<br /><br />https://github.com/pivotal/ciborg</div>
 </div>
 </div>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Sending email with Rails Mailers, The Random bits...]]></title>
-    <link href="http://jessehouse.com/blog/2012/12/16/sending-email-with-rails-mailers-random/"/>
-    <updated>2012-12-16T00:00:00-08:00</updated>
-    <id>http://jessehouse.com/blog/2012/12/16/sending-email-with-rails-mailers-random</id>
-    <content type="html"><![CDATA[<div class='post'>
-<i>See the rails guides and railscasts for getting started with Rails Mailers;&nbsp;</i><br /><i>this article includes some additional information on Rails Mailers not included in those articles.</i><br /><br /><b>RailsCasts: </b><a href="http://railscasts.com/episodes/206-action-mailer-in-rails-3">http://railscasts.com/episodes/206-action-mailer-in-rails-3</a><br /><b>Rails Guides: </b>"<a href="http://guides.rubyonrails.org/action_mailer_basics.html">Action Mailer Basics</a>" on the rails guides -&nbsp;The guide covers all of the common mailer tasks<br /><ul><li>setup and configuration</li><li>attachments</li><li>layouts</li></ul><br /><span style="font-size: x-large;">Random Bits</span><br /><blockquote class="tr_bq"><i>These examples were created using rails 3.2</i></blockquote><div><div><span style="font-size: large;">Add importance headers</span></div><div><br /></div><div><script src="https://gist.github.com/4308619.js"></script></div><blockquote class="tr_bq"><i>NOTE: many email clients will ignore these headers</i></blockquote></div><div><br /></div><div><div><span style="font-size: large;">Add receipt header</span></div><div><br /></div><div><script src="https://gist.github.com/4308683.js"></script></div><blockquote class="tr_bq"><i>NOTE: many email clients will ignore these headers</i></blockquote></div><div><div><span style="font-size: large;"><br /></span><span style="font-size: large;">Testing mailer headers with rspec</span></div><div><br /></div><div>If you have <a href="https://github.com/rspec/rspec-rails">rspec-rails gem</a> installed with your rails application then&nbsp;running the generator will stub out most of your mailer tests, including a fixture file for the mailer view, which you may or may not want to remove.</div><div><br /></div><div><script src="https://gist.github.com/4308712.js"></script></div><blockquote class="tr_bq"><i>NOTE: test against mail.header, not mail.headers</i></blockquote></div><div><div><span style="font-size: large;"><br /></span><span style="font-size: large;">Use a different layout for some Mailer actions</span></div><div><br /></div><div>our default layout is the customer facing one&nbsp;but we want to override it in some cases</div><div><br /></div><div><script src="https://gist.github.com/4309219.js"></script></div></div><div><br /></div><div><br /></div><br /></div>
 
 ]]></content>
   </entry>
