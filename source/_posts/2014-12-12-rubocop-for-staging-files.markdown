@@ -13,7 +13,7 @@ Add this code to a shell script and it will lint all files that have been staged
 Note it uses the autofix rubocop option, optionally you could run it on non-staged files without the autofix flag.
 
 ```
-git diff --name-only --cached | xargs rubocop -a
+git diff --name-only --cached | grep '\.rb' | xargs rubocop -a
 ```
 
 Don't forget to `git add .` after rubocop finds/fixes any code style violations in your staged files.
