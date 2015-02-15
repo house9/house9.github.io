@@ -9,7 +9,9 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Came across a nasty issue using rails send_data with IE. Everything worked fine until the pages were running under SSL / HTTPS. Turns out the issue &hellip;">
+  <meta name="description" content="
+I had 200+ subscriptions in my rss reader - way too many I just cut it back to a short list. No doubt the list will start to grow again&#8230;
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +67,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/03/05/cut-back-on-blog-reading/">cut back on the blog reading</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-05T00:00:00-08:00" pubdate data-updated="true">Mar 5<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I had 200+ subscriptions in my rss reader - way too many <div>I just cut it back to a short list. No doubt the list will start to grow again&#8230;</div><br /><br /><div style="text-align:center"><br /><a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://3.bp.blogspot.com/_vmq8pP42BnQ/S5GQv0jIRPI/AAAAAAAACtc/jc62zNF4rGk/s1600-h/screenshot_002.png"><img style="display:block; margin:0px auto 10px; text-align:center;cursor:pointer; cursor:hand;width: 132px; height: 400px;" src="http://3.bp.blogspot.com/_vmq8pP42BnQ/S5GQv0jIRPI/AAAAAAAACtc/jc62zNF4rGk/s400/screenshot_002.png" border="0" alt="" id="BLOGGER_PHOTO_ID_5445292575701878002" /></a><br /></div></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -425,43 +464,6 @@ nothing else to say really, imeem was a great service<div><br /></div><div>I&#82
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/10/25/imeem-on-64-bit-ubuntu/">imeem on 64-bit ubuntu</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-10-25T00:00:00-07:00" pubdate data-updated="true">Oct 25<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-<p>Getting flash to work correctly on 64-bit <a href="http://www.ubuntu.com/">Ubuntu</a> can be challenging. By following various blog and forum posts I was able to get it to work, but never the flash player for <a href="http://www.imeem.com/">imeem</a>. Every now and again I would try to re-install flash and see if it would work for imeem but until last night I was never successful. </p><p>It turns out that imeem will only work with the 32-bit flash player. After so much work to get the 64-bit player working in Firefox 3.0 and 3.5 I did not want to remove it so I downloaded Opera and installed the 32-bit player under its plugin directory and <a href="http://www.imeem.com/">imeem</a> works great!</p><ul><li>Download and install <a href="http://www.opera.com/browser/download/">Opera</a></li><li>verify that you cannot play music in <a href="http://www.imeem.com/">imeem</a></li><li>Close Opera</li><li>download the <a href="http://get.adobe.com/flashplayer/">32-bit flash player</a> in &#8216;.tar.gz&#8217; format</li><li>extract the libflashplayer.so file from the archive</li><li>then you will need to put this in the directory /usr/lib/opera/plugins/</li><li>you won&#8217;t have permissions to write to that directory unless you are in sudo mode</li><li>open a terminal and type &#8217;<em>sudo nautilus</em>&#8217;</li><li>copy the file into the directory (you could do this from the terminal window also probably &#8217;<em>sudo mv libflashplayer.so /usr/lib/opera/plugins/libflashplayer.so</em>&#8217;</li><li>Open Opera</li><li>check the plugins - type opera:plugins in the address bar</li><li>you should see Shockwave Flash and it should be pointing to the libflashplayer.so file under opera plugins, by default my opera installation was pointing to /usr/lib/mozilla/plugins/ for the flash plugin, my guess is opera looks for plugins in its own directory and if not found then looks in mozilla directory</li><li>you should now be able to play music with imeem!</li></ul><p>I am running Ubuntu 9.04 Jaunty Jackalope by the way. Here are some links that might work to get the 64-bit player working for Firefox</p><ul><li><a href="http://art.ubuntuforums.org/showthread.php?t=1297385">http://art.ubuntuforums.org/showthread.php?t=1297385</a></li><li><a href="http://www.ubuntugeek.com/how-to-install-adobe-flash-player-10-in-ubuntu-804-hardy-heron.html">http://www.ubuntugeek.com/how-to-install-adobe-flash-player-10-in-ubuntu-804-hardy-heron.html</a></li><li><a href="http://art.ubuntuforums.org/showthread.php?t=1292438">http://art.ubuntuforums.org/showthread.php?t=1292438</a></li><li><a href="http://www.cyberciti.biz/tips/install-flash-10-ubuntu-linux-64bit.html">http://www.cyberciti.biz/tips/install-flash-10-ubuntu-linux-64bit.html</a></li><li>this last one is probably the best bet, check the comments there</li></ul><p><br /></p></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/11/">&larr; Older</a>
@@ -477,6 +479,10 @@ nothing else to say really, imeem was a great service<div><br /></div><div>I&#82
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/02/15/ember-cli-broccoli-fingerprinting/">ember-cli broccoli fingerprinting</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/02/08/aws-iam-policy-for-uploading-ssl-certificates/">AWS IAM policy for uploading SSL certificates</a>
@@ -496,10 +502,6 @@ nothing else to say really, imeem was a great service<div><br /></div><div>I&#82
     
       <li class="post">
         <a href="/blog/2014/12/12/rubocop-for-staging-files/">rubocop script for your modified files</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a>
       </li>
     
   </ul>

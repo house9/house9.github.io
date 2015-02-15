@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: emberjs | house9]]></title>
+  <link href="http://jessehouse.com/blog/categories/emberjs/atom.xml" rel="self"/>
+  <link href="http://jessehouse.com/"/>
+  <updated>2015-02-15T09:27:01-08:00</updated>
+  <id>http://jessehouse.com/</id>
+  <author>
+    <name><![CDATA[Jesse House]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[ember-cli broccoli fingerprinting]]></title>
+    <link href="http://jessehouse.com/blog/2015/02/15/ember-cli-broccoli-fingerprinting/"/>
+    <updated>2015-02-15T09:07:00-08:00</updated>
+    <id>http://jessehouse.com/blog/2015/02/15/ember-cli-broccoli-fingerprinting</id>
+    <content type="html"><![CDATA[<p>ember-cli uses broccoli for asset compilation and <a href="http://www.ember-cli.com/asset-compilation/#fingerprinting-and-cdn-urls">fingerprinting</a> of asset file names.</p>
+
+<blockquote><p>When the environment is production, the addon will automatically fingerprint your js, css, png, jpg, and gif assets &hellip;</p></blockquote>
+
+<p>No fingerprinting occurs in the development environment. These are great defaults, but what if you have a staging environment and want to fingerprint those assets? You can override the fingerprint setting when the ember application is created.</p>
+
+<p>```javascript
+var app = new EmberApp({
+  fingerprint: {</p>
+
+<pre><code>enabled: true
+</code></pre>
+
+<p>  }
+});
+```</p>
+
+<p>Now all environments will fingerprint assets, but we really don&rsquo;t want that in development. Since the ember application has not booted up yet we do not have access to the configuration object directly &ndash; lucky for us it is available on the <code>process</code> object before the ember application is created.</p>
+
+<p>```javascript
+// Brocfile.js
+var emberEnvironment = process.env.EMBER_ENV;
+var fingerprint = (emberEnvironment === &lsquo;production&rsquo; || emberEnvironment === &lsquo;staging&rsquo;);
+var app = new EmberApp({
+  fingerprint: {</p>
+
+<pre><code>enabled: fingerprint
+</code></pre>
+
+<p>  }
+});</p>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rails, timezones, javascript and moment.js]]></title>
+    <link href="http://jessehouse.com/blog/2014/12/13/rails-timezones-javascript-and-moment-js/"/>
+    <updated>2014-12-13T10:33:00-08:00</updated>
+    <id>http://jessehouse.com/blog/2014/12/13/rails-timezones-javascript-and-moment-js</id>
+    <content type="html"><![CDATA[<p>So you need to display some datetimes in your new ember.js/angular/backbone UI and the times must be displayed for a timezone which is different from the logged on user.</p>
+
+<p>Let us say we have an <code>Event</code> class in our rails application with the following attributes:</p>
+
+<p><code>ruby
+create_table :events do |t|
+  t.string :event_name, null: false
+  t.text :description
+  t.datetime :start_at, null: false
+  t.string :time_zone, null: false, default: 'UTC'
+end
+</code></p>
+
+<p>Rails uses the timezone format: <code>Eastern Time (US &amp; Canada)</code></p>
+
+<p>Javascript (and therefore the <a href="http://momentjs.com/timezone/">moment-timezone</a> library) use <a href="http://en.wikipedia.org/wiki/Tz_database">the format</a>: <code>America/New_York</code></p>
+
+<p>Rails can easily convert this for you and return the proper js format in your json:</p>
+
+<p>```ruby
+class Event &lt; ActiveRecord::Base
+  # &hellip;</p>
+
+<p>  def time_zone_mapping</p>
+
+<pre><code># time_zone =&gt; Eastern Time (US &amp; Canada)
+ActiveSupport::TimeZone::MAPPING[self.time_zone] # =&gt; America/New_York
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>and with <a href="http://momentjs.com/">moment.js</a> and <a href="http://momentjs.com/timezone/">moment-timezone</a></p>
+
+<p><code>javascript
+// where 'event' is the js representation of your rails model
+moment(event.startAt).tz(event.timeZoneMapping).format('dddd, MMMM Do YYYY h:mm a z');
+</code></p>
+
+<p>You will want to ensure that all json is being rendered with <code>UTC</code> as the configured timezone in rails,
+i.e. <code>config.time_zone = 'UTC'</code> in your application config and/or <code>Time.zone = 'UTC'</code> in your api controller.</p>
+
+<p>See also</p>
+
+<ul>
+<li><a href="/blog/2013/11/15/working-with-timezones-and-ruby-on-rails/">Ruby on Rails: Timezones</a></li>
+<li><a href="http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html">ActiveSupport::TimeZone</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -4,7 +4,7 @@
   <title><![CDATA[house9]]></title>
   <link href="http://jessehouse.com/atom.xml" rel="self"/>
   <link href="http://jessehouse.com/"/>
-  <updated>2015-02-08T10:16:47-08:00</updated>
+  <updated>2015-02-15T09:27:01-08:00</updated>
   <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
@@ -12,6 +12,53 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[ember-cli broccoli fingerprinting]]></title>
+    <link href="http://jessehouse.com/blog/2015/02/15/ember-cli-broccoli-fingerprinting/"/>
+    <updated>2015-02-15T09:07:00-08:00</updated>
+    <id>http://jessehouse.com/blog/2015/02/15/ember-cli-broccoli-fingerprinting</id>
+    <content type="html"><![CDATA[<p>ember-cli uses broccoli for asset compilation and <a href="http://www.ember-cli.com/asset-compilation/#fingerprinting-and-cdn-urls">fingerprinting</a> of asset file names.</p>
+
+<blockquote><p>When the environment is production, the addon will automatically fingerprint your js, css, png, jpg, and gif assets &hellip;</p></blockquote>
+
+<p>No fingerprinting occurs in the development environment. These are great defaults, but what if you have a staging environment and want to fingerprint those assets? You can override the fingerprint setting when the ember application is created.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EmberApp</span><span class="p">({</span>
+</span><span class='line'>  <span class="nx">fingerprint</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">enabled</span><span class="o">:</span> <span class="kc">true</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now all environments will fingerprint assets, but we really don&rsquo;t want that in development. Since the ember application has not booted up yet we do not have access to the configuration object directly &ndash; lucky for us it is available on the <code>process</code> object before the ember application is created.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Brocfile.js</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">emberEnvironment</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">EMBER_ENV</span><span class="p">;</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">fingerprint</span> <span class="o">=</span> <span class="p">(</span><span class="nx">emberEnvironment</span> <span class="o">===</span> <span class="s1">&#39;production&#39;</span> <span class="o">||</span> <span class="nx">emberEnvironment</span> <span class="o">===</span> <span class="s1">&#39;staging&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EmberApp</span><span class="p">({</span>
+</span><span class='line'>  <span class="nx">fingerprint</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">enabled</span><span class="o">:</span> <span class="nx">fingerprint</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[AWS IAM policy for uploading SSL certificates]]></title>
@@ -212,7 +259,7 @@
 
 <p>Rails uses the timezone format: <code>Eastern Time (US &amp; Canada)</code></p>
 
-<p>Javascript (and therefore the <a href="http://momentjs.com/timezone/">moment-timezone</a> library) use the format: <code>America/New_York</code></p>
+<p>Javascript (and therefore the <a href="http://momentjs.com/timezone/">moment-timezone</a> library) use <a href="http://en.wikipedia.org/wiki/Tz_database">the format</a>: <code>America/New_York</code></p>
 
 <p>Rails can easily convert this for you and return the proper js format in your json:</p>
 
@@ -1032,16 +1079,6 @@ I constantly find myself looking these up, saving this link for future reference
 It&#39;s like you opened my brain and looked right into my mind to see what I was thinking. <b><i>Woah</i></b>.</div>
 </div>
 </div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Sending email with Rails Mailers, The Random bits...]]></title>
-    <link href="http://jessehouse.com/blog/2012/12/16/sending-email-with-rails-mailers-random/"/>
-    <updated>2012-12-16T00:00:00-08:00</updated>
-    <id>http://jessehouse.com/blog/2012/12/16/sending-email-with-rails-mailers-random</id>
-    <content type="html"><![CDATA[<div class='post'>
-<i>See the rails guides and railscasts for getting started with Rails Mailers;&nbsp;</i><br /><i>this article includes some additional information on Rails Mailers not included in those articles.</i><br /><br /><b>RailsCasts: </b><a href="http://railscasts.com/episodes/206-action-mailer-in-rails-3">http://railscasts.com/episodes/206-action-mailer-in-rails-3</a><br /><b>Rails Guides: </b>&#8220;<a href="http://guides.rubyonrails.org/action_mailer_basics.html">Action Mailer Basics</a>&#8221; on the rails guides -&nbsp;The guide covers all of the common mailer tasks<br /><ul><li>setup and configuration</li><li>attachments</li><li>layouts</li></ul><br /><span style="font-size: x-large;">Random Bits</span><br /><blockquote class="tr_bq"><i>These examples were created using rails 3.2</i></blockquote><div><div><span style="font-size: large;">Add importance headers</span></div><div><br /></div><div><script src="https://gist.github.com/4308619.js"></script></div><blockquote class="tr_bq"><i>NOTE: many email clients will ignore these headers</i></blockquote></div><div><br /></div><div><div><span style="font-size: large;">Add receipt header</span></div><div><br /></div><div><script src="https://gist.github.com/4308683.js"></script></div><blockquote class="tr_bq"><i>NOTE: many email clients will ignore these headers</i></blockquote></div><div><div><span style="font-size: large;"><br /></span><span style="font-size: large;">Testing mailer headers with rspec</span></div><div><br /></div><div>If you have <a href="https://github.com/rspec/rspec-rails">rspec-rails gem</a> installed with your rails application then&nbsp;running the generator will stub out most of your mailer tests, including a fixture file for the mailer view, which you may or may not want to remove.</div><div><br /></div><div><script src="https://gist.github.com/4308712.js"></script></div><blockquote class="tr_bq"><i>NOTE: test against mail.header, not mail.headers</i></blockquote></div><div><div><span style="font-size: large;"><br /></span><span style="font-size: large;">Use a different layout for some Mailer actions</span></div><div><br /></div><div>our default layout is the customer facing one&nbsp;but we want to override it in some cases</div><div><br /></div><div><script src="https://gist.github.com/4309219.js"></script></div></div><div><br /></div><div><br /></div><br /></div>
 ]]></content>
   </entry>
   

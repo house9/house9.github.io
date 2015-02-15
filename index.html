@@ -9,22 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="The following IAM policy can be used to upload SSL certificates to AWS for use by cloudfront or ELB. 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-{ "Version &hellip;">
+  <meta name="description" content="ember-cli uses broccoli for asset compilation and fingerprinting of asset file names. When the environment is production, the addon will &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +65,82 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/15/ember-cli-broccoli-fingerprinting/">ember-cli broccoli fingerprinting</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-02-15T09:07:00-08:00" pubdate data-updated="true">Feb 15<span>th</span>, 2015</time>
+        
+         | <a href="/blog/2015/02/15/ember-cli-broccoli-fingerprinting/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>ember-cli uses broccoli for asset compilation and <a href="http://www.ember-cli.com/asset-compilation/#fingerprinting-and-cdn-urls">fingerprinting</a> of asset file names.</p>
+
+<blockquote><p>When the environment is production, the addon will automatically fingerprint your js, css, png, jpg, and gif assets &hellip;</p></blockquote>
+
+<p>No fingerprinting occurs in the development environment. These are great defaults, but what if you have a staging environment and want to fingerprint those assets? You can override the fingerprint setting when the ember application is created.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EmberApp</span><span class="p">({</span>
+</span><span class='line'>  <span class="nx">fingerprint</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">enabled</span><span class="o">:</span> <span class="kc">true</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now all environments will fingerprint assets, but we really don&rsquo;t want that in development. Since the ember application has not booted up yet we do not have access to the configuration object directly &ndash; lucky for us it is available on the <code>process</code> object before the ember application is created.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// Brocfile.js</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">emberEnvironment</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">EMBER_ENV</span><span class="p">;</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">fingerprint</span> <span class="o">=</span> <span class="p">(</span><span class="nx">emberEnvironment</span> <span class="o">===</span> <span class="s1">&#39;production&#39;</span> <span class="o">||</span> <span class="nx">emberEnvironment</span> <span class="o">===</span> <span class="s1">&#39;staging&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EmberApp</span><span class="p">({</span>
+</span><span class='line'>  <span class="nx">fingerprint</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">enabled</span><span class="o">:</span> <span class="nx">fingerprint</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -392,7 +453,7 @@
 
 <p>Rails uses the timezone format: <code>Eastern Time (US &amp; Canada)</code></p>
 
-<p>Javascript (and therefore the <a href="http://momentjs.com/timezone/">moment-timezone</a> library) use the format: <code>America/New_York</code></p>
+<p>Javascript (and therefore the <a href="http://momentjs.com/timezone/">moment-timezone</a> library) use <a href="http://en.wikipedia.org/wiki/Tz_database">the format</a>: <code>America/New_York</code></p>
 
 <p>Rails can easily convert this for you and return the proper js format in your json:</p>
 
@@ -1131,110 +1192,6 @@ Magick::ImageMagickError: WriteBlob Failed `/Users/ME/projects/CLIENT/code/RAILS
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/09/25/the-cure-for-ibs/">The Cure for IBS</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-09-25T16:45:00-07:00" pubdate data-updated="true">Sep 25<span>th</span>, 2013</time>
-        
-         | <a href="/blog/2013/09/25/the-cure-for-ibs/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Wikipedia lists IBS (<a href="http://en.wikipedia.org/wiki/Irritable_bowel_syndrome">Irritable Bowel Syndrome</a>) as a &ldquo;Functional gastrointestinal disorder&rdquo;. It can cause both diarrhea or constipation and often alternates between the two. In short it is &ldquo;No fun&rdquo;.</p>
-
-<p>I was first diagnosed with IBS in 2002 and was told to</p>
-
-<ul>
-<li>eat more fiber</li>
-<li>take a stress reduction class</li>
-</ul>
-
-
-<p>I had never heard of such a thing as &lsquo;IBS&rsquo; before, it seems it is the &lsquo;catch-all&rsquo; diagnosis for stomach issues when the doctors do not know for certain what is causing the issue.</p>
-
-<p>Things that did help me, but I would not say they &lsquo;cured&rsquo; me:</p>
-
-<ul>
-<li>reduce meat intake
-
-<ul>
-<li>replace with lentils and other legumes which are high in fiber</li>
-</ul>
-</li>
-<li>increase cooked vegetable intake</li>
-<li>eliminate dairy
-
-<ul>
-<li>this made a huge difference for me, for awhile</li>
-</ul>
-</li>
-<li>yoga and meditation
-
-<ul>
-<li>IBS seems to be heavily linked to stress</li>
-</ul>
-</li>
-</ul>
-
-
-<p>Even after changing my diet I still had discomfort off and on. At one point in 2007 I thought my appendix was going to burst, went to the emergency room to find out my appendix was fine and that I was just really constipated. Talk about embarrassing.</p>
-
-<p>After that I decided to try some acupuncture treatment. It did help some, but the thing that &lsquo;cured&rsquo; my IBS was the advice my acupuncturist gave me:</p>
-
-<ul>
-<li>do NOT eat while you are working on the computer</li>
-<li>do NOT eat while you are driving</li>
-</ul>
-
-
-<p>The jist of it is when its time to eat, its time to eat and nothing else:</p>
-
-<ul>
-<li>chew your food</li>
-<li>eat slowly</li>
-<li>digest for at least 15 minutes before going back to work</li>
-<li>maybe take a short walk while you digest</li>
-<li>no reading or other mentally engaging activities</li>
-</ul>
-
-
-<p>Doing the above, my IBS has dwindled away, it did not happen overnight, it took many months of being very strict about my eating habits &ndash; mainly taking the time to digest after a meal before engaging in any work activities.</p>
-
-<p>I am somewhat of a grazer, I like to eat small amounts through out the day while working. My work consists of being on the computer over 90% of my work day. Sometimes my work is stressful, even when it is not &lsquo;stressful&rsquo; it is still very engaging and involves a very high level of concentration.</p>
-
-<p>I believe I was training my body to think it was under stress whenever I was eating, weather I was on the computer or not.</p>
-
-<p>If you suffer from IBS I hope the above will work for you as well.</p>
-
-<p>-Namaste</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1248,6 +1205,10 @@ Magick::ImageMagickError: WriteBlob Failed `/Users/ME/projects/CLIENT/code/RAILS
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/02/15/ember-cli-broccoli-fingerprinting/">ember-cli broccoli fingerprinting</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/02/08/aws-iam-policy-for-uploading-ssl-certificates/">AWS IAM policy for uploading SSL certificates</a>
@@ -1267,10 +1228,6 @@ Magick::ImageMagickError: WriteBlob Failed `/Users/ME/projects/CLIENT/code/RAILS
     
       <li class="post">
         <a href="/blog/2014/12/12/rubocop-for-staging-files/">rubocop script for your modified files</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a>
       </li>
     
   </ul>

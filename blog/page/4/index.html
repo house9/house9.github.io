@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Use the information_schema catalog - http://www.postgresql.org/docs/9.1/static/information-schema.htmlGet table and columns from the public &hellip;">
+  <meta name="description" content="Very useful$(&#8220;SELECTOR&#8221;).data(&#8220;events&#8221;);All bound event handlers are stored in the elements data context under the events &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/12/30/inspect-all-jquery-events-on-element/">Inspect all jQuery events on an element</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-30T00:00:00-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Very useful<br /><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">$(&#8220;SELECTOR&#8221;).data(&#8220;events&#8221;);</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;"><br /></span><br />All bound event handlers are stored in the elements data context under the events key<br />This can be very useful when&nbsp;debugging&nbsp;with tools like FireBug<br /><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">$(&#8220;form&#8221;).submit(function () { alert(&#8216;submit form&#8217;); });</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">$(&#8220;form&#8221;).data(&#8220;events&#8221;);</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">&gt; Object { submit=[1] }</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;"><br /></span><br />Resources<br /><br /><ul><li><a href="http://www.bennadel.com/blog/1727-Viewing-jQuery-DOM-Event-Bindings-With-FireBug.htm">http://www.bennadel.com/blog/1727-Viewing-jQuery-DOM-Event-Bindings-With-FireBug.htm</a>&nbsp;</li></ul></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -460,43 +497,6 @@ Package up assets into a gem for use in rails 3.1 applications. Example uses jav
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/06/01/robocopy-fix-for-exit-code-of-2/">robocopy fix for exit code of 2</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-06-01T00:00:00-07:00" pubdate data-updated="true">Jun 1<span>st</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Sometimes you want to use robocopy from nant, a sql job or another build tool, robocopy will return 2 during a successful run, this gets&nbsp;interpreted&nbsp;as an error, a google search on the issue returned this article&nbsp;<a href="http://weblogs.sqlteam.com/robv/archive/2010/02/17/61106.aspx">Fixing Robocopy for SQL Server Jobs</a>.<br /><br />Robocopy is now installed by default on Windows7 and Windows Server 2008<br /><a href="http://technet.microsoft.com/en-us/library/cc733145(WS.10).aspx">http://technet.microsoft.com/en-us/library/cc733145(WS.10).aspx</a><br /><br />here is robocopy_fix.bat based on the code in the &#8220;Fixing Robocopy for SQL Server Jobs&#8221; article<br /><br /><script src="https://gist.github.com/1003646.js?file=robocopy_fix.bat"></script><br /><noscript><br />rem http://weblogs.sqlteam.com/robv/archive/2010/02/17/61106.aspx<br />robocopy %*<br />rem suppress successful robocopy exit statuses, only report genuine errors (bitmask 16 and 8 settings)<br />set/A errlev=&#8221;%ERRORLEVEL% & 24&#8221;<br />rem exit batch file with errorlevel so SQL job can succeed or fail appropriately<br />exit/B %errlev%<br /><br /><br /><br />rem USAGE: just like regular robocopy<br /><br />robocopy_fix.bat C:\temp\s C:\temp\d /MIR<br /></noscript></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -512,6 +512,10 @@ Sometimes you want to use robocopy from nant, a sql job or another build tool, r
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/02/15/ember-cli-broccoli-fingerprinting/">ember-cli broccoli fingerprinting</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/02/08/aws-iam-policy-for-uploading-ssl-certificates/">AWS IAM policy for uploading SSL certificates</a>
@@ -531,10 +535,6 @@ Sometimes you want to use robocopy from nant, a sql job or another build tool, r
     
       <li class="post">
         <a href="/blog/2014/12/12/rubocop-for-staging-files/">rubocop script for your modified files</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a>
       </li>
     
   </ul>

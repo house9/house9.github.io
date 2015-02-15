@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="It has never been easier than with Semaphore - Hosted Continuous Integrationhttps://semaphoreapp.com/How easy is itadd semaphore ssh key to your &hellip;">
+  <meta name="description" content="See the rails guides and railscasts for getting started with Rails Mailers;&nbsp;this article includes some additional information on Rails Mailers &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/12/16/sending-email-with-rails-mailers-random/">Sending email with Rails Mailers, The Random bits&#8230;</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-16T00:00:00-08:00" pubdate data-updated="true">Dec 16<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<i>See the rails guides and railscasts for getting started with Rails Mailers;&nbsp;</i><br /><i>this article includes some additional information on Rails Mailers not included in those articles.</i><br /><br /><b>RailsCasts: </b><a href="http://railscasts.com/episodes/206-action-mailer-in-rails-3">http://railscasts.com/episodes/206-action-mailer-in-rails-3</a><br /><b>Rails Guides: </b>&#8220;<a href="http://guides.rubyonrails.org/action_mailer_basics.html">Action Mailer Basics</a>&#8221; on the rails guides -&nbsp;The guide covers all of the common mailer tasks<br /><ul><li>setup and configuration</li><li>attachments</li><li>layouts</li></ul><br /><span style="font-size: x-large;">Random Bits</span><br /><blockquote class="tr_bq"><i>These examples were created using rails 3.2</i></blockquote><div><div><span style="font-size: large;">Add importance headers</span></div><div><br /></div><div><script src="https://gist.github.com/4308619.js"></script></div><blockquote class="tr_bq"><i>NOTE: many email clients will ignore these headers</i></blockquote></div><div><br /></div><div><div><span style="font-size: large;">Add receipt header</span></div><div><br /></div><div><script src="https://gist.github.com/4308683.js"></script></div><blockquote class="tr_bq"><i>NOTE: many email clients will ignore these headers</i></blockquote></div><div><div><span style="font-size: large;"><br /></span><span style="font-size: large;">Testing mailer headers with rspec</span></div><div><br /></div><div>If you have <a href="https://github.com/rspec/rspec-rails">rspec-rails gem</a> installed with your rails application then&nbsp;running the generator will stub out most of your mailer tests, including a fixture file for the mailer view, which you may or may not want to remove.</div><div><br /></div><div><script src="https://gist.github.com/4308712.js"></script></div><blockquote class="tr_bq"><i>NOTE: test against mail.header, not mail.headers</i></blockquote></div><div><div><span style="font-size: large;"><br /></span><span style="font-size: large;">Use a different layout for some Mailer actions</span></div><div><br /></div><div>our default layout is the customer facing one&nbsp;but we want to override it in some cases</div><div><br /></div><div><script src="https://gist.github.com/4309219.js"></script></div></div><div><br /></div><div><br /></div><br /></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -407,43 +444,6 @@ This is the current git workflow we are using at work, your mileage may vary:<br
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/12/30/inspect-all-jquery-events-on-element/">Inspect all jQuery events on an element</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-12-30T00:00:00-08:00" pubdate data-updated="true">Dec 30<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Very useful<br /><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">$(&#8220;SELECTOR&#8221;).data(&#8220;events&#8221;);</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;"><br /></span><br />All bound event handlers are stored in the elements data context under the events key<br />This can be very useful when&nbsp;debugging&nbsp;with tools like FireBug<br /><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">$(&#8220;form&#8221;).submit(function () { alert(&#8216;submit form&#8217;); });</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">$(&#8220;form&#8221;).data(&#8220;events&#8221;);</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;">&gt; Object { submit=[1] }</span><br /><span style="background-color: whitesmoke; color: #333333; font-family: monospace, verdana; font-size: 11px; line-height: 16px;"><br /></span><br />Resources<br /><br /><ul><li><a href="http://www.bennadel.com/blog/1727-Viewing-jQuery-DOM-Event-Bindings-With-FireBug.htm">http://www.bennadel.com/blog/1727-Viewing-jQuery-DOM-Event-Bindings-With-FireBug.htm</a>&nbsp;</li></ul></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -459,6 +459,10 @@ Very useful<br /><br /><span style="background-color: whitesmoke; color: #333333
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/02/15/ember-cli-broccoli-fingerprinting/">ember-cli broccoli fingerprinting</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/02/08/aws-iam-policy-for-uploading-ssl-certificates/">AWS IAM policy for uploading SSL certificates</a>
@@ -478,10 +482,6 @@ Very useful<br /><br /><span style="background-color: whitesmoke; color: #333333
     
       <li class="post">
         <a href="/blog/2014/12/12/rubocop-for-staging-files/">rubocop script for your modified files</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a>
       </li>
     
   </ul>

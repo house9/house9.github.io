@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Factory Girl makes rails testing so much easier. I watched a Railscasts on Factory Girl recently but had been putting off trying it out until last &hellip;">
+  <meta name="description" content="Getting flash to work correctly on 64-bit Ubuntu can be challenging. By following various blog and forum posts I was able to get it to work, but &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/10/25/imeem-on-64-bit-ubuntu/">imeem on 64-bit ubuntu</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-10-25T00:00:00-07:00" pubdate data-updated="true">Oct 25<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<p>Getting flash to work correctly on 64-bit <a href="http://www.ubuntu.com/">Ubuntu</a> can be challenging. By following various blog and forum posts I was able to get it to work, but never the flash player for <a href="http://www.imeem.com/">imeem</a>. Every now and again I would try to re-install flash and see if it would work for imeem but until last night I was never successful. </p><p>It turns out that imeem will only work with the 32-bit flash player. After so much work to get the 64-bit player working in Firefox 3.0 and 3.5 I did not want to remove it so I downloaded Opera and installed the 32-bit player under its plugin directory and <a href="http://www.imeem.com/">imeem</a> works great!</p><ul><li>Download and install <a href="http://www.opera.com/browser/download/">Opera</a></li><li>verify that you cannot play music in <a href="http://www.imeem.com/">imeem</a></li><li>Close Opera</li><li>download the <a href="http://get.adobe.com/flashplayer/">32-bit flash player</a> in &#8216;.tar.gz&#8217; format</li><li>extract the libflashplayer.so file from the archive</li><li>then you will need to put this in the directory /usr/lib/opera/plugins/</li><li>you won&#8217;t have permissions to write to that directory unless you are in sudo mode</li><li>open a terminal and type &#8217;<em>sudo nautilus</em>&#8217;</li><li>copy the file into the directory (you could do this from the terminal window also probably &#8217;<em>sudo mv libflashplayer.so /usr/lib/opera/plugins/libflashplayer.so</em>&#8217;</li><li>Open Opera</li><li>check the plugins - type opera:plugins in the address bar</li><li>you should see Shockwave Flash and it should be pointing to the libflashplayer.so file under opera plugins, by default my opera installation was pointing to /usr/lib/mozilla/plugins/ for the flash plugin, my guess is opera looks for plugins in its own directory and if not found then looks in mozilla directory</li><li>you should now be able to play music with imeem!</li></ul><p>I am running Ubuntu 9.04 Jaunty Jackalope by the way. Here are some links that might work to get the 64-bit player working for Firefox</p><ul><li><a href="http://art.ubuntuforums.org/showthread.php?t=1297385">http://art.ubuntuforums.org/showthread.php?t=1297385</a></li><li><a href="http://www.ubuntugeek.com/how-to-install-adobe-flash-player-10-in-ubuntu-804-hardy-heron.html">http://www.ubuntugeek.com/how-to-install-adobe-flash-player-10-in-ubuntu-804-hardy-heron.html</a></li><li><a href="http://art.ubuntuforums.org/showthread.php?t=1292438">http://art.ubuntuforums.org/showthread.php?t=1292438</a></li><li><a href="http://www.cyberciti.biz/tips/install-flash-10-ubuntu-linux-64bit.html">http://www.cyberciti.biz/tips/install-flash-10-ubuntu-linux-64bit.html</a></li><li>this last one is probably the best bet, check the comments there</li></ul><p><br /></p></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -412,43 +449,6 @@ Calle Vilafranca del Penedés s/n,<br />Costa Brava<br />Tossa de Mar, Girona 17
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/06/27/husa-imperial-tarraco-tarragona-spain/">Husa Imperial Tarraco, Tarragona Spain</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-06-27T00:00:00-07:00" pubdate data-updated="true">Jun 27<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Paseo De Las Palmeras, S/n<br />Tarragona, TA 43003<br />Spain<br /><br />Great hotel. if you stay here I recommend spending extra for a room with a sea view!<br /><br /><a href="http://picasaweb.google.com/lh/photo/znKvxFJfchTX2skHYHvEWw?feat=embedwebsite"><img src="http://lh4.ggpht.com/_vmq8pP42BnQ/SkELzx5fKCI/AAAAAAAACb8/EiGxBj1fWHo/s400/IMG_1887.JPG" /></a><br /><br /><iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Husa+Imperial+Tarraco+Tarragona&amp;sll=41.976772,2.812392&amp;sspn=0.115109,0.308647&amp;gl=us&amp;ie=UTF8&amp;cd=1&amp;ll=41.123914,1.261282&amp;spn=0.014581,0.038581&amp;z=14&amp;iwloc=A&amp;cid=15877674626037886429&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Husa+Imperial+Tarraco+Tarragona&amp;sll=41.976772,2.812392&amp;sspn=0.115109,0.308647&amp;gl=us&amp;ie=UTF8&amp;cd=1&amp;ll=41.123914,1.261282&amp;spn=0.014581,0.038581&amp;z=14&amp;iwloc=A&amp;cid=15877674626037886429" style="color:#0000FF;text-align:left">View Larger Map</a></small><br /><br /><a href="http://picasaweb.google.com/lh/photo/Ft8P2-LVkG5DhU9hWZTymg?feat=embedwebsite"><img src="http://lh3.ggpht.com/_vmq8pP42BnQ/SkELy9t6aWI/AAAAAAAACbw/8e4QHBydCE0/s400/IMG_1883.JPG" /></a><br /><br /><a href="http://picasaweb.google.com/lh/photo/9BU19zyTUHThDOrJPJ2dMw?feat=embedwebsite"><img src="http://lh4.ggpht.com/_vmq8pP42BnQ/SkELzL0eyyI/AAAAAAAACb0/JNU4dGYnu74/s400/IMG_1885.JPG" /></a><br /><br /><a href="http://picasaweb.google.com/lh/photo/T_z_xVStwgZ2u5Tv7nzBJA?feat=embedwebsite"><img src="http://lh6.ggpht.com/_vmq8pP42BnQ/SkELzttahVI/AAAAAAAACb4/oqKouM-tsho/s400/IMG_1886.JPG" /></a><br /><br /><a href="http://picasaweb.google.com/lh/photo/CO3Wt6XS8-xD7T3eKtka_g?feat=embedwebsite"><img src="http://lh4.ggpht.com/_vmq8pP42BnQ/SkEL3UxRlZI/AAAAAAAACck/ZaheQt37XW8/s400/IMG_1897.JPG" /></a></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/12/">&larr; Older</a>
@@ -464,6 +464,10 @@ Paseo De Las Palmeras, S/n<br />Tarragona, TA 43003<br />Spain<br /><br />Great 
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/02/15/ember-cli-broccoli-fingerprinting/">ember-cli broccoli fingerprinting</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/02/08/aws-iam-policy-for-uploading-ssl-certificates/">AWS IAM policy for uploading SSL certificates</a>
@@ -483,10 +487,6 @@ Paseo De Las Palmeras, S/n<br />Tarragona, TA 43003<br />Spain<br /><br />Great 
     
       <li class="post">
         <a href="/blog/2014/12/12/rubocop-for-staging-files/">rubocop script for your modified files</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a>
       </li>
     
   </ul>

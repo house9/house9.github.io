@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="I&#8217;ve been working on this project off and on for quite sometime. If you are a small to mid size business in California and you need Safety &hellip;">
+  <meta name="description" content="I&#8217;ve been intrigued with the idea of CQRS for some time; ever since I watched an infoQ presentation by Greg Young on the subject. What is CQRS &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/02/25/cqrs-with-net-and-c/">CQRS with .NET and C#</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-25T00:00:00-08:00" pubdate data-updated="true">Feb 25<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I&#8217;ve been intrigued with the idea of CQRS for some time; ever since I watched an <a href="http://www.infoq.com/">infoQ</a> presentation by <a href="http://codebetter.com/gregyoung/author/gregyoung/">Greg Young</a> on the subject. What is CQRS?<br /><blockquote><span class="Apple-style-span" style="color: #333333;"><i>Command-Query Responsibility Segregation</i></span></blockquote>See the links below to for more information from the experts.<br /><br />Over the last month I&#8217;ve actually had the&nbsp;opportunity&nbsp;to work with CQRS, so far I am really enjoying it.&nbsp;Separating&nbsp;your reads from your writes is truly liberating! Listed below are a bunch of resources related to CQRS:<br /><br />Informational:<br /><ul><li><a href="http://cqrsinfo.com/">http://cqrsinfo.com/</a>&nbsp;</li><li><a href="http://www.udidahan.com/2009/12/09/clarified-cqrs/">Clarified&nbsp;CQRS</a> by Udi Dahan</li><li><a href="http://groups.google.com/group/dddcqrs">DDD/CQRS google group</a></li></ul><div><div style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">Presentations:</div><div style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;"></div><ul><li>Greg Young on infoQ - <a href="http://www.infoq.com/presentations/greg-young-unshackle-qcon08">Unshackle Your Domain</a></li><li><a href="http://vimeo.com/8944337">Command Query Responsibility Segregation</a> - Udi Dahan</li></ul><div><div style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">CQRS examples:</div><div style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;"></div><ul><li><a href="https://github.com/MarkNijhof/Fohjin/tree/master/Fohjin.DDD.Example">https://github.com/MarkNijhof/Fohjin/tree/master/Fohjin.DDD.Example</a></li></ul><div><div style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">Some CQRS Frameworks:</div><div style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;"></div><ul><li><a href="https://github.com/tyronegroves/SimpleCQRS">SimpleCQRS</a></li><li><a href="http://ncqrs.org/">Ncqrs</a></li><li><a href="http://code.google.com/p/lokad-cqrs/">Lokad CQRS</a></li></ul></div></div><div><br /></div></div></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -639,43 +676,6 @@ Delighted to see that you like your new GeekDesk! Thanks for taking the time to 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/09/30/virutalbox-increase-memory-on-existing/">VirutalBox - Increase the memory on an existing guest machine</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-09-30T00:00:00-07:00" pubdate data-updated="true">Sep 30<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-I use VirtualBox to run a guest Windows XP machine on my Mac. When I set up the virtual guest I set it to use 512MB of memory. And of course now I decide I want to bump it to 1GB. I could not find anyway to do this using the GUI but it can be done from the Terminal.<br /><br />When the virtual machine is not running execute this command<br /><blockquote><span class="Apple-style-span" style="font-family: 'Courier New', Courier, monospace;"><b>VBoxManage modifyvm XP1 &#8211;memory 1024</b></span></blockquote>XP1 is the name of my guest machine, so replace with yours. The memory parameter takes the amount in MB, in this case 1GB<br /><br />The first time I ran it I&nbsp;received&nbsp;the following error message<br /><br /><blockquote><i><span class="Apple-style-span" style="background-color: yellow;">ERROR: The machine is not mutable (state is Saved)</span></i></blockquote><br />Last time I turned off the guest machine I had selected the save state option. You need to Power the virtual machine down before you can run this command.</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/8/">&larr; Older</a>
@@ -691,6 +691,10 @@ I use VirtualBox to run a guest Windows XP machine on my Mac. When I set up the 
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/02/15/ember-cli-broccoli-fingerprinting/">ember-cli broccoli fingerprinting</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/02/08/aws-iam-policy-for-uploading-ssl-certificates/">AWS IAM policy for uploading SSL certificates</a>
@@ -710,10 +714,6 @@ I use VirtualBox to run a guest Windows XP machine on my Mac. When I set up the 
     
       <li class="post">
         <a href="/blog/2014/12/12/rubocop-for-staging-files/">rubocop script for your modified files</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a>
       </li>
     
   </ul>
