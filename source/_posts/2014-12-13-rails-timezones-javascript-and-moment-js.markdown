@@ -3,7 +3,7 @@ layout: post
 title: "Rails, timezones, javascript and moment.js"
 date: 2014-12-13 10:33
 comments: true
-categories: rails
+categories: [rails, emberjs]
 ---
 
 So you need to display some datetimes in your new ember.js/angular/backbone UI and the times must be displayed for a timezone which is different from the logged on user.
@@ -21,7 +21,7 @@ end
 
 Rails uses the timezone format: `Eastern Time (US & Canada)`
 
-Javascript (and therefore the [moment-timezone](http://momentjs.com/timezone/) library) use the format: `America/New_York`
+Javascript (and therefore the [moment-timezone](http://momentjs.com/timezone/) library) use [the format](http://en.wikipedia.org/wiki/Tz_database): `America/New_York`
 
 Rails can easily convert this for you and return the proper js format in your json:
 
