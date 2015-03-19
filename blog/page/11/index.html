@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Getting flash to work correctly on 64-bit Ubuntu can be challenging. By following various blog and forum posts I was able to get it to work, but &hellip;">
+  <meta name="description" content="This might be helpful to someone? I was receiving &#8216;App Failed To Respond (HTTP 502) Bad Gateway&#8217; errors when deploying my application on &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/11/12/heroku-http-502-error/">Heroku - HTTP 502 Error</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-12T00:00:00-08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<p>This might be helpful to someone? </p><p>I was receiving &#8216;App Failed To Respond (HTTP 502) Bad Gateway&#8217; errors when deploying my application on <a href="http://heroku.com/">Heroku</a>. Reading the <a href="http://docs.heroku.com/errors">error codes</a> page did not help me solve the problem, it took awhile but I was finally able to track it down.</p><p>The error was being generated in the browser but checking the rails logs, the requests were returning HTTP 200 success codes, so the problem was being generated at the web server level on the <a href="http://heroku.com/">Heroku</a> stack.</p><p>Turns out the problem was caused by setting response.header for no browser caching. I was using code similar to this <a href="http://arjunghosh.wordpress.com/2008/04/29/how-to-force-the-browser-to-not-cache-in-rails/">post</a>. Everything worked fine after I removed this line</p><ul><li>response.headers[&#8220;Expires&#8221;] = 0</li></ul></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -412,43 +449,6 @@ just replaced the keyboard on my sisters Sony Vaio laptop - on the bottom is say
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/06/27/medplaya-aparthotel-esmeraldas-tossa-de/">Medplaya Aparthotel Esmeraldas, Tossa de Mar Spain</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-06-27T00:00:00-07:00" pubdate data-updated="true">Jun 27<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Calle Vilafranca del Penedés s/n,<br />Costa Brava<br />Tossa de Mar, Girona 17320<br />Spain<br /><br />Great town! and this was a perfect place to stay, very inexpensive, functional not fancy<br /><br /><iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Aparthotel+Esmeraldas+Tossa+de+Mar&amp;sll=41.741603,2.939701&amp;sspn=0.054565,0.154324&amp;gl=us&amp;ie=UTF8&amp;ll=41.733661,2.935066&amp;spn=0.014445,0.038581&amp;z=14&amp;iwloc=A&amp;cid=7600490520514246547&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Aparthotel+Esmeraldas+Tossa+de+Mar&amp;sll=41.741603,2.939701&amp;sspn=0.054565,0.154324&amp;gl=us&amp;ie=UTF8&amp;ll=41.733661,2.935066&amp;spn=0.014445,0.038581&amp;z=14&amp;iwloc=A&amp;cid=7600490520514246547" style="color:#0000FF;text-align:left">View Larger Map</a></small><br /><br /><a href="http://picasaweb.google.com/lh/photo/TzQ9e9oct0rS3Zs22blEiw?feat=embedwebsite"><img src="http://lh4.ggpht.com/_vmq8pP42BnQ/Sj7D2JTZlDI/AAAAAAAABRg/MmJvs8tQhvY/s400/IMG_1472.JPG" /></a><br /><br /><a href="http://picasaweb.google.com/lh/photo/TBXdde0d2yaExg3ygcKCxg?feat=embedwebsite"><img src="http://lh4.ggpht.com/_vmq8pP42BnQ/Sj7D2eXsO3I/AAAAAAAABRk/iWNGVcdKV7k/s400/IMG_1473.JPG" /></a><br /><br /><a href="http://picasaweb.google.com/lh/photo/uU4YF3_ogtBNKf1MKrGvpA?feat=embedwebsite"><img src="http://lh4.ggpht.com/_vmq8pP42BnQ/Sj7D2gXrCLI/AAAAAAAABRo/wk_GSzVVmJI/s400/IMG_1474.JPG" /></a><br /><br />The hotel is not near the beach but the walk is very enjoyable, probably 10 minutes or so.<br /><a href="http://picasaweb.google.com/lh/photo/CvG4PLp5cu4FhtYrH8PdlA?feat=embedwebsite"><img src="http://lh3.ggpht.com/_vmq8pP42BnQ/Sj7D6inKteI/AAAAAAAABSY/BlrVRCObogM/s400/IMG_1494.JPG" /></a></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/12/">&larr; Older</a>
@@ -464,6 +464,10 @@ Calle Vilafranca del Penedés s/n,<br />Costa Brava<br />Tossa de Mar, Girona 17
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/03/19/upgrading-from-rspec-2-to-rspec-3/">upgrading from rspec 2 to rspec 3</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/02/15/ember-cli-broccoli-fingerprinting/">ember-cli broccoli fingerprinting</a>
@@ -483,10 +487,6 @@ Calle Vilafranca del Penedés s/n,<br />Costa Brava<br />Tossa de Mar, Girona 17
     
       <li class="post">
         <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/12/rubocop-for-staging-files/">rubocop script for your modified files</a>
       </li>
     
   </ul>

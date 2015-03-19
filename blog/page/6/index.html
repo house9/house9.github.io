@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Maybe this post will help somebody? just installed delayed_job on a rails 3 application. The readme for delayed_job is for the older version, here &hellip;">
+  <meta name="description" content="Notes from setting up TeamCity on UbuntuTeamCity on Ubuntu==================================================================Go to http://www. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/09/notes-teamcity-setup-on-ubuntu/">Notes - TeamCity setup on Ubuntu</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-09T00:00:00-07:00" pubdate data-updated="true">Apr 9<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Notes from setting up TeamCity on Ubuntu<br /><br /><pre>TeamCity on Ubuntu<br />==================================================================<br />Go to http://www.jetbrains.com/teamcity/download/ and download the linux distribution<br /><br />set JAVA_HOME : update .bashrc add the following lines<br />--------------------------<br />export JAVA_HOME=/usr/lib/jvm/java-1.6.0-openjdk/bin/java<br />export PATH=$PATH:/usr/lib/jvm/java-1.6.0-openjdk/bin<br /><br />tar xfz TeamCity-6.0.3.tar.gz<br />put extracted TeamCity directory under ~/TeamCity<br /><br />open terminal and run bin/runAll.sh start from the ~/TeamCity directory<br /><br />install tcWebHook plugin<br />==================================================================<br />http://tcplugins.sourceforge.net/files/tcWebHooks<br />- http://sourceforge.net/apps/trac/tcplugins/wiki/TcWebHooks<br /><br />create directory at ~/.BuildServer/plugins - tcWebHooks<br />put the jar file in that directory<br />restart the teamcity server<br />there should be a new tab 'web hooks' on the build results, not in the admin section<br /><br /></pre></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -441,43 +478,6 @@ The keyboards that come with Macs look really nice, the quality seems pretty goo
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/03/03/varchar-max-sqlparameter-length/">varchar (MAX) SqlParameter length</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-03T00:00:00-08:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-I am using <a href="http://logging.apache.org/log4net/">log4net</a> and the&nbsp;<a href="http://logging.apache.org/log4net/release/config-examples.html">AdoNetAppender</a> to log all entries to MSSQL server. The exception column by default is 2000, sometimes the stack traces get large. Not wanting to lose any information I changed the DDL to use varchar (MAX) but I also had to update the appender configuration. Using a size of -1 for the @exception parameter seemed to do the trick.<br /><br /><br /><br />Resources<br /><br /><ul><li><a href="http://msdn2.microsoft.com/en-us/library/bb399384.aspx">http://msdn2.microsoft.com/en-us/library/bb399384.aspx</a>&nbsp;</li></ul></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -493,6 +493,10 @@ I am using <a href="http://logging.apache.org/log4net/">log4net</a> and the&nbsp
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/03/19/upgrading-from-rspec-2-to-rspec-3/">upgrading from rspec 2 to rspec 3</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/02/15/ember-cli-broccoli-fingerprinting/">ember-cli broccoli fingerprinting</a>
@@ -512,10 +516,6 @@ I am using <a href="http://logging.apache.org/log4net/">log4net</a> and the&nbsp
     
       <li class="post">
         <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/12/rubocop-for-staging-files/">rubocop script for your modified files</a>
       </li>
     
   </ul>

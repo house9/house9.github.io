@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="I&#8217;ve been intrigued with the idea of CQRS for some time; ever since I watched an infoQ presentation by Greg Young on the subject. What is CQRS &hellip;">
+  <meta name="description" content="I am using log4net and the&nbsp;AdoNetAppender to log all entries to MSSQL server. The exception column by default is 2000, sometimes the stack &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/03/03/varchar-max-sqlparameter-length/">varchar (MAX) SqlParameter length</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-03T00:00:00-08:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I am using <a href="http://logging.apache.org/log4net/">log4net</a> and the&nbsp;<a href="http://logging.apache.org/log4net/release/config-examples.html">AdoNetAppender</a> to log all entries to MSSQL server. The exception column by default is 2000, sometimes the stack traces get large. Not wanting to lose any information I changed the DDL to use varchar (MAX) but I also had to update the appender configuration. Using a size of -1 for the @exception parameter seemed to do the trick.<br /><br /><br /><br />Resources<br /><br /><ul><li><a href="http://msdn2.microsoft.com/en-us/library/bb399384.aspx">http://msdn2.microsoft.com/en-us/library/bb399384.aspx</a>&nbsp;</li></ul></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -576,106 +613,6 @@ Hi,<br /><br />Thanks for making this available, I have tested this with regular
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/10/13/geek-desk-in-action/">Geek Desk in Action!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-10-13T00:00:00-07:00" pubdate data-updated="true">Oct 13<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-My <a href="http://www.geekdesk.com/">Geek Desk</a> showed up last week!<br /><br />I work standing up most of the time, but I do like to sit down a few times through out the day. In the past I used a &#8220;Drafting Chair&#8221;, but they create a funky angle for your legs as your feet must sit on the bottom ring. So far I am really loving the Geek Desk! - check them out at&nbsp;<a href="http://www.geekdesk.com/">http://www.geekdesk.com/</a><br /><br />here is a short vid of the adjustable height desk in operation<br /><br /><div style="text-align: center;"><object height="344" width="425"><param name="movie" value="http://www.youtube.com/v/_jB_w0DDV2M?hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/_jB_w0DDV2M?hl=en&fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object></div><br />and some pics<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/_vmq8pP42BnQ/TLYeYtSwW1I/AAAAAAAACxk/p7KkW5wmb2Y/s1600/IMG_1723.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="640" src="http://1.bp.blogspot.com/_vmq8pP42BnQ/TLYeYtSwW1I/AAAAAAAACxk/p7KkW5wmb2Y/s640/IMG_1723.jpg" width="480" /></a></div><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/_vmq8pP42BnQ/TLYeZiz9ZgI/AAAAAAAACxo/IkO7Lg5aedA/s1600/IMG_1724.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="640" src="http://2.bp.blogspot.com/_vmq8pP42BnQ/TLYeZiz9ZgI/AAAAAAAACxo/IkO7Lg5aedA/s640/IMG_1724.jpg" width="480" /></a></div><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/_vmq8pP42BnQ/TLYeaog_EEI/AAAAAAAACxs/AATwLOblWBw/s1600/IMG_1725.JPG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="300" src="http://1.bp.blogspot.com/_vmq8pP42BnQ/TLYeaog_EEI/AAAAAAAACxs/AATwLOblWBw/s400/IMG_1725.JPG" width="400" /></a></div><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/_vmq8pP42BnQ/TLYebrVaSwI/AAAAAAAACxw/qRk6k0VKK9w/s1600/IMG_1726.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="640" src="http://3.bp.blogspot.com/_vmq8pP42BnQ/TLYebrVaSwI/AAAAAAAACxw/qRk6k0VKK9w/s640/IMG_1726.jpg" width="480" /></a></div><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/_vmq8pP42BnQ/TLYecrvoeQI/AAAAAAAACx0/IBsmPlktuJU/s1600/IMG_1728.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="640" src="http://2.bp.blogspot.com/_vmq8pP42BnQ/TLYecrvoeQI/AAAAAAAACx0/IBsmPlktuJU/s640/IMG_1728.jpg" width="480" /></a></div><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/_vmq8pP42BnQ/TLYedi4hNXI/AAAAAAAACx4/uvvhN3Y9mmA/s1600/IMG_1729.JPG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="300" src="http://2.bp.blogspot.com/_vmq8pP42BnQ/TLYedi4hNXI/AAAAAAAACx4/uvvhN3Y9mmA/s400/IMG_1729.JPG" width="400" /></a></div><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/_vmq8pP42BnQ/TLYeel0CYtI/AAAAAAAACx8/gnR6HoTfxb4/s1600/IMG_1735.JPG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="300" src="http://3.bp.blogspot.com/_vmq8pP42BnQ/TLYeel0CYtI/AAAAAAAACx8/gnR6HoTfxb4/s400/IMG_1735.JPG" width="400" /></a></div><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/_vmq8pP42BnQ/TLYefVoaBMI/AAAAAAAACyA/LX4yFtJX_ko/s1600/IMG_1737.JPG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="300" src="http://4.bp.blogspot.com/_vmq8pP42BnQ/TLYefVoaBMI/AAAAAAAACyA/LX4yFtJX_ko/s400/IMG_1737.JPG" width="400" /></a></div><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/_vmq8pP42BnQ/TLYegAYxl9I/AAAAAAAACyE/s0VRXIkpirw/s1600/IMG_1739.JPG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="300" src="http://4.bp.blogspot.com/_vmq8pP42BnQ/TLYegAYxl9I/AAAAAAAACyE/s0VRXIkpirw/s400/IMG_1739.JPG" width="400" /></a></div></div>
-<h2>Comments</h2>
-<div class='comments'>
-<div class='comment'>
-<div class='author'>House 9</div>
-<div class='content'>
-@Natalie - i have not needed a keyboard tray - you can see my setup here - http://www.flickr.com/photos/house9/8417629828/in/photostream - NOTE the mouse is elevated on a book and I use ergo style keyboard, this seems to work best for me, but everybody is built a little bit differently</div>
-</div>
-<div class='comment'>
-<div class='author'>Natalie Grigson</div>
-<div class='content'>
-Thanks for the post!<br />How are you finding your keyboard placement on your Geekdesk? Just wondering because I had a standing desk that didn&#39;t allow me to adjust my keyboard position and I found that my shoulders, neck, and wrists would get fatigued after a while.<br />Now I use a height adjustable desk that has an adjustable keyboard tray as well, though, and I don&#39;t seem to have that problem. <br />I don&#39;t know if GeekDesk does offer this option and you just didn&#39;t opt for it, but if they do, you should get it! If they don&#39;t, you might want to switch to a NextDesk? It is a lot like GeekDesk, but just a few steps up in my opinion. <br />If you&#39;re ever in the market for something new, check them out&#8211; I highly recommend the Terra model! Check it out on their website: http://www.nextdesks.com/terra<br /><br />Thanks for the post!<br />NG</div>
-</div>
-<div class='comment'>
-<div class='author'>House 9</div>
-<div class='content'>
-&#39;Did GeekDesk replace your &quot;crunchy&quot; unit?&#39;<br />- short answer: they offered to replace it, so if you are concerned about that issue I would not be<br /><br />- long answer: I am still using crunchy, it is only in one small section and it really doesn&#39;t bother me at all, I think it sounds worse on the video than it already is. I didn&#39;t feel like reassembling a new unit when this one was working fine for me; all-in-all I have been really happy with my Geek Desk</div>
-</div>
-<div class='comment'>
-<div class='author'>jice</div>
-<div class='content'>
-Thanks for the follow-up.  I&#39;ve just about narrowed down my choices.<br /><br />A friend has a Workrite at his job:<br /><br />http://www.workriteergo.com/products/sierrahx.asp<br /><br />Those have presets, but are much more expensive.<br /><br />Did GeekDesk replace your &quot;crunchy&quot; unit?</div>
-</div>
-<div class='comment'>
-<div class='author'>House 9</div>
-<div class='content'>
-I am not sure if the frame is by ConSet?<br /><br />the lack of presets doesn&#39;t bother me, sounds like a nice feature. At first I was using a tape measure to double check the height, after I got it dialed I was just going to put some tape on the wall so I could see where to line it up. But after using it for awhile I never got around to putting tape on the wall, I sort of intuitively know where the correct height is now.</div>
-</div>
-<div class='comment'>
-<div class='author'>jice</div>
-<div class='content'>
-I am also looking to purchase a GeekDesk (frame only) or similar.  Can you tell if the frame is actually made by ConSet as another person asked?<br /><br />I&#39;m holding back as I was hoping to find a desk that lets me set a preset standing and sitting height.  Do you find the lack of presets to be a problem?</div>
-</div>
-<div class='comment'>
-<div class='author'>House 9</div>
-<div class='content'>
-@Craig, I have been working with Geek Desk support to address the issue. The sound doesn&#39;t actually bother me that much and I have not had the time to tinker with it yet (hopefully this week). <br /><br />They have offered to replace the desk with a new one. If you are thinking about getting one and this is the only hold up - I would go for it. In my opinion the quality is very good and they stand behind their product 100%.</div>
-</div>
-<div class='comment'>
-<div class='author'>-craig</div>
-<div class='content'>
-Did they ever fix the &quot;crunching&quot; sound?</div>
-</div>
-<div class='comment'>
-<div class='author'>-craig</div>
-<div class='content'>
-Is the www.GeekDesk.com a www.ConSet.us product or a cheap knockoff?<br /><br />This looks like the same desk:<br />http://www.conset.us/Text/default.aspx?m=text&amp;a=all&amp;id=935</div>
-</div>
-<div class='comment'>
-<div class='author'>-craig</div>
-<div class='content'>
-This potential future customer of GeekDesk is anxious to see if the crunching gear grinding gets fixed.</div>
-</div>
-<div class='comment'>
-<div class='author'>House 9</div>
-<div class='content'>
-Cheers, I&#39;ll contact you next week; Guess I do need to add my email here :)</div>
-</div>
-<div class='comment'>
-<div class='author'>geekdesk-support</div>
-<div class='content'>
-Delighted to see that you like your new GeekDesk! Thanks for taking the time to post this, and share your experience. Enthusiasm like yours makes our day!  :) <br /><br />After watching the video, just wanted to mention that the &quot;crunchy&quot; sound you are experiencing is certainly not normal. Would love to talk with you about that, to see if we could help diagnose it to get it nice and consistently-quiet for you. Please contact us via our website (www.GeekDesk.com - mention this blog post URL for reference) or email to the e-mail address linked to this comment, if you are up for that. (Didn&#39;t see a way to contact you directly via this site, so am leaving this comment instead).<br /><br />Thanks again for buying a GeekDesk! &#8211; we really do appreciate it. : )</div>
-</div>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/8/">&larr; Older</a>
@@ -691,6 +628,10 @@ Delighted to see that you like your new GeekDesk! Thanks for taking the time to 
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/03/19/upgrading-from-rspec-2-to-rspec-3/">upgrading from rspec 2 to rspec 3</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/02/15/ember-cli-broccoli-fingerprinting/">ember-cli broccoli fingerprinting</a>
@@ -710,10 +651,6 @@ Delighted to see that you like your new GeekDesk! Thanks for taking the time to 
     
       <li class="post">
         <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/12/rubocop-for-staging-files/">rubocop script for your modified files</a>
       </li>
     
   </ul>

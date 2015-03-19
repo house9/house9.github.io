@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rspec | house9]]></title>
   <link href="http://jessehouse.com/blog/categories/rspec/atom.xml" rel="self"/>
   <link href="http://jessehouse.com/"/>
-  <updated>2015-02-15T09:27:01-08:00</updated>
+  <updated>2015-03-19T16:51:35-07:00</updated>
   <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[upgrading from rspec 2 to rspec 3]]></title>
+    <link href="http://jessehouse.com/blog/2015/03/19/upgrading-from-rspec-2-to-rspec-3/"/>
+    <updated>2015-03-19T16:42:00-07:00</updated>
+    <id>http://jessehouse.com/blog/2015/03/19/upgrading-from-rspec-2-to-rspec-3</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve spent the last few days upgrading a rails application from 4.1 to 4.2 and as part of the upgrade going from rspec 2.99 to 3.2.</p>
+
+<p>The rspec upgrade was much easier than I had anticipated thanks to the <a href="https://github.com/yujinakayama/transpec">transpec</a> <a href="https://rubygems.org/gems/transpec">gem</a>.</p>
+
+<ul>
+<li>added the <a href="https://github.com/rspec/rspec-its">rspec-its</a> <a href="https://rubygems.org/gems/rspec-its">gem</a> to my Gemfile</li>
+<li>then ran the transpec migration</li>
+</ul>
+
+
+<p><code>
+gem install transpec
+transpec --keep its --negative-form to_not
+rspec spec
+git commit -aeF .git/COMMIT_EDITMSG
+</code></p>
+
+<p>Only a few minor tweaks were needed to my specs after the migration &ndash; the transpec is brilliant!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Your RSpec on Rails plugin is incompatible with your installed RSpec]]></title>

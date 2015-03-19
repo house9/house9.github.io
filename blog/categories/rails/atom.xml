@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rails | house9]]></title>
   <link href="http://jessehouse.com/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://jessehouse.com/"/>
-  <updated>2015-02-15T09:27:01-08:00</updated>
+  <updated>2015-03-19T16:51:35-07:00</updated>
   <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[upgrading from rspec 2 to rspec 3]]></title>
+    <link href="http://jessehouse.com/blog/2015/03/19/upgrading-from-rspec-2-to-rspec-3/"/>
+    <updated>2015-03-19T16:42:00-07:00</updated>
+    <id>http://jessehouse.com/blog/2015/03/19/upgrading-from-rspec-2-to-rspec-3</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve spent the last few days upgrading a rails application from 4.1 to 4.2 and as part of the upgrade going from rspec 2.99 to 3.2.</p>
+
+<p>The rspec upgrade was much easier than I had anticipated thanks to the <a href="https://github.com/yujinakayama/transpec">transpec</a> <a href="https://rubygems.org/gems/transpec">gem</a>.</p>
+
+<ul>
+<li>added the <a href="https://github.com/rspec/rspec-its">rspec-its</a> <a href="https://rubygems.org/gems/rspec-its">gem</a> to my Gemfile</li>
+<li>then ran the transpec migration</li>
+</ul>
+
+
+<p><code>
+gem install transpec
+transpec --keep its --negative-form to_not
+rspec spec
+git commit -aeF .git/COMMIT_EDITMSG
+</code></p>
+
+<p>Only a few minor tweaks were needed to my specs after the migration &ndash; the transpec is brilliant!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Setup Mac OS X for rails development]]></title>
@@ -456,29 +482,6 @@ Good naming conventions for date and datetime (your milage may vary)</p>
 <p>```</p>
 
 <p>See also: <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ruby on Rails continuous integration (CI) with Jenkins the easy way with Chef and Knife]]></title>
-    <link href="http://jessehouse.com/blog/2013/02/23/ruby-on-rails-continuous-integration-ci/"/>
-    <updated>2013-02-23T00:00:00-08:00</updated>
-    <id>http://jessehouse.com/blog/2013/02/23/ruby-on-rails-continuous-integration-ci</id>
-    <content type="html"><![CDATA[<div class='post'>
-Do you need a CI build setup for your Ruby on Rails app?<br /><br />Here are some <a href="http://www.opscode.com/chef/">chef</a> / <a href="http://matschaffer.github.com/knife-solo/">knife solo</a> scripts that will deploy a <a href="http://jenkins-ci.org/">Jenkins</a> server to run your <a href="http://www.martinfowler.com/articles/continuousIntegration.html">CI build</a> - you could be up and running in less than 1/2 an hour<br /><br /><a href="https://github.com/house9/ci_chef_jenkins_rails"><b>https://github.com/house9/ci_chef_jenkins_rails</b></a><br /><br />Check out the README for details<br /><br /><br /></div>
-
-
-<h2>Comments</h2>
-
-
-<div class='comments'>
-<div class='comment'>
-<div class='author'>patcon</div>
-<div class='content'>
-You might want to look into Pivotal Labs&#39; ciborg project -- sounds like it&#39;s just what you&#39;re looking for :)<br /><br />https://github.com/pivotal/ciborg</div>
-</div>
-</div>
-
 ]]></content>
   </entry>
   
