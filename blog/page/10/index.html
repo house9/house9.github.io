@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="The exclude-dir option works nicely, I was previously was using &#8211;exclude and it would include some sub-dir .svn filesegrep &#8211;exclude-dir &hellip;">
+  <meta name="description" content="Just started using the will_paginate plugin for my rails application. I wanted a Flickr or Digg style applied to the paging controls, did not find &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/03/15/digg-style-css-for-willpaginate-plugin/">Digg style css for will_paginate plugin</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-15T00:00:00-07:00" pubdate data-updated="true">Mar 15<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Just started using the <a href="http://github.com/mislav/will_paginate">will_paginate</a> plugin for my rails application. I wanted a Flickr or Digg style applied to the paging controls, did not find anything that came &#8216;out 0f the box&#8217;. After a few google searches I came across this <a href="http://workingwithrails.com/railsplugin/4765-will-paginate">link</a> which had an example - apparently from an older version of the README file.<div><br /></div><div>here is that css for reference</div><div><script src="http://gist.github.com/333019.js?file=Digg+style+css+for+will_paginate"></script></div><div><br /></div><div>.</div></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -425,43 +462,6 @@ nothing else to say really, imeem was a great service<div><br /></div><div>I&#82
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/11/12/heroku-sending-email-with-gmail/">Heroku - sending email with Gmail</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-12T00:00:00-08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-<p>I have been working on deploying a <a href="http://guides.rubyonrails.org/">Rails</a> application to <a href="http://heroku.com/">Heroku</a>. A couple of gotchas I ran into when following this post &#8221;<a href="http://blog.heroku.com/archives/2009/11/9/tech_sending_email_with_gmail/">Sending email with Gmail</a>&#8221;</p><ul><li>Don&#8217;t use a dollar sign ($) in your password </li><li>this can work locally if you put single quotes around the value, but on the heroku server it saved the entire string but at runtime would truncate it at the dollar sign</li><li>for example using the password &#8217;<em>left-side$right-side</em>&#8217; </li><li>heroku config:add GMAIL_SMTP_PASSWORD=left-side$right-side</li><li>heroku config returns > GMAIL_SMTP_PASSWORD=left-side$right-side</li><li>heroku console </li><li>type ENV[&#8216;GMAIL_SMTP_PASSWORD&#8217;] returns > left-side</li></ul><p>Heroku is running Ruby 1.8.6, locally I am running Ruby 1.8.7, I made a small hack to the plugin to avoid errors in development mode</p><p>./vendor/plugins/gmail_smtp/init.rb<br />changed the first line to<br />require &#8216;smtp_tls&#8217; if RUBY_VERSION < "1.8.7" </p><p>tls is already handled in 1.8.7 and this code must have been creating some type of conflict</p></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/11/">&larr; Older</a>
@@ -477,6 +477,10 @@ nothing else to say really, imeem was a great service<div><br /></div><div>I&#82
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/04/07/circleci-could-not-get-cache-stat/">CircleCI: Could not get cache stat, action npm install failed</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/03/19/upgrading-from-rspec-2-to-rspec-3/">upgrading from rspec 2 to rspec 3</a>
@@ -496,10 +500,6 @@ nothing else to say really, imeem was a great service<div><br /></div><div>I&#82
     
       <li class="post">
         <a href="/blog/2015/02/02/setup-mac-os-x-for-rails-development/">Setup Mac OS X for rails development</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a>
       </li>
     
   </ul>

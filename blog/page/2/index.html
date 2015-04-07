@@ -9,7 +9,14 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="This article outlines some basic guidelines to follow when working with timezones in Ruby on Rails applications. Ruby on Rails has great support for &hellip;">
+  <meta name="description" content="I am using gruff to generate line charts in a rails project, putting together a quick proof of concept: 1
+2
+3
+4
+5
+6
+7
+class Chart def &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +72,83 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/">Magick::ImageMagickError: WriteBlob Failed</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-07T08:55:00-08:00" pubdate data-updated="true">Feb 7<span>th</span>, 2014</time>
+        
+         | <a href="/blog/2014/02/07/magick-imagemagickerror-writeblob-failed/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I am using <a href="https://github.com/topfunky/gruff">gruff</a> to generate line charts in a rails project, putting together a quick proof of concept:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Chart</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">generate_line_graph</span>
+</span><span class='line'>    <span class="n">g</span> <span class="o">=</span> <span class="ss">Gruff</span><span class="p">:</span><span class="ss">:Line</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">g</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="ss">:testing</span><span class="p">,</span> <span class="o">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">g</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;tmp/line.png&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I quickly ran into the following exception:</p>
+
+<pre>
+Magick::ImageMagickError: WriteBlob Failed `/Users/ME/projects/CLIENT/code/RAILS_APP/tmp/line.png' @ error/png.c/MagickPNGErrorHandler/1804
+  from /Users/ME/.rvm/gems/ruby-2.1.0/gems/gruff-0.5.1/lib/gruff/base.rb:425:in `write'
+  from /Users/ME/.rvm/gems/ruby-2.1.0/gems/gruff-0.5.1/lib/gruff/base.rb:425:in `write'
+  from /Users/ME/projects/CLIENT/code/RAILS_APP/app/models/reports/chart.rb:36:in `generate_line_graph'
+  from (irb):16
+  from /Users/ME/.rvm/gems/ruby-2.1.0/gems/railties-3.2.16/lib/rails/commands/console.rb:47:in `start'
+  from /Users/ME/.rvm/gems/ruby-2.1.0/gems/railties-3.2.16/lib/rails/commands/console.rb:8:in `start'
+  from /Users/ME/.rvm/gems/ruby-2.1.0/gems/railties-3.2.16/lib/rails/commands.rb:41:in `<top (required)>'
+  from script/rails:6:in `require'
+  from script/rails:6:in `main'
+</pre>
+
+
+<p><strong>The issue:</strong> the error is raised when writing to the tmp directory, changing to another directory and it worked as expected?</p>
+
+<p><code>g.write("public/line.png")</code> and <code>g.write("public/tmp/line.png")</code> both worked</p>
+
+<p>Turns out this was a simple <em>mistake on my part</em>, I just provisioned a new machine and cloned the project repo &ndash; I did not have a <em>tmp</em> directory in my project yet, it would be nice if the error message could have just told me so.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -839,43 +923,6 @@ You might want to look into Pivotal Labs&#39; ciborg project &#8211; sounds like
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/02/23/random-tricks-you-can-do-with-rails/">> random tricks you can do with Rails</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-02-23T00:00:00-08:00" pubdate data-updated="true">Feb 23<span>rd</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-There are bunch of really good nuggets in this presentation:<br /><br /><ul><li><a href="http://www.confreaks.com/videos/889-railsconf2012-ten-things-you-didn-t-know-rails-could-do">http://www.confreaks.com/videos/889-railsconf2012-ten-things-you-didn-t-know-rails-could-do</a>&nbsp;</li><li><a href="https://speakerdeck.com/jeg2/10-things-you-didnt-know-rails-could-do">https://speakerdeck.com/jeg2/10-things-you-didnt-know-rails-could-do</a></li></ul><div><br /></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -891,6 +938,10 @@ There are bunch of really good nuggets in this presentation:<br /><br /><ul><li>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/04/07/circleci-could-not-get-cache-stat/">CircleCI: Could not get cache stat, action npm install failed</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/03/19/upgrading-from-rspec-2-to-rspec-3/">upgrading from rspec 2 to rspec 3</a>
@@ -910,10 +961,6 @@ There are bunch of really good nuggets in this presentation:<br /><br /><ul><li>
     
       <li class="post">
         <a href="/blog/2015/02/02/setup-mac-os-x-for-rails-development/">Setup Mac OS X for rails development</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a>
       </li>
     
   </ul>

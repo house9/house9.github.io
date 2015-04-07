@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Package up assets into a gem for use in rails 3.1 applications. Example uses javascript files, but the same should work for images and css.I &hellip;">
+  <meta name="description" content="Ran into the following error when running rake with a rails 3.1 (rc4) app on&nbsp;ruby-1.9.2-p180 (RVM)rake aborted! stack level too deepFull error &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,81 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/06/24/rails-31-and-ruby-192-p180-rake-aborted/">rails 3.1 and ruby-1.9.2-p180 - rake aborted! stack level too deep</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-24T00:00:00-07:00" pubdate data-updated="true">Jun 24<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Ran into the following error when running rake with a rails 3.1 (rc4) app on&nbsp;ruby-1.9.2-p180 (RVM)<br /><br /><blockquote><span class="Apple-style-span" style="background-color: yellow;">rake aborted! stack level too deep</span></blockquote>Full error stack<br /><br /><pre style="background-color: #ebebeb;"><span class="Apple-style-span" style="font-size: 10px;">$&gt; rake --tasks<br /><br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/version.rb:4: warning: already initialized constant MAJOR<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/version.rb:5: warning: already initialized constant MINOR<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/version.rb:6: warning: already initialized constant BUILD<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/version.rb:3: warning: already initialized constant NUMBERS<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/version.rb:9: warning: already initialized constant VERSION<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake.rb:26: warning: already initialized constant RAKEVERSION<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/early_time.rb:17: warning: already initialized constant EARLY<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/alt_system.rb:32: warning: already initialized constant WINDOWS<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/application.rb:28: warning: already initialized constant DEFAULT_RAKEFILES<br />WARNING: Possible conflict with Rake extension: String#ext already exists<br />WARNING: Possible conflict with Rake extension: String#pathmap already exists<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/task_arguments.rb:73: warning: already initialized constant EMPTY_TASK_ARGS<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/invocation_chain.rb:49: warning: already initialized constant EMPTY<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_utils.rb:10: warning: already initialized constant RUBY<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_utils.rb:84: warning: already initialized constant LN_SUPPORTED<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/dsl_definition.rb:143: warning: already initialized constant Commands<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_list.rb:44: warning: already initialized constant ARRAY_METHODS<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_list.rb:47: warning: already initialized constant MUST_DEFINE<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_list.rb:51: warning: already initialized constant MUST_NOT_DEFINE<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_list.rb:55: warning: already initialized constant SPECIAL_RETURN<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_list.rb:61: warning: already initialized constant DELEGATING_METHODS<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_list.rb:364: warning: already initialized constant DEFAULT_IGNORE_PATTERNS<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake/file_list.rb:370: warning: already initialized constant DEFAULT_IGNORE_PROCS<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake.rb:64: warning: already initialized constant FileList<br />/Users/HOME_DIR/.rvm/gems/ruby-1.9.2-p180/gems/rake-0.9.2/lib/rake.rb:65: warning: already initialized constant RakeFileUtils<br />rake aborted!<br />stack level too deep<br /><br />(See full trace by running task with --trace)</span><br /></pre><br />Steps to replicate, from the command line<br /><ul><li>rails new sample_app</li><li>cd sample_app</li><li>rake &#8211;tasks</li></ul><div>The solution, prefix calls to rake with bundle exec</div><blockquote><span class="Apple-style-span" style="background-color: yellow;">bundle exec rake &#8211;tasks</span></blockquote>Resources<br /><br /><ul><li><a href="http://yehudakatz.com/2011/05/30/gem-versioning-and-bundler-doing-it-right/">http://yehudakatz.com/2011/05/30/gem-versioning-and-bundler-doing-it-right/</a></li><li><a href="https://github.com/RailsApps/railsapps.github.com/wiki/installing-rails-3-1">https://github.com/RailsApps/railsapps.github.com/wiki/installing-rails-3-1</a> &nbsp;</li></ul></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+doesn&#39;t look like you have rails installed at all? <br />no Gemfile for bundler to check either?<br /><br />I recommend you read up on bundler <br />http://gembundler.com/<br /><br />also - you&#39;ll probably get better help over at stackoverflow - http://stackoverflow.com/ </div>
+</div>
+<div class='comment'>
+<div class='author'>codeMonkey</div>
+<div class='content'>
+almost but not quite. PLEASE HELP:<br /><br />&gt;gem install bundler<br />Successfully installed bundler-1.1.5<br />1 gem installed<br />Installing ri documentation for bundler-1.1.5&#8230;<br />Installing RDoc documentation for bundler-1.1.5&#8230;<br /><br />&gt;bundle exec rake &#8211;tasks<br />Could not locate Gemfile<br /><br />&gt;gem list<br /><br />*** LOCAL GEMS ***<br /><br />activesupport (3.2.8, 2.3.14)<br />bigdecimal (1.1.0)<br />bundler (1.1.5)<br />diff-lcs (1.1.3)<br />extlib (0.9.15)<br />highline (1.6.14, 1.6.13)<br />i18n (0.6.0)<br />io-console (0.3)<br />json (1.7.5, 1.5.4)<br />macaddr (1.6.1)<br />minitest (3.3.0, 2.5.1)<br />multi_json (1.3.6)<br />rake (0.9.2.2)<br />rdiscount (1.6.8)<br />rdoc (3.12, 3.9.4)<br />rdoc-data (3.12)<br />rhodes (3.3.4)<br />rubygems-update (1.8.24)<br />systemu (2.5.2)<br />templater (1.0.0)<br />uuid (2.3.5)</div>
+</div>
+<div class='comment'>
+<div class='author'>House 9</div>
+<div class='content'>
+try<br /><br />gem install bundler<br /><br /></div>
+</div>
+<div class='comment'>
+<div class='author'>codeMonkey</div>
+<div class='content'>
+&#39;bundle&#39; is not recognized as an internal or external command,<br />operable program or batch file.<br /><br />on windows.</div>
+</div>
+<div class='comment'>
+<div class='author'>junaidpv</div>
+<div class='content'>
+Thanks. It helped me</div>
+</div>
+<div class='comment'>
+<div class='author'>ZequeZ</div>
+<div class='content'>
+Also you can call alias rake=&#39;bundle exec rake&#39;, or add it to your .bash_profile file, so you don&#39;t have to call it each time ^^</div>
+</div>
+<div class='comment'>
+<div class='author'>ZequeZ</div>
+<div class='content'>
+Thanks! That solved it ^^<br />Also, I&#39;m using Ruby 1.9.2p290, Rails 3.1.0.rc6 and Rake 0.9.2</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -420,43 +495,6 @@ Came across some notes from my vacation last summer, figured I might as well pos
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/09/some-notes-ubuntu-install-rails-3/">Some notes - Ubuntu install rails 3 environment</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-09T00:00:00-07:00" pubdate data-updated="true">Apr 9<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Had this on my desktop, notes to set up&nbsp;Ubuntu install rails 3 environment<br /><br /><pre>Ubuntu install rails 3 environment<br />================================================<br /><br />1) Get RVM installed with ruby 1.9.2<br /> - http://www.christopherirish.com/2010/08/25/how-to-install-rvm-on-ubuntu-10-04/<br /><br />2) Install Rails 3 gem<br /> - gem install rails --no-rdoc --no-ri<br /> - .... Successfully installed rails-3.0.5 ... 23 gems installed<br /><br />3) Install redcar 'ruby ide'<br /> - check out<br /> - http://azazeal.xelixis.net/post/How-to-install-Redcar-editor-under-Ubuntu-1010-with-RVM.aspx<br /> - for my situation I am only installing it on ruby 1.9.2, if you plan to run multiple versions of ruby this probably will not work when you have your rvm switched to another version<br />  - gem install redcar --no-rdoc --no-ri<br />  - redcar install<br /> - now you should be able to type redcar at the terminal to launch the gui<br /> - lets make a desktop shortcut<br />  - right click on the desktop : Create Launcher<br />   - Type: Application<br />   - Name: Redcar<br />   - Command: /home/YOUR_USER_NAME/.rvm/gems/ruby-1.9.2-head/gems/redcar-0.11/bin/redcar<br />   - Comment: Ruby IDE<br />  - need a tight icon for our launcher<br />   - right click > Properties > click the emblem icon<br />   - Path: /home/YOUR_USER_NAME/.rvm/gems/ruby-1.9.2-head/gems/redcar-0.11/share/icons/redcar-icon-beta.png<br />  - drag the desktop icon up to the launcher bar if you want one there as well<br />   - need to set the icon path again for that one<br /><br />4) Create a rails application <br /> - mkdir projects; cd projects<br /> - rails new sample_app_01; cd sample_app_01<br /> - in redcar > File > Open Directory > projects/sample_app_01<br />  - ctrl+T > type Gem > open Gemfile<br />  - verify line : gem 'sqlite3'<br /> - back to the terminal<br />  - bundle <br />  - rails g scaffold post title:string body:text<br />  - rake db:migrate<br />  - rails s<br /> - in a browser go to http://localhost:3000/posts<br /><br /></pre><br />Sorry the links above are not hot, just cut and paste from my notes into a pre tag - quick and dirty</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/6/">&larr; Older</a>
@@ -472,6 +510,10 @@ Had this on my desktop, notes to set up&nbsp;Ubuntu install rails 3 environment<
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/04/07/circleci-could-not-get-cache-stat/">CircleCI: Could not get cache stat, action npm install failed</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/03/19/upgrading-from-rspec-2-to-rspec-3/">upgrading from rspec 2 to rspec 3</a>
@@ -491,10 +533,6 @@ Had this on my desktop, notes to set up&nbsp;Ubuntu install rails 3 environment<
     
       <li class="post">
         <a href="/blog/2015/02/02/setup-mac-os-x-for-rails-development/">Setup Mac OS X for rails development</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a>
       </li>
     
   </ul>

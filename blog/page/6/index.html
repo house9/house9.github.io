@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Notes from setting up TeamCity on UbuntuTeamCity on Ubuntu==================================================================Go to http://www. &hellip;">
+  <meta name="description" content="Had this on my desktop, notes to set up&nbsp;Ubuntu install rails 3 environmentUbuntu install rails 3 environment &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2011/04/09/some-notes-ubuntu-install-rails-3/">Some notes - Ubuntu install rails 3 environment</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-09T00:00:00-07:00" pubdate data-updated="true">Apr 9<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Had this on my desktop, notes to set up&nbsp;Ubuntu install rails 3 environment<br /><br /><pre>Ubuntu install rails 3 environment<br />================================================<br /><br />1) Get RVM installed with ruby 1.9.2<br /> - http://www.christopherirish.com/2010/08/25/how-to-install-rvm-on-ubuntu-10-04/<br /><br />2) Install Rails 3 gem<br /> - gem install rails --no-rdoc --no-ri<br /> - .... Successfully installed rails-3.0.5 ... 23 gems installed<br /><br />3) Install redcar 'ruby ide'<br /> - check out<br /> - http://azazeal.xelixis.net/post/How-to-install-Redcar-editor-under-Ubuntu-1010-with-RVM.aspx<br /> - for my situation I am only installing it on ruby 1.9.2, if you plan to run multiple versions of ruby this probably will not work when you have your rvm switched to another version<br />  - gem install redcar --no-rdoc --no-ri<br />  - redcar install<br /> - now you should be able to type redcar at the terminal to launch the gui<br /> - lets make a desktop shortcut<br />  - right click on the desktop : Create Launcher<br />   - Type: Application<br />   - Name: Redcar<br />   - Command: /home/YOUR_USER_NAME/.rvm/gems/ruby-1.9.2-head/gems/redcar-0.11/bin/redcar<br />   - Comment: Ruby IDE<br />  - need a tight icon for our launcher<br />   - right click > Properties > click the emblem icon<br />   - Path: /home/YOUR_USER_NAME/.rvm/gems/ruby-1.9.2-head/gems/redcar-0.11/share/icons/redcar-icon-beta.png<br />  - drag the desktop icon up to the launcher bar if you want one there as well<br />   - need to set the icon path again for that one<br /><br />4) Create a rails application <br /> - mkdir projects; cd projects<br /> - rails new sample_app_01; cd sample_app_01<br /> - in redcar > File > Open Directory > projects/sample_app_01<br />  - ctrl+T > type Gem > open Gemfile<br />  - verify line : gem 'sqlite3'<br /> - back to the terminal<br />  - bundle <br />  - rails g scaffold post title:string body:text<br />  - rake db:migrate<br />  - rails s<br /> - in a browser go to http://localhost:3000/posts<br /><br /></pre><br />Sorry the links above are not hot, just cut and paste from my notes into a pre tag - quick and dirty</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -441,43 +478,6 @@ Visual Studio Solutions have the &#8220;Add New Solution Folder&#8221; option.<b
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/03/06/ergonomic-keyboard-for-mac/">Ergonomic keyboard for the Mac</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-06T00:00:00-08:00" pubdate data-updated="true">Mar 6<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-The keyboards that come with Macs look really nice, the quality seems pretty good, but I just cannot use a flat keyboard, after a few days my wrists and hands started complaining big time.<br /><br />After some searching I came across the Kinesis Freestyle keyboard, they make one with Windows layout and another with Mac layout. They are not cheap, however I use a keyboard all day, every day so for me it is worth the money.<br /><br />If you get the Freestyle you also need to get the Freestyle VIP - Keyboard accessories kit, otherwise you basically just have a flat keyboard again<br /><ul><li><a href="http://www.amazon.com/gp/product/B001EPIJ4Y">Kinesis Freestyle Solo™ Mac USB Keyboard</a></li><li><a href="http://www.amazon.com/gp/product/B000RBBMNG">Kinesis Freestyle VIP - Keyboard accessories kit</a></li></ul><div>The VIP accessory kit will give you 10 and 15 degree angles, they also have some other&nbsp;accessory&nbsp;kits that will give you up to 90 degree angle, I believe that kit is very expensive, the 15&nbsp;degree&nbsp;works fine for me, but the Ascent kit looks interesting.</div><div><ul><li><a href="http://www.kinesis-ergo.com/keyboards.htm">Kinesis keyboards</a></li><li><a href="http://www.kinesis-ergo.com/images/solo-ascent-90_512x390.jpg">Ascent kit - up to 90 degree</a>&nbsp;</li></ul><div>Some pics</div><div><br /></div><div class="separator" style="clear: both; text-align: center;"><a href="https://lh3.googleusercontent.com/-dTFXxTpFTeg/TXPvM0Mkh6I/AAAAAAAACzA/g4nK9MH-0Lo/s1600/IMG_1919.JPG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="480" src="https://lh3.googleusercontent.com/-dTFXxTpFTeg/TXPvM0Mkh6I/AAAAAAAACzA/g4nK9MH-0Lo/s640/IMG_1919.JPG" width="640" /></a></div><div><br /></div><div><br /></div></div><div class="separator" style="clear: both; text-align: center;"><a href="https://lh5.googleusercontent.com/-jLjwVhCxaC0/TXPvVpEzv1I/AAAAAAAACzE/TxTDx8X6vg8/s1600/IMG_1920.JPG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="480" src="https://lh5.googleusercontent.com/-jLjwVhCxaC0/TXPvVpEzv1I/AAAAAAAACzE/TxTDx8X6vg8/s640/IMG_1920.JPG" width="640" /></a></div><div><br /></div><div>Eight inches of cable between each side of the keyboard, put them where you want</div><div class="separator" style="clear: both; text-align: center;"><a href="https://lh5.googleusercontent.com/-Qvqr1dY8gOg/TXPvfU8cT5I/AAAAAAAACzI/GNaUNKTIH90/s1600/IMG_1922.JPG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="480" src="https://lh5.googleusercontent.com/-Qvqr1dY8gOg/TXPvfU8cT5I/AAAAAAAACzI/GNaUNKTIH90/s640/IMG_1922.JPG" width="640" /></a></div><div><br /></div><div>pivot point if you want them close and asymmetrical</div><div class="separator" style="clear: both; text-align: center;"><a href="https://lh3.googleusercontent.com/-LF5AXcmeW1Q/TXPvlOIP96I/AAAAAAAACzM/0mgR8odWtKY/s1600/IMG_1923.JPG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="480" src="https://lh3.googleusercontent.com/-LF5AXcmeW1Q/TXPvlOIP96I/AAAAAAAACzM/0mgR8odWtKY/s640/IMG_1923.JPG" width="640" /></a></div><div><br /></div><div>10 degree</div><div class="separator" style="clear: both; text-align: center;"><a href="https://lh6.googleusercontent.com/-ZpxKHd7hT5Y/TXPvsap1rMI/AAAAAAAACzQ/hYBcUOKGm6E/s1600/IMG_1924.JPG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="480" src="https://lh6.googleusercontent.com/-ZpxKHd7hT5Y/TXPvsap1rMI/AAAAAAAACzQ/hYBcUOKGm6E/s640/IMG_1924.JPG" width="640" /></a></div><div><br /></div><div>15 degree</div><div class="separator" style="clear: both; text-align: center;"><a href="https://lh6.googleusercontent.com/-QgE-qDKoiOM/TXPv1M52KHI/AAAAAAAACzU/6WYZLl3j85s/s1600/IMG_1925.JPG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="480" src="https://lh6.googleusercontent.com/-QgE-qDKoiOM/TXPv1M52KHI/AAAAAAAACzU/6WYZLl3j85s/s640/IMG_1925.JPG" width="640" /></a></div><div><br /></div><div><br /></div><div class="separator" style="clear: both; text-align: center;"><a href="https://lh5.googleusercontent.com/-pPrBNElS7ic/TXPv_MoxAmI/AAAAAAAACzY/MEqUI4kT20w/s1600/IMG_1927.JPG" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="480" src="https://lh5.googleusercontent.com/-pPrBNElS7ic/TXPv_MoxAmI/AAAAAAAACzY/MEqUI4kT20w/s640/IMG_1927.JPG" width="640" /></a></div><div><br /></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -493,6 +493,10 @@ The keyboards that come with Macs look really nice, the quality seems pretty goo
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/04/07/circleci-could-not-get-cache-stat/">CircleCI: Could not get cache stat, action npm install failed</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/03/19/upgrading-from-rspec-2-to-rspec-3/">upgrading from rspec 2 to rspec 3</a>
@@ -512,10 +516,6 @@ The keyboards that come with Macs look really nice, the quality seems pretty goo
     
       <li class="post">
         <a href="/blog/2015/02/02/setup-mac-os-x-for-rails-development/">Setup Mac OS X for rails development</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a>
       </li>
     
   </ul>

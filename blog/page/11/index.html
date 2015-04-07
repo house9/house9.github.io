@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="This might be helpful to someone? I was receiving &#8216;App Failed To Respond (HTTP 502) Bad Gateway&#8217; errors when deploying my application on &hellip;">
+  <meta name="description" content="I have been working on deploying a Rails application to Heroku. A couple of gotchas I ran into when following this post &#8221;Sending email with &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,43 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/11/12/heroku-sending-email-with-gmail/">Heroku - sending email with Gmail</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-12T00:00:00-08:00" pubdate data-updated="true">Nov 12<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+<p>I have been working on deploying a <a href="http://guides.rubyonrails.org/">Rails</a> application to <a href="http://heroku.com/">Heroku</a>. A couple of gotchas I ran into when following this post &#8221;<a href="http://blog.heroku.com/archives/2009/11/9/tech_sending_email_with_gmail/">Sending email with Gmail</a>&#8221;</p><ul><li>Don&#8217;t use a dollar sign ($) in your password </li><li>this can work locally if you put single quotes around the value, but on the heroku server it saved the entire string but at runtime would truncate it at the dollar sign</li><li>for example using the password &#8217;<em>left-side$right-side</em>&#8217; </li><li>heroku config:add GMAIL_SMTP_PASSWORD=left-side$right-side</li><li>heroku config returns > GMAIL_SMTP_PASSWORD=left-side$right-side</li><li>heroku console </li><li>type ENV[&#8216;GMAIL_SMTP_PASSWORD&#8217;] returns > left-side</li></ul><p>Heroku is running Ruby 1.8.6, locally I am running Ruby 1.8.7, I made a small hack to the plugin to avoid errors in development mode</p><p>./vendor/plugins/gmail_smtp/init.rb<br />changed the first line to<br />require &#8216;smtp_tls&#8217; if RUBY_VERSION < "1.8.7" </p><p>tls is already handled in 1.8.7 and this code must have been creating some type of conflict</p></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -412,43 +449,6 @@ just replaced the keyboard on my sisters Sony Vaio laptop - on the bottom is say
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/06/27/spain/">Spain</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-06-27T00:00:00-07:00" pubdate data-updated="true">Jun 27<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-<p>We just returned from 2 weeks in Spain (<a href="http://en.wikipedia.org/wiki/Catalonia">Catalonia</a> really). One of the best vacations ever! Great food, great beaches and great history and culture!</p><p>below are some links to hotels we stayed at, might be of use to someone?</p><ul><li><a href="http://house9.blogspot.com/2009/06/hotel-front-maritim-barcelona-spain.html">Hotel Front Maritim, Barcelona<br /></a></li><li><a href="http://house9.blogspot.com/2009/06/medplaya-aparthotel-esmeraldas-tossa-de.html">Medplaya Aparthotel Esmeraldas, Tossa de Mar</a></li><li><a href="http://house9.blogspot.com/2009/06/hotel-costabella-sercotel-girona-spain.html">Hotel Costabella, Girona</a></li><li><a href="http://house9.blogspot.com/2009/06/husa-imperial-tarraco-tarragona-spain.html">Husa Imperial Tarraco, Tarragona</a></li><li><a href="http://house9.blogspot.com/2009/06/frontair-congress-barcelona-spain.html">Frontair Congress, Barcelona</a><br /></li></ul><p></p></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/12/">&larr; Older</a>
@@ -464,6 +464,10 @@ just replaced the keyboard on my sisters Sony Vaio laptop - on the bottom is say
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/04/07/circleci-could-not-get-cache-stat/">CircleCI: Could not get cache stat, action npm install failed</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/03/19/upgrading-from-rspec-2-to-rspec-3/">upgrading from rspec 2 to rspec 3</a>
@@ -483,10 +487,6 @@ just replaced the keyboard on my sisters Sony Vaio laptop - on the bottom is say
     
       <li class="post">
         <a href="/blog/2015/02/02/setup-mac-os-x-for-rails-development/">Setup Mac OS X for rails development</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a>
       </li>
     
   </ul>

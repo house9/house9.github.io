@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Both of these look like pretty sweet adjustable height desks; - Geek Desk electronic and runs $750 to $800or - Airtouch uses air and no electronics &hellip;">
+  <meta name="description" content="Recently got bit by checking valid? in some rails code, thought I would share.In this situation I was manually adding to the errors collection of an &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,51 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/18/valid-vs-errorsany-in-rails/">valid? vs errors.any? in rails</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-18T00:00:00-07:00" pubdate data-updated="true">Aug 18<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Recently got bit by checking valid? in some rails code, thought I would share.<div><br /></div><div>In this situation I was manually adding to the errors collection of an ActiveRecord object and then calling valid? to see if the object was ok; this is not the normal style of validation on ActiveRecord objects, if I had been playing by the rules valid? would have done what I needed; it would check the current state of my objects attributes and &#8216;re-validate&#8217; the object.</div><div><br /></div><div>This screen shot of an irb console session shows the issue I was running into</div><br /><br /><a href="http://www.flickr.com/photos/house9/4904826045/" title="valid-v-errors-any by House9, on Flickr"><img src="http://farm5.static.flickr.com/4099/4904826045_aa14a62090_b.jpg" width="883" height="573" alt="valid-v-errors-any" /></a><br /><br /><div>Taking a look at the source code for valid? it becomes obvious why the manually added errors get cleared, just not what I expected to happen</div><br /><br /><a href="http://www.flickr.com/photos/house9/4905416116/" title="valid-source by House9, on Flickr"><img src="http://farm5.static.flickr.com/4096/4905416116_9983051ffb_b.jpg" width="855" height="373" alt="valid-source" /></a></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Vladimir A. Rybas</div>
+<div class='content'>
+wow. thanks!</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -417,43 +462,6 @@ This solution for sorting data on rails index actions does NOT use ajax. Sometim
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/03/15/digg-style-css-for-willpaginate-plugin/">Digg style css for will_paginate plugin</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-15T00:00:00-07:00" pubdate data-updated="true">Mar 15<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Just started using the <a href="http://github.com/mislav/will_paginate">will_paginate</a> plugin for my rails application. I wanted a Flickr or Digg style applied to the paging controls, did not find anything that came &#8216;out 0f the box&#8217;. After a few google searches I came across this <a href="http://workingwithrails.com/railsplugin/4765-will-paginate">link</a> which had an example - apparently from an older version of the README file.<div><br /></div><div>here is that css for reference</div><div><script src="http://gist.github.com/333019.js?file=Digg+style+css+for+will_paginate"></script></div><div><br /></div><div>.</div></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/10/">&larr; Older</a>
@@ -469,6 +477,10 @@ Just started using the <a href="http://github.com/mislav/will_paginate">will_pag
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/04/07/circleci-could-not-get-cache-stat/">CircleCI: Could not get cache stat, action npm install failed</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/03/19/upgrading-from-rspec-2-to-rspec-3/">upgrading from rspec 2 to rspec 3</a>
@@ -488,10 +500,6 @@ Just started using the <a href="http://github.com/mislav/will_paginate">will_pag
     
       <li class="post">
         <a href="/blog/2015/02/02/setup-mac-os-x-for-rails-development/">Setup Mac OS X for rails development</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a>
       </li>
     
   </ul>

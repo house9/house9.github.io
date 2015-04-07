@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Taking a few hours a week to try and learn Ruby and Railsnotes and links for future referenceBooksBeginning Rails: From Novice to ProfessionalRuby &hellip;">
+  <meta name="description" content="I am starting to learn Ruby and Rails (just for fun) - took awhile to find a good example of creating an object at runtime given a string &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,51 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2007/09/01/ruby-notes-part-1-dynamic-object/">Ruby Notes - part 1 - dynamic object creation</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-09-01T00:00:00-07:00" pubdate data-updated="true">Sep 1<span>st</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+I am starting to learn Ruby and Rails (just for fun) - took awhile to find a good example of creating an object at runtime given a string representing the objects name; finally came across this post <a href="http://www.ruby-forum.com/topic/96222">http://www.ruby-forum.com/topic/96222</a>;<br /><br />in theses 2 examples - given an ActiveRecord object &#8216;Project&#8217; and a database table named &#8216;projects&#8217;, invoke the Project and execute some methods on it<br /><blockquote style="BORDER-RIGHT: 1px dashed; PADDING-RIGHT: 5px; BORDER-TOP: 1px dashed; PADDING-LEFT: 5px; BACKGROUND: #ffffff; LEFT: 65px; PADDING-BOTTOM: 5px; BORDER-LEFT: 1px dashed; WIDTH: 360px; PADDING-TOP: 5px; BORDER-BOTTOM: 1px dashed; POSITION: relative"><p style="BACKGROUND: #ffffff; WIDTH: 100%"><em><span style="color:#009900;"># using eval</span></em><br /><span style="color:#993399;">def</span> test_dynamic_invoke_with_eval<br /><span style="color:#ffffff;">__</span>object_name = <span style="color:#3333ff;">&#8220;Project&#8221;</span><br /><span style="color:#ffffff;">__</span>o = eval(object_name)<br /><br /><span style="color:#ffffff;">__</span>p <span style="color:#3333ff;">&#8220;object name is &#8216;&#8221;</span> + o.to_s + <span style="color:#3333ff;">&#8221;&#8217;&#8221;<br /></span><span style="color:#ffffff;">__</span>p <span style="color:#3333ff;">&#8220;object table name is &#8216;&#8221;</span> + o.table_name + <span style="color:#3333ff;">&#8221;&#8217;&#8221;<br /></span><span style="color:#993399;">end</span><br /><br /></p></blockquote><br /><br /><blockquote style="BORDER-RIGHT: 1px dashed; PADDING-RIGHT: 5px; BORDER-TOP: 1px dashed; PADDING-LEFT: 5px; BACKGROUND: #ffffff; LEFT: 65px; PADDING-BOTTOM: 5px; BORDER-LEFT: 1px dashed; WIDTH: 360px; PADDING-TOP: 5px; BORDER-BOTTOM: 1px dashed; POSITION: relative"><p style="BACKGROUND: #ffffff; WIDTH: 100%"><em><span style="color:#009900;"># using Object.const_get</span></em><br /><span style="color:#993399;">def</span> test_dynamic_invoke_with_object_const_get<br /><span style="color:#ffffff;">__</span>object_name = <span style="color:#3333ff;">&#8220;Project&#8221;</span><br /><span style="color:#ffffff;">__</span>o = Object.const_get(object_name)<br /><br /><span style="color:#ffffff;">__</span>p <span style="color:#3333ff;">&#8220;object name is &#8216;&#8221;</span> + o.to_s + <span style="color:#3333ff;">&#8221;&#8217;&#8221;<br /></span><span style="color:#ffffff;">__</span>p <span style="color:#3333ff;">&#8220;object table name is &#8216;&#8221;</span> + o.table_name + <span style="color:#3333ff;">&#8221;&#8217;&#8221;<br /></span><span style="color:#993399;">end</span></p></blockquote><br /><br />Check the ruby forum link above as well - the last entry posted by <em>&#8216;unknown (Guest)&#8217;</em>; this is probably the true ruby way to do it? extend the String object with a helper method so you can turn any string into an object? code from that post<br /><blockquote style="BORDER-RIGHT: 1px dashed; PADDING-RIGHT: 5px; BORDER-TOP: 1px dashed; PADDING-LEFT: 5px; BACKGROUND: #ffffff; LEFT: 65px; PADDING-BOTTOM: 5px; BORDER-LEFT: 1px dashed; WIDTH: 360px; PADDING-TOP: 5px; BORDER-BOTTOM: 1px dashed; POSITION: relative"><p style="BACKGROUND: #ffffff; WIDTH: 100%"><em><span style="color:#009900;"># extend String</span></em><br /><span style="color:#993399;">class</span> String<br /><span style="color:#993399;"><span style="color:#ffffff;">__</span>def </span>to_class<br /><span style="color:#ffffff;">_</span><span style="color:#ffffff;">__</span>Object.const_get(<span style="color:#3333ff;">self</span>)<br /><span style="color:#ffffff;">__</span><span style="color:#993399;">end</span><span style="color:#ffffff;">__</span><span style="color:#3333ff;"><br /></span><span style="color:#993399;">end</span></p></blockquote></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Ahmed</div>
+<div class='content'>
+Thank you very much for this article! It helped me creating an array from a string that represents nested arrays inside it (tree) without the need to parse the string to identify braces.<br><br>Best,<br>Ahmed Nabhan</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -407,43 +452,6 @@ I have recently started using <a href="http://www.openqa.org/selenium/">Selenium
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2007/02/18/2007-tour-of-california-prologue/">2007 Tour of California - Prologue</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2007-02-18T00:00:00-08:00" pubdate data-updated="true">Feb 18<span>th</span>, 2007</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Levi takes the Prologue two years in a row!<br />get the details at <a href="http://www.cyclingnews.com/road/2007/feb07/california07/?id=results/california070">cycling news . com</a><br />he will be rolling into home town Santa Rosa tomorrow wearing the leaders jersey again!<br /><br />check out these links for photos, news, live coverage etc&#8230;<br /><br /><ul><li><a href="http://www.steephill.tv/2007/tour-of-california/">Steep Hill TV / Grassy Knoll Project</a></li><li><a href="http://www.amgentourofcalifornia.com/docroot/tourtracker2/index.html">Live Coverage</a></li><li><a href="http://www.youtube.com/results?search_type=search_videos&search_query=%222007%20tour%20of%20california%22&amp;search_sort=video_date_uploaded&search_category=0">YouTube</a></li><li><a href="http://www.flickr.com/search/?q=tourofcalifornia&amp;m=tags&amp;s=rec">Flickr</a></li></ul><p>looking forward to Coleman Valley!</p></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/20/">&larr; Older</a>
@@ -459,6 +467,10 @@ Levi takes the Prologue two years in a row!<br />get the details at <a href="htt
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/04/07/circleci-could-not-get-cache-stat/">CircleCI: Could not get cache stat, action npm install failed</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/03/19/upgrading-from-rspec-2-to-rspec-3/">upgrading from rspec 2 to rspec 3</a>
@@ -478,10 +490,6 @@ Levi takes the Prologue two years in a row!<br />get the details at <a href="htt
     
       <li class="post">
         <a href="/blog/2015/02/02/setup-mac-os-x-for-rails-development/">Setup Mac OS X for rails development</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/13/rails-timezones-javascript-and-moment-js/">Rails, timezones, javascript and moment.js</a>
       </li>
     
   </ul>

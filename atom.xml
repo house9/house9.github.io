@@ -4,7 +4,7 @@
   <title><![CDATA[house9]]></title>
   <link href="http://jessehouse.com/atom.xml" rel="self"/>
   <link href="http://jessehouse.com/"/>
-  <updated>2015-03-19T16:51:35-07:00</updated>
+  <updated>2015-04-07T08:34:04-07:00</updated>
   <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
@@ -12,6 +12,91 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[CircleCI: Could not get cache stat, action npm install failed]]></title>
+    <link href="http://jessehouse.com/blog/2015/04/07/circleci-could-not-get-cache-stat/"/>
+    <updated>2015-04-07T08:06:00-07:00</updated>
+    <id>http://jessehouse.com/blog/2015/04/07/circleci-could-not-get-cache-stat</id>
+    <content type="html"><![CDATA[<p>Our builds started to randomly fail on <a href="https://circleci.com/">CircleCI</a> when executing npm install:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>npm install
+</span><span class='line'>npm ERR! Could not get cache stat 
+</span><span class='line'>npm ERR! Could not get cache stat 
+</span><span class='line'>npm ERR! Could not get cache stat 
+</span><span class='line'>npm ERR! Linux 3.14.28-031428-generic
+</span><span class='line'>npm ERR! argv "node" "/home/ubuntu/nvm/v0.10.32/bin/npm" "install"
+</span><span class='line'>npm ERR! node v0.10.32
+</span><span class='line'>npm ERR! npm  v2.1.16
+</span><span class='line'>npm ERR! path /home/ubuntu/.npm/_git-remotes/git-github-com-SOMEPATH-ON-GITHUB-2799bac7/objects/pack/pack-ba6de98838bb215ca34b4ebaac78c6dbad04a80b.keep
+</span><span class='line'>npm ERR! code ENOENT
+</span><span class='line'>npm ERR! errno 34
+</span><span class='line'>
+</span><span class='line'>npm ERR! enoent ENOENT, chown '/home/ubuntu/.npm/_git-remotes/git-github-com-SOMEPATH-ON-GITHUB-2799bac7/objects/pack/pack-ba6de98838bb215ca34b4ebaac78c6dbad04a80b.keep'
+</span><span class='line'>npm ERR! enoent This is most likely not a problem with npm itself
+</span><span class='line'>npm ERR! enoent and is related to npm not being able to find a file.
+</span><span class='line'>npm ERR! enoent 
+</span><span class='line'>
+</span><span class='line'>npm ERR! Please include the following file with any support request:
+</span><span class='line'>npm ERR!     /home/ubuntu/PROJECT-NAME/npm-debug.log
+</span><span class='line'>
+</span><span class='line'>npm install returned exit code 34
+</span><span class='line'>action npm install failed</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Sometimes it would take re-running the build 3 or 4 times before going green.</p>
+
+<p>Each failure was always due to installing via <a href="https://docs.npmjs.com/files/package.json#git-urls-as-dependencies">Git URL</a>.</p>
+
+<p>Adding <code>~/.npm/_git-remotes/</code> to the <code>cache_directories</code> of the circle configuration fixed the majority of these issues:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>machine:
+</span><span class='line'>  node:
+</span><span class='line'>    version: 0.10.32
+</span><span class='line'>dependencies:
+</span><span class='line'>  cache_directories:
+</span><span class='line'>    - "node_modules"
+</span><span class='line'>    - "~/.npm/_git-remotes/"
+</span><span class='line'>  override:
+</span><span class='line'>    - npm prune && npm install
+</span><span class='line'>  post:
+</span><span class='line'>    - bower install</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[upgrading from rspec 2 to rspec 3]]></title>
@@ -1080,16 +1165,6 @@ Do you need a CI build setup for your Ruby on Rails app?<br /><br />Here are som
 You might want to look into Pivotal Labs&#39; ciborg project &#8211; sounds like it&#39;s just what you&#39;re looking for :)<br /><br />https://github.com/pivotal/ciborg</div>
 </div>
 </div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[> random tricks you can do with Rails]]></title>
-    <link href="http://jessehouse.com/blog/2013/02/23/random-tricks-you-can-do-with-rails/"/>
-    <updated>2013-02-23T00:00:00-08:00</updated>
-    <id>http://jessehouse.com/blog/2013/02/23/random-tricks-you-can-do-with-rails</id>
-    <content type="html"><![CDATA[<div class='post'>
-There are bunch of really good nuggets in this presentation:<br /><br /><ul><li><a href="http://www.confreaks.com/videos/889-railsconf2012-ten-things-you-didn-t-know-rails-could-do">http://www.confreaks.com/videos/889-railsconf2012-ten-things-you-didn-t-know-rails-could-do</a>&nbsp;</li><li><a href="https://speakerdeck.com/jeg2/10-things-you-didnt-know-rails-could-do">https://speakerdeck.com/jeg2/10-things-you-didnt-know-rails-could-do</a></li></ul><div><br /></div></div>
 ]]></content>
   </entry>
   
