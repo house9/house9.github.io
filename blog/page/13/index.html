@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Was just running some validation on a html form and it failed with the following error&#8221;Invalid markup: line 68: Attribute &#8220;accesskey&# &hellip;">
+  <meta name="description" content="Well I just wasted a bit of time but learned something in the end. When working with the rails form helper collection_select you might be interested &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,66 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/04/12/rails-collectionselect-to-prompt-or/">rails collection_select to prompt or include_blank?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-12T00:00:00-07:00" pubdate data-updated="true">Apr 12<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Well I just wasted a bit of time but learned something in the end. When working with the rails form helper <a href="http://api.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html#M001593">collection_select</a> you might be interested in the difference between the prompt option and include_blank? option<div><br /></div><div>include_blank will always create an option tag, prompt will only create an option tag when creating a new record - in most cases I prefer include_blank</div><div><br /></div><div>both take either a boolean or a string, if true is passed then include_blank will create an option with no display text and prompt defaults to the display text of &#8216;Please Select&#8217;</div><div><pre style="font-size:large">collection_select(:product,<br />  :category_id,<br />  Category.all,    <br />  :id,    <br />  :title,    <br />  {:prompt => true}<br />)<br /><br />collection_select(:product,    <br />  :category_id,    <br />  Category.all,    <br />  :id,    <br />  :title,    <br />  {:include_blank => 'Please Select'}<br />)</pre></div><div>both of these result in the same html, but the first one will not include the &#8216;Please Select&#8217; option when you return to edit the previously created Product</div><div><br /></div><div>See also</div><div><ul><li><a href="http://api.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html">http://api.rubyonrails.org/classes/ActionView/Helpers/FormOptionsHelper.html</a><a href="http://shiningthrough.co.uk/Select+helper+methods+in+Ruby+on+Rails"></a></li><li><a href="http://shiningthrough.co.uk/Select+helper+methods+in+Ruby+on+Rails">Select helper methods in Ruby on Rails</a></li></ul><div><br /></div></div></div>
+<h2>Comments</h2>
+<div class='comments'>
+<div class='comment'>
+<div class='author'>Tarnschaf</div>
+<div class='content'>
+Thank you!</div>
+</div>
+<div class='comment'>
+<div class='author'>Eric Jones</div>
+<div class='content'>
+Thank you!  I was trying to figure out why I couldn&#39;t get the prompt to show up, now I know why.  I was editing an existing record.</div>
+</div>
+<div class='comment'>
+<div class='author'>Julien</div>
+<div class='content'>
+Thank you!! I was scratching my head to find how i could force &quot;prompt&quot; message in collection_select!</div>
+</div>
+<div class='comment'>
+<div class='author'>danieltsadok</div>
+<div class='content'>
+Thanks - I was wondering what the difference was&#8230;</div>
+</div>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -420,43 +480,6 @@ just had the same problem.<br /><br />was trying to highlight a table row that h
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2009/01/21/2009-grasshopper-adventure-series/">2009 Grasshopper Adventure Series</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-01-21T00:00:00-08:00" pubdate data-updated="true">Jan 21<span>st</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-A really fast bike ride or is it a race? you choose<div><br /></div><div>The schedule for 2009 Grasshopper Adventure Series is out!</div><div><ul><li>2009-02-28 Old Caz</li><li>2009-03-07 Chileno Valley</li><li>2009-04-11 Lake Sonoma </li><li>2009-05-09 King Ridge </li></ul></div><div>this year there is actually an entry fee - times they are achanging</div><div>read more <a href="http://www.grasshopperadventureseries.blogspot.com/">here</a> </div><div><br /></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/14/">&larr; Older</a>
@@ -472,6 +495,10 @@ A really fast bike ride or is it a race? you choose<div><br /></div><div>The sch
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/03/26/save-a-ruby-hash-as-a-json-file/">Save a ruby hash as a json file</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/04/07/circleci-could-not-get-cache-stat/">CircleCI: Could not get cache stat, action npm install failed</a>
@@ -491,10 +518,6 @@ A really fast bike ride or is it a race? you choose<div><br /></div><div>The sch
     
       <li class="post">
         <a href="/blog/2015/02/03/rbenv-and-your-user-account-isnt-allowed-to-install-to-the-system-rubygems/">rbenv and Your user account isn&#8217;t allowed to install to the system Rubygems</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/02/setup-mac-os-x-for-rails-development/">Setup Mac OS X for rails development</a>
       </li>
     
   </ul>
@@ -539,7 +562,7 @@ A really fast bike ride or is it a race? you choose<div><br /></div><div>The sch
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Jesse House -
+  Copyright &copy; 2017 - Jesse House -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

@@ -9,30 +9,12 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Our builds started to randomly fail on CircleCI when executing npm install: 1
+  <meta name="description" content="Save a ruby hash as a json file I have found the following technique useful when debugging json structures generated from ruby hashes. 1
 2
 3
 4
 5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-npm install
-npm &hellip;">
+6 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +70,60 @@ npm &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/03/26/save-a-ruby-hash-as-a-json-file/">Save a ruby hash as a json file</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2017-03-26T12:24:00-07:00" pubdate data-updated="true">Mar 26<span>th</span>, 2017</time>
+        
+         | <a href="/blog/2017/03/26/save-a-ruby-hash-as-a-json-file/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Save a ruby hash as a json file</p>
+
+<p>I have found the following technique useful when debugging json structures generated from ruby hashes.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>some_json = {
+</span><span class='line'>  some_attribute: 'SOME_DATA'
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>IO.write "tmp/some_json-#{SecureRandom.hex(2)}.json", JSON.pretty_generate(some_json)</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -887,81 +923,6 @@ Note it uses the autofix rubocop option, optionally you could run it on non-stag
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/13/stub-paperclip-s3-uploads-in-rspec/">stub paperclip s3 uploads in rspec</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-13T14:22:00-08:00" pubdate data-updated="true">Feb 13<span>th</span>, 2014</time>
-        
-         | <a href="/blog/2014/02/13/stub-paperclip-s3-uploads-in-rspec/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I was searching around stackoverflow trying to figure how to stub out s3 uploads with paperclip when running unit tests; came across a few that looked promising, along the lines of:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Model</span><span class="o">.</span><span class="n">any_instance</span><span class="o">.</span><span class="n">stubs</span><span class="p">(</span><span class="ss">:save_attached_files</span><span class="p">)</span><span class="o">.</span><span class="n">returns</span><span class="p">(</span><span class="kp">true</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>But that was not working with <a href="https://github.com/thoughtbot/paperclip">paperclip</a> version 4, a quick look at the stacktrace reveled the method I wanted to mock.</p>
-
-<pre>
-Failure/Error: report.save
-AWS::S3::Errors::InvalidAccessKeyId:
-  The AWS Access Key Id you provided does not exist in our records.
-/Users/me/.rvm/gems/ruby-2.1.0/gems/aws-sdk-1.33.0/lib/aws/core/client.rb:374:in `return_or_raise'
-/Users/me/.rvm/gems/ruby-2.1.0/gems/aws-sdk-1.33.0/lib/aws/core/client.rb:475:in `client_request'
-(eval):3:in `put_object'
-/Users/me/.rvm/gems/ruby-2.1.0/gems/aws-sdk-1.33.0/lib/aws/s3/s3_object.rb:1751:in `write_with_put_object'
-/Users/me/.rvm/gems/ruby-2.1.0/gems/aws-sdk-1.33.0/lib/aws/s3/s3_object.rb:607:in `write'
-/Users/me/.rvm/gems/ruby-2.1.0/gems/paperclip-4.0.0/lib/paperclip/storage/s3.rb:337:in `block in flush_writes'
-/Users/me/.rvm/gems/ruby-2.1.0/gems/paperclip-4.0.0/lib/paperclip/storage/s3.rb:314:in `each'
-/Users/me/.rvm/gems/ruby-2.1.0/gems/paperclip-4.0.0/lib/paperclip/storage/s3.rb:314:in `flush_writes'
-/Users/me/.rvm/gems/ruby-2.1.0/gems/paperclip-4.0.0/lib/paperclip/attachment.rb:239:in `save'
-/Users/me/.rvm/gems/ruby-2.1.0/gems/paperclip-4.0.0/lib/paperclip/has_attached_file.rb:87:in `block in add_active_record_callbacks'
-/Users/me/.rvm/gems/ruby-2.1.0/gems/activesupport-3.2.16/lib/active_support/callbacks.rb:460:in `_run__2863894366922569793__save__4567171711544756900__callbacks'
-/Users/me/.rvm/gems/ruby-2.1.0/gems/activesupport-3.2.16/lib/active_support/callbacks.rb:405:in `__run_callback'
-/Users/me/.rvm/gems/ruby-2.1.0/gems/activesupport-3.2.16/lib/active_support/callbacks.rb:385:in `_run_save_callbacks'
-# ...
-</pre>
-
-
-<p>after double checking the code on github, a working stub:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="ss">Paperclip</span><span class="p">:</span><span class="ss">:Attachment</span><span class="o">.</span><span class="n">any_instance</span><span class="o">.</span><span class="n">stub</span><span class="p">(</span><span class="ss">:save</span><span class="p">)</span><span class="o">.</span><span class="n">and_return</span><span class="p">(</span><span class="kp">true</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -975,6 +936,10 @@ AWS::S3::Errors::InvalidAccessKeyId:
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/03/26/save-a-ruby-hash-as-a-json-file/">Save a ruby hash as a json file</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/04/07/circleci-could-not-get-cache-stat/">CircleCI: Could not get cache stat, action npm install failed</a>
@@ -994,10 +959,6 @@ AWS::S3::Errors::InvalidAccessKeyId:
     
       <li class="post">
         <a href="/blog/2015/02/03/rbenv-and-your-user-account-isnt-allowed-to-install-to-the-system-rubygems/">rbenv and Your user account isn&#8217;t allowed to install to the system Rubygems</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/02/setup-mac-os-x-for-rails-development/">Setup Mac OS X for rails development</a>
       </li>
     
   </ul>
@@ -1042,7 +1003,7 @@ AWS::S3::Errors::InvalidAccessKeyId:
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Jesse House -
+  Copyright &copy; 2017 - Jesse House -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

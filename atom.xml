@@ -4,7 +4,7 @@
   <title><![CDATA[house9]]></title>
   <link href="http://jessehouse.com/atom.xml" rel="self"/>
   <link href="http://jessehouse.com/"/>
-  <updated>2015-04-07T08:34:04-07:00</updated>
+  <updated>2017-03-26T12:25:33-07:00</updated>
   <id>http://jessehouse.com/</id>
   <author>
     <name><![CDATA[Jesse House]]></name>
@@ -12,6 +12,31 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Save a ruby hash as a json file]]></title>
+    <link href="http://jessehouse.com/blog/2017/03/26/save-a-ruby-hash-as-a-json-file/"/>
+    <updated>2017-03-26T12:24:00-07:00</updated>
+    <id>http://jessehouse.com/blog/2017/03/26/save-a-ruby-hash-as-a-json-file</id>
+    <content type="html"><![CDATA[<p>Save a ruby hash as a json file</p>
+
+<p>I have found the following technique useful when debugging json structures generated from ruby hashes.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>some_json = {
+</span><span class='line'>  some_attribute: 'SOME_DATA'
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>IO.write "tmp/some_json-#{SecureRandom.hex(2)}.json", JSON.pretty_generate(some_json)</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[CircleCI: Could not get cache stat, action npm install failed]]></title>
@@ -1147,24 +1172,6 @@ Example Vagrantfile below for setting up multiple virtual machines and using che
     <id>http://jessehouse.com/blog/2013/03/21/hipchat-is-now-free</id>
     <content type="html"><![CDATA[<div class='post'>
 Just got an email from <a href="https://www.hipchat.com/">HipChat</a> - now free for small groups - awesome!<br /><br /><div class="separator" style="clear: both; text-align: center;"></div><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/-5_HhmM8Ilx8/UUs5raR5bHI/AAAAAAAAC7A/IJ_-ooOZJhY/s1600/hipchat.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://3.bp.blogspot.com/-5_HhmM8Ilx8/UUs5raR5bHI/AAAAAAAAC7A/IJ_-ooOZJhY/s1600/hipchat.png" /></a></div><br /></div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ruby on Rails continuous integration (CI) with Jenkins the easy way with Chef and Knife]]></title>
-    <link href="http://jessehouse.com/blog/2013/02/23/ruby-on-rails-continuous-integration-ci/"/>
-    <updated>2013-02-23T00:00:00-08:00</updated>
-    <id>http://jessehouse.com/blog/2013/02/23/ruby-on-rails-continuous-integration-ci</id>
-    <content type="html"><![CDATA[<div class='post'>
-Do you need a CI build setup for your Ruby on Rails app?<br /><br />Here are some <a href="http://www.opscode.com/chef/">chef</a> / <a href="http://matschaffer.github.com/knife-solo/">knife solo</a> scripts that will deploy a <a href="http://jenkins-ci.org/">Jenkins</a> server to run your <a href="http://www.martinfowler.com/articles/continuousIntegration.html">CI build</a> - you could be up and running in less than 1/2 an hour<br /><br /><a href="https://github.com/house9/ci_chef_jenkins_rails"><b>https://github.com/house9/ci_chef_jenkins_rails</b></a><br /><br />Check out the README for details<br /><br /><br /></div>
-<h2>Comments</h2>
-<div class='comments'>
-<div class='comment'>
-<div class='author'>patcon</div>
-<div class='content'>
-You might want to look into Pivotal Labs&#39; ciborg project &#8211; sounds like it&#39;s just what you&#39;re looking for :)<br /><br />https://github.com/pivotal/ciborg</div>
-</div>
-</div>
 ]]></content>
   </entry>
   

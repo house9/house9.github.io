@@ -9,9 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="
-Run sql statements from the command line, use the -c flagcreate a random valuecrazy updates using&nbsp;regexp_matches
-">
+  <meta name="description" content="Using psql from the command line you can terminate all connections to a databaseComes in handy when you want to do things like restore your staging &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -67,6 +65,43 @@ Run sql statements from the command line, use the -c flagcreate a random valuecr
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/04/29/postgres-terminate-all-database/">postgres: terminate all database connections</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-29T00:00:00-07:00" pubdate data-updated="true">Apr 29<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='post'>
+Using psql from the command line you can terminate all connections to a database<br /><div><br /></div><div><script src="https://gist.github.com/2552481.js?file=postgres_disconnect.sql.sh"></script></div>Comes in handy when you want to do things like restore your staging or development database<br /><br /><script src="https://gist.github.com/2552493.js?file=postgres_rebuild.sql.sh"></script>  <br /><div><b>Resources</b><br /><br /><ul><li><a href="http://www.postgresql.org/docs/9.1/static/reference-client.html">http://www.postgresql.org/docs/9.1/static/reference-client.html</a>&nbsp;</li><li><a href="http://blog.gahooa.com/2010/11/03/how-to-force-drop-a-postgresql-database-by-killing-off-connection-processes/">http://blog.gahooa.com/2010/11/03/how-to-force-drop-a-postgresql-database-by-killing-off-connection-processes/</a>&nbsp;</li></ul></div></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -424,43 +459,6 @@ I just uploaded a sample application that uses guard, coffee-script and a rake t
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/07/08/grow-vegetables-go-to-jail/">Grow vegetables go to jail?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-08T00:00:00-07:00" pubdate data-updated="true">Jul 8<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><div class='post'>
-Oak Park resident Julie Bass now faces serious charges for setting up a vegetable garden in her front yard.<br /><br />Help her out sign the petition here: <a href="http://www.thepetitionsite.com/1/oak-park-hates-veggies/">http://www.thepetitionsite.com/1/oak-park-hates-veggies/</a><br /><br /><br />We are requesting that the City of Oak Park, MI cease its prosecution against its resident Julie Bass for the supposed crime of growing vegetables in her front yard. The bylaw they are pursuing criminal charges under is poorly written and does not explicitly state that you cannot grow vegetables. The prosecutor representing the city wants to take this case to trial, and the associated charge carries a maximum sentence of 93 days in jail. It would be a travesty for this mother of six to be sentenced to 93 days in jail for the simple act of growing tomatoes in her front yard.<br /><br />Details about the case can be found at <a href="http://oakparkhatesveggies.wordpress.com/">http://oakparkhatesveggies.wordpress.com/</a><br /><div><br /></div></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -476,6 +474,10 @@ Oak Park resident Julie Bass now faces serious charges for setting up a vegetabl
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/03/26/save-a-ruby-hash-as-a-json-file/">Save a ruby hash as a json file</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/04/07/circleci-could-not-get-cache-stat/">CircleCI: Could not get cache stat, action npm install failed</a>
@@ -495,10 +497,6 @@ Oak Park resident Julie Bass now faces serious charges for setting up a vegetabl
     
       <li class="post">
         <a href="/blog/2015/02/03/rbenv-and-your-user-account-isnt-allowed-to-install-to-the-system-rubygems/">rbenv and Your user account isn&#8217;t allowed to install to the system Rubygems</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/02/setup-mac-os-x-for-rails-development/">Setup Mac OS X for rails development</a>
       </li>
     
   </ul>
@@ -543,7 +541,7 @@ Oak Park resident Julie Bass now faces serious charges for setting up a vegetabl
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - Jesse House -
+  Copyright &copy; 2017 - Jesse House -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
