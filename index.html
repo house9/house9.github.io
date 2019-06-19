@@ -9,12 +9,7 @@
   <meta name="author" content="Jesse House">
 
   
-  <meta name="description" content="Save a ruby hash as a json file I have found the following technique useful when debugging json structures generated from ruby hashes. 1
-2
-3
-4
-5
-6 &hellip;">
+  <meta name="description" content="I have recently been checking out rails-6.0.0.rc1. I immediatly ran into an issue when trying to run controller specs with rspec-rails. Running any &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -70,6 +65,124 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2019/06/19/actionview-template-error-wrong-number-of-arguments-given-2/">ActionView::Template::Error: wrong number of arguments (given 2, expected 1)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2019-06-19T14:35:00-07:00" pubdate data-updated="true">Jun 19<span>th</span>, 2019</time>
+        
+         | <a href="/blog/2019/06/19/actionview-template-error-wrong-number-of-arguments-given-2/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have recently been checking out rails-6.0.0.rc1. I immediatly ran into an issue when trying to run controller specs with <a href="https://github.com/rspec/rspec-rails">rspec-rails</a>.</p>
+
+<p>Running any controller spec would error with:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rspec spec/controllers/home_controller_spec.rb
+</span><span class='line'>
+</span><span class='line'>Failures:
+</span><span class='line'>
+</span><span class='line'>  1) HomeController GET #index returns http success
+</span><span class='line'>     Failure/Error: get :index
+</span><span class='line'>
+</span><span class='line'>     ActionView::Template::Error:
+</span><span class='line'>       wrong number of arguments (given 2, expected 1)
+</span><span class='line'>     # ./spec/controllers/home_controller_spec.rb:7:in `block (3 levels) in &lt;top (required)&gt;'
+</span><span class='line'>     # ------------------
+</span><span class='line'>     # --- Caused by: ---
+</span><span class='line'>     # ArgumentError:
+</span><span class='line'>     #   wrong number of arguments (given 2, expected 1)
+</span><span class='line'>     #   ./spec/controllers/home_controller_spec.rb:7:in `block (3 levels) in &lt;top (required)&gt;'
+</span><span class='line'>
+</span><span class='line'>Finished in 0.03078 seconds (files took 1.66 seconds to load)
+</span><span class='line'>1 example, 1 failure</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After searching for a bit I found the answer on a github issue, tried to find it again and could not otherwise I would link it here.</p>
+
+<p>My co-worker ran into the same issue so I figured it was time to write a blog post.</p>
+
+<p>The fix: use rspec-rails 4 which is currently in development, modify your Gemfile like so:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>group :development, :test do
+</span><span class='line'>  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+</span><span class='line'>  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+</span><span class='line'>  gem 'rspec-core', git: 'https://github.com/rspec/rspec-core'
+</span><span class='line'>  gem 'rspec-expectations', git: 'https://github.com/rspec/rspec-expectations'
+</span><span class='line'>  gem 'rspec-mocks', git: 'https://github.com/rspec/rspec-mocks'
+</span><span class='line'>  gem 'rspec-rails', git: 'https://github.com/rspec/rspec-rails', branch: '4-0-dev'
+</span><span class='line'>  gem 'rspec-support', git: 'https://github.com/rspec/rspec-support'
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and then bundle, re-run the specs</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rspec spec/controllers/home_controller_spec.rb
+</span><span class='line'>
+</span><span class='line'>Finished in 0.01668 seconds (files took 2.14 seconds to load)
+</span><span class='line'>1 example, 0 failures</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Life is good again!</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -781,148 +894,6 @@ Note it uses the autofix rubocop option, optionally you could run it on non-stag
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/05/17/protractor-promises-all-the-way-down/">Protractor - promises all the way down</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-05-17T19:54:00-07:00" pubdate data-updated="true">May 17<span>th</span>, 2014</time>
-        
-         | <a href="/blog/2014/05/17/protractor-promises-all-the-way-down/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><blockquote><p>Expected undefined to equal 7.</p></blockquote>
-
-<p>We recently started using <a href="https://github.com/angular/protractor">Protractor</a> for end to end testing of an angular application. Protractor returns promises when locating elements on the page, in some cases you may need to do your assertions inside of callback functions.</p>
-
-<p>For example:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// this works just fine</span>
-</span><span class='line'><span class="nx">expect</span><span class="p">(</span><span class="nx">element</span><span class="p">(</span><span class="nx">by</span><span class="p">.</span><span class="nx">id</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)).</span><span class="nx">getText</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">&#39;x@x.com&#39;</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// this will fail</span>
-</span><span class='line'><span class="nx">expect</span><span class="p">(</span><span class="nx">element</span><span class="p">(</span><span class="nx">by</span><span class="p">.</span><span class="nx">id</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)).</span><span class="nx">getText</span><span class="p">().</span><span class="nx">length</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// getText retuns a promise and not a string, instead...</span>
-</span><span class='line'><span class="nx">element</span><span class="p">(</span><span class="nx">by</span><span class="p">.</span><span class="nx">id</span><span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">)).</span><span class="nx">getText</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">expect</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
-</span><span class='line'><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>You can use the elementexplorer to debug your locators, but be aware that even non-matched elements will return an &lsquo;Element Finder&rsquo; object.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">node</span> <span class="nx">node_modules</span><span class="o">/</span><span class="nx">protractor</span><span class="o">/</span><span class="nx">bin</span><span class="o">/</span><span class="nx">elementexplorer</span><span class="p">.</span><span class="nx">js</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">Getting</span> <span class="nx">page</span> <span class="nx">at</span><span class="o">:</span> <span class="nx">about</span><span class="o">:</span><span class="nx">blank</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;http://www.angularjs.org&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="kc">null</span>
-</span><span class='line'><span class="o">&gt;</span> <span class="nx">element</span><span class="p">(</span><span class="nx">by</span><span class="p">.</span><span class="nx">model</span><span class="p">(</span><span class="s1">&#39;xxxx&#39;</span><span class="p">))</span>
-</span><span class='line'><span class="p">{</span> <span class="nx">click</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
-</span><span class='line'>  <span class="nx">sendKeys</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
-</span><span class='line'>  <span class="nx">getTagName</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
-</span><span class='line'>  <span class="nx">getCssValue</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
-</span><span class='line'>  <span class="nx">getAttribute</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
-</span><span class='line'>  <span class="nx">getText</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
-</span><span class='line'>  <span class="nx">getSize</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
-</span><span class='line'>  <span class="nx">getLocation</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
-</span><span class='line'>  <span class="nx">isEnabled</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
-</span><span class='line'>  <span class="nx">isSelected</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
-</span><span class='line'>  <span class="nx">submit</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
-</span><span class='line'>  <span class="nx">clear</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
-</span><span class='line'>  <span class="nx">isDisplayed</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
-</span><span class='line'>  <span class="nx">getOuterHtml</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
-</span><span class='line'>  <span class="nx">getInnerHtml</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
-</span><span class='line'>  <span class="nx">toWireValue</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
-</span><span class='line'>  <span class="nx">findElements</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
-</span><span class='line'>  <span class="nx">isElementPresent</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
-</span><span class='line'>  <span class="nx">evaluate</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
-</span><span class='line'>  <span class="nx">findElement</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
-</span><span class='line'>  <span class="nx">find</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
-</span><span class='line'>  <span class="nx">isPresent</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
-</span><span class='line'>  <span class="nx">element</span><span class="o">:</span> <span class="p">{</span> <span class="p">[</span><span class="nb">Function</span><span class="p">]</span> <span class="nx">all</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">]</span> <span class="p">},</span>
-</span><span class='line'>  <span class="s1">&#39;$&#39;</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">],</span>
-</span><span class='line'>  <span class="s1">&#39;$$&#39;</span><span class="o">:</span> <span class="p">[</span><span class="nb">Function</span><span class="p">]</span> <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>However, invoking one of the methods on an unmatched element will raise a <code>NoSuchElementError</code>.</p>
-
-<p>Resources:</p>
-
-<ul>
-<li><a href="https://github.com/angular/protractor/blob/master/docs/api.md">https://github.com/angular/protractor/blob/master/docs/api.md</a></li>
-<li><a href="http://www.youtube.com/watch?v=aQipuiTcn3U">http://www.youtube.com/watch?v=aQipuiTcn3U</a></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -936,6 +907,10 @@ Note it uses the autofix rubocop option, optionally you could run it on non-stag
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2019/06/19/actionview-template-error-wrong-number-of-arguments-given-2/">ActionView::Template::Error: wrong number of arguments (given 2, expected 1)</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/03/26/save-a-ruby-hash-as-a-json-file/">Save a ruby hash as a json file</a>
@@ -955,10 +930,6 @@ Note it uses the autofix rubocop option, optionally you could run it on non-stag
     
       <li class="post">
         <a href="/blog/2015/02/08/aws-iam-policy-for-uploading-ssl-certificates/">AWS IAM policy for uploading SSL certificates</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/03/rbenv-and-your-user-account-isnt-allowed-to-install-to-the-system-rubygems/">rbenv and Your user account isn&#8217;t allowed to install to the system Rubygems</a>
       </li>
     
   </ul>
@@ -1003,7 +974,7 @@ Note it uses the autofix rubocop option, optionally you could run it on non-stag
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2017 - Jesse House -
+  Copyright &copy; 2019 - Jesse House -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

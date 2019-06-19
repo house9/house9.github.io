@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>ActionView::Template::Error: wrong number of arguments (given 2, expected 1) - house9</title>
+  <meta name="author" content="Jesse House">
+
+  
+  <meta name="description" content="I have recently been checking out rails-6.0.0.rc1. I immediatly ran into an issue when trying to run controller specs with rspec-rails. Running any &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://jessehouse.com/blog/2019/06/19/actionview-template-error-wrong-number-of-arguments-given-2">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="house9" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">house9</a></h1>
+  
+    <h2>random code and what not</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:jessehouse.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">ActionView::Template::Error: wrong number of arguments (given 2, expected 1)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2019-06-19T14:35:00-07:00" pubdate data-updated="true">Jun 19<span>th</span>, 2019</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I have recently been checking out rails-6.0.0.rc1. I immediatly ran into an issue when trying to run controller specs with <a href="https://github.com/rspec/rspec-rails">rspec-rails</a>.</p>
+
+<p>Running any controller spec would error with:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rspec spec/controllers/home_controller_spec.rb
+</span><span class='line'>
+</span><span class='line'>Failures:
+</span><span class='line'>
+</span><span class='line'>  1) HomeController GET #index returns http success
+</span><span class='line'>     Failure/Error: get :index
+</span><span class='line'>
+</span><span class='line'>     ActionView::Template::Error:
+</span><span class='line'>       wrong number of arguments (given 2, expected 1)
+</span><span class='line'>     # ./spec/controllers/home_controller_spec.rb:7:in `block (3 levels) in &lt;top (required)&gt;'
+</span><span class='line'>     # ------------------
+</span><span class='line'>     # --- Caused by: ---
+</span><span class='line'>     # ArgumentError:
+</span><span class='line'>     #   wrong number of arguments (given 2, expected 1)
+</span><span class='line'>     #   ./spec/controllers/home_controller_spec.rb:7:in `block (3 levels) in &lt;top (required)&gt;'
+</span><span class='line'>
+</span><span class='line'>Finished in 0.03078 seconds (files took 1.66 seconds to load)
+</span><span class='line'>1 example, 1 failure</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After searching for a bit I found the answer on a github issue, tried to find it again and could not otherwise I would link it here.</p>
+
+<p>My co-worker ran into the same issue so I figured it was time to write a blog post.</p>
+
+<p>The fix: use rspec-rails 4 which is currently in development, modify your Gemfile like so:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>group :development, :test do
+</span><span class='line'>  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+</span><span class='line'>  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+</span><span class='line'>  gem 'rspec-core', git: 'https://github.com/rspec/rspec-core'
+</span><span class='line'>  gem 'rspec-expectations', git: 'https://github.com/rspec/rspec-expectations'
+</span><span class='line'>  gem 'rspec-mocks', git: 'https://github.com/rspec/rspec-mocks'
+</span><span class='line'>  gem 'rspec-rails', git: 'https://github.com/rspec/rspec-rails', branch: '4-0-dev'
+</span><span class='line'>  gem 'rspec-support', git: 'https://github.com/rspec/rspec-support'
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and then bundle, re-run the specs</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rspec spec/controllers/home_controller_spec.rb
+</span><span class='line'>
+</span><span class='line'>Finished in 0.01668 seconds (files took 2.14 seconds to load)
+</span><span class='line'>1 example, 0 failures</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Life is good again!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jesse House</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2019-06-19T14:35:00-07:00" pubdate data-updated="true">Jun 19<span>th</span>, 2019</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/rspec/'>rspec</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://jessehouse.com/blog/2019/06/19/actionview-template-error-wrong-number-of-arguments-given-2/" data-via="" data-counturl="http://jessehouse.com/blog/2019/06/19/actionview-template-error-wrong-number-of-arguments-given-2/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2017/03/26/save-a-ruby-hash-as-a-json-file/" title="Previous Post: Save a ruby hash as a json file">&laquo; Save a ruby hash as a json file</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2019/06/19/actionview-template-error-wrong-number-of-arguments-given-2/">ActionView::Template::Error: wrong number of arguments (given 2, expected 1)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/03/26/save-a-ruby-hash-as-a-json-file/">Save a ruby hash as a json file</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/07/circleci-could-not-get-cache-stat/">CircleCI: Could not get cache stat, action npm install failed</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/19/upgrading-from-rspec-2-to-rspec-3/">upgrading from rspec 2 to rspec 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/15/ember-cli-broccoli-fingerprinting/">ember-cli broccoli fingerprinting</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/08/aws-iam-policy-for-uploading-ssl-certificates/">AWS IAM policy for uploading SSL certificates</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/house9">@house9</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'house9',
+            count: 6,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2019 - Jesse House -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'house9';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://jessehouse.com/blog/2019/06/19/actionview-template-error-wrong-number-of-arguments-given-2/';
+        var disqus_url = 'http://jessehouse.com/blog/2019/06/19/actionview-template-error-wrong-number-of-arguments-given-2/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
